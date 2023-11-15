@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="1.36">
+    <testcase classname="18.Users tablosunda sondan bir önceki harfi e olan usernamelerin mobile numarasını update ediniz" name="User tablosunda Update data testi" time="1.221">
+        <system-out><![CDATA[* Database connection is established........................................passed
+* Update the "905432121212" of the usernames with the penultimate letter e in the Users table.passed
+* Database connection is closed.............................................passed
+]]></system-out>
+    </testcase>
+</testsuite>
