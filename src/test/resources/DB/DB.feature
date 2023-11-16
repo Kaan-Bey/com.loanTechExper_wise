@@ -1,5 +1,5 @@
-Feature: 18.Users tablosunda sondan bir önceki harfi e olan usernamelerin mobile numarasını update ediniz
-@DB18
+Feature: US17_Users tablosunda sondan bir önceki harfi e olan usernamelerin mobile numarasını update ediniz
+@DB17
   Scenario: User tablosunda Update data testi
 
     * Database connection is established.
