@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import com.github.javafaker.Faker;
 import com.mysql.cj.protocol.Resultset;
 import io.cucumber.java.en.Given;
 import utilities.DBUtils;
@@ -19,7 +20,12 @@ public class DB_Stepdefinitions {
     String  query;
     ResultSet rs;
     PreparedStatement preparedStatement;
+    Faker faker=new Faker();
     Manage manage=new Manage();
+    protected String loan_number;
+    protected int user_id;
+    protected int id;
+    protected String token;
 
     @Given("Database connection is established.")
     public void database_connection_is_established() {
@@ -31,6 +37,7 @@ public class DB_Stepdefinitions {
         preparedStatement=DBUtils.getPraperedStatement(query);
         preparedStatement.setString(1,mobileNumber);
         int rowCount= preparedStatement.executeUpdate();
+        assertEquals(1, rowCount);
     }
     @Given("Database connection is closed")
     public void database_connection_is_closed() {
@@ -107,10 +114,14 @@ public class DB_Stepdefinitions {
     @Given("admin_password_resets_Query is prepared and executed.")
     public void admin_password_resets_query_is_prepared_and_executed() throws SQLException {
      query= manage.getQuery05();
+      id= faker.number().numberBetween(8,50);
+     String e_mail=faker.internet().emailAddress();
+      token=faker.internet().password();
+       // System.out.println(id +" "+e_mail+" "+token);
         preparedStatement=DBUtils.getPraperedStatement(query);
-        preparedStatement.setInt(1,11);
-        preparedStatement.setString(2,"bcd@abc.com");
-        preparedStatement.setString(3,"xyz123");
+        preparedStatement.setInt(1,id);
+        preparedStatement.setString(2,e_mail);
+        preparedStatement.setString(3,token);
         preparedStatement.setInt(4,0);
 
 
@@ -120,6 +131,99 @@ public class DB_Stepdefinitions {
         int rowCount= preparedStatement.executeUpdate();
         assertEquals(1, rowCount);
     }
+    @Given("Query06 is prepared and executed.")
+    public void query06_is_prepared_and_executed() throws SQLException {
+       query= manage.getQuery06();
+       rs=DBUtils.getStatement().executeQuery(query);
+    }
+    @Given("Verify the support_ticket_id information Results are obtained.")
+    public void verify_the_support_ticket_id_information_results_are_obtained() throws SQLException {
+       rs.next();
+        int support_ticket_id= rs.getInt("support_ticket_id");
+       int exp_s_t_id=3;
+       assertEquals(exp_s_t_id,support_ticket_id);
+    }
+    @Given("Query07 is prepared and executed.")
+    public void query07_is_prepared_and_executed() throws SQLException {
+       query= manage.getQuery07();
+       rs=DBUtils.getStatement().executeQuery(query);
+    }
+    @Given("Verify the subject information Results are obtained.")
+    public void verify_the_subject_information_results_are_obtained() throws SQLException {
+        List<String> expectedsubjectinfo=new ArrayList<>();
+        expectedsubjectinfo.add("kargo takıp");
+        expectedsubjectinfo.add("Plan2");
+        List<String> actualsubject=new ArrayList<>();
+       while (rs.next()){
+           String subject=rs.getString("subject");
+                actualsubject.add(subject);
+           for (int i = 0; i < actualsubject.size() ; i++) {
+               assertEquals(expectedsubjectinfo.get(i),actualsubject.get(i));
+           }
+       }
+    }
+    @Given("Query08 is prepared and executed.")
+    public void query08_is_prepared_and_executed() throws SQLException {
+      query= manage.getQuery08();
+      rs=DBUtils.getStatement().executeQuery(query);
+    }
+    @Given("Verify the firstname,lastname information Results are obtained.")
+    public void verify_the_firstname_lastname_information_results_are_obtained() throws SQLException {
+        List<String> expectedList=new ArrayList<>();
+        expectedList.add("john Doe");
+        expectedList.add("test_Ozge Last_ozge");
+        expectedList.add("smile last");
+        List<String>actualList=new ArrayList<>();
+        while (rs.next()){
+            String f_name=rs.getString("firstname")+" "+rs.getString("lastname");
+            actualList.add(f_name);
+            for (int i = 0; i <actualList.size() ; i++) {
+                assertEquals(expectedList.get(i),actualList.get(i));
+            }
+        }
+        //john	Doe
+        //test_Ozge	Last_ozge
+        //smile	last
+
+    }
+    @Given("Query09 is prepared and updated.")
+    public void query09_is_prepared_and_updated() throws SQLException {
+   query= manage.getQuery09();
+     loan_number=faker.internet().password();
+        user_id=faker.number().numberBetween(10,100);
+        int plan_id=faker.number().numberBetween(0,1);
+       //i System.out.println(loan_number+user_id+plan_id);
+    preparedStatement=DBUtils.getPraperedStatement(query);
+    preparedStatement.setString(1,loan_number);
+    preparedStatement.setInt(2,user_id);
+    preparedStatement.setInt(3,plan_id);
+        int rowCount= preparedStatement.executeUpdate();
+        assertEquals(rowCount,1);
+
+    }
+    @Given("Loan_number is prepared and deleted")
+    public void loan_number_is_prepared_and_deleted() throws SQLException {
+        query=manage.getQuery09delete();
+        preparedStatement=DBUtils.getPraperedStatement(query);
+        preparedStatement.setString(1,loan_number);
+    }
+    @Given("Verifies that the query information has been deleted.")
+    public void verify_that_the_query_information_has_been_deleted() throws SQLException {
+        int rowCount= preparedStatement.executeUpdate();
+        assertEquals(rowCount,1);
+    }
+    @Given("Query10 is prepared and updated.")
+    public void query10_is_prepared_and_updated() throws SQLException {
+      query= manage.getQuery10();
+      token=faker.internet().password();
+      int is_app=faker.number().randomDigitNotZero();
+      preparedStatement=DBUtils.getPraperedStatement(query);
+      preparedStatement.setInt(1,id);
+      preparedStatement.setInt(2,user_id);
+      preparedStatement.setInt(3,is_app);
+      preparedStatement.setString(4,token);
+    }
+
 
     }
 
