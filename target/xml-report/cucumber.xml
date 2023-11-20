@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="1.36">
-    <testcase classname="18.Users tablosunda sondan bir önceki harfi e olan usernamelerin mobile numarasını update ediniz" name="User tablosunda Update data testi" time="1.221">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="5" time="7.151">
+    <testcase classname="US01/US02/US03/US04/US05" name="US01 Verify user_ids with &quot;amount&quot; value between $100 and $500 in the &quot;deposits&quot; table in the database" time="2.672">
         <system-out><![CDATA[* Database connection is established........................................passed
-* Update the "905432121212" of the usernames with the penultimate letter e in the Users table.passed
+* Query is prepared and executed............................................passed
+* Results are obtained......................................................passed
+* Database connection is closed.............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="US01/US02/US03/US04/US05" name="US02 Verify the &quot;remember_token&quot; information" time="0.894">
+        <system-out><![CDATA[* Database connection is established........................................passed
+* "AdminsTableQuery" is prepared and executed...............................passed
+* Verify the "remember_token" information Results are obtained..............passed
+* Database connection is closed.............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="US01/US02/US03/US04/US05" name="US03 Verify the &quot;name&quot; information of the last 3 records in the &quot;cron_schedules&quot; table in the database" time="0.698">
+        <system-out><![CDATA[* Database connection is established........................................passed
+* cron_schedules_Query is prepared and executed.............................passed
+* name Results are obtained.................................................passed
+* Database connection is closed.............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="US01/US02/US03/US04/US05" name="US04 In the &quot;Deposits&quot; table in the database," time="1.033">
+        <system-out><![CDATA[* Database connection is established........................................passed
+* deposits_Query is prepared and executed...................................passed
+* "charge" value of the data Results are obtained...........................passed
+* Database connection is closed.............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="US01/US02/US03/US04/US05" name="US05 Add multiple data to the &quot;admin_password_resets&quot; table in the database at the same time." time="1.647">
+        <system-out><![CDATA[* Database connection is established........................................passed
+* admin_password_resets_Query is prepared and executed......................passed
+* Data Results are obtained.................................................passed
 * Database connection is closed.............................................passed
 ]]></system-out>
     </testcase>
