@@ -26,8 +26,39 @@ public class Manage {
 
     private String Query09delete = "Delete  from loans Where loan_number=?;";
 
+
+
+    private String Query11="SELECT COUNT(*) FROM admin_notifications WHERE user_id = 1 AND is_read = 0;";
+    private String Query12="SELECT COUNT(*) FROM admin_notifications WHERE user_id = 2 AND id> 20;";
+    private String Query13="insert into cron_job_logs(id,cron_job_id,start_at,end_at,duration,error,created_at)Values(?,?,?,?,?,?,?);";
+    private String Query14="select code from gateways order by code Desc Limit 5;";
+
+    public String getQuery16() {
+        return Query16;
+    }
+
+    private String Query16="select user_id,user_ip,city from user_logins group by city;";
+
+    public String getQuery15() {
+        return Query15;
+    }
+
+    private String Query15="Select * from subscribers where email Not Like '%a%';";
     public String getQuery09() {
         return Query09;
+    }
+    public String getQuery11() {
+        return Query11;
+    }
+
+    public String getQuery14() {
+        return Query14;
+    }
+    public String getQuery12() {
+        return Query12;
+    }
+    public String getQuery13() {
+        return Query13;
     }
 
     public String getQuery10() {
