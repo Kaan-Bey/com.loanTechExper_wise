@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class DBUtils {
-    public static Connection connection;
-    public static Statement statement;
-    public static ResultSet resultSet;
+     static Connection connection;
+     static Statement statement;
+     static ResultSet resultSet;
 
     public static String query;
 
@@ -23,14 +23,13 @@ public class DBUtils {
 
 
     public static void createConnection() {
-        String url=ConfigReader.getProperty("db_credentials_url");
-        String username=ConfigReader.getProperty("DBname");
-        String password=ConfigReader.getProperty("DBPassword");
+        String url=ConfigReader.getProperty("URL");
+        String username=ConfigReader.getProperty("USERNAME");
+        String password=ConfigReader.getProperty("PASSWORD");
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+           throw new RuntimeException(e);
         }
 
     }
@@ -226,5 +225,15 @@ public class DBUtils {
             throw new SQLException("DB problem with query: " + query);
         }
         st.close();
+    }
+    public static PreparedStatement getPraperedStatement(String sqlQuery){
+
+        PreparedStatement preparedStatement=null;
+        try {
+            preparedStatement=connection.prepareStatement(sqlQuery);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return preparedStatement;
     }
 }
