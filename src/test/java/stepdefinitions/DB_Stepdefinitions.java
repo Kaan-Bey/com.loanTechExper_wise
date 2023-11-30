@@ -307,18 +307,18 @@ public class DB_Stepdefinitions {
     @Given("Verify the  List the {int} highest {string} values")
     public void verify_the_list_the_highest_values(Integer int1, String column) throws SQLException {
         List<Integer> codes = new ArrayList<>();
-        List<Integer> expccodes = new ArrayList<>();
-        expccodes.add(1000);
-        expccodes.add(509);
-        expccodes.add(508);
-        expccodes.add(507);
-        expccodes.add(506);
+        List<Integer> expcodes = new ArrayList<>();
+        expcodes.add(1000);
+        expcodes.add(509);
+        expcodes.add(508);
+        expcodes.add(507);
+        expcodes.add(506);
 
         while (rs.next()) {
             int code = rs.getInt("code");
             codes.add(code);
             for (int i = 0; i < codes.size(); i++) {
-                assertEquals(expccodes.get(i), codes.get(i));
+                assertEquals(expcodes.get(i), codes.get(i));
             }
         }
     }

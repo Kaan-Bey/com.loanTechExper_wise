@@ -4,7 +4,6 @@ public class Manage {
     private String Query17 = "UPDATE users set mobile =? where username LIKE '%e_';";
     private String Query01 = "SELECT user_id FROM deposits Where amount > 100 And amount <500;";
     private String Query02 = "SELECT remember_token FROM admins Where email='info@loantechexper.com';";
-
     private String Query03 = "SELECT name from cron_schedules Order By created_at Desc LIMIT 2;";
 
     private String Query04 = "Select charge from deposits Where amount<500.000;";
