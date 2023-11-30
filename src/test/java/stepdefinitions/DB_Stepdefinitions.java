@@ -1,8 +1,12 @@
 package stepdefinitions;
 
 import com.github.javafaker.Faker;
+import com.mysql.cj.Query;
 import com.mysql.cj.protocol.Resultset;
 import io.cucumber.java.en.Given;
+import org.hamcrest.Matcher;
+import org.hamcrest.MatcherAssert;
+import org.junit.Assert;
 import utilities.DBUtils;
 import utilities.Manage;
 
@@ -10,6 +14,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -24,6 +29,7 @@ public class DB_Stepdefinitions {
     protected int user_id;
     protected int id;
     protected String token;
+     String e_mail;
 
     @Given("Database connection is established.")
     public void database_connection_is_established() {
@@ -123,9 +129,9 @@ public class DB_Stepdefinitions {
     public void admin_password_resets_query_is_prepared_and_executed() throws SQLException {
         query = manage.getQuery05();
         id = faker.number().numberBetween(8, 50);
-        String e_mail = faker.internet().emailAddress();
+        e_mail=faker.internet().emailAddress();
         token = faker.internet().password();
-        // System.out.println(id +" "+e_mail+" "+token);
+        System.out.println(id +" "+e_mail+" "+token);
         preparedStatement = DBUtils.getPraperedStatement(query);
         preparedStatement.setInt(1, id);
         preparedStatement.setString(2, e_mail);
@@ -338,9 +344,100 @@ public class DB_Stepdefinitions {
     @Given("Verify separate {string} by cities")
     public void verify_separate_by_cities(String string) throws SQLException {
         rs.next();
-        int row= rs.getInt("city");
-        assertEquals("4 şehir belirlendi",4,row);
+        int row = rs.getInt("city");
+        assertEquals("4 şehir belirlendi", 4, row);
     }
+
+    @Given("Catagories_table insertQuery is prepared and updated")
+    public void catagories_table_insert_query_is_prepared_and_updated() throws SQLException {
+        query = manage.getQuery18();
+        id = faker.number().numberBetween(8, 50);
+        String name = faker.expression("loan");
+        String description = faker.lorem().sentence(4);
+        preparedStatement = DBUtils.getPraperedStatement(query);
+        //id,name,description
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, name);
+        preparedStatement.setString(3, description);
+
+    }
+
+    @Given("List all records in the {string} table with {string} in reverse order and {string} in reverse order.")
+    public void list_all_records_in_the_table_with_in_reverse_order_and_in_reverse_order(String users, String lastname, String firstname) throws SQLException {
+        query = manage.getQuery19();
+        rs = DBUtils.getStatement().executeQuery(query);
+    }
+
+    @Given("the first lastname of the list is verified")
+    public void the_first_lastname_of_the_list_is_verified() throws SQLException {
+        rs.next();
+        String lastname = "zxcv";
+        String actualLastname = rs.getString("lastname");
+        Assert.assertEquals(lastname, actualLastname);
+    }
+    @Given("In the {string} table, find the sum of the {string} values according to the {string} type and verify the ones higher than ${int}")
+    public void in_the_table_find_the_sum_of_the_values_according_to_the_type_and_verify_the_ones_higher_than_$(String string, String total_amount, String string3, Integer int1) throws SQLException {
+        query=manage.getTransactionTable();
+        rs=DBUtils.getStatement().executeQuery(query);
+    }
+    @Given("{string} values list is verified")
+    public void total_amount_values_list_is_verified(String total_amount) {
+        List<Object>actual_total_amount=DBUtils.getColumnData(query,"total_amount");
+       //  System.out.println(DBUtils.getColumnData(query, total_amount));
+
+        for (int i = 0; i <actual_total_amount.size() ; i++) {
+            assertTrue(actual_total_amount.retainAll(Collections.singleton("1000")));      }
+  
+    }
+    @Given("admin_notifications_table Query is prepared and executed")
+    public void admin_notifications_table_query_is_prepared_and_executed() throws SQLException {
+        query=manage.getQuery21();
+        rs=DBUtils.getStatement().executeQuery(query);
+    }
+    @Given("User result values are validated")
+    public void user_result_values_are_validated() throws SQLException {
+       rs.next();
+       Object actualCount=rs.getInt("COUNT(*)");
+        assertEquals(0,actualCount);
+
+
+    }
+    @Given("e_mail is prepared for admin_password_resets query and status is updated.")
+    public void admin_password_resets_query_is_prepared_and_updated() throws SQLException {
+        query=manage.getQuery22();
+        System.out.println(e_mail);
+        preparedStatement=DBUtils.getPraperedStatement(query);
+        preparedStatement.setInt(1,1);
+        preparedStatement.setString(2,e_mail);
+        System.out.println(e_mail);
+
+    }
+    @Given("Data Results are validate.")
+    public void data_results_are_validate() throws SQLException {
+       int row= preparedStatement.executeUpdate();
+        assertEquals(1,row);
+
+    }
+    @Given("depositsTable is prepared and executed.")
+    public void deposits_table_is_prepared_and_executed() throws SQLException {
+       query=manage.getDepositsTotalAmount();
+        rs=DBUtils.getStatement().executeQuery(query);
+    }
+    @Given("Deposits result values are validated")
+    public void deposits_result_values_are_validated() throws SQLException {
+       rs.next();
+       int expected_total_amount=14476;  int actual_total_amount=rs.getInt("total_amount");
+       assertEquals(expected_total_amount,actual_total_amount);
+
+    }
+
+    @Given("UpdateQuery is prepared")
+    public void update_query_is_prepared() {
+
+    }
+
+
+
 
 
 }

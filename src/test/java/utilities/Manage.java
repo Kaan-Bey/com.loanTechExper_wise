@@ -43,6 +43,46 @@ public class Manage {
     }
 
     private String Query15="Select * from subscribers where email Not Like '%a%';";
+    private String Query18="Insert into categories (id,name,description)Values(?,?,?);";
+    private String Query21="SELECT COUNT(*) FROM admin_notifications WHERE user_id = 1 AND is_read=1;";
+
+    public String getQuery22() {
+        return Query22;
+    }
+
+    private String Query22="UPDATE admin_password_resets SET status = ? WHERE email = ?;";
+
+    public String getDepositsTotalAmount() {
+        return depositsTotalAmount;
+    }
+
+    private String depositsTotalAmount="SELECT SUM(final_amo) AS total_amount FROM deposits WHERE status = 1 AND created_at BETWEEN '2023-01-01' AND '2023-12-31';";
+
+    public String getAdmin_notificationsTableQuery() {
+        return admin_notificationsTableQuery;
+    }
+
+    private String admin_notificationsTableQuery="";
+    public String getQuery21() {
+        return Query21;
+    }
+
+    public String getQuery19() {
+        return Query19;
+    }
+
+    private String Query19="SELECT * FROM users ORDER BY lastname DESC, firstname DESC;";
+
+    public String getTransactionTable() {
+        return transectionTable;
+    }
+
+    private String transectionTable="SELECT remark, SUM(amount) AS total_amount FROM transactions GROUP BY remark HAVING total_amount > 1000;";
+
+    public String getQuery18() {
+        return Query18;
+    }
+
     public String getQuery09() {
         return Query09;
     }
