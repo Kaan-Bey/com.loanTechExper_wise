@@ -4,40 +4,46 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
+import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 
 public class Authentication {
+    public static String generateToken(String user){
 
-    private static RequestSpecification spec;
+        JSONObject reqBody = null;
 
-    public static String adminToken(){
+        spec=new RequestSpecBuilder().setBaseUri(ConfigReader.getProperty("base_url")).build();
+        switch (user){
+            case "admin":
+                spec.pathParams("pp1","api","pp2","admintoken");
+                reqBody=new JSONObject();
+                reqBody.put("username", ConfigReader.getProperty("adminUsername"));
+                reqBody.put("password", ConfigReader.getProperty("adminPassword"));
+                break;
+            case "user":
+                spec.pathParams("pp1","api","pp2","usertoken");
+                reqBody=new JSONObject();
+                reqBody.put("username", ConfigReader.getProperty("userUsername"));
+                reqBody.put("password", ConfigReader.getProperty("userPassword"));
+                break;
 
-        spec = new RequestSpecBuilder().setBaseUri(ConfigReader.getProperty("base_url")).build();
-
-        spec.pathParams("pp1","api","pp2","getToken");
-
-        Map<String,Object> dataCredentials = new HashMap<>();
-
-        dataCredentials.put("email",ConfigReader.getProperty("adminUserName"));
-        dataCredentials.put("password",ConfigReader.getProperty("password"));
+        }
 
         Response response = given()
-                .contentType(ContentType.JSON)
-                .spec(spec)
-                .when()
-                .body(dataCredentials)
-                .post("/{pp1}/{pp2}");
+                              .spec(spec)
+                              .contentType(ContentType.JSON)
+                              .header("Accept","application/json")
+                            .when()
+                              .body(reqBody.toString())
+                              .post("/{pp1}/{pp2}");
 
-        response.prettyPrint();
 
-        JsonPath jsonResponse = response.jsonPath();
+        JsonPath repJP=response.jsonPath();
 
-        String token = jsonResponse.getString("token");
+        String token=repJP.getString("data.access_token");
+        System.out.println("token = " + token);
 
         return token;
     }
