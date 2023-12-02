@@ -12,7 +12,7 @@ Feature: US11-15
   verify the "id number greater than 20" of users with "user_id =2".
     * Query12 is prepared and executed.
     * Verify the "id number greater than 20" of users with "user_id =2"
-
+@DB13
   Scenario: Enter data to the "cron_job_logs" table and verify that it is added to the table.
     * Query13 is prepared and updated
     * Data Results are obtained.
