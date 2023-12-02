@@ -1,4 +1,4 @@
-@F3
+@DB
 Feature: US11-15
 
   Background: Database connection

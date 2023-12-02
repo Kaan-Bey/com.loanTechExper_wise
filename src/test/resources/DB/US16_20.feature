@@ -1,4 +1,4 @@
-@F4
+@DB
 Feature: US17_Users tablosunda sondan bir önceki harfi e olan usernamelerin mobile numarasını update ediniz
 
   Background:Database connection

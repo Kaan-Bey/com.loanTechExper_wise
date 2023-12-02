@@ -1,4 +1,4 @@
-@F2
+@DB
 Feature: US06-11
 
   Background: Database connection
