@@ -1,4 +1,4 @@
-@F5
+@DB
 Feature: US21_30
 
   Background:Database connection

@@ -1,4 +1,4 @@
-@F1
+@DB
 Feature: US01/US02/US03/US04/US05
   Background: Database connection
     * Database connection is established.
