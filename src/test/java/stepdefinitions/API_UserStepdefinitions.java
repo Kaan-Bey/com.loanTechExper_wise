@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.path.json.JsonPath;
@@ -44,25 +45,24 @@ public class API_UserStepdefinitions {
     }
 
     //********************************* user/ticket/list ***********************************************
-    @Given("API user saves the response from the user ticket list endpoint")
-    public void apı_user_saves_the_response_from_the_user_ticket_list_endpoint() {
+    @Given("The API user saves the response returned from the user ticket list endpoint")
+    public void the_apı_user_saves_the_response_returned_from_the_user_ticket_list_endpoint() {
         ReusableMethods.getResponse("user");
     }
-    @Then("API user verifies status code is {int}")
-    public void apı_user_verifies_status_code_is(Integer code) {
+    @Then("The API user verifies that the status code is {int}")
+    public void theAPIUserVerifiesThatTheStatusCodeIs(int code) {
         ReusableMethods.response.then()
                                    .assertThat()
-                                      .statusCode(code);
+                                       .statusCode(code);
     }
-    @Then("API user verifies that the remark information in the response body is {string}")
-    public void apı_user_verifies_that_the_remark_information_in_the_response_body_is(String remark) {
+    @And("The API user verifies that the remark information in the response body is {string}")
+    public void theAPIUserVerifiesThatTheRemarkInformationInTheResponseBodyIs(String remark) {
         ReusableMethods.response.then()
                                   .assertThat()
-                                      .body("remark", equalTo(remark));
+                                     .body("remark", equalTo(remark));
     }
-
-    @Then("API kullanici response bodydeki idsi {int} olanın {int}, {string}, {string}, {string}, {string}, {int}, {int}, {string}, {string}, {string} bilgilerini doğrular")
-    public void apı_kullanici_response_bodydeki_idsi_olanın_bilgilerini_doğrular(int dataIndex, int user_id, String name, String email, String ticket, String subject, int status, int priority, String last_reply, String created_at, String updated_at) {
+    @Then("Verify the information of the one with the id {int} in the API user response body: {int}, {string}, {string}, {string}, {string}, {int}, {int}, {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_id_in_the_apı_user_response_body(int dataIndex, int user_id, String name, String email, String ticket, String subject, int status, int priority, String last_reply, String created_at, String updated_at) {
         jsonPath=ReusableMethods.response.jsonPath();
 
         assertEquals(user_id,jsonPath.getInt("data["+dataIndex+"].user_id"));
@@ -76,6 +76,5 @@ public class API_UserStepdefinitions {
         assertEquals(created_at,jsonPath.getString("data["+dataIndex+"].created_at"));
         assertEquals(updated_at,jsonPath.getString("data["+dataIndex+"].updated_at"));
     }
-
     //*************************************************************************************************
 }

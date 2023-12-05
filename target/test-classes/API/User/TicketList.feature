@@ -5,17 +5,20 @@ Feature: As a user, I want to be able to access the Ticket List via API connecti
             remark information is "success".
 
     Given API user sets "user/ticket/list" path parameters
-    And API user saves the response from the user ticket list endpoint
-    Then API user verifies status code is 200
-    And API user verifies that the remark information in the response body is "success"
+    And The API user saves the response returned from the user ticket list endpoint
+    #Api kullanicisi user ticket list endpointinden donen responsei kaydeder
+    Then The API user verifies that the status code is 200
+    #Api kullanicisi status codeun 200 oldugunu dogrular
+    And The API user verifies that the remark information in the response body is "success"
+    #Api kullanicisi response bodydeki remark bilgisinin "success" oldugunu dogrular
 
-  @API
-  Scenario Outline: İd(x) olanın Response da dönen bilgilerini (user_id, name, email, ticket, subject,
-                    status, priority, last_reply, created_at, updated_at) dogrulayiniz
+
+  Scenario Outline: Verify the information (user_id, name, email, ticket, subject, status, priority,
+                    last_reply, created_at, updated_at) returned in the Response for the id(x)
 
     Given API user sets "user/ticket/list" path parameters
-    And API user saves the response from the user ticket list endpoint
-    Then API kullanici response bodydeki idsi <dataIndex> olanın <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>" bilgilerini doğrular
+    And The API user saves the response returned from the user ticket list endpoint
+    Then Verify the information of the one with the id <dataIndex> in the API user response body: <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>"
 
     Examples:
     | dataIndex | user_id | name | email | ticket | subject | status | priority | last_reply | created_at | updated_at |
