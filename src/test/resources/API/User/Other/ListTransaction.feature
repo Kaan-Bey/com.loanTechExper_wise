@@ -14,7 +14,7 @@ Feature: As a user, I want to access the user list transactions through API conn
 
     Given The API user sets "user/list/transaction" path parameters
     And The API user records the response returned from the user list transaction endpoint
-    Then Verify the information of the one with the id <dataIndex> in the API user response body: <user_id>, "<amount>", "<charge>", "<post_balance>", "<trx_type>", "<trx>", "<details>", "<remark>", "<created_at>", "<updated_at>"
+    Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, "<amount>", "<charge>", "<post_balance>", "<trx_type>", "<trx>", "<details>", "<remark>", "<created_at>", "<updated_at>"
 
     Examples:
       | dataIndex | user_id | amount          | charge     | post_balance    | trx_type | trx          | details | remark      | created_at                  | updated_at                  |

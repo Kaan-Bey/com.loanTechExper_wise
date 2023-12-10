@@ -217,8 +217,8 @@ public class API_UserStepdefinitions {
     public void theAPIUserRecordsTheResponseReturnedFromTheUserPlanEndpoint() {
         ReusableMethods.getResponse("user");
     }
-    @Then("Verify the information of the one with the id {int} in the API user response body: {string}, {string}, {int}, {string}, {string}")
-    public void verify_the_information_of_the_one_with_the_id_in_the_apı_user_response_body(int dataIndex, String name, String description, int status, String created_at, String updated_at) {
+    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {string}, {int}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String name, String description, int status, String created_at, String updated_at) {
         jsonPath=ReusableMethods.response.jsonPath();
 
         assertEquals(name,jsonPath.getString("data["+dataIndex+"].name"));
@@ -235,8 +235,8 @@ public class API_UserStepdefinitions {
     public void theAPIUserRecordsTheResponseReturnedFromTheUserListTransactionEndpoint() {
         ReusableMethods.getResponse("user");
     }
-    @Then("Verify the information of the one with the id {int} in the API user response body: {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
-    public void verify_the_information_of_the_one_with_the_id_in_the_apı_user_response_body(int dataIndex, int user_id, String amount, String charge, String post_balance, String trx_type, String trx, String details, String remark, String created_at, String updated_at) {
+    @Then("Verify the information of the one with the index {int} in the API user response body: {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, int user_id, String amount, String charge, String post_balance, String trx_type, String trx, String details, String remark, String created_at, String updated_at) {
         jsonPath=ReusableMethods.response.jsonPath();
 
         assertEquals(user_id,jsonPath.getInt("data["+dataIndex+"].user_id"));

@@ -14,7 +14,7 @@ Feature: As a user, I want to access the user plan through API connection.
 
     Given The API user sets "user/plan" path parameters
     And The API user records the response returned from the user plan endpoint
-    Then Verify the information of the one with the id <dataIndex> in the API user response body: "<name>", "<description>", <status>, "<created_at>", "<updated_at>"
+    Then Verify the information of the one with the index <dataIndex> in the API user response body: "<name>", "<description>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
       | dataIndex | name       | description | status | created_at                  | updated_at                  |

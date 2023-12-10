@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="7.031">
-    <testcase classname="As a user, I want to access the list of loans via API connection." name="When a valid GET request is sent to the 'user/list/loan' endpoint with the appropriate" time="6.352">
-        <system-out><![CDATA[Given The API user sets "user/list/loan" path parameters....................passed
-And The API user saves the response returned from the user list loan endpoint.passed
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="7.153">
+    <testcase classname="As an administrator, I want to update the existing category information via API connection." name="When a POST request with valid authorization information, correct 'id', and valid data (name)" time="6.561">
+        <system-out><![CDATA[Given The API user sets "api/categories/update/46" path parameters..........passed
+And The API user prepares a POST request containing the name data to send to the api categories update endpoint.passed
+When The API user records the response from the api categories update endpoint with valid authorization information.passed
 Then The API user verifies that the status code is 200......................passed
-And The API user verifies that the remark information in the response body is "success".passed
 ]]></system-out>
     </testcase>
 </testsuite>
