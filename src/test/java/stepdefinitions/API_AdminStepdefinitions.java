@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import pojos.LoanplansAddPOJO;
 import utilities.ReusableMethods;
 
 import java.util.HashMap;
@@ -20,6 +21,7 @@ public class API_AdminStepdefinitions {
     Response response;
     HashMap reqBody;
     JsonPath jsonPath;
+    LoanplansAddPOJO requsetBodyPojo;
 
     //********************************* api/categories/list *************************************************
     @Given("The API user saves the response from the api categories list endpoint with the valid authorization information")
@@ -191,6 +193,18 @@ public class API_AdminStepdefinitions {
     @Then("The API user records the response returned from the api loanplans details endpoint and verifies that the status code is '400'")
     public void theAPIUserRecordsTheResponseReturnedFromTheApiLoanplansDetailsEndpointAndVerifiesThatTheStatusCodeIs() {
         assertTrue(ReusableMethods.tryCatchGet("admin").contains("status code: 400"));
+    }
+    //***************************************************************************************************
+
+    //***************************************** api/loanplans/add ***************************************
+    @And("The API user prepares a POST request containing the correct data to send to the api loanplans add endpoint")
+    public void theAPIUserPreparesAPOSTRequestContainingTheCorrectDataToSendToTheApiLoanplansAddEndpoint() {
+        requsetBodyPojo=new LoanplansAddPOJO(1,"Car Loan 9 ","Car Loan 9",20,20,"4.00","2000.00000000","5000.00000000",25,"100.00000000","1.00000000",0,"20.00000000","3.00000000","Car Loan Plan 9");
+    }
+
+    @When("The API user records the response from the api loanplans add endpoint with valid authorization information")
+    public void theAPIUserRecordsTheResponseFromTheApiLoanplansAddEndpointWithValidAuthorizationInformation() {
+        ReusableMethods.postResponse("admin",requsetBodyPojo);
     }
     //***************************************************************************************************
 }

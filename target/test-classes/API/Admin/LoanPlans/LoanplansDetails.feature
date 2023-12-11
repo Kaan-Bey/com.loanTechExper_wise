@@ -24,7 +24,7 @@ Feature: As an administrator, I want to access the loan plan details of a user w
     Then The API user records the response returned from the api loanplans details endpoint and verifies that the status code is '400'
     #Api kullanicisi api loanplans details endpointinden donen responsei kaydeder ve status codeun 400 oldugunu dogrular
 
-  @API
+
   Scenario Outline: When a GET request with valid authorization information and a non-existent 'id' is sent to
   the api/loanplans/details/{{id}} endpoint, the returned status code should be 400, and the response message
   should be verified as "No loanplans."
@@ -35,7 +35,8 @@ Feature: As an administrator, I want to access the loan plan details of a user w
     Examples:
       | id   |
       | 2211 |
-@API
+
+
   Scenario Outline: The contents of data (id, category_id, form_id, name, title, minimum_amount, maximum_amount,
   per_installment, installment_interval, total_installment, application_fixed_charge, application_percent_charge,
   instruction, delay_value, fixed_charge, percent_charge, is_featured, status, created_at, updated_at) in the
