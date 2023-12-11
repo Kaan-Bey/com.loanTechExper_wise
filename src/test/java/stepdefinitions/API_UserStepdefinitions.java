@@ -52,9 +52,20 @@ public class API_UserStepdefinitions {
     }
     @Then("The API user verifies that the status code is {int}")
     public void theAPIUserVerifiesThatTheStatusCodeIs(int code) {
+
         ReusableMethods.response.then()
                                    .assertThat()
                                        .statusCode(code);
+
+         /*
+         if (ReusableMethods.response != null) {
+            ReusableMethods.response.then()
+                    .assertThat()
+                    .statusCode(code);
+        } else {
+            System.out.println("aaaaaaaaaaa");
+        }
+          */
     }
     @And("The API user verifies that the remark information in the response body is {string}")
     public void theAPIUserVerifiesThatTheRemarkInformationInTheResponseBodyIs(String remark) {
@@ -112,7 +123,7 @@ public class API_UserStepdefinitions {
     }
     //***********************************************************************************************
 
-    //********************************* user/ticket/close *******************************************
+    //********************************* user/ticket/close/{{id}} *******************************************
     @And("The API user saves the response returned from the user ticket close endpoint")
     public void theAPIUserSavesTheResponseReturnedFromTheUserTicketCloseEndpoint() {
         ReusableMethods.patchResponse("user");
@@ -124,7 +135,7 @@ public class API_UserStepdefinitions {
 
     //************************************************************************************************
 
-    //********************************* user/ticket/delete *******************************************
+    //********************************* user/ticket/delete/{{id}} *******************************************
     @Given("The API user saves the response returned from the user ticket delete endpoint")
     public void the_apı_user_saves_the_response_returned_from_the_user_ticket_delete_endpoint() {
         ReusableMethods.deleteResponse("user");
@@ -173,8 +184,8 @@ public class API_UserStepdefinitions {
         Assert.assertTrue(ReusableMethods.tryCatchPatchBody("user",requestBody.toString()).contains("status code: 422"));
     }
 
-    @And("The API user prepares a POST request without data to send to the user profile endpoint")
-    public void theAPIUserPreparesAPOSTRequestWithoutDataToSendToTheUserProfileEndpoint() {
+    @And("The API user prepares a PATCH request without data to send to the user profile endpoint")
+    public void theAPIUserPreparesAPATCHRequestWithoutDataToSendToTheUserProfileEndpoint() {
         requestBody=new JSONObject();
     }
     //*********************************************************************************************

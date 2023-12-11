@@ -29,6 +29,6 @@ Feature: As a user, I want to be able to update the user profile information in 
   is required (and 1 more error)"
 
     Given The API user sets "user/profile" path parameters
-    And The API user prepares a POST request without data to send to the user profile endpoint
+    And The API user prepares a PATCH request without data to send to the user profile endpoint
     Then The API user saves the response returned from the user profile endpoint and verifies that the status code is '422'
 
