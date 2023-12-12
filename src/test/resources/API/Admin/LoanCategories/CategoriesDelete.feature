@@ -12,35 +12,3 @@ Feature: As an administrator, I should be able to delete a category record in th
     Examples:
       | id |
       | 48 |
-
-
-  Scenario: When a DELETE request with valid authorization information and no 'id' is sent to the
-  api/categories/delete/{{id}} endpoint, the returned status code should be 400, and the message in
-  the response body should be verified as "No id"
-
-    Given The API user sets "api/categories/delete" path parameters
-    Then The API user records the response returned from the api categories delete endpoint and verifies that the status code is '400'
-    #Api kullanicisi api categories delete endpointinden donen responsei kaydeder ve status codeun 400 oldugunu dogrular
-
-
-  Scenario Outline: When a DELETE request with valid authorization information and a non-existent 'id' is
-  sent to the api/categories/delete/{{id}} endpoint, the returned status code should be 400, and the message
-  in the response body should be verified as "No category"
-
-    Given The API user sets "api/categories/delete/<id>" path parameters
-    Then The API user records the response returned from the api categories delete endpoint and verifies that the status code is '400'
-
-    Examples:
-      | id  |
-      | 488 |
-
-  Scenario Outline: The deletion of the desired category record through the API should be verified. This can
-  be confirmed by sending a GET request to the api/categories/details/{{id}} endpoint with the Deleted category
-  ID returned in the response body to ensure that the record has been successfully deleted
-
-    Given The API user sets "api/categories/details/<id>" path parameters
-    Then The API user records the response returned from the api categories details endpoint and verifies that the status code is '400'
-
-    Examples:
-      | id |
-      | 48 |

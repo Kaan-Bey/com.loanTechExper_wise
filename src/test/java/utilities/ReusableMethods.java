@@ -23,7 +23,6 @@ public class ReusableMethods {
 
         return response;
     }
-
     public static Response postResponse(String user, Object requestBody) {
 
         response = given()
@@ -45,7 +44,7 @@ public class ReusableMethods {
         response = given()
                      .spec(spec)
                      .contentType(ContentType.JSON)
-                     .header("Accept", "application/json")
+                     .header("Accept", "application/*")
                      .headers("Authorization", "Bearer " + Authentication.generateToken(user))
                   .when()
                      .patch(fullPath);
@@ -86,14 +85,14 @@ public class ReusableMethods {
         return response;
     }
 
-    public static String tryCatchGet(String user) {
+    public static String tryCatchGet() {
         String exceptionMesaj = null;
         try {
             response = given()
                          .spec(spec)
                          .header("Accept", "application/json")
-                         .headers("Authorization", "Bearer " + Authentication.generateToken(user))
-                      .when()
+                         .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
+                     .when()
                          .get(fullPath);
         } catch (Exception e) {
             exceptionMesaj = e.getMessage();
@@ -101,46 +100,16 @@ public class ReusableMethods {
         return exceptionMesaj;
     }
 
-    public static String tryCatchPatch(String user) {
+    public static String tryCatchPost(Object requestBody) {
         String exceptionMesaj = null;
         try {
             response = given()
                         .spec(spec)
                         .header("Accept", "application/json")
-                        .headers("Authorization", "Bearer " + Authentication.generateToken(user))
-                      .when()
-                        .patch(fullPath);
-        } catch (Exception e) {
-            exceptionMesaj = e.getMessage();
-        }
-        return exceptionMesaj;
-    }
-
-    public static String tryCatchPatchBody(String user, Object requestBody) {
-        String exceptionMesaj = null;
-        try {
-            response = given()
-                         .spec(spec)
-                         .header("Accept", "application/json")
-                         .headers("Authorization", "Bearer " + Authentication.generateToken(user))
-                      .when()
-                         .body(requestBody)
-                         .patch(fullPath);
-        } catch (Exception e) {
-            exceptionMesaj = e.getMessage();
-        }
-        return exceptionMesaj;
-    }
-
-    public static String tryCatchDelete(String user) {
-        String exceptionMesaj = null;
-        try {
-            response = given()
-                         .spec(spec)
-                         .header("Accept", "application/json")
-                         .headers("Authorization", "Bearer " + Authentication.generateToken(user))
+                        .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
                      .when()
-                         .delete(fullPath);
+                        .body(requestBody)
+                        .post(fullPath);
         } catch (Exception e) {
             exceptionMesaj = e.getMessage();
         }

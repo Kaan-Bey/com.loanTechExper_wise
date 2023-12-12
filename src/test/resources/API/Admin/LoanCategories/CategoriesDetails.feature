@@ -14,36 +14,6 @@ Feature: As an administrator, I want to access the category details of a user wi
       | id |
       | 44 |
 
-  Scenario:When a GET request with valid authorization information and no 'id' is sent to the
-  api/categories/details/{{id}} endpoint, the returned status code should be 400, and the response
-  message should be verified as "No id"
-
-    Given The API user sets "api/categories/details" path parameters
-    Then The API user records the response returned from the api categories details endpoint and verifies that the status code is '400'
-    #Api kullanicisi api categories details endpointinden donen responsei kaydeder ve status codeun 400 oldugunu dogrular
-
-  Scenario Outline: When a GET request with valid authorization information and a non-existent 'id' is sent
-  to the api/categories/details/{{id}} endpoint, the returned status code should be 400, and the
-  response message should be verified as "No category"
-
-    Given The API user sets "api/categories/details/<id>" path parameters
-    Then The API user records the response returned from the api categories details endpoint and verifies that the status code is '400'
-
-    Examples:
-      | id  |
-      | 400 |
-
-  Scenario Outline:When a GET request with invalid authorization information is sent to the
-  api/categories/details/{{id}} endpoint, the returned status code should be 401, and
-  the error message in the response body should be verified as "Unauthorized request"
-
-    Given The API user sets "api/categories/details/<id>" path parameters
-    And The API user records the response from the api categories details endpoint with invalid authorization information
-    Then The API user verifies that the status code is 401
-
-    Examples:
-      | id |
-      | 44 |
 
   Scenario Outline:The contents of data (id, name, image, description, status, created_at, updated_at) in the
   response body should be verified

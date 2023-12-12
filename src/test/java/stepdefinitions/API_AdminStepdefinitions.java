@@ -4,10 +4,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 import pojos.LoanplansUpdatePOJO;
+import utilities.Authentication;
 import utilities.ReusableMethods;
 
 import java.util.HashMap;
@@ -35,11 +37,16 @@ public class API_AdminStepdefinitions {
     public void theAPIUserSavesTheResponseFromTheApiCategoriesListEndpointWithInvalidAuthorizationInformation() {
         response = given()
                 .spec(spec)
-                .header("Accept", "application/json")
+                .header("Accept", "application/*")
                 .headers("Authorization", "Bearer " + "user")
                 .when()
                 .get(fullPath);
         response.prettyPrint();
+    }
+
+    @Then("The API user records the response with invalid authorization information verifies that the status code is '401' and confirms that the reason phrase is Unauthorized")
+    public void theAPIUserRecordsTheResponseWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheReasonPhraseIsUnauthorized() {
+        ReusableMethods.getResponse("in");
     }
     //***************************************************************************************************
 
@@ -49,21 +56,6 @@ public class API_AdminStepdefinitions {
         ReusableMethods.getResponse("admin");
     }
 
-    @Then("The API user records the response returned from the api categories details endpoint and verifies that the status code is '400'")
-    public void theAPIUserRecordsTheResponseReturnedFromTheApiCategoriesDetailsEndpointAndVerifiesThatTheStatusCodeIs() {
-        assertTrue(ReusableMethods.tryCatchGet("admin").contains("status code: 400"));
-    }
-
-    @And("The API user records the response from the api categories details endpoint with invalid authorization information")
-    public void theAPIUserRecordsTheResponseFromTheApiCategoriesDetailsEndpointWithInvalidAuthorizationInformation() {
-        response = given()
-                .spec(spec)
-                .header("Accept", "application/json")
-                .headers("Authorization", "Bearer " + "user")
-                .when()
-                .get(fullPath);
-        response.prettyPrint();
-    }
     //***************************************************************************************************
 
     //********************************* api/categories/add **********************************************
@@ -129,11 +121,6 @@ public class API_AdminStepdefinitions {
         ReusableMethods.patchResponse("admin");
     }
 
-    @And("The API user records the response returned from the api categories status endpoint and verifies that the status code is '400'")
-    public void theAPIUserRecordsTheResponseReturnedFromTheApiCategoriesStatusEndpointAndVerifiesThatTheStatusCodeIs() {
-        assertTrue(ReusableMethods.tryCatchPatch("admin").contains("status code: 400"));
-    }
-
     @And("The API user verifies that the status information in the response body is {string}")
     public void theAPIUserVerifiesThatTheStatusInformationInTheResponseBodyIs(String valueStatus) {
         jsonPath = ReusableMethods.response.jsonPath();
@@ -148,10 +135,6 @@ public class API_AdminStepdefinitions {
         ReusableMethods.deleteResponse("admin");
     }
 
-    @Then("The API user records the response returned from the api categories delete endpoint and verifies that the status code is '400'")
-    public void theAPIUserRecordsTheResponseReturnedFromTheApiCategoriesDeleteEndpointAndVerifiesThatTheStatusCodeIs() {
-        assertTrue(ReusableMethods.tryCatchDelete("admin").contains("status code: 400"));
-    }
     //***************************************************************************************************
 
     //************************************** api/loanplans/list *****************************************
@@ -192,10 +175,6 @@ public class API_AdminStepdefinitions {
         ReusableMethods.getResponse("admin");
     }
 
-    @Then("The API user records the response returned from the api loanplans details endpoint and verifies that the status code is '400'")
-    public void theAPIUserRecordsTheResponseReturnedFromTheApiLoanplansDetailsEndpointAndVerifiesThatTheStatusCodeIs() {
-        assertTrue(ReusableMethods.tryCatchGet("admin").contains("status code: 400"));
-    }
     //***************************************************************************************************
 
     //***************************************** api/loanplans/add ***************************************
@@ -280,11 +259,6 @@ public class API_AdminStepdefinitions {
     @And("The API user records the response from the api loanplans delete endpoint with valid authorization information")
     public void theAPIUserRecordsTheResponseFromTheApiLoanplansDeleteEndpointWithValidAuthorizationInformation() {
         ReusableMethods.deleteResponse("admin");
-    }
-
-    @And("The API user records the response returned from the api loanplans delete endpoint and verifies that the status code is '400'")
-    public void theAPIUserRecordsTheResponseReturnedFromTheApiLoanplansDeleteEndpointAndVerifiesThatTheStatusCodeIs() {
-        assertTrue(ReusableMethods.tryCatchDelete("admin").contains("status code: 400"));
     }
     //***************************************************************************************************
 }

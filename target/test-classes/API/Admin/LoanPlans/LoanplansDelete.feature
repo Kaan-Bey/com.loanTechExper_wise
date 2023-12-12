@@ -34,7 +34,8 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
     Examples:
       | id  |
       | 500 |
-  @API
+
+
   Scenario Outline: The deletion of the desired loan plan record via API should be confirmed by sending
   a GET request to the 'api/loanplans/details/{{id}}' endpoint with the 'Deleted loanplans id' obtained
   from the response body. This verification process ensures that the record has been successfully deleted

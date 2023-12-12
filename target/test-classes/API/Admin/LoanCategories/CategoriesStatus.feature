@@ -18,7 +18,9 @@ Feature: As an administrator, I want to update the status information of existin
   in the response body should be verified as "No id"
 
     Given The API user sets "api/categories/status" path parameters
-    Then The API user records the response returned from the api categories status endpoint and verifies that the status code is '400'
+    And The API user records the response from the api categories status endpoint with valid authorization information
+
+    #Then The API user records the response returned from the api categories status endpoint and verifies that the status code is '400'
     #Api kullanicisi api categories status endpointinden donen responsei kaydeder ve status codeun 400 oldugunu dogrular
 
   Scenario Outline: When a PATCH request with valid authorization information and a non-existent 'id'

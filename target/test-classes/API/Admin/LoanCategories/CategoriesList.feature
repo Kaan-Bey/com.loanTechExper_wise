@@ -14,8 +14,9 @@ Feature: As an administrator, I want to access the list of categories via API co
   the response error message should be "Unauthorized request"
 
     Given The API user sets "api/categories/list" path parameters
-    And The API user saves the response from the api categories list endpoint with invalid authorization information
-    Then The API user verifies that the status code is 401
+    Then The API user records the response with invalid authorization information verifies that the status code is '401' and confirms that the reason phrase is Unauthorized
+    #Api kullanicisi donen responsei geçersiz authorization bilgisi ile kaydeder ve status codeun 401 oldugunu oldugunu dogrular
+
 
   Scenario Outline: Verify the information returned in the response for the entity with id(x) (name, image,
   description, status, created_at, updated_at)

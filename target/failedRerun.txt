@@ -1,0 +1,1 @@
+file:src/test/resources/API/Admin/LoanCategories/CategoriesList.feature:13
