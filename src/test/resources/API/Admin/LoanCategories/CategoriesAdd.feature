@@ -7,8 +7,8 @@ Feature: As an administrator, I want to create a new category record via API con
     Given The API user sets "api/categories/add" path parameters
     And The API user prepares a POST request containing the correct data to send to the api categories add endpoint
     #Api kullanicisi api categories add endpointine gondermek icin dogru datalar iceren bir post request hazirlar
-    When The API user records the response from the api categories add endpoint with valid authorization information
-    #Apı kulanıcısı api categories add endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
+    When The API user sends a POST request and records the response returned from the api categories add endpoint with valid authorization information
+    #Api kullanicisi post request gonderir ve api categories add endpointinden donen responsei geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -18,7 +18,7 @@ Feature: As an administrator, I want to create a new category record via API con
 
     Given The API user sets "api/categories/add" path parameters
     And The API user prepares a POST request with incomplete data to send to the api categories add endpoint
-    When The API user records the response from the api categories add endpoint with valid authorization information
+    When The API user sends a POST request and records the response returned from the api categories add endpoint with valid authorization information
     Then The API user verifies that the status code is 400
     And The API user verifies that the remark information in the response body is "failed"
 
@@ -28,7 +28,7 @@ Feature: As an administrator, I want to create a new category record via API con
 
     Given The API user sets "api/categories/add" path parameters
     And The API user prepares a POST request without data to send to the api categories add endpoint
-    When The API user records the response from the api categories add endpoint with valid authorization information
+    When The API user sends a POST request and records the response returned from the api categories add endpoint with valid authorization information
     Then The API user verifies that the status code is 400
     And The API user verifies that the remark information in the response body is "failed"
 
