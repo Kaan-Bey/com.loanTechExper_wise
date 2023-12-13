@@ -18,6 +18,7 @@ public class API_UserStepdefinitions {
     public static String fullPath;
     JsonPath jsonPath;
     JSONObject requestBody;
+    public static String id;
 
     @Given("The API user sets {string} path parameters")
     public void the_apı_user_sets_path_parameters(String rawPaths) {
@@ -42,6 +43,22 @@ public class API_UserStepdefinitions {
 
         fullPath = tempPath.toString();
         System.out.println("fullPath = " + fullPath);
+
+        for (int i = 0; i < paths.length; i++) {
+            if (containsNumber(paths[i])) {
+                id = paths[i];
+                // Diğer işlemleri burada gerçekleştirin
+            }
+        }
+    }
+
+    private boolean containsNumber(String str) {
+        for (char c : str.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     //********************************* user/ticket/list ***********************************************

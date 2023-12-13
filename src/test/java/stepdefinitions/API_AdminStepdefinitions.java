@@ -149,8 +149,8 @@ public class API_AdminStepdefinitions {
         ReusableMethods.deleteResponse("admin");
     }
 
-    @Then("The API user records the response from the api categories delete endpoint with invalid authorization information verifies that the status code is {string} and confirms that the error information is Unauthorized")
-    public void the_apı_user_records_the_response_from_the_api_categories_delete_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized(String string) {
+    @Then("The API user records the response from the api categories delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized")
+    public void the_apı_user_records_the_response_from_the_api_categories_delete_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized() {
         assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
     }
     //***************************************************************************************************
@@ -280,8 +280,8 @@ public class API_AdminStepdefinitions {
         ReusableMethods.patchResponse("admin");
     }
 
-    @Then("The API user records the response from the api loanplans status endpoint with invalid authorization information verifies that the status code is {string} and confirms that the error information is Unauthorized")
-    public void the_apı_user_records_the_response_from_the_api_loanplans_status_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized(String string) {
+    @Then("The API user records the response from the api loanplans status endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized")
+    public void the_apı_user_records_the_response_from_the_api_loanplans_status_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized() {
         assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
     }
     //***************************************************************************************************
@@ -292,8 +292,8 @@ public class API_AdminStepdefinitions {
         ReusableMethods.deleteResponse("admin");
     }
 
-    @Then("The API user records the response from the api loanplans delete endpoint with invalid authorization information verifies that the status code is {string} and confirms that the error information is Unauthorized'")
-    public void the_apı_user_records_the_response_from_the_api_loanplans_delete_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized(String string) {
+    @Then("The API user records the response from the api loanplans delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized'")
+    public void the_apı_user_records_the_response_from_the_api_loanplans_delete_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized() {
         assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
     }
     //***************************************************************************************************
@@ -396,6 +396,25 @@ public class API_AdminStepdefinitions {
         jsonPath=ReusableMethods.response.jsonPath();
 
         assertEquals(email,jsonPath.getString("data.email"));
+    }
+    //***************************************************************************************************
+
+    //********************************* api/subscriber/delete/{{id}} ************************************
+    @And("The API user records the response from the api subscriber delete endpoint with valid authorization information")
+    public void theAPIUserRecordsTheResponseFromTheApiSubscriberDeleteEndpointWithValidAuthorizationInformation() {
+        ReusableMethods.deleteResponse("admin");
+    }
+
+    @Then("The API user records the response from the api subscriber delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized")
+    public void theAPIUserRecordsTheResponseFromTheApiSubscriberDeleteEndpointWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheErrorInformationIsUnauthorized() {
+        assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
+    }
+    //***************************************************************************************************
+
+    //*************************************** api/tickets/list ******************************************
+    @And("The API user records the response from the api tickets list endpoint with valid authorization information")
+    public void theAPIUserRecordsTheResponseFromTheApiTicketsListEndpointWithValidAuthorizationInformation() {
+        ReusableMethods.getResponse("admin");
     }
     //***************************************************************************************************
 }
