@@ -10,6 +10,14 @@ Feature: As an administrator, I want to access the list of loan plans via API co
     And The API user verifies that the remark information in the response body is "success"
 
 
+  Scenario: When a GET request with invalid authorization information is sent to the
+  api/loanplans/list endpoint, the returned status code should be 401, and the error message
+  in the response should be verified as "Unauthorized request"
+
+    Given The API user sets "api/loanplans/list" path parameters
+    Then The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized
+
+
   Scenario Outline: Verify the information returned in the response for the entity with id(x) (category_id, form_id,
   name, title, minimum_amount, maximum_amount, per_installment, installment_interval, total_installment,
   application_fixed_charge, application_percent_charge, instruction, delay_value, fixed_charge, percent_charge,
@@ -20,6 +28,5 @@ Feature: As an administrator, I want to access the list of loan plans via API co
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <category_id>, <form_id>, "<name>", "<title>", "<minimum_amount>", "<maximum_amount>", "<per_installment>", <installment_interval>, <total_installment>, "<application_fixed_charge>", "<application_percent_charge>", "<instruction>", <delay_value>, "<fixed_charge>", "<percent_charge>", <is_featured>, <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | category_id | form_id | name              | title             | minimum_amount | maximum_amount | per_installment | installment_interval | total_installment | application_fixed_charge | application_percent_charge | instruction              | delay_value | fixed_charge | percent_charge | is_featured | status | created_at                  | updated_at                  |
-      | 2         | 41          | 30      | First Hause       | house house       | 35000.00000000 | 49999.00000000 | 5.00            | 1                    | 48                | 2500.00000000            | 5.00000000                 | lorem ipsum              | 3           | 1.00000000   | 1.00000000     | 0           | 1      | 2023-12-09T09:42:07.000000Z | 2023-12-10T11:39:34.000000Z |
-      | 3         | 8           | 6       | my first car loan | my first car loan | 2023.00000000  | 5000.00000000  | 10.00           | 30                   | 20                | 20.00000000              | 5.00000000                 | Benim canim arabam&nbsp; | 25          | 100.00000000 | 1.00000000     | 0           | 1      | 2023-11-23T08:17:14.000000Z | 2023-12-10T11:41:48.000000Z |
+      | dataIndex | category_id | form_id | name                  | title                 | minimum_amount | maximum_amount | per_installment | installment_interval | total_installment | application_fixed_charge | application_percent_charge | instruction | delay_value | fixed_charge | percent_charge | is_featured | status | created_at                  | updated_at                  |
+      | 2         | 11          | 33      | Personal Finance Loan | Personal Finance Loan | 25000.00000000 | 50000.00000000 | 10.00           | 2                    | 12                | 1000.00000000            | 5.00000000                 | <br>        | 2           | 100.00000000 | 5.00000000     | 0           | 1      | 2023-12-11T01:40:09.000000Z | 2023-12-12T15:39:06.000000Z |

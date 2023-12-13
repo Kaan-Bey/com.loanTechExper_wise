@@ -12,7 +12,7 @@ Feature: As a user, I want to be able to update the close information of a regis
 
     Examples:
       | id |
-      | 27 |
+      | 58 |
 
   Scenario: When a PATCH request with valid authorization information and no 'id' is
   sent to the user/ticket/close/{{id}} endpoint, the returned status code

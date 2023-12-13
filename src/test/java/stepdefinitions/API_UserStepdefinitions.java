@@ -6,7 +6,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import org.json.JSONObject;
-import org.junit.Assert;
 import utilities.ReusableMethods;
 
 import java.util.Arrays;
@@ -14,7 +13,6 @@ import java.util.Arrays;
 import static hooks.HooksAPI.spec;
 import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertTrue;
 
 public class API_UserStepdefinitions {
     public static String fullPath;
@@ -56,25 +54,15 @@ public class API_UserStepdefinitions {
     public void theAPIUserVerifiesThatTheStatusCodeIs(int code) {
 
         ReusableMethods.response.then()
-                .assertThat()
-                .statusCode(code);
-
-         /*
-         if (ReusableMethods.response != null) {
-            ReusableMethods.response.then()
-                    .assertThat()
-                    .statusCode(code);
-        } else {
-            System.out.println("aaaaaaaaaaa");
-        }
-          */
+                                   .assertThat()
+                                      .statusCode(code);
     }
 
     @And("The API user verifies that the remark information in the response body is {string}")
     public void theAPIUserVerifiesThatTheRemarkInformationInTheResponseBodyIs(String remark) {
         ReusableMethods.response.then()
-                .assertThat()
-                .body("remark", equalTo(remark));
+                                  .assertThat()
+                                      .body("remark", equalTo(remark));
     }
 
     @Then("Verify the information of the one with the id {int} in the API user response body: {int}, {string}, {string}, {string}, {string}, {int}, {int}, {string}, {string}, {string}")
@@ -144,8 +132,8 @@ public class API_UserStepdefinitions {
     @Then("The API User verifies that the message information in the response body is {string}")
     public void the_apı_user_verifies_that_the_message_information_in_the_response_body_is(String message) {
         ReusableMethods.response.then()
-                .assertThat()
-                .body("data.message", equalTo(message));
+                                   .assertThat()
+                                      .body("data.message", equalTo(message));
     }
 
     //*************************************************************************************************

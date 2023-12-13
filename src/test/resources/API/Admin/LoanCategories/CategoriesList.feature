@@ -9,7 +9,14 @@ Feature: As an administrator, I want to access the list of categories via API co
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
-    #Api kullanicisi donen responsei geçersiz authorization bilgisi ile kaydeder ve status codeun 401 oldugunu oldugunu dogrular
+
+  Scenario: When an invalid GET request with unauthorized credentials is sent to the 'api/categories/list'
+  endpoint, it should return a status code of 401, and the response error message should be "Unauthorized
+  request"
+
+    Given The API user sets "api/categories/list" path parameters
+    Then The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized
+    #Api kullanicisi donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
 
   Scenario Outline: Verify the information returned in the response for the entity with id(x) (name, image,
@@ -20,6 +27,6 @@ Feature: As an administrator, I want to access the list of categories via API co
     Then Verify the information of the one with the index <dataIndex> in the API user response body: "<name>", "<description>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | name  | description | status | created_at                  | updated_at                  |
-      | 3         | House | lorem ipsum | 1      | 2023-12-09T09:35:59.000000Z | 2023-12-09T09:35:59.000000Z |
+      | dataIndex | name       | description | status | created_at                  | updated_at                  |
+      | 3         | bonigarcia | GitHub      | 1      | 2023-12-12T21:18:23.000000Z | 2023-12-12T21:26:10.000000Z |
 

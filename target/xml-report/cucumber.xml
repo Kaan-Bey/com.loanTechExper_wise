@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="4.769">
-    <testcase classname="As an administrator, I want to access the list of categories via API connection." name="When an invalid GET request with unauthorized credentials is sent to the" time="4.141">
-        <failure message="Cannot invoke &quot;String.contains(java.lang.CharSequence)&quot; because &quot;exceptionMesaj&quot; is null" type="java.lang.NullPointerException"><![CDATA[Given The API user sets "api/categories/list" path parameters...............passed
-Then The API user records the response with invalid authorization information verifies that the status code is '401' and confirms that the reason phrase is Unauthorized.failed
-
-StackTrace:
-java.lang.NullPointerException: Cannot invoke "String.contains(java.lang.CharSequence)" because "exceptionMesaj" is null
-	at utilities.ReusableMethods.getResponse(ReusableMethods.java:37)
-	at stepdefinitions.API_AdminStepdefinitions.theAPIUserRecordsTheResponseWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheReasonPhraseIsUnauthorized(API_AdminStepdefinitions.java:47)
-	at ✽.The API user records the response with invalid authorization information verifies that the status code is '401' and confirms that the reason phrase is Unauthorized(file:///C:/Users/ACER/IdeaProjects/com.loanTechExper/src/test/resources/API/Admin/LoanCategories/CategoriesList.feature:18)
-]]></failure>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="4.769">
+    <testcase classname="As an administrator, I should be able to delete a loan plan record in the system through API connection." name="When an invalid DELETE request body is sent with unauthorized credentials to the" time="4.222">
+        <system-out><![CDATA[Given The API user sets "api/loanplans/delete/27" path parameters...........passed
+Then The API user records the response from the api loanplans delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized'.passed
+]]></system-out>
     </testcase>
 </testsuite>

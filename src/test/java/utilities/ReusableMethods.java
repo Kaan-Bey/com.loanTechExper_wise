@@ -25,16 +25,29 @@ public class ReusableMethods {
     }
     public static Response postResponse(String user, Object requestBody) {
 
-        response = given()
-                     .spec(spec)
-                     .contentType(ContentType.JSON)
-                     .header("Accept", "application/json")
-                     .headers("Authorization", "Bearer " + Authentication.generateToken(user))
-                  .when()
-                     .body(requestBody)
-                     .post(fullPath);
+        if (user.equals("admin") || user.equals("user")) {
+            response = given()
+                         .spec(spec)
+                         .contentType(ContentType.JSON)
+                         .header("Accept", "application/json")
+                         .headers("Authorization", "Bearer " + Authentication.generateToken(user))
+                     .when()
+                         .body(requestBody)
+                         .post(fullPath);
 
-        response.prettyPrint();
+            response.prettyPrint();
+
+        } else if (user.equals("invalidToken")) {
+            response = given()
+                         .spec(spec)
+                         .header("Accept", "application/*")
+                         .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
+                     .when()
+                         .body(requestBody)
+                         .post(fullPath);
+
+            response.prettyPrint();
+        }
 
         return response;
     }
@@ -90,7 +103,7 @@ public class ReusableMethods {
         try {
             response = given()
                          .spec(spec)
-                         .header("Accept", "application/json")
+                         .header("Accept", "application/*")
                          .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
                      .when()
                          .get(fullPath);
@@ -100,16 +113,30 @@ public class ReusableMethods {
         return exceptionMesaj;
     }
 
-    public static String tryCatchPost(Object requestBody) {
+    public static String tryCatchPatch() {
         String exceptionMesaj = null;
         try {
             response = given()
                         .spec(spec)
-                        .header("Accept", "application/json")
+                        .header("Accept", "application/*")
                         .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
                      .when()
-                        .body(requestBody)
-                        .post(fullPath);
+                        .patch(fullPath);
+        } catch (Exception e) {
+            exceptionMesaj = e.getMessage();
+        }
+        return exceptionMesaj;
+    }
+
+    public static String tryCatchDelete() {
+        String exceptionMesaj = null;
+        try {
+            response = given()
+                        .spec(spec)
+                        .header("Accept", "application/*")
+                        .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
+                     .when()
+                        .delete(fullPath);
         } catch (Exception e) {
             exceptionMesaj = e.getMessage();
         }

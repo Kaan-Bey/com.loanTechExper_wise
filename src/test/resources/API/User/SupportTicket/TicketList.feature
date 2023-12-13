@@ -21,5 +21,5 @@ Feature: As a user, I want to access the Ticket List through an API connection.
     Then Verify the information of the one with the id <dataIndex> in the API user response body: <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | name                | email          | ticket | subject     | status | priority | last_reply          | created_at                  | updated_at                  |
-      | 2         | 4       | test_Ozge Last_ozge | ozge@gmail.com | 285884 | Test Ticket | 0      | 0        | 2023-11-25 16:19:55 | 2023-11-25T21:19:55.000000Z | 2023-11-25T21:19:55.000000Z |
+      | dataIndex | user_id | name       | email          | ticket | subject     | status | priority | last_reply          | created_at                  | updated_at                  |
+      | 2         | 4       | Ahmet Genç | ozge@gmail.com | 713281 | Test Ticket | 1      | 0        | 2023-12-09 05:41:07 | 2023-11-29T09:09:58.000000Z | 2023-12-09T10:41:07.000000Z |

@@ -11,7 +11,7 @@ Feature: As a user, I should be able to delete a user ticket record in the syste
 
     Examples:
       | id |
-      | 29 |
+      | 58 |
 
   Scenario: When a DELETE request with valid authorization information and no 'id' is sent
   to the user/ticket/delete/{{id}} endpoint, the returned status code should be 400,

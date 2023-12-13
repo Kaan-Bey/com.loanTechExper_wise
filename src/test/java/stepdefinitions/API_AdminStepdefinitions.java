@@ -4,21 +4,17 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 import pojos.LoanplansUpdatePOJO;
-import utilities.Authentication;
 import utilities.ReusableMethods;
 
 import java.util.HashMap;
 
-import static hooks.HooksAPI.spec;
-import static io.restassured.RestAssured.given;
 import static junit.framework.TestCase.assertEquals;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
-import static stepdefinitions.API_UserStepdefinitions.fullPath;
 
 public class API_AdminStepdefinitions {
     Response response;
@@ -33,20 +29,14 @@ public class API_AdminStepdefinitions {
         ReusableMethods.getResponse("admin");
     }
 
-    @And("The API user saves the response from the api categories list endpoint with invalid authorization information")
-    public void theAPIUserSavesTheResponseFromTheApiCategoriesListEndpointWithInvalidAuthorizationInformation() {
-        response = given()
-                .spec(spec)
-                .header("Accept", "application/*")
-                .headers("Authorization", "Bearer " + "user")
-                .when()
-                .get(fullPath);
-        response.prettyPrint();
+    @Then("The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized")
+    public void theAPIUserRecordsTheResponseWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheErrorInformationIsUnauthorized() {
+        assertTrue(ReusableMethods.tryCatchGet().contains("status code: 401, reason phrase: Unauthorized"));
     }
 
     @Then("The API user records the response with invalid authorization information verifies that the status code is '401' and confirms that the reason phrase is Unauthorized")
     public void theAPIUserRecordsTheResponseWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheReasonPhraseIsUnauthorized() {
-        ReusableMethods.getResponse("in");
+        ReusableMethods.getResponse("admin");
     }
     //***************************************************************************************************
 
@@ -55,7 +45,6 @@ public class API_AdminStepdefinitions {
     public void theAPIUserRecordsTheResponseFromTheApiCategoriesDetailsEndpointWithTheValidAuthorizationInformation() {
         ReusableMethods.getResponse("admin");
     }
-
     //***************************************************************************************************
 
     //********************************* api/categories/add **********************************************
@@ -81,6 +70,24 @@ public class API_AdminStepdefinitions {
     public void theAPIUserPreparesAPOSTRequestWithoutDataToSendToTheApiCategoriesAddEndpoint() {
         reqBody = new HashMap<>();
     }
+
+    @When("The API user sends a POST request and records the response returned from the api categories add endpoint with invalid authorization information")
+    public void theAPIUserSendsAPOSTRequestAndRecordsTheResponseReturnedFromTheApiCategoriesAddEndpointWithInvalidAuthorizationInformation() {
+        ReusableMethods.postResponse("invalidToken",reqBody);
+    }
+
+    @Then("The API user verifies that the error information in the response body is {string}")
+    public void theAPIUserVerifiesThatTheErrorInformationInTheResponseBodyIs(String error) {
+        ReusableMethods.response.then()
+                                   .assertThat()
+                                      .body("message.error[0]", equalTo(error));
+    }
+    @Then("The API user verifies that the id information at index {int} in the response body is {int}")
+    public void the_apı_user_verifies_that_the_id_information_at_index_in_the_response_body_is(int index, int valueId) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(valueId,jsonPath.getInt("data["+index+"].id"));
+    }
     //***************************************************************************************************
 
     //********************************* api/categories/update/{{id}} ************************************
@@ -96,6 +103,10 @@ public class API_AdminStepdefinitions {
         ReusableMethods.postResponse("admin", reqBody);
     }
 
+    @When("The API user sends a POST request and records the response returned from the api categories update endpoint with invalid authorization information")
+    public void the_apı_user_sends_a_post_request_and_records_the_response_returned_from_the_api_categories_update_endpoint_with_invalid_authorization_information() {
+        ReusableMethods.postResponse("invalidToken",reqBody);
+    }
     @And("The API user prepares a POST request containing the name data to send to the api categories update endpoint")
     public void theAPIUserPreparesAPOSTRequestContainingTheNameDataToSendToTheApiCategoriesUpdateEndpoint() {
         reqBody = new HashMap<>();
@@ -120,7 +131,10 @@ public class API_AdminStepdefinitions {
     public void theAPIUserRecordsTheResponseFromTheApiCategoriesStatusEndpointWithValidAuthorizationInformation() {
         ReusableMethods.patchResponse("admin");
     }
-
+    @Then("The API user records the response from the api categories status endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized")
+    public void theAPIUserRecordsTheResponseFromTheApiCategoriesStatusEndpointWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheErrorInformationIsUnauthorized() {
+        assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
+    }
     @And("The API user verifies that the status information in the response body is {string}")
     public void theAPIUserVerifiesThatTheStatusInformationInTheResponseBodyIs(String valueStatus) {
         jsonPath = ReusableMethods.response.jsonPath();
@@ -135,6 +149,10 @@ public class API_AdminStepdefinitions {
         ReusableMethods.deleteResponse("admin");
     }
 
+    @Then("The API user records the response from the api categories delete endpoint with invalid authorization information verifies that the status code is {string} and confirms that the error information is Unauthorized")
+    public void the_apı_user_records_the_response_from_the_api_categories_delete_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized(String string) {
+        assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
+    }
     //***************************************************************************************************
 
     //************************************** api/loanplans/list *****************************************
@@ -203,6 +221,10 @@ public class API_AdminStepdefinitions {
         ReusableMethods.postResponse("admin", requestBody.toString());
     }
 
+    @When("The API user sends a POST request and records the response returned from the api loanplans add endpoint with invalid authorization information")
+    public void the_apı_user_sends_a_post_request_and_records_the_response_returned_from_the_api_loanplans_add_endpoint_with_invalid_authorization_information() {
+        ReusableMethods.postResponse("invalidToken",requestBody.toString());
+    }
     @Then("The API user prepares a POST request with incomplete data to send to the api loanplans add endpoint")
     public void theAPIUserPreparesAPOSTRequestWithIncompleteDataToSendToTheApiLoanplansAddEndpoint() {
         requestBody = new JSONObject();
@@ -235,6 +257,10 @@ public class API_AdminStepdefinitions {
         ReusableMethods.postResponse("admin", requestBodyPojo);
     }
 
+    @When("The API user sends a POST request and records the response returned from the api loanplans update endpoint with invalid authorization information")
+    public void the_apı_user_sends_a_post_request_and_records_the_response_returned_from_the_api_loanplans_update_endpoint_with_invalid_authorization_information() {
+        ReusableMethods.postResponse("invalidToken",requestBodyPojo);
+    }
     @And("The API user prepares a POST request without data to send to the api loanplans update endpoint")
     public void theAPIUserPreparesAPOSTRequestWithoutDataToSendToTheApiLoanplansUpdateEndpoint() {
         requestBodyPojo = new LoanplansUpdatePOJO();
@@ -253,12 +279,22 @@ public class API_AdminStepdefinitions {
     public void theAPIUserRecordsTheResponseFromTheApiLoanplansUpdateEndpointWithValidAuthorizationInformation() {
         ReusableMethods.patchResponse("admin");
     }
+
+    @Then("The API user records the response from the api loanplans status endpoint with invalid authorization information verifies that the status code is {string} and confirms that the error information is Unauthorized")
+    public void the_apı_user_records_the_response_from_the_api_loanplans_status_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized(String string) {
+        assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
+    }
     //***************************************************************************************************
 
     //************************************ api/loanplans/delete/{{id}} **********************************
     @And("The API user records the response from the api loanplans delete endpoint with valid authorization information")
     public void theAPIUserRecordsTheResponseFromTheApiLoanplansDeleteEndpointWithValidAuthorizationInformation() {
         ReusableMethods.deleteResponse("admin");
+    }
+
+    @Then("The API user records the response from the api loanplans delete endpoint with invalid authorization information verifies that the status code is {string} and confirms that the error information is Unauthorized'")
+    public void the_apı_user_records_the_response_from_the_api_loanplans_delete_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized(String string) {
+        assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
     }
     //***************************************************************************************************
 }

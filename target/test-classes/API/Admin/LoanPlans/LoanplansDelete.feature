@@ -12,37 +12,43 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
     Examples:
       | id |
-      | 25 |
+      | 27 |
 
-
-  Scenario: When a DELETE request without the required data (id) and with valid authorization credentials
-  is sent to the 'api/loanplans/delete/{{id}}' endpoint, it should return a status code of 400, and the
-  message in the response body should be "No id"
+  Scenario: When a DELETE request without the required data (id) and with valid authorization credentials is
+  sent to the 'api/loanplans/delete/{{id}}' endpoint, it should return a status code of 203, and the message
+  in the response body should be "No id"
 
     Given The API user sets "api/loanplans/delete" path parameters
-    And The API user records the response returned from the api loanplans delete endpoint and verifies that the status code is '400'
-    #Api kullanicisi api loanplans delete endpointinden donen responsei kaydeder ve status codeun 400 oldugunu dogrular
+    And The API user records the response from the api loanplans delete endpoint with valid authorization information
+    #Apı kulanıcısı api loanplans delete endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
+    Then The API user verifies that the status code is 203
+    And The API User verifies that the message information in the response body is "No id"
 
 
-  Scenario Outline: When a DELETE request with valid authorization credentials and an (id) that does
-  not correspond to an existing record is sent to the 'api/loanplans/delete/{{id}}' endpoint,
-  it should return a status code of 400, and the message in the response body should be "No loanplans."
+  Scenario Outline: When a DELETE request with valid authorization credentials and an (id) that does not
+  correspond to an existing record is sent to the 'api/loanplans/delete/{{id}}' endpoint, it should return
+  a status code of 203, and the message in the response body should be "No loanplans."
 
     Given The API user sets "api/loanplans/delete/<id>" path parameters
-    And The API user records the response returned from the api loanplans delete endpoint and verifies that the status code is '400'
+    And The API user records the response from the api loanplans delete endpoint with valid authorization information
+    #Apı kulanıcısı api loanplans delete endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
+    Then The API user verifies that the status code is 203
+    And The API User verifies that the message information in the response body is "No loanplans."
 
     Examples:
       | id  |
-      | 500 |
+      | 458 |
 
+    @API
+  Scenario Outline: When an invalid DELETE request body is sent with unauthorized credentials to the
+  'api/loanplans/delete/{{id}}' endpoint, it should return a status code of 401, and the error
+  message in the response body should be "Unauthorized request"
 
-  Scenario Outline: The deletion of the desired loan plan record via API should be confirmed by sending
-  a GET request to the 'api/loanplans/details/{{id}}' endpoint with the 'Deleted loanplans id' obtained
-  from the response body. This verification process ensures that the record has been successfully deleted
-
-    Given The API user sets "api/categories/details/<id>" path parameters
-    Then The API user records the response returned from the api categories details endpoint and verifies that the status code is '400'
+    Given The API user sets "api/loanplans/delete/<id>" path parameters
+    Then The API user records the response from the api loanplans delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized'
+    #Api kullanicisi api loanplans delete endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
       | id |
-      | 25 |
+      | 27 |
+
