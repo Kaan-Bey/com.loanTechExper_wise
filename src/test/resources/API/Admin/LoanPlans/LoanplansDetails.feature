@@ -26,6 +26,7 @@ Feature: As an administrator, I want to access the loan plan details of a user w
     Then The API user verifies that the status code is 203
     And The API User verifies that the message information in the response body is "No id"
 
+
   Scenario Outline: When a GET request with valid authorization information and a non-existent 'id' is
   sent to the api/loanplans/details/{{id}} endpoint, the returned status code should be 203, and the
   response message should be verified as "No loanplans."

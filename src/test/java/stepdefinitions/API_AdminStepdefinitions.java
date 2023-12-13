@@ -297,4 +297,105 @@ public class API_AdminStepdefinitions {
         assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
     }
     //***************************************************************************************************
+
+    //**************************************** api/subscriber/list **************************************
+    @Given("The API user records the response from the api subscriber list endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_subscriber_list_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+
+    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String email, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(email,jsonPath.getString("data["+dataIndex+"].email"));
+        assertEquals(created_at,jsonPath.getString("data["+dataIndex+"].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data["+dataIndex+"].updated_at"));
+    }
+    //***************************************************************************************************
+
+    //********************************* api/subscriber/details/{{id}} ***********************************
+    @Given("The API user records the response from the api subscriber details endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_subscriber_details_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {string},{string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String email, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(id,jsonPath.getInt("data.id"));
+        assertEquals(email,jsonPath.getString("data.email"));
+        assertEquals(created_at,jsonPath.getString("data.created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.updated_at"));
+
+    }
+    //***************************************************************************************************
+
+    //************************************* api/subscriber/add ******************************************
+    @Given("The API user prepares a POST request containing the correct data to send to the api subscriber add endpoint")
+    public void the_apı_user_prepares_a_post_request_containing_the_correct_data_to_send_to_the_api_subscriber_add_endpoint() {
+        reqBody=new HashMap<>();
+        reqBody.put("email","megenc@gmail.com");
+    }
+    @When("The API user sends a POST request and records the response returned from the api subscriber add endpoint with valid authorization information")
+    public void the_apı_user_sends_a_post_request_and_records_the_response_returned_from_the_api_subscriber_add_endpoint_with_valid_authorization_information() {
+        ReusableMethods.postResponse("admin",reqBody);
+    }
+
+    @And("The API user prepares a POST request with incorrect data to send to the api subscriber add endpoint")
+    public void theAPIUserPreparesAPOSTRequestWithIncorrectDataToSendToTheApiSubscriberAddEndpoint() {
+        reqBody=new HashMap<>();
+        reqBody.put("mail","agenc@gmail.com");
+    }
+
+    @And("The API user prepares a POST request without data to send to the api subscriber add endpoint")
+    public void theAPIUserPreparesAPOSTRequestWithoutDataToSendToTheApiSubscriberAddEndpoint() {
+        reqBody=new HashMap<>();
+    }
+
+    @When("The API user sends a POST request and records the response returned from the api subscriber add endpoint with invalid authorization information")
+    public void theAPIUserSendsAPOSTRequestAndRecordsTheResponseReturnedFromTheApiSubscriberAddEndpointWithInvalidAuthorizationInformation() {
+        ReusableMethods.postResponse("invalidToken",reqBody);
+    }
+    @Then("The API user verifies that the id information in the response body is {int}")
+    public void the_apı_user_verifies_that_the_id_information_in_the_response_body_is(int valueId) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(valueId,jsonPath.getInt("data.id"));
+    }
+    //***************************************************************************************************
+
+    //********************************* api/subscriber/update/{{id}} ************************************
+    @Given("The API user prepares a POST request containing the correct data to send to the api subscriber update endpoint")
+    public void the_apı_user_prepares_a_post_request_containing_the_correct_data_to_send_to_the_api_subscriber_update_endpoint() {
+        requestBody=new JSONObject();
+        requestBody.put("email","ayilmaz@gmail.com");
+    }
+    @When("The API user sends a POST request and records the response returned from the api subscriber update endpoint with valid authorization information")
+    public void the_apı_user_sends_a_post_request_and_records_the_response_returned_from_the_api_subscriber_update_endpoint_with_valid_authorization_information() {
+        ReusableMethods.postResponse("admin",requestBody.toString());
+    }
+
+    @And("The API user prepares a POST request without data to send to the api subscriber update endpoint")
+    public void theAPIUserPreparesAPOSTRequestWithoutDataToSendToTheApiSubscriberUpdateEndpoint() {
+        requestBody=new JSONObject();
+    }
+
+    @And("The API user prepares a POST request with incorrect data to send to the api subscriber update endpoint")
+    public void theAPIUserPreparesAPOSTRequestWithIncorrectDataToSendToTheApiSubscriberUpdateEndpoint() {
+        requestBody=new JSONObject();
+        requestBody.put("mail","ayilmaz@gmail.com");
+    }
+
+    @When("The API user sends a POST request and records the response returned from the api subscriber update endpoint with invalid authorization information")
+    public void theAPIUserSendsAPOSTRequestAndRecordsTheResponseReturnedFromTheApiSubscriberUpdateEndpointWithInvalidAuthorizationInformation() {
+        ReusableMethods.postResponse("invalidToken",requestBody.toString());
+    }
+    @Then("The API user verifies that the email information in the response body is {string}")
+    public void the_apı_user_verifies_that_the_email_information_in_the_response_body_is(String email) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(email,jsonPath.getString("data.email"));
+    }
+    //***************************************************************************************************
 }

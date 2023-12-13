@@ -39,7 +39,7 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
       | id  |
       | 458 |
 
-    @API
+
   Scenario Outline: When an invalid DELETE request body is sent with unauthorized credentials to the
   'api/loanplans/delete/{{id}}' endpoint, it should return a status code of 401, and the error
   message in the response body should be "Unauthorized request"
@@ -52,3 +52,16 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
       | id |
       | 27 |
 
+
+  Scenario Outline: The deletion of the desired loan plan record via API should be confirmed by sending
+  a GET request to the 'api/loanplans/details/{{id}}' endpoint with the 'Deleted loanplans id' obtained
+  from the response body. This verification process ensures that the record has been successfully deleted
+
+    Given The API user sets "api/loanplans/details/<id>" path parameters
+    And The API user records the response from the api loanplans details endpoint with valid authorization information
+    Then The API user verifies that the status code is 203
+    And The API User verifies that the message information in the response body is "No loanplans."
+
+    Examples:
+      | id |
+      | 27 |
