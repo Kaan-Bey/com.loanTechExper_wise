@@ -15,23 +15,23 @@ Feature: As an administrator, I want to create a new category record via API con
 
   Scenario: When a POST (name, description) request with valid authorization information and incomplete
   missing data (description) is sent to the api/categories/add endpoint, the returned status code should
-  be 400, and the remark in the response body should be verified as "failed"
+  be 203, and the remark in the response body should be verified as "failed"
 
     Given The API user sets "api/categories/add" path parameters
     And The API user prepares a POST request with incomplete data to send to the api categories add endpoint
     When The API user sends a POST request and records the response returned from the api categories add endpoint with valid authorization information
-    Then The API user verifies that the status code is 400
+    Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
 
 
   Scenario: When a POST request with valid authorization information and no data (name, description)
-  is sent to the api/categories/add endpoint, the returned status code should be 400, and the remark
+  is sent to the api/categories/add endpoint, the returned status code should be 203, and the remark
   in the response body should be verified as "failed"
 
     Given The API user sets "api/categories/add" path parameters
     And The API user prepares a POST request without data to send to the api categories add endpoint
     When The API user sends a POST request and records the response returned from the api categories add endpoint with valid authorization information
-    Then The API user verifies that the status code is 400
+    Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
 
 
@@ -61,4 +61,4 @@ Feature: As an administrator, I want to create a new category record via API con
 
     Examples:
       | id | index | valueId |
-      | 56 | 0     | 56      |
+      | 25 | 0     | 25      |

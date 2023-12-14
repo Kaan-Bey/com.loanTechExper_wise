@@ -12,8 +12,8 @@ Feature: As an administrator, I want to access the loan plan details of a user w
 
     Examples:
       | id |
-      | 22 |
-      | 2  |
+      | 20 |
+      | 1  |
 
 
   Scenario:When a GET request with valid authorization information and no 'id' is sent to the
@@ -51,7 +51,7 @@ Feature: As an administrator, I want to access the loan plan details of a user w
 
     Examples:
       | id |
-      | 22 |
+      | 20 |
 
 
   Scenario Outline: The contents of data (id, category_id, form_id, name, title, minimum_amount, maximum_amount,
@@ -64,7 +64,7 @@ Feature: As an administrator, I want to access the loan plan details of a user w
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <category_id>, <form_id>, "<name>", "<title>", "<minimum_amount>", "<maximum_amount>", "<per_installment>", <installment_interval>, <total_installment>, "<application_fixed_charge>", "<application_percent_charge>", "<instruction>", <delay_value>, "<fixed_charge>", "<percent_charge>", <is_featured>, <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | id | dataIndex | category_id | form_id | name                  | title                 | minimum_amount | maximum_amount | per_installment | installment_interval | total_installment | application_fixed_charge | application_percent_charge | instruction | delay_value | fixed_charge  | percent_charge | is_featured | status | created_at                  | updated_at                  |
-      | 22 | 0         | 11          | 33      | Personal Finance Loan | Personal Finance Loan | 25000.00000000 | 50000.00000000 | 10.00           | 2                    | 12                | 1000.00000000            | 5.00000000                 | <br>        | 2           | 100.00000000  | 5.00000000     | 0           | 1      | 2023-12-11T01:40:09.000000Z | 2023-12-12T15:39:06.000000Z |
-      | 2  | 0         | 1           | 4       | Test_Loan             | tittle_loan           | 5000.00000000  | 15000.00000000 | 10.00           | 1                    | 36                | 10.00000000              | 10.00000000                | <br>        | 1           | 5000.00000000 | 10.00000000    | 1           | 1      | 2023-11-01T11:52:30.000000Z | 2023-11-01T11:52:30.000000Z |
+      | id | dataIndex | category_id | form_id | name                  | title                 | minimum_amount | maximum_amount  | per_installment | installment_interval | total_installment | application_fixed_charge | application_percent_charge | instruction               | delay_value | fixed_charge | percent_charge | is_featured | status | created_at                  | updated_at                  |
+      | 20 | 0         | 12          | 47      | Personal Finance Loan | Personal Finance Loan | 5.00000000     | 150000.00000000 | 4.00            | 7                    | 15                | 2.00000000               | 5.00000000                 | Personal Finance Loan<br> | 5           | 5.00000000   | 5.00000000     | 0           | 1      | 2023-12-14T11:59:11.000000Z | 2023-12-14T11:59:11.000000Z |
+      | 1  | 0         | 1           | 1       | Basic Loan 1          | Basic Loan 1          | 1000.00000000  | 3000.00000000   | 3.00            | 30                   | 10                | 10.00000000              | 2.00000000                 | Basic Loan Plan           | 15          | 100.00000000 | 2.00000000     | 1           | 1      | 2023-10-16T09:31:09.000000Z | 2023-12-14T10:47:10.000000Z |
 

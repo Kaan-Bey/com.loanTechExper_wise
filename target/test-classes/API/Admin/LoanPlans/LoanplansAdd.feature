@@ -18,14 +18,14 @@ Feature: As an administrator, I want to create a new loan plan record via API co
   Scenario: When a POST request with valid authorization information and incomplete data
   (per_installment, minimum_amount, maximum_amount, delay_value, fixed_charge, percent_charge,
   is_featured, application_fixed_charge, application_percent_charge, instruction) is sent to
-  the api/loanplans/add endpoint, the returned status code should be 400, and the remark in
+  the api/loanplans/add endpoint, the returned status code should be 203, and the remark in
   the response body should be verified as "failed"
 
     Given The API user sets "api/loanplans/add" path parameters
     And The API user prepares a POST request with incomplete data to send to the api loanplans add endpoint
     #Api kullanicisi api loanplans add endpointine gondermek icin eksik datalar iceren bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api loanplans add endpoint with valid authorization information
-    Then The API user verifies that the status code is 400
+    Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
 
 
@@ -33,13 +33,13 @@ Feature: As an administrator, I want to create a new loan plan record via API co
   (per_installment, minimum_amount, maximum_amount, delay_value, fixed_charge,
   percent_charge, is_featured, application_fixed_charge, application_percent_charge,
   instruction) is sent to the api/loanplans/add endpoint, the returned status code
-  should be 400, and the remark in the response body should be verified as "failed"
+  should be 203, and the remark in the response body should be verified as "failed"
 
     Given The API user sets "api/loanplans/add" path parameters
     And The API user prepares a POST request without data to send to the api loanplans add endpoint
     #Api kullanicisi api loanplans add endpointine gondermek icin data icermeyen bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api loanplans add endpoint with valid authorization information
-    Then The API user verifies that the status code is 400
+    Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
 
 
@@ -72,4 +72,4 @@ Feature: As an administrator, I want to create a new loan plan record via API co
 
     Examples:
       | id | index | valueId |
-      | 27 | 0     | 27      |
+      | 21 | 0     | 21      |

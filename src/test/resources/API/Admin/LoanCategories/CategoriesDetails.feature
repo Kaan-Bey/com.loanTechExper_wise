@@ -12,7 +12,7 @@ Feature: As an administrator, I want to access the category details of a user wi
 
     Examples:
       | id |
-      | 44 |
+      | 23 |
 
 
   Scenario:When a GET request with valid authorization information and no 'id' is sent to the
@@ -50,7 +50,7 @@ Feature: As an administrator, I want to access the category details of a user wi
 
     Examples:
       | id |
-      | 44 |
+      | 23 |
 
 
   Scenario Outline:The contents of data (id, name, image, description, status, created_at, updated_at) in the
@@ -61,5 +61,5 @@ Feature: As an administrator, I want to access the category details of a user wi
     Then Verify the information of the one with the index <dataIndex> in the API user response body: "<name>", "<description>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | id | dataIndex | name           | description         | status | created_at                  | updated_at                  |
-      | 44 | 0         | My first house | bitse de  is bulsak | 1      | 2023-12-10T12:01:05.000000Z | 2023-12-10T12:01:41.000000Z |
+      | id | dataIndex | name           | description | status | created_at                  | updated_at                  |
+      | 23 | 0         | My first house | Sweet home  | 1      | 2023-12-14T11:47:24.000000Z | 2023-12-14T11:48:11.000000Z |

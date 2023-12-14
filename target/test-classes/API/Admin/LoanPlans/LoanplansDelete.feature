@@ -12,7 +12,7 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
     Examples:
       | id |
-      | 27 |
+      | 22 |
 
   Scenario: When a DELETE request without the required data (id) and with valid authorization credentials is
   sent to the 'api/loanplans/delete/{{id}}' endpoint, it should return a status code of 203, and the message
@@ -50,7 +50,7 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
     Examples:
       | id |
-      | 27 |
+      | 22 |
 
 
   Scenario Outline: The deletion of the desired loan plan record via API should be confirmed by sending
@@ -64,4 +64,4 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
     Examples:
       | id |
-      | 27 |
+      | 22 |

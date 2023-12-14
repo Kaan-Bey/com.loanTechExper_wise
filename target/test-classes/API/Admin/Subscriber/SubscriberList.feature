@@ -26,5 +26,5 @@ Feature: As an administrator, I want to access the list of subscribers via API c
     Then Verify the information of the one with the index <dataIndex> in the API user response body: "<email>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | email         | created_at                  | updated_at                  |
-      | 0         | abc@gmail.com | 2023-12-13T10:27:03.000000Z | 2023-12-13T10:27:03.000000Z |
+      | dataIndex | email             | created_at                  | updated_at                  |
+      | 0         | ayilmaz@gmail.com | 2023-11-20T10:07:12.000000Z | 2023-11-22T07:59:20.000000Z |

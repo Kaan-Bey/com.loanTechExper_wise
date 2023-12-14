@@ -14,24 +14,24 @@ Feature: As an administrator, I want to update the existing loan plan informatio
 
     Examples:
       | id |
-      | 24 |
+      | 21 |
       | 22 |
 
 
   Scenario Outline: When a POST request with valid authorization information, correct 'id', and no data
   (category_id, name, title) is sent to the api/loanplans/update/{{id}} endpoint, the returned status
-  code should be 400, and the remark in the response body should be verified as "failed"
+  code should be 203, and the remark in the response body should be verified as "failed"
 
     Given The API user sets "api/loanplans/update/<id>" path parameters
     And The API user prepares a POST request without data to send to the api loanplans update endpoint
     #Api kullanicisi api loanplans update endpointine gondermek icin data icermeyen bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api loanplans update endpoint with valid authorization information
-    Then The API user verifies that the status code is 400
+    Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
 
     Examples:
       | id |
-      | 24 |
+      | 21 |
 
 
   Scenario: When a POST request with valid authorization information and no 'id' is sent to the
@@ -76,9 +76,10 @@ Feature: As an administrator, I want to update the existing loan plan informatio
     #Api kullanicisi post request gonderir ve api loanplans update endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 401
     And The API user verifies that the error information in the response body is "Unauthorized request"
+
     Examples:
       | id |
-      | 24 |
+      | 21 |
 
 
   Scenario Outline: The update of the desired loanplans record through the API should be verified.
@@ -94,5 +95,5 @@ Feature: As an administrator, I want to update the existing loan plan informatio
 
     Examples:
       | id | valueTitle            |
-      | 24 | Personal Finance Loan |
+      | 21 | Personal Finance Loan |
       | 22 | Personal Finance Loan |

@@ -14,7 +14,7 @@ Feature: As an administrator, I want to update the existing subscriber informati
 
     Examples:
       | id |
-      | 42 |
+      | 11 |
 
 
   Scenario Outline: "When a valid POST request with appropriate authorization credentials, correct (id),
@@ -30,7 +30,7 @@ Feature: As an administrator, I want to update the existing subscriber informati
 
     Examples:
       | id |
-      | 42 |
+      | 11 |
 
 
   Scenario Outline: "When a valid POST request with appropriate authorization credentials, correct (id),
@@ -46,7 +46,7 @@ Feature: As an administrator, I want to update the existing subscriber informati
 
     Examples:
       | id |
-      | 42 |
+      | 11 |
 
 
   Scenario: When a POST request with valid authorization credentials and an empty (id) in the body (email)
@@ -88,9 +88,9 @@ Feature: As an administrator, I want to update the existing subscriber informati
 
     Examples:
       | id |
-      | 42 |
+      | 11 |
 
-    @API
+
   Scenario Outline: The update of the desired subscriber record via API should be confirmed by sending a
   GET request to the 'api/subscriber/details/{{id}}' endpoint with the 'updated subscriber id' obtained
   from the response body. This verification process ensures that the record has been successfully updated
@@ -103,4 +103,4 @@ Feature: As an administrator, I want to update the existing subscriber informati
 
     Examples:
       | id | valueEmail        |
-      | 42 | ayilmaz@gmail.com |
+      | 11 | ayilmaz@gmail.com |

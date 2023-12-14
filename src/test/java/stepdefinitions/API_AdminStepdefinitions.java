@@ -416,5 +416,113 @@ public class API_AdminStepdefinitions {
     public void theAPIUserRecordsTheResponseFromTheApiTicketsListEndpointWithValidAuthorizationInformation() {
         ReusableMethods.getResponse("admin");
     }
+    @Then("Verify the information of the one with the index {int} in the API user response body: {int}, {string}, {string}, {string}, {string}, {int}, {int}, {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, int user_id, String name, String email, String ticket, String subject, int status, int priority, String last_reply, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(user_id,jsonPath.getInt("data["+dataIndex+"].user_id"));
+        assertEquals(name,jsonPath.getString("data["+dataIndex+"].name"));
+        assertEquals(email,jsonPath.getString("data["+dataIndex+"].email"));
+        assertEquals(ticket,jsonPath.getString("data["+dataIndex+"].ticket"));
+        assertEquals(subject,jsonPath.getString("data["+dataIndex+"].subject"));
+        assertEquals(status,jsonPath.getInt("data["+dataIndex+"].status"));
+        assertEquals(priority,jsonPath.getInt("data["+dataIndex+"].priority"));
+        assertEquals(last_reply,jsonPath.getString("data["+dataIndex+"].last_reply"));
+        assertEquals(created_at,jsonPath.getString("data["+dataIndex+"].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data["+dataIndex+"].updated_at"));
+    }
+    //***************************************************************************************************
+
+    //********************************* api/tickets/details/{{id}} **************************************
+    @Given("The API user records the response from the api tickets details endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_tickets_details_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {int}, {string}, {string}, {string}, {string}, {int}, {int}, {string}, {string}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, int user_id, String name, String email, String ticket, String subject, int status, int priority, String last_reply, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(id,jsonPath.getInt("data[0].id"));
+        assertEquals(user_id,jsonPath.getInt("data[0].user_id"));
+        assertEquals(name,jsonPath.getString("data[0].name"));
+        assertEquals(email,jsonPath.getString("data[0].email"));
+        assertEquals(ticket,jsonPath.getString("data[0].ticket"));
+        assertEquals(subject,jsonPath.getString("data[0].subject"));
+        assertEquals(status,jsonPath.getInt("data[0].status"));
+        assertEquals(priority,jsonPath.getInt("data[0].priority"));
+        assertEquals(last_reply,jsonPath.getString("data[0].last_reply"));
+        assertEquals(created_at,jsonPath.getString("data[0].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data[0].updated_at"));
+    }
+    //***************************************************************************************************
+
+    //************************************* api/tickets/pending *****************************************
+    @Given("The API user records the response from the api tickets pending endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_tickets_pending_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    //***************************************************************************************************
+
+    //************************************* api/tickets/closed ******************************************
+    @Given("The API user records the response from the api tickets closed endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_tickets_closed_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    //***************************************************************************************************
+
+    //************************************ api/tickets/answered *****************************************
+    @Given("The API user records the response from the api tickets answered endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_tickets_answered_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    //***************************************************************************************************
+
+    //********************************** api/tickets/delete/{{id}} **************************************
+    @Given("The API user records the response from the api tickets delete endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_tickets_delete_endpoint_with_valid_authorization_information() {
+        ReusableMethods.deleteResponse("admin");
+    }
+
+    @Then("The API user records the response from the api tickets delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized")
+    public void theAPIUserRecordsTheResponseFromTheApiTicketsDeleteEndpointWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheErrorInformationIsUnauthorized() {
+        assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
+    }
+    //***************************************************************************************************
+
+    //*************************************** api/loans/list ********************************************
+    @Given("The API user records the response from the api loans list endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_loans_list_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, int status, String approved_at, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(loan_number,jsonPath.getString("data.data["+dataIndex+"].loan_number"));
+        assertEquals(user_id,jsonPath.getInt("data.data["+dataIndex+"].user_id"));
+        assertEquals(plan_id,jsonPath.getInt("data.data["+dataIndex+"].plan_id"));
+        assertEquals(amount,jsonPath.getString("data.data["+dataIndex+"].amount"));
+        assertEquals(per_installment,jsonPath.getString("data.data["+dataIndex+"].per_installment"));
+        assertEquals(installment_interval,jsonPath.getInt("data.data["+dataIndex+"].installment_interval"));
+        assertEquals(delay_value,jsonPath.getInt("data.data["+dataIndex+"].delay_value"));
+        assertEquals(charge_per_installment,jsonPath.getString("data.data["+dataIndex+"].charge_per_installment"));
+        assertEquals(delay_charge,jsonPath.getString("data.data["+dataIndex+"].delay_charge"));
+        assertEquals(given_installment,jsonPath.getInt("data.data["+dataIndex+"].given_installment"));
+        assertEquals(total_installment,jsonPath.getInt("data.data["+dataIndex+"].total_installment"));
+        assertEquals(status,jsonPath.getInt("data.data["+dataIndex+"].status"));
+        assertEquals(approved_at,jsonPath.getString("data.data["+dataIndex+"].approved_at"));
+        assertEquals(created_at,jsonPath.getString("data.data["+dataIndex+"].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.data["+dataIndex+"].updated_at"));
+
+        assertEquals(null,jsonPath.get("data.data["+dataIndex+"].admin_feedback"));
+        assertEquals(null,jsonPath.get("data.data["+dataIndex+"].due_notification_sent"));
+    }
+    //***************************************************************************************************
+
+    //********************************* api/loans/details/{{id}} ****************************************
+    @Given("The API user records the response from the api loans details endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_loans_details_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
     //***************************************************************************************************
 }

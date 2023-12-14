@@ -62,4 +62,4 @@ Feature: As an administrator, I want to create a new subscriber record via API c
 
     Examples:
       | id | valueId |
-      | 42 | 42      |
+      | 11 | 11      |

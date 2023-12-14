@@ -12,7 +12,7 @@ Feature: As an administrator, I want to update the status information of existin
 
     Examples:
       | id |
-      | 22 |
+      | 21 |
 
   Scenario: When a PATCH request with valid authorization information and no 'id' is sent to the
   api/loanplans/status/{{id}} endpoint, the returned status code should be 203, and the message
@@ -50,7 +50,7 @@ Feature: As an administrator, I want to update the status information of existin
 
     Examples:
       | id |
-      | 22 |
+      | 21 |
 
 
   Scenario Outline: When the loanplans status record is updated via the API, it should be verified by sending
@@ -65,4 +65,4 @@ Feature: As an administrator, I want to update the status information of existin
 
     Examples:
       | id | valueStatus |
-      | 22 | 1           |
+      | 21 | 1           |

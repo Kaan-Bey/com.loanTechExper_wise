@@ -28,5 +28,5 @@ Feature: As an administrator, I want to access the list of categories via API co
 
     Examples:
       | dataIndex | name       | description | status | created_at                  | updated_at                  |
-      | 3         | bonigarcia | GitHub      | 1      | 2023-12-12T21:18:23.000000Z | 2023-12-12T21:26:10.000000Z |
+      | 3         | Basic Loan | Basic Loan  | 1      | 2023-10-16T09:29:44.000000Z | 2023-10-16T09:29:44.000000Z |
 
