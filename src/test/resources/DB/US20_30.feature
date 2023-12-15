@@ -25,8 +25,9 @@ Feature: US21_30
     * Database connection is closed
 
   @DB24
-  Scenario: "user_id=3" olan kullanıcıların "is_read=0" olan bildirimlerini '1' Olarak Update edip doğrulayınız.
+  Scenario: "id=?" olan kullanıcının "is_read=0" olan bildirimlerini '1' Olarak Update edip doğrulayınız.
     * UpdateQuery is prepared
+    * Data Results are validate.
     * Database connection is closed
 
   @DB25
@@ -42,25 +43,28 @@ Feature: US21_30
 
   @DB27
   Scenario: "delay_value" ve "fixed_charge ya da percent_charge" değerlerine göre loan_plans tablosundaki ilk 3 "name" bilgisini doğrulayınız.
-    * "delay_value" ve "fixed_charge ya da percent_charge" değerlerine göre loan_plans tablosunda Query hazırlanır
+    * Query is prepared in the loan_plans table according to the values "delay_value" ve "fixed_charge ya da percent_charge"
     * Verifies the "name" Results
     * Database connection is closed
-    @DB28
-    Scenario: Update and verify the "update_log" value of the data with "version=?" in the "update_logs" table.
-      * update_log tables insert Query prepared
-      * Data Results are validate.
-      * Update_log tables Query prepared and updated.
-      * Data Results are obtained.
-      * Database connection is closed
-      @DB29
-      Scenario: Delete a data according to the "id" value in the update_logs table and verify that it has been deleted
-        * update_log tables insert Query prepared
-        * Data Results are validate.
-        * Prepares update_log Query to be deleted
-        * Data Results are obtained.
-        * Database connection is closed
-        @DB30
-      Scenario: Delete a file according to the "support_message_id=?" value in the "support_attachments" table and verify that it has been deleted.
-          * support_attachments tables delete Query prepared
-          * Data Results are obtained.
-          * Database connection is closed
+
+  @DB28
+  Scenario: Update and verify the "update_log" value of the data with "version=?" in the "update_logs" table.
+    * update_log tables insert Query prepared
+    * Data Results are validate.
+    * Update_log tables Query prepared and updated.
+    * Data Results are obtained.
+    * Database connection is closed
+
+  @DB29
+  Scenario: Delete a data according to the "id" value in the update_logs table and verify that it has been deleted
+    * update_log tables insert Query prepared
+    * Data Results are validate.
+    * Prepares update_log Query to be deleted
+    * Data Results are obtained.
+    * Database connection is closed
+
+  @DB30
+  Scenario: Delete a file according to the "support_message_id=?" value in the "support_attachments" table and verify that it has been deleted.
+    * support_attachments tables delete Query prepared
+    * Data Results are obtained.
+    * Database connection is closed

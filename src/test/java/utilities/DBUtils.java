@@ -1,15 +1,12 @@
 package utilities;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DBUtils {
-     static Connection connection;
-     static Statement statement;
-     static ResultSet resultSet;
+    static Connection connection;
+    static Statement statement;
+    static ResultSet resultSet;
 
     public static String query;
 
@@ -17,19 +14,20 @@ public class DBUtils {
     //createConnection database e baglanmak icin. Burda url, username, password u kullanarak database baglaniyoruz
     //Database e ne zaman baglanmak isterse bu methodu cagrabiliriz
     //Bu method u data cok BeforeMethod icinde setup icin kullanacagiz
-    String url="jdbc:mysql://194.140.198.209/wonderworld_qa";;
-    String username=ConfigReader.getProperty("DBname");
-    String password=ConfigReader.getProperty("DBPassword");
+    String url = "jdbc:mysql://194.140.198.209/wonderworld_qa";
+    ;
+    String username = ConfigReader.getProperty("DBname");
+    String password = ConfigReader.getProperty("DBPassword");
 
 
     public static void createConnection() {
-        String url=ConfigReader.getProperty("URL");
-        String username=ConfigReader.getProperty("USERNAME");
-        String password=ConfigReader.getProperty("PASSWORD");
+        String url = ConfigReader.getProperty("URL");
+        String username = ConfigReader.getProperty("USERNAME");
+        String password = ConfigReader.getProperty("PASSWORD");
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
-           throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
 
     }
@@ -94,6 +92,7 @@ public class DBUtils {
         }
         return resultSet;
     }
+
     //Table da kac satir var
     public static int getRowCount() throws Exception {
         resultSet.last();
@@ -103,36 +102,39 @@ public class DBUtils {
 
     /**
      * @return returns a single cell value. If the results in multiple rows and/or
-     *         columns of data, only first column of the first row will be returned.
-     *         The rest of the data will be ignored
+     * columns of data, only first column of the first row will be returned.
+     * The rest of the data will be ignored
      */
 
     public static Object getCellValue(String query) {
         return getQueryResultList(query).get(0).get(0);
     }
+
     /**
      * @return returns a list of Strings which represent a row of data. If the query
-     *         results in multiple rows and/or columns of data, only first row will
-     *         be returned. The rest of the data will be ignored
+     * results in multiple rows and/or columns of data, only first row will
+     * be returned. The rest of the data will be ignored
      */
 
     public static List<Object> getRowList(String query) {
 
         return getQueryResultList(query).get(0);
     }
+
     /**
      * @return returns a map which represent a row of data where key is the column
-     *         name. If the query results in multiple rows and/or columns of data,
-     *         only first row will be returned. The rest of the data will be ignored
+     * name. If the query results in multiple rows and/or columns of data,
+     * only first row will be returned. The rest of the data will be ignored
      */
 
     public static Map<String, Object> getRowMap(String query) {
 
         return getQueryResultMap(query).get(0);
     }
+
     /**
      * @return returns query result in a list of lists where outer list represents
-     *         collection of rows and inner lists represent a single row
+     * collection of rows and inner lists represent a single row
      */
 
     public static List<List<Object>> getQueryResultList(String query) {
@@ -154,6 +156,7 @@ public class DBUtils {
         }
         return rowList;
     }
+
     /**
      * @return list of values of a single column from the result set
      */
@@ -173,10 +176,11 @@ public class DBUtils {
         }
         return rowList;
     }
+
     /**
      * @return returns query result in a list of maps where the list represents
-     *         collection of rows and a map represents represent a single row with
-     *         key being the column name
+     * collection of rows and a map represents represent a single row with
+     * key being the column name
      */
 
     public static List<Map<String, Object>> getQueryResultMap(String query) {
@@ -226,14 +230,67 @@ public class DBUtils {
         }
         st.close();
     }
-    public static PreparedStatement getPraperedStatement(String sqlQuery){
 
-        PreparedStatement preparedStatement=null;
+    public static PreparedStatement getPraperedStatement(String sqlQuery) {
+
+        PreparedStatement preparedStatement = null;
         try {
-            preparedStatement=connection.prepareStatement(sqlQuery);
+            preparedStatement = connection.prepareStatement(sqlQuery);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return preparedStatement;
     }
+
+    public static Integer randomIdGenerate() {
+        // Random nesnesi oluştur
+        Random random = new Random();
+        // ID uzunluğu
+        int idLength = 4;
+        // Rastgele ID oluştur
+        Integer generatedId = Integer.valueOf(generateRandomId(random, idLength));
+        return generatedId;
+    }
+
+    // Rastgele ID oluşturan metot
+    private static String generateRandomId(Random random, int length) {
+        StringBuilder idBuilder = new StringBuilder();
+        // Belirlenen uzunlukta rastgele karakterler ekleyerek ID oluştur
+        for (int i = 0; i < length; i++) {
+            char randomChar = (char) (random.nextInt(26) + 'a'); // Sadece küçük harfler için
+            idBuilder.append(randomChar);
+        }
+
+        return idBuilder.toString();
+    }
+
+    // Belirli bir aralıkta rastgele sayı oluşturan metot
+    private static int generateRandomNumber(Random random, int min, int max) {
+        // Belirli aralıkta rastgele bir sayı üret
+        int randomNumber = random.nextInt(max - min + 1) + min;
+
+        return randomNumber;
+    }
+
+    public static int idOlustur() {
+
+        // Random nesnesi oluştur
+        Random random = new Random();
+
+        // 30 ile 900 arasında rastgele sayı oluştur
+        int randomNumber = generateRandomNumber(random, 30, 1200);
+
+        // Oluşturulan sayıyı ekrana yazdır
+        System.out.println("Oluşturulan Sayı: " + randomNumber);
+
+        return randomNumber;
+    }
 }
+
+
+
+
+
+
+
+

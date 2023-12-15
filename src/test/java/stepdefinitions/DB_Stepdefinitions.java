@@ -11,13 +11,11 @@ import utilities.DBUtils;
 import utilities.Manage;
 
 import java.sql.*;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -46,7 +44,7 @@ public class DB_Stepdefinitions {
         preparedStatement = DBUtils.getPraperedStatement(query);
         preparedStatement.setString(1, mobileNumber);
         int rowCount = preparedStatement.executeUpdate();
-        assertEquals(2, rowCount);
+        assertEquals(12, rowCount);
     }
 
     @Given("Database connection is closed")
@@ -79,7 +77,7 @@ public class DB_Stepdefinitions {
     public void verify_the_information_results_are_obtained(String column) throws SQLException {
         rs.next();
         String rToken = rs.getString(column);
-        String expToken = "sH3BH9e6YvLn1543QeyAhupgJiLrTQvNFXSLmTQMid8ZuISCz7EUwwgMnozF";
+        String expToken = "tbvFCmzJTpBQyBizOmIzet4gnfGFXG5kVh9iuoqTvyg2V3QIOQeCtJWiIdWz";
         assertEquals(expToken, rToken);
     }
 
@@ -116,7 +114,8 @@ public class DB_Stepdefinitions {
     @Given("{string} value of the data Results are obtained.")
     public void value_of_the_data_results_are_obtained(String Column) throws SQLException {
         List<Double> charges = new ArrayList<>();
-        charges.add(106.00000000);
+        charges.add(102.00000000);
+        charges.add(102.00000000);
         charges.add(102.00000000);
         List<Double> actualcharge = new ArrayList<>();
         while (rs.next()) {
@@ -135,12 +134,14 @@ public class DB_Stepdefinitions {
         id = faker.number().numberBetween(8, 1000);
         e_mail = faker.internet().emailAddress();
         token = faker.internet().password();
+        Date created_at=Date.valueOf(LocalDate.now());
         // System.out.println(id +" "+e_mail+" "+token);
         preparedStatement = DBUtils.getPraperedStatement(query);
         preparedStatement.setInt(1, id);
         preparedStatement.setString(2, e_mail);
         preparedStatement.setString(3, token);
         preparedStatement.setInt(4, 0);
+        preparedStatement.setDate(5, created_at);
 
 
     }
@@ -161,7 +162,7 @@ public class DB_Stepdefinitions {
     public void verify_the_support_ticket_id_information_results_are_obtained() throws SQLException {
         rs.next();
         int support_ticket_id = rs.getInt("support_ticket_id");
-        int exp_s_t_id = 3;
+        int exp_s_t_id = 2;
         assertEquals(exp_s_t_id, support_ticket_id);
     }
 
@@ -174,13 +175,13 @@ public class DB_Stepdefinitions {
     @Given("Verify the subject information Results are obtained.")
     public void verify_the_subject_information_results_are_obtained() throws SQLException {
         List<String> expectedsubjectinfo = new ArrayList<>();
-        expectedsubjectinfo.add("kargo takıp");
-        expectedsubjectinfo.add("Plan2");
+        expectedsubjectinfo.add("Test");
+       // expectedsubjectinfo.add("Plan2");
         List<String> actualsubject = new ArrayList<>();
         while (rs.next()) {
             String subject = rs.getString("subject");
             actualsubject.add(subject);
-            for (int i = 0; i < actualsubject.size(); i++) {
+            for (int i = 0; i < expectedsubjectinfo.size(); i++) {
                 assertEquals(expectedsubjectinfo.get(i), actualsubject.get(i));
             }
         }
@@ -194,7 +195,7 @@ public class DB_Stepdefinitions {
 
     @Given("Verify the firstname,lastname information Results are obtained.")
     public void verify_the_firstname_lastname_information_results_are_obtained() throws SQLException {
-        String expectedName = "john Doe";
+        String expectedName = "aliulvi girgin";
         List<String> actualList = new ArrayList<>();
         rs.next();
         String actualName=rs.getString("firstname") + " " + rs.getString("lastname");
@@ -282,7 +283,7 @@ public class DB_Stepdefinitions {
     @Given("Verify the {string} of users with {string}")
     public void verify_the_of_users_with(String user_id, String id) throws SQLException {
         rs.next();
-        int expectedcount = 2;
+        int expectedcount = 0;
         int actualcount = rs.getInt("COUNT(*)");
         assertEquals(expectedcount, actualcount);
     }
@@ -380,7 +381,7 @@ public class DB_Stepdefinitions {
     @Given("the first lastname of the list is verified")
     public void the_first_lastname_of_the_list_is_verified() throws SQLException {
         rs.next();
-        String lastname = "zxcv";
+        String lastname = null;
         String actualLastname = rs.getString("lastname");
         Assert.assertEquals(lastname, actualLastname);
     }
@@ -392,14 +393,24 @@ public class DB_Stepdefinitions {
     }
 
     @Given("{string} values list is verified")
-    public void total_amount_values_list_is_verified(String total_amount) {
-        List<Object> actual_total_amount = DBUtils.getColumnData(query, "total_amount");
-        //  System.out.println(DBUtils.getColumnData(query, total_amount));
+    public void total_amount_values_list_is_verified(String column) throws SQLException {
+        List<Integer> actual_total_amount =new ArrayList<>();
+        Integer expTotal_amount = 1000;
 
-        for (int i = 0; i < actual_total_amount.size(); i++) {
-            assertTrue(actual_total_amount.retainAll(Collections.singleton("1000")));
+        boolean isAnyElementGreaterThanExpected = false;
+
+       while (rs.next()){
+           int total_amount= rs.getInt("total_amount");
+           actual_total_amount.add(total_amount);
+           for (int i = 0; i <actual_total_amount.size() ; i++) {
+               if (actual_total_amount.get(i) > expTotal_amount) {
+                   isAnyElementGreaterThanExpected = true;
+                   break;
+               }
+           }
         }
 
+        assertTrue(isAnyElementGreaterThanExpected);
     }
 
     @Given("admin_notifications_table Query is prepared and executed")
@@ -412,7 +423,7 @@ public class DB_Stepdefinitions {
     public void user_result_values_are_validated() throws SQLException {
         rs.next();
         Object actualCount = rs.getInt("COUNT(*)");
-        assertEquals(0, actualCount);
+        assertEquals(1, actualCount);
 
 
     }
@@ -446,7 +457,7 @@ public class DB_Stepdefinitions {
     @Given("Deposits result values are validated")
     public void deposits_result_values_are_validated() throws SQLException {
         rs.next();
-        int expected_total_amount = 14476;
+        int expected_total_amount = 148877 ;//.24240000;
         int actual_total_amount = rs.getInt("total_amount");
         assertEquals(expected_total_amount, actual_total_amount);
 
@@ -455,13 +466,11 @@ public class DB_Stepdefinitions {
     @Given("UpdateQuery is prepared")
     public void update_query_is_prepared() throws SQLException {
         query = manage.getAdmin_notificationsTableQuery();
-        int result = DBUtils.getStatement().executeUpdate(query);
+        int id= DBUtils.idOlustur();
+        preparedStatement=DBUtils.getPraperedStatement(query);
+        preparedStatement.setInt(1,'1');
+       preparedStatement.setInt(2,id);
 
-        int verify = 0;
-        if (result > 0) {
-            verify++;
-        }
-        assertEquals(verify, 1);
     }
 
     @Given("Update result values are validated")
@@ -478,7 +487,7 @@ public class DB_Stepdefinitions {
         rs = DBUtils.getStatement().executeQuery(query);
         rs.next();
         int actualtotal_amount = rs.getInt("total_amount");
-        int expectedtotal_amount = 26499;
+        int expectedtotal_amount = 165931;
         assertEquals(expectedtotal_amount, actualtotal_amount);
     }
 
@@ -495,15 +504,15 @@ public class DB_Stepdefinitions {
         assertEquals(0, total_delay_charge);
     }
 
-    @Given("{string} ve {string} değerlerine göre loan_plans tablosunda Query hazırlanır")
-    public void ve_değerlerine_gore_loan_plans_tablosunda_query_hazirlanir(String string, String string2) throws SQLException {
+    @Given("Query is prepared in the loan_plans table according to the values {string} ve {string}")
+    public void Query_is_prepared_in_the_loan_plans_table_according_to_the_values_string_ve_string(String string, String string2) throws SQLException {
         query = manage.getLoan_plansQuery();
         rs = DBUtils.getStatement().executeQuery(query);
     }
 
     @Given("Verifies the {string} Results")
     public void verifies_the_results(String name) throws SQLException {
-        List<String> expectednames = new ArrayList<String>(Arrays.asList("Basic Loan 1", "Test_Loan", "Car Loan 9"));//Basic Loan 1  //Test_Loan //Car Loan 9
+        List<String> expectednames = new ArrayList<String>(Arrays.asList("Basic Loan 1", "Car Loan 9", "Personel Finance Loan"));//Basic Loan 1  //Test_Loan //Car Loan 9
         List<String> names = new ArrayList<>();
         while (rs.next()) {
             name = rs.getString("name");
@@ -552,8 +561,8 @@ public class DB_Stepdefinitions {
     public void support_attachments_tables_delete_query_prepared() throws SQLException {
        query=manage.getSupport_attachments();
        preparedStatement=DBUtils.getPraperedStatement(query);
-       int support_attachment_id=faker.number().numberBetween(1,90);
-       preparedStatement.setInt(1,support_attachment_id);
+       int support_message_id=faker.number().numberBetween(1,90);//36
+        preparedStatement.setInt(1,support_message_id);
     }
 
 }

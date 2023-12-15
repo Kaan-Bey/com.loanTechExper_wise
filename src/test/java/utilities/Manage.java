@@ -11,15 +11,15 @@ public class Manage {
     //03->Database içindeki "cron_schedules" tablosunda son 2 kaydın "name" bilgisini donduren Query
     private String Query03 = "SELECT name from cron_schedules Order By created_at Desc LIMIT 2;";
     //04->Database içindeki "Deposits" tablosunda "amount" değeri 500.000$ altında olan dataların "charge" değerini dondurenQuery
-    private String Query04 = "Select charge from deposits Where amount<500.000;";
+    private String Query04 = "Select charge from deposits Where amount<500.000 And trx='4GC9SMZUS69S';";
     //05->Database içindeki "admin_password_resets" tablosuna  aynı anda birden fazla veriyi  ekleyen Query
-    private String Query05 = "Insert into admin_password_resets (id,email,token,status,created_at) Values(?,?,?,?,now());";
+    private String Query05 = "Insert into admin_password_resets (id,email,token,status,created_at) Values(?,?,?,?,?);";
     //06->Database içindeki "Support_messages" tablosunda "message" bilgisi "deneme_message" olan datanın "support_ticket_id" Query.
-    private String Query06 = "select support_ticket_id from support_messages Where message='deneme_message';";
+    private String Query06 = "select support_ticket_id from support_messages Where message='Tickett';";
     //07->Database içindeki "support_tickets" tablosunda  "ticket" değeri  4 ile başlayan dataların "subject" bilgisini doğrulayınız.
     private String Query07 = "select subject from support_tickets Where ticket Like '4%';";
     //08->"Users" tablosunda "country_code=TR" olmayan ve "id=2" olan datanın "firstname" ve "lastname" bilgilerini döndüren Query.
-    private String Query08 = "select firstname,lastname from users Where country_code Not Like'%TR%' and id=2;";
+    private String Query08 = "select firstname,lastname from users Where country_code Not Like'%TR%' and id=11;";
     //09-1->Loans Table insert Query(Database üzerinden "loans" tablosunda "loan_number" girerek istenen datayı siliniz ve silindiğini doğrulayınız.)
     private String Query09 = "Insert into loans (loan_number,user_id,plan_id) Values(?,?,?);";
     //09-2 Database üzerinden "loans" tablosunda "loan_number" girerek istenen datayı siliniz ve silindiğini doğrulayınız.
@@ -53,10 +53,10 @@ public class Manage {
 
     private String support_attachments = "DELETE FROM support_attachments WHERE support_message_id = ?;";
 
-    private String admin_notificationsTableQuery = "UPDATE admin_notifications SET is_read = 1 WHERE user_id = 3;";
+    private String admin_notificationsTableQuery = "UPDATE admin_notifications SET is_read = ? WHERE id = ? ;";
 
     private String loansCalculate = "SELECT loan_id, SUM(delay_charge) AS total_delay_charge FROM installments WHERE loan_id = 1 GROUP BY loan_id;";
-    private String Query19 = "SELECT * FROM users ORDER BY lastname DESC, firstname DESC;";
+    private String Query19 = "SELECT * FROM users ORDER BY lastname, firstname DESC;";
     private String transectionTable = "SELECT remark, SUM(amount) AS total_amount FROM transactions GROUP BY remark HAVING total_amount > 1000;";
 
     public String getDepositsGatewaysCalculater() {
