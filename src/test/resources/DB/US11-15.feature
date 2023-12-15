@@ -3,11 +3,11 @@ Feature: US11-15
 
   Background: Database connection
     * Database connection is established.
-
+  @DB11
   Scenario:Verify the number of users with "user id= 1" in the "admin_notifications" table.
     * Query11 is prepared and executed.
     * Verify the number of users with "user_id= 1"
-
+  @DB12
   Scenario:In the "admin_notifications" table,
   verify the "id number greater than 20" of users with "user_id =2".
     * Query12 is prepared and executed.
