@@ -524,5 +524,150 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_records_the_response_from_the_api_loans_details_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
     }
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, int status, String approved_at, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(id,jsonPath.getString("data[0].id"));
+        assertEquals(loan_number,jsonPath.getString("data[0].loan_number"));
+        assertEquals(user_id,jsonPath.getInt("data[0].user_id"));
+        assertEquals(plan_id,jsonPath.getInt("data[0].plan_id"));
+        assertEquals(amount,jsonPath.getString("data[0].amount"));
+        assertEquals(per_installment,jsonPath.getString("data[0].per_installment"));
+        assertEquals(installment_interval,jsonPath.getInt("data[0].installment_interval"));
+        assertEquals(delay_value,jsonPath.getInt("data[0].delay_value"));
+        assertEquals(charge_per_installment,jsonPath.getString("data[0].charge_per_installment"));
+        assertEquals(delay_charge,jsonPath.getString("data[0].delay_charge"));
+        assertEquals(given_installment,jsonPath.getInt("data[0].given_installment"));
+        assertEquals(total_installment,jsonPath.getInt("data[0].total_installment"));
+        assertEquals(status,jsonPath.getInt("data[0].status"));
+        assertEquals(approved_at,jsonPath.getString("data[0].approved_at"));
+        assertEquals(created_at,jsonPath.getString("data[0].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data[0].updated_at"));
+
+        assertEquals(null,jsonPath.get("data[0].admin_feedback"));
+        assertEquals(null,jsonPath.get("data[0].due_notification_sent"));
+    }
+    //***************************************************************************************************
+
+    //************************************ api/loans/pending ********************************************
+    @Given("The API user records the response from the api loans pending endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_loans_pending_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {int}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, int status, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(loan_number,jsonPath.getString("data.data["+dataIndex+"].loan_number"));
+        assertEquals(user_id,jsonPath.getInt("data.data["+dataIndex+"].user_id"));
+        assertEquals(plan_id,jsonPath.getInt("data.data["+dataIndex+"].plan_id"));
+        assertEquals(amount,jsonPath.getString("data.data["+dataIndex+"].amount"));
+        assertEquals(per_installment,jsonPath.getString("data.data["+dataIndex+"].per_installment"));
+        assertEquals(installment_interval,jsonPath.getInt("data.data["+dataIndex+"].installment_interval"));
+        assertEquals(delay_value,jsonPath.getInt("data.data["+dataIndex+"].delay_value"));
+        assertEquals(charge_per_installment,jsonPath.getString("data.data["+dataIndex+"].charge_per_installment"));
+        assertEquals(delay_charge,jsonPath.getString("data.data["+dataIndex+"].delay_charge"));
+        assertEquals(given_installment,jsonPath.getInt("data.data["+dataIndex+"].given_installment"));
+        assertEquals(total_installment,jsonPath.getInt("data.data["+dataIndex+"].total_installment"));
+        assertEquals(status,jsonPath.getInt("data.data["+dataIndex+"].status"));
+        assertEquals(created_at,jsonPath.getString("data.data["+dataIndex+"].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.data["+dataIndex+"].updated_at"));
+
+        assertEquals(null,jsonPath.get("data.data["+dataIndex+"].admin_feedback"));
+        assertEquals(null,jsonPath.get("data.data["+dataIndex+"].due_notification_sent")); jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(loan_number,jsonPath.getString("data.data["+dataIndex+"].loan_number"));
+        assertEquals(user_id,jsonPath.getInt("data.data["+dataIndex+"].user_id"));
+        assertEquals(plan_id,jsonPath.getInt("data.data["+dataIndex+"].plan_id"));
+        assertEquals(amount,jsonPath.getString("data.data["+dataIndex+"].amount"));
+        assertEquals(per_installment,jsonPath.getString("data.data["+dataIndex+"].per_installment"));
+        assertEquals(installment_interval,jsonPath.getInt("data.data["+dataIndex+"].installment_interval"));
+        assertEquals(delay_value,jsonPath.getInt("data.data["+dataIndex+"].delay_value"));
+        assertEquals(charge_per_installment,jsonPath.getString("data.data["+dataIndex+"].charge_per_installment"));
+        assertEquals(delay_charge,jsonPath.getString("data.data["+dataIndex+"].delay_charge"));
+        assertEquals(given_installment,jsonPath.getInt("data.data["+dataIndex+"].given_installment"));
+        assertEquals(total_installment,jsonPath.getInt("data.data["+dataIndex+"].total_installment"));
+        assertEquals(status,jsonPath.getInt("data.data["+dataIndex+"].status"));
+        assertEquals(created_at,jsonPath.getString("data.data["+dataIndex+"].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.data["+dataIndex+"].updated_at"));
+
+        assertEquals(null,jsonPath.get("data.data["+dataIndex+"].admin_feedback"));
+        assertEquals(null,jsonPath.get("data.data["+dataIndex+"].due_notification_sent"));
+        assertEquals(null,jsonPath.get("data.data["+dataIndex+"].approved_at"));
+    }
+    //***************************************************************************************************
+
+    //************************************ api/loans/running ********************************************
+    @Given("The API user records the response from the api loans running endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_loans_running_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    //***************************************************************************************************
+
+    //************************************** api/loans/paid *********************************************
+    @Given("The API user records the response from the api loans paid endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_loans_paid_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    //***************************************************************************************************
+
+    //************************************ api/loans/rejected *******************************************
+    @Given("The API user records the response from the api loans rejected endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_loans_rejected_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    //***************************************************************************************************
+
+    //****************************** api/loans/installments/{{id}} **************************************
+    @Given("The API user records the response from the api loans installments endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_loans_installments_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("Verify the information of the one with the index {int} in the API user response body: {int}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, int loan_id, String delay_charge, String installment_date) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(loan_id,jsonPath.getInt("data.data["+dataIndex+"].loan_id"));
+        assertEquals(delay_charge,jsonPath.getString("data.data["+dataIndex+"].delay_charge"));
+        assertEquals(installment_date,jsonPath.getString("data.data["+dataIndex+"].installment_date"));
+
+        assertEquals(null,jsonPath.get("data.data["+dataIndex+"].given_at"));
+    }
+    //***************************************************************************************************
+
+    //********************************* api/loans/approve/{{id}} ****************************************
+    @Given("The API user records the response from the api loans approve endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_loans_approve_endpoint_with_valid_authorization_information() {
+        ReusableMethods.patchResponse("admin");
+    }
+    @Then("The API user records the response from the api loans approve endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized")
+    public void the_apı_user_records_the_response_from_the_api_loans_approve_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized() {
+        assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
+    }
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {int}, {string}, {string}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, String admin_feedback, int status, String approved_at, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(id,jsonPath.getInt("data.Aproved Loan.id"));
+        assertEquals(loan_number,jsonPath.getString("data.Aproved Loan.loan_number"));
+        assertEquals(user_id,jsonPath.getInt("data.Aproved Loan.user_id"));
+        assertEquals(plan_id,jsonPath.getInt("data.Aproved Loan.plan_id"));
+        assertEquals(amount,jsonPath.getString("data.Aproved Loan.amount"));
+        assertEquals(per_installment,jsonPath.getString("data.Aproved Loan.per_installment"));
+        assertEquals(installment_interval,jsonPath.getInt("data.Aproved Loan.installment_interval"));
+        assertEquals(delay_value,jsonPath.getInt("data.Aproved Loan.delay_value"));
+        assertEquals(charge_per_installment,jsonPath.getString("data.Aproved Loan.charge_per_installment"));
+        assertEquals(delay_charge,jsonPath.getString("data.Aproved Loan.delay_charge"));
+        assertEquals(given_installment,jsonPath.getInt("data.Aproved Loan.given_installment"));
+        assertEquals(total_installment,jsonPath.getInt("data.Aproved Loan.total_installment"));
+        assertEquals(admin_feedback,jsonPath.getString("data.Aproved Loan.admin_feedback"));
+        assertEquals(status,jsonPath.getInt("data.Aproved Loan.status"));
+        assertEquals(approved_at,jsonPath.getString("data.Aproved Loan.approved_at"));
+        assertEquals(created_at,jsonPath.getString("data.Aproved Loan.created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.Aproved Loan.updated_at"));
+
+        assertEquals(null,jsonPath.getString("data.Aproved Loan.due_notification_sent"));
+    }
     //***************************************************************************************************
 }

@@ -1,1 +1,1 @@
-file:src/test/resources/API/Admin/Loans/LoansDetails.feature:15
+file:src/test/resources/API/Admin/Loans/LoansApprove.feature:66
