@@ -51,7 +51,7 @@ Feature: As an administrator, I want to be able to approve the loan information 
       | id |
       | 17 |
 
-@API
+
   Scenario Outline: The contents of the data (id, loan_number, user_id, plan_id, amount,
   per_installment, installment_interval, delay_value, charge_per_installment, delay_charge,
   given_installment, total_installment, admin_feedback, status, due_notification_sent,
@@ -59,8 +59,8 @@ Feature: As an administrator, I want to be able to approve the loan information 
 
     Given The API user sets "api/loans/approve/<id>" path parameters
     And The API user records the response from the api loans approve endpoint with valid authorization information
-    Then The API user verifies the content of the data in the response body which includes <id>, "<loan_number>", <user_id>, <plan_id>, "<amount>", "<per_installment>", <installment_interval>, <delay_value>, "<charge_per_installment>", "<delay_charge>", <given_installment>, <total_installment>, "<admin_feedback>", <status>, "<approved_at>", "<created_at>", "<updated_at>"
+    Then The API user verifies the content of the data in the response body which includes "<sorgu>", <id>, "<loan_number>", <user_id>, <plan_id>, "<amount>", "<per_installment>", <installment_interval>, <delay_value>, "<charge_per_installment>", "<delay_charge>", <given_installment>, <total_installment>, "<admin_feedback>", <status>, "<approved_at>", "<created_at>", "<updated_at>"
 
     Examples:
-      | id | id | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | admin_feedback      | status | approved_at                 | created_at                  | updated_at                  |
-      | 17 | 17 | H5E646H6D65G | 49      | 11      | 2000.00000000 | 80.00000000     | 20                   | 25          | 100.04000000           | 0.00000000   | 0                 | 20                | Bank info is wrong. | 1      | 2023-12-15T15:53:39.000000Z | 2023-12-14T10:08:15.000000Z | 2023-12-15T15:53:39.000000Z |
+      | id | sorgu   | id | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | admin_feedback      | status | approved_at                 | created_at                  | updated_at                  |
+      | 17 | approve | 17 | H5E646H6D65G | 49      | 11      | 2000.00000000 | 80.00000000     | 20                   | 25          | 100.04000000           | 0.00000000   | 0                 | 20                | Bank info is wrong. | 1      | 2023-12-16T14:20:53.000000Z | 2023-12-14T10:08:15.000000Z | 2023-12-16T14:20:53.000000Z |

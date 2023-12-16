@@ -8,6 +8,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 import pojos.LoanplansUpdatePOJO;
+import pojos.LoansRejectPojo;
 import utilities.ReusableMethods;
 
 import java.util.HashMap;
@@ -22,6 +23,7 @@ public class API_AdminStepdefinitions {
     JsonPath jsonPath;
     JSONObject requestBody;
     LoanplansUpdatePOJO requestBodyPojo;
+    LoansRejectPojo reqBodyPojo;
 
     //********************************* api/categories/list *************************************************
     @Given("The API user saves the response from the api categories list endpoint with the valid authorization information")
@@ -645,29 +647,80 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_records_the_response_from_the_api_loans_approve_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized() {
         assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
     }
-    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {int}, {string}, {string}, {string}")
-    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, String admin_feedback, int status, String approved_at, String created_at, String updated_at) {
+    //***************************************************************************************************
+
+    //********************************* api/loans/reject/{{id}} *****************************************
+    @Given("The API user prepares a POST request containing the correct data to send to the api loans reject endpoint")
+    public void the_apı_user_prepares_a_post_request_containing_the_correct_data_to_send_to_the_api_loans_reject_endpoint() {
+        reqBodyPojo=new LoansRejectPojo("Bank info is wrong.");
+    }
+    @When("The API user sends a POST request and records the response returned from the api loans reject endpoint with valid authorization information")
+    public void the_apı_user_sends_a_post_request_and_records_the_response_returned_from_the_api_loans_reject_endpoint_with_valid_authorization_information() {
+        ReusableMethods.postResponse("admin",reqBodyPojo);
+    }
+
+    @And("The API user prepares a POST request without data to send to the api loans reject endpoint")
+    public void theAPIUserPreparesAPOSTRequestWithoutDataToSendToTheApiLoansRejectEndpoint() {
+        reqBodyPojo=new LoansRejectPojo();
+    }
+
+    @When("The API user sends a POST request and records the response returned from the api loans reject endpoint with invalid authorization information")
+    public void theAPIUserSendsAPOSTRequestAndRecordsTheResponseReturnedFromTheApiLoansRejectEndpointWithInvalidAuthorizationInformation() {
+        ReusableMethods.postResponse("invalidToken",reqBodyPojo);
+    }
+    @Then("The API user verifies the content of the data in the response body which includes {string}, {int}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {int}, {string}, {string}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(String sorgu, int id, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, String admin_feedback, int status, String approved_at, String created_at, String updated_at) {
         jsonPath=ReusableMethods.response.jsonPath();
 
-        assertEquals(id,jsonPath.getInt("data.Aproved Loan.id"));
-        assertEquals(loan_number,jsonPath.getString("data.Aproved Loan.loan_number"));
-        assertEquals(user_id,jsonPath.getInt("data.Aproved Loan.user_id"));
-        assertEquals(plan_id,jsonPath.getInt("data.Aproved Loan.plan_id"));
-        assertEquals(amount,jsonPath.getString("data.Aproved Loan.amount"));
-        assertEquals(per_installment,jsonPath.getString("data.Aproved Loan.per_installment"));
-        assertEquals(installment_interval,jsonPath.getInt("data.Aproved Loan.installment_interval"));
-        assertEquals(delay_value,jsonPath.getInt("data.Aproved Loan.delay_value"));
-        assertEquals(charge_per_installment,jsonPath.getString("data.Aproved Loan.charge_per_installment"));
-        assertEquals(delay_charge,jsonPath.getString("data.Aproved Loan.delay_charge"));
-        assertEquals(given_installment,jsonPath.getInt("data.Aproved Loan.given_installment"));
-        assertEquals(total_installment,jsonPath.getInt("data.Aproved Loan.total_installment"));
-        assertEquals(admin_feedback,jsonPath.getString("data.Aproved Loan.admin_feedback"));
-        assertEquals(status,jsonPath.getInt("data.Aproved Loan.status"));
-        assertEquals(approved_at,jsonPath.getString("data.Aproved Loan.approved_at"));
-        assertEquals(created_at,jsonPath.getString("data.Aproved Loan.created_at"));
-        assertEquals(updated_at,jsonPath.getString("data.Aproved Loan.updated_at"));
+        if (sorgu == "reject") {
+            assertEquals(id,jsonPath.getInt("data.Rejected Loan.id"));
+            assertEquals(loan_number,jsonPath.getString("data.Rejected Loan.loan_number"));
+            assertEquals(user_id,jsonPath.getInt("data.Rejected Loan.user_id"));
+            assertEquals(plan_id,jsonPath.getInt("data.Rejected Loan.plan_id"));
+            assertEquals(amount,jsonPath.getString("data.Rejected Loan.amount"));
+            assertEquals(per_installment,jsonPath.getString("data.Rejected Loan.per_installment"));
+            assertEquals(installment_interval,jsonPath.getInt("data.Rejected Loan.installment_interval"));
+            assertEquals(delay_value,jsonPath.getInt("data.Rejected Loan.delay_value"));
+            assertEquals(charge_per_installment,jsonPath.getString("data.Rejected Loan.charge_per_installment"));
+            assertEquals(delay_charge,jsonPath.getString("data.Rejected Loan.delay_charge"));
+            assertEquals(given_installment,jsonPath.getInt("data.Rejected Loan.given_installment"));
+            assertEquals(total_installment,jsonPath.getInt("data.Rejected Loan.total_installment"));
+            assertEquals(admin_feedback,jsonPath.getString("data.Rejected Loan.admin_feedback"));
+            assertEquals(status,jsonPath.getInt("data.Rejected Loan.status"));
+            assertEquals(approved_at,jsonPath.getString("data.Rejected Loan.approved_at"));
+            assertEquals(created_at,jsonPath.getString("data.Rejected Loan.created_at"));
+            assertEquals(updated_at,jsonPath.getString("data.Rejected Loan.updated_at"));
 
-        assertEquals(null,jsonPath.getString("data.Aproved Loan.due_notification_sent"));
+            assertEquals(null,jsonPath.getString("data.Rejected Loan.due_notification_sent"));
+
+        } else if (sorgu == "approve") {
+            assertEquals(id,jsonPath.getInt("data.Aproved Loan.id"));
+            assertEquals(loan_number,jsonPath.getString("data.Aproved Loan.loan_number"));
+            assertEquals(user_id,jsonPath.getInt("data.Aproved Loan.user_id"));
+            assertEquals(plan_id,jsonPath.getInt("data.Aproved Loan.plan_id"));
+            assertEquals(amount,jsonPath.getString("data.Aproved Loan.amount"));
+            assertEquals(per_installment,jsonPath.getString("data.Aproved Loan.per_installment"));
+            assertEquals(installment_interval,jsonPath.getInt("data.Aproved Loan.installment_interval"));
+            assertEquals(delay_value,jsonPath.getInt("data.Aproved Loan.delay_value"));
+            assertEquals(charge_per_installment,jsonPath.getString("data.Aproved Loan.charge_per_installment"));
+            assertEquals(delay_charge,jsonPath.getString("data.Aproved Loan.delay_charge"));
+            assertEquals(given_installment,jsonPath.getInt("data.Aproved Loan.given_installment"));
+            assertEquals(total_installment,jsonPath.getInt("data.Aproved Loan.total_installment"));
+            assertEquals(admin_feedback,jsonPath.getString("data.Aproved Loan.admin_feedback"));
+            assertEquals(status,jsonPath.getInt("data.Aproved Loan.status"));
+            assertEquals(approved_at,jsonPath.getString("data.Aproved Loan.approved_at"));
+            assertEquals(created_at,jsonPath.getString("data.Aproved Loan.created_at"));
+            assertEquals(updated_at,jsonPath.getString("data.Aproved Loan.updated_at"));
+
+            assertEquals(null,jsonPath.getString("data.Aproved Loan.due_notification_sent"));
+        }
+    }
+    //***************************************************************************************************
+
+    //********************************* api/loans/delete/{{id}} *****************************************
+    @Given("The API user records the response from the api loans delete endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_loans_delete_endpoint_with_valid_authorization_information() {
+        ReusableMethods.deleteResponse("admin");
     }
     //***************************************************************************************************
 }
