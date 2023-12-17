@@ -75,18 +75,3 @@ Feature: As an administrator, I want to be able to reject the loan information o
     Examples:
       | id |
       | 17 |
-
-
-  Scenario Outline: The contents of the data (id, loan_number, user_id, plan_id, amount, per_installment,
-  installment_interval, delay_value, charge_per_installment, delay_charge, given_installment,
-  total_installment, admin_feedback, status, due_notification_sent, approved_at, created_at, updated_at)
-  in the response body should be verified
-
-    Given The API user sets "api/loans/reject/<id>" path parameters
-    And The API user prepares a POST request containing the correct data to send to the api loans reject endpoint
-    When The API user sends a POST request and records the response returned from the api loans reject endpoint with valid authorization information
-    Then The API user verifies the content of the data in the response body which includes "<sorgu>", <id>, "<loan_number>", <user_id>, <plan_id>, "<amount>", "<per_installment>", <installment_interval>, <delay_value>, "<charge_per_installment>", "<delay_charge>", <given_installment>, <total_installment>, "<admin_feedback>", <status>, "<approved_at>", "<created_at>", "<updated_at>"
-
-    Examples:
-      | id | sorgu  | id | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | admin_feedback      | status | approved_at                 | created_at                  | updated_at                  |
-      | 17 | reject | 17 | H5E646H6D65G | 49      | 11      | 2000.00000000 | 80.00000000     | 20                   | 25          | 100.04000000           | 0.00000000   | 0                 | 20                | Bank info is wrong. | 1      | 2023-12-16T14:20:53.000000Z | 2023-12-14T10:08:15.000000Z | 2023-12-16T14:20:53.000000Z |

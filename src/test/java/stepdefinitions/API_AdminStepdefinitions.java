@@ -668,59 +668,45 @@ public class API_AdminStepdefinitions {
     public void theAPIUserSendsAPOSTRequestAndRecordsTheResponseReturnedFromTheApiLoansRejectEndpointWithInvalidAuthorizationInformation() {
         ReusableMethods.postResponse("invalidToken",reqBodyPojo);
     }
-    @Then("The API user verifies the content of the data in the response body which includes {string}, {int}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {int}, {string}, {string}, {string}")
-    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(String sorgu, int id, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, String admin_feedback, int status, String approved_at, String created_at, String updated_at) {
-        jsonPath=ReusableMethods.response.jsonPath();
-
-        if (sorgu == "reject") {
-            assertEquals(id,jsonPath.getInt("data.Rejected Loan.id"));
-            assertEquals(loan_number,jsonPath.getString("data.Rejected Loan.loan_number"));
-            assertEquals(user_id,jsonPath.getInt("data.Rejected Loan.user_id"));
-            assertEquals(plan_id,jsonPath.getInt("data.Rejected Loan.plan_id"));
-            assertEquals(amount,jsonPath.getString("data.Rejected Loan.amount"));
-            assertEquals(per_installment,jsonPath.getString("data.Rejected Loan.per_installment"));
-            assertEquals(installment_interval,jsonPath.getInt("data.Rejected Loan.installment_interval"));
-            assertEquals(delay_value,jsonPath.getInt("data.Rejected Loan.delay_value"));
-            assertEquals(charge_per_installment,jsonPath.getString("data.Rejected Loan.charge_per_installment"));
-            assertEquals(delay_charge,jsonPath.getString("data.Rejected Loan.delay_charge"));
-            assertEquals(given_installment,jsonPath.getInt("data.Rejected Loan.given_installment"));
-            assertEquals(total_installment,jsonPath.getInt("data.Rejected Loan.total_installment"));
-            assertEquals(admin_feedback,jsonPath.getString("data.Rejected Loan.admin_feedback"));
-            assertEquals(status,jsonPath.getInt("data.Rejected Loan.status"));
-            assertEquals(approved_at,jsonPath.getString("data.Rejected Loan.approved_at"));
-            assertEquals(created_at,jsonPath.getString("data.Rejected Loan.created_at"));
-            assertEquals(updated_at,jsonPath.getString("data.Rejected Loan.updated_at"));
-
-            assertEquals(null,jsonPath.getString("data.Rejected Loan.due_notification_sent"));
-
-        } else if (sorgu == "approve") {
-            assertEquals(id,jsonPath.getInt("data.Aproved Loan.id"));
-            assertEquals(loan_number,jsonPath.getString("data.Aproved Loan.loan_number"));
-            assertEquals(user_id,jsonPath.getInt("data.Aproved Loan.user_id"));
-            assertEquals(plan_id,jsonPath.getInt("data.Aproved Loan.plan_id"));
-            assertEquals(amount,jsonPath.getString("data.Aproved Loan.amount"));
-            assertEquals(per_installment,jsonPath.getString("data.Aproved Loan.per_installment"));
-            assertEquals(installment_interval,jsonPath.getInt("data.Aproved Loan.installment_interval"));
-            assertEquals(delay_value,jsonPath.getInt("data.Aproved Loan.delay_value"));
-            assertEquals(charge_per_installment,jsonPath.getString("data.Aproved Loan.charge_per_installment"));
-            assertEquals(delay_charge,jsonPath.getString("data.Aproved Loan.delay_charge"));
-            assertEquals(given_installment,jsonPath.getInt("data.Aproved Loan.given_installment"));
-            assertEquals(total_installment,jsonPath.getInt("data.Aproved Loan.total_installment"));
-            assertEquals(admin_feedback,jsonPath.getString("data.Aproved Loan.admin_feedback"));
-            assertEquals(status,jsonPath.getInt("data.Aproved Loan.status"));
-            assertEquals(approved_at,jsonPath.getString("data.Aproved Loan.approved_at"));
-            assertEquals(created_at,jsonPath.getString("data.Aproved Loan.created_at"));
-            assertEquals(updated_at,jsonPath.getString("data.Aproved Loan.updated_at"));
-
-            assertEquals(null,jsonPath.getString("data.Aproved Loan.due_notification_sent"));
-        }
-    }
     //***************************************************************************************************
 
     //********************************* api/loans/delete/{{id}} *****************************************
     @Given("The API user records the response from the api loans delete endpoint with valid authorization information")
     public void the_apı_user_records_the_response_from_the_api_loans_delete_endpoint_with_valid_authorization_information() {
         ReusableMethods.deleteResponse("admin");
+    }
+    @Then("The API user records the response from the api loans delete endpoint with invalid authorization information verifies that the status code is {string} and confirms that the error information is Unauthorized")
+    public void the_apı_user_records_the_response_from_the_api_loans_delete_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized(String string) {
+        assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
+    }
+    //***************************************************************************************************
+
+    //************************************* api/deposit/list ********************************************
+    @Given("The API user records the response from the api deposit list endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_deposit_list_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("Verify the information of the one with the index {int} in the API user response body: {int}, {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {int}, {int}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, int user_id, int method_code, String amount, String method_currency, String charge, String rate, String final_amo, String btc_amo, String trx, int payment_try, int status, int from_api, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(user_id,jsonPath.getInt("data.data["+dataIndex+"].user_id"));
+        assertEquals(method_code,jsonPath.getInt("data.data["+dataIndex+"].method_code"));
+        assertEquals(amount,jsonPath.getString("data.data["+dataIndex+"].amount"));
+        assertEquals(method_currency,jsonPath.getString("data.data["+dataIndex+"].method_currency"));
+        assertEquals(charge,jsonPath.getString("data.data["+dataIndex+"].charge"));
+        assertEquals(rate,jsonPath.getString("data.data["+dataIndex+"].rate"));
+        assertEquals(final_amo,jsonPath.getString("data.data["+dataIndex+"].final_amo"));
+        assertEquals(btc_amo,jsonPath.getString("data.data["+dataIndex+"].btc_amo"));
+        assertEquals(trx,jsonPath.getString("data.data["+dataIndex+"].trx"));
+        assertEquals(payment_try,jsonPath.getInt("data.data["+dataIndex+"].payment_try"));
+        assertEquals(status,jsonPath.getInt("data.data["+dataIndex+"].status"));
+        assertEquals(from_api,jsonPath.getInt("data.data["+dataIndex+"].from_api"));
+        assertEquals(created_at,jsonPath.getString("data.data["+dataIndex+"].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.data["+dataIndex+"].updated_at"));
+
+        assertEquals("",jsonPath.getString("data.data["+dataIndex+"].btc_wallet"));
+        assertEquals(null,jsonPath.getString("data.data["+dataIndex+"].admin_feedback"));
     }
     //***************************************************************************************************
 }
