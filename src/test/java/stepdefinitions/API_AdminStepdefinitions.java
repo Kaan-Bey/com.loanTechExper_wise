@@ -137,11 +137,11 @@ public class API_AdminStepdefinitions {
     public void theAPIUserRecordsTheResponseFromTheApiCategoriesStatusEndpointWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheErrorInformationIsUnauthorized() {
         assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
     }
-    @And("The API user verifies that the status information in the response body is {string}")
-    public void theAPIUserVerifiesThatTheStatusInformationInTheResponseBodyIs(String valueStatus) {
+    @And("The API user verifies that the status information in the response body is {int}")
+    public void theAPIUserVerifiesThatTheStatusInformationInTheResponseBodyIs(int valueStatus) {
         jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(valueStatus, jsonPath.getString("data[0].status"));
+        assertEquals(valueStatus, jsonPath.getInt("data[0].status"));
     }
     //***************************************************************************************************
 
@@ -658,12 +658,22 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_sends_a_post_request_and_records_the_response_returned_from_the_api_loans_reject_endpoint_with_valid_authorization_information() {
         ReusableMethods.postResponse("admin",reqBodyPojo);
     }
-
+    @Then("The API user verifies that the Reason information in the response body is {string}")
+    public void theAPIUserVerifiesThatTheReasonInformationInTheResponseBodyIs(String reason) {
+        ReusableMethods.response.then()
+                                   .assertThat()
+                                       .body("data.Reason",equalTo(reason));
+    }
     @And("The API user prepares a POST request without data to send to the api loans reject endpoint")
     public void theAPIUserPreparesAPOSTRequestWithoutDataToSendToTheApiLoansRejectEndpoint() {
         reqBodyPojo=new LoansRejectPojo();
     }
-
+    @Then("The API user verifies that the Reason information in the response body is null")
+    public void the_apı_user_verifies_that_the_reason_information_in_the_response_body_is_null() {
+        ReusableMethods.response.then()
+                                    .assertThat()
+                                       .body("data.Reason",equalTo(null));
+    }
     @When("The API user sends a POST request and records the response returned from the api loans reject endpoint with invalid authorization information")
     public void theAPIUserSendsAPOSTRequestAndRecordsTheResponseReturnedFromTheApiLoansRejectEndpointWithInvalidAuthorizationInformation() {
         ReusableMethods.postResponse("invalidToken",reqBodyPojo);
@@ -707,6 +717,169 @@ public class API_AdminStepdefinitions {
 
         assertEquals("",jsonPath.getString("data.data["+dataIndex+"].btc_wallet"));
         assertEquals(null,jsonPath.getString("data.data["+dataIndex+"].admin_feedback"));
+    }
+    //***************************************************************************************************
+
+    //************************************ api/deposit/pending ******************************************
+    @Given("The API user records the response from the api deposit pending endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_deposit_pending_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    //***************************************************************************************************
+
+    //************************************ api/deposit/approved *****************************************
+    @Given("The API user records the response from the api deposit approved endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_deposit_approved_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    //***************************************************************************************************
+
+    //*********************************** api/deposit/successful ****************************************
+    @Given("The API user records the response from the api deposit successful endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_deposit_successful_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    //***************************************************************************************************
+
+    //*********************************** api/deposit/rejected ******************************************
+    @Given("The API user records the response from the api deposit rejected endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_deposit_rejected_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("Verify the information of the one with the index {int} in the API user response body: {int}, {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, int user_id, int method_code, String amount, String method_currency, String charge, String rate, String final_amo, String btc_amo, String trx, int payment_try, int status, int from_api, String admin_feedback, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(user_id,jsonPath.getInt("data.data["+dataIndex+"].user_id"));
+        assertEquals(method_code,jsonPath.getInt("data.data["+dataIndex+"].method_code"));
+        assertEquals(amount,jsonPath.getString("data.data["+dataIndex+"].amount"));
+        assertEquals(method_currency,jsonPath.getString("data.data["+dataIndex+"].method_currency"));
+        assertEquals(charge,jsonPath.getString("data.data["+dataIndex+"].charge"));
+        assertEquals(rate,jsonPath.getString("data.data["+dataIndex+"].rate"));
+        assertEquals(final_amo,jsonPath.getString("data.data["+dataIndex+"].final_amo"));
+        assertEquals(btc_amo,jsonPath.getString("data.data["+dataIndex+"].btc_amo"));
+        assertEquals(trx,jsonPath.getString("data.data["+dataIndex+"].trx"));
+        assertEquals(payment_try,jsonPath.getInt("data.data["+dataIndex+"].payment_try"));
+        assertEquals(status,jsonPath.getInt("data.data["+dataIndex+"].status"));
+        assertEquals(from_api,jsonPath.getInt("data.data["+dataIndex+"].from_api"));
+        assertEquals(admin_feedback,jsonPath.getString("data.data["+dataIndex+"].admin_feedback"));
+        assertEquals(created_at,jsonPath.getString("data.data["+dataIndex+"].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.data["+dataIndex+"].updated_at"));
+
+        assertEquals("",jsonPath.getString("data.data["+dataIndex+"].btc_wallet"));
+    }
+    //***************************************************************************************************
+
+    //********************************* api/deposit/details/{{id}} **************************************
+    @Given("The API user records the response from the api deposit details endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_deposit_details_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {int}, {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, int user_id, int method_code, String amount, String method_currency, String charge, String rate, String final_amo, String btc_amo, String trx, int payment_try, int status, int from_api, String admin_feedback, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(id,jsonPath.getInt("data.id"));
+        assertEquals(user_id,jsonPath.getInt("data.user_id"));
+        assertEquals(method_code,jsonPath.getInt("data.method_code"));
+        assertEquals(amount,jsonPath.getString("data.amount"));
+        assertEquals(method_currency,jsonPath.getString("data.method_currency"));
+        assertEquals(charge,jsonPath.getString("data.charge"));
+        assertEquals(rate,jsonPath.getString("data.rate"));
+        assertEquals(final_amo,jsonPath.getString("data.final_amo"));
+        assertEquals(btc_amo,jsonPath.getString("data.btc_amo"));
+        assertEquals(trx,jsonPath.getString("data.trx"));
+        assertEquals(payment_try,jsonPath.getInt("data.payment_try"));
+        assertEquals(status,jsonPath.getInt("data.status"));
+        assertEquals(from_api,jsonPath.getInt("data.from_api"));
+        assertEquals(admin_feedback,jsonPath.getString("data.admin_feedback"));
+        assertEquals(created_at,jsonPath.getString("data.created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.updated_at"));
+
+        assertEquals("",jsonPath.getString("data.btc_wallet"));
+    }
+    //***************************************************************************************************
+
+    //********************************* api/deposit/approve/{{id}} **************************************
+    @Given("The API user records the response from the api deposit approve endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_deposit_approve_endpoint_with_valid_authorization_information() {
+        ReusableMethods.patchResponse("admin");
+    }
+
+    @Then("The API user records the response from the api deposit approve endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized")
+    public void theAPIUserRecordsTheResponseFromTheApiDepositApproveEndpointWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheErrorInformationIsUnauthorized() {
+        assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
+    }
+    @Then("The API User verifies that the status information in the response body is {int}")
+    public void the_apı_user_verifies_that_the_status_information_in_the_response_body_is(int valueStatus) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(valueStatus,jsonPath.getInt("data.status"));
+    }
+    //***************************************************************************************************
+
+    //********************************* api/deposit/reject/{{id}} **************************************
+    @Given("The API user prepares a POST request containing the correct data to send to the api deposit reject endpoint")
+    public void the_apı_user_prepares_a_post_request_containing_the_correct_data_to_send_to_the_api_deposit_reject_endpoint() {
+        requestBody=new JSONObject();
+        requestBody.put("message","Bank info is wrong");
+    }
+    @When("The API user sends a POST request and records the response returned from the api deposit reject endpoint with valid authorization information")
+    public void the_apı_user_sends_a_post_request_and_records_the_response_returned_from_the_api_deposit_reject_endpoint_with_valid_authorization_information() {
+        ReusableMethods.postResponse("admin",requestBody.toString());
+    }
+
+    @And("The API user prepares a POST request without data to send to the api deposit reject endpoint")
+    public void theAPIUserPreparesAPOSTRequestWithoutDataToSendToTheApiDepositRejectEndpoint() {
+        requestBody=new JSONObject();
+    }
+
+    @When("The API user sends a POST request and records the response returned from the api deposit reject endpoint with invalid authorization information")
+    public void theAPIUserSendsAPOSTRequestAndRecordsTheResponseReturnedFromTheApiDepositRejectEndpointWithInvalidAuthorizationInformation() {
+        ReusableMethods.postResponse("invalidToken",requestBody.toString());
+    }
+    @Then("The API user verifies that the adminfeedback information in the response body is {string}")
+    public void the_apı_user_verifies_that_the_adminfeedback_information_in_the_response_body_is(String valueAdminFeedback) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(valueAdminFeedback,jsonPath.getString("data.admin_feedback"));
+    }
+    //***************************************************************************************************
+
+    //******************************** api/deposit/delete/{{id}} ****************************************
+    @Given("The API user records the response from the api deposit delete endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_deposit_delete_endpoint_with_valid_authorization_information() {
+        ReusableMethods.deleteResponse("admin");
+    }
+
+    @Then("The API user records the response from the api deposit delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized")
+    public void theAPIUserRecordsTheResponseFromTheApiDepositDeleteEndpointWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheErrorInformationIsUnauthorized() {
+        assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
+    }
+    //***************************************************************************************************
+
+    //*********************************** api/withdrawal/list *******************************************
+    @Given("The API user records the response from the api withdrawal list endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_withdrawal_list_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("Verify the information of the one with the index {int} in the API user response body: {int}, {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, int method_id, int user_id, String amount, String currency, String rate, String charge, String trx, String final_amount, String after_charge, int status, String admin_feedback, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(method_id,jsonPath.getInt("data.data["+dataIndex+"].method_id"));
+        assertEquals(user_id,jsonPath.getInt("data.data["+dataIndex+"].user_id"));
+        assertEquals(amount,jsonPath.getString("data.data["+dataIndex+"].amount"));
+        assertEquals(currency,jsonPath.getString("data.data["+dataIndex+"].currency"));
+        assertEquals(rate,jsonPath.getString("data.data["+dataIndex+"].rate"));
+        assertEquals(charge,jsonPath.getString("data.data["+dataIndex+"].charge"));
+        assertEquals(trx,jsonPath.getString("data.data["+dataIndex+"].trx"));
+        assertEquals(final_amount,jsonPath.getString("data.data["+dataIndex+"].final_amount"));
+        assertEquals(after_charge,jsonPath.getString("data.data["+dataIndex+"].after_charge"));
+        assertEquals(status,jsonPath.getInt("data.data["+dataIndex+"].status"));
+        assertEquals(admin_feedback,jsonPath.getString("data.data["+dataIndex+"].admin_feedback"));
+        assertEquals(created_at,jsonPath.getString("data.data["+dataIndex+"].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.data["+dataIndex+"].updated_at"));
     }
     //***************************************************************************************************
 }

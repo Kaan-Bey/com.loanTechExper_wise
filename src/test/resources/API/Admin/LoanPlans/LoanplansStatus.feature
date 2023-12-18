@@ -60,7 +60,7 @@ Feature: As an administrator, I want to update the status information of existin
     Given The API user sets "api/loanplans/details/<id>" path parameters
     And The API user records the response from the api loanplans details endpoint with valid authorization information
     Then The API user verifies that the status code is 200
-    And The API user verifies that the status information in the response body is "<valueStatus>"
+    And The API user verifies that the status information in the response body is <valueStatus>
     #Api kullanicisi response bodydeki status bilgisinin "<valueStatus>" oldugunu dogrular
 
     Examples:

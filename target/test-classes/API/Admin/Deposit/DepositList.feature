@@ -18,7 +18,7 @@ Feature: An administrator (admin) should be able to access the deposit list via 
     Given The API user sets "api/deposit/list" path parameters
     Then The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized
 
-@API
+
   Scenario Outline: Verify the information returned in the response for the one with Id(x)
   (user_id, method_code, amount, method_currency, charge, rate, final_amount, btc_amount,
   btc_wallet, trx, payment_try, status, from_api, admin_feedback, created_at, updated_at)
