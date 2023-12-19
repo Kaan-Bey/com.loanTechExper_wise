@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="7.382">
-    <testcase classname="As an administrator, I want to be able to access the withdrawal list through the API connection." name="Verify the information in the response for the one with ID(x) (method_id, user_id," time="6.647">
-        <system-out><![CDATA[Given The API user sets "api/withdrawal/list" path parameters...............passed
-And The API user records the response from the api withdrawal list endpoint with valid authorization information.passed
-Then Verify the information of the one with the index 0 in the API user response body: 15, 34, "500.00000000", "UGDOL", "150.00000000", "90.00000000", "QJOMJ9JGCRR6", "61500.00000000", "410.00000000", 1, "OK GUT", "2023-12-18T11:37:40.000000Z", "2023-12-18T11:40:58.000000Z".passed
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="5.099">
+    <testcase classname="As an administrator, I want to be able to update the status information of registered withdrawal methods through the API connection." name="When invalid authorization information and a PATCH body containing the 'id' are sent" time="4.309">
+        <system-out><![CDATA[Given The API user sets "api/withdraw/methods/status/23" path parameters....passed
+Then The API user records the response from the api withdraw methods status endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error message is Unauthorized.passed
 ]]></system-out>
     </testcase>
 </testsuite>

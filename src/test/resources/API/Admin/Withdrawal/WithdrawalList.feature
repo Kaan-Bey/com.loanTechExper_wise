@@ -29,4 +29,4 @@ Feature: As an administrator, I want to be able to access the withdrawal list th
 
     Examples:
       | dataIndex | method_id | user_id | amount       | currency | rate         | charge      | trx          | final_amount   | after_charge | status | admin_feedback | created_at                  | updated_at                  |
-      | 0         | 15        | 34      | 500.00000000 | UGDOL    | 150.00000000 | 90.00000000 | QJOMJ9JGCRR6 | 61500.00000000 | 410.00000000 | 1      | OK GUT         | 2023-12-18T11:37:40.000000Z | 2023-12-18T11:40:58.000000Z |
+      | 6         | 15        | 34      | 500.00000000 | UGDOL    | 150.00000000 | 90.00000000 | QJOMJ9JGCRR6 | 61500.00000000 | 410.00000000 | 1      | OK GUT         | 2023-12-18T11:37:40.000000Z | 2023-12-18T11:40:58.000000Z |

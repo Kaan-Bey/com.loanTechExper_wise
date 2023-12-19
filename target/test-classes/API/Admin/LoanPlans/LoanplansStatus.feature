@@ -5,8 +5,8 @@ Feature: As an administrator, I want to update the status information of existin
   of 200, and the message in the response body should be "Status changed"
 
     Given The API user sets "api/loanplans/status/<id>" path parameters
-    And The API user records the response from the api loanplans update endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans update endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
+    And The API user records the response from the api loanplans status endpoint with valid authorization information
+    #Apı kulanıcısı api loanplans status endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Status changed"
 
@@ -19,8 +19,8 @@ Feature: As an administrator, I want to update the status information of existin
   in the response body should be verified as "No id"
 
     Given The API user sets "api/loanplans/status" path parameters
-    And The API user records the response from the api loanplans update endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans update endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
+    And The API user records the response from the api loanplans status endpoint with valid authorization information
+    #Apı kulanıcısı api loanplans status endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 203
     And The API User verifies that the message information in the response body is "No id"
 
@@ -30,8 +30,8 @@ Feature: As an administrator, I want to update the status information of existin
   in the response body should be verified as "No plan"
 
     Given The API user sets "api/loanplans/status/<id>" path parameters
-    And The API user records the response from the api loanplans update endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans update endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
+    And The API user records the response from the api loanplans status endpoint with valid authorization information
+    #Apı kulanıcısı api loanplans status endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 203
     And The API User verifies that the message information in the response body is "No plan"
 
