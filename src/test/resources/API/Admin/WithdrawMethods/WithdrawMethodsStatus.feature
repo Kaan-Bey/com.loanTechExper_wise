@@ -38,7 +38,7 @@ Feature: As an administrator, I want to be able to update the status information
       | id  |
       | 458 |
 
-  @API
+
   Scenario Outline: When invalid authorization information and a PATCH body containing the 'id' are sent
   to the 'api/withdraw/methods/status/{{id}}' endpoint, it should be verified that the returned status
   code is 401, and the error information in the response body is "Unauthorized request"

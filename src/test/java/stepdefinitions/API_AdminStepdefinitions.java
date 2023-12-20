@@ -1134,4 +1134,201 @@ public class API_AdminStepdefinitions {
         assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
     }
     //***************************************************************************************************
+
+    //******************************** api/withdraw/methods/update/{{id}} *******************************
+    @Given("The API user prepares a PATCH request with the correct data to send to the api withdraw methods update endpoint")
+    public void the_apı_user_prepares_a_patch_request_with_the_correct_data_to_send_to_the_api_withdraw_methods_update_endpoint() {
+        reqBody=new HashMap();
+        reqBody.put("name","Method 5 Updated");
+        reqBody.put("min_limit","300.00000000");
+        reqBody.put("max_limit","8000.00000000");
+    }
+    @When("The API user sends a PATCH request and records the response from the api withdraw methods update endpoint with valid authorization information")
+    public void the_apı_user_sends_a_patch_request_and_records_the_response_from_the_api_withdraw_methods_update_endpoint_with_valid_authorization_information() {
+        ReusableMethods.patchResponseBody("admin",reqBody);
+    }
+
+    @And("The API user prepares a PATCH request without including data to send to the api withdraw methods update endpoint")
+    public void theAPIUserPreparesAPATCHRequestWithoutIncludingDataToSendToTheApiWithdrawMethodsUpdateEndpoint() {
+        reqBody=new HashMap();
+    }
+
+    @Then("The API user records the response from the api withdraw methods update endpoint with invalid authorization information and verifies that the status code is '401' and the error message is Unauthorized")
+    public void theAPIUserRecordsTheResponseFromTheApiWithdrawMethodsUpdateEndpointWithInvalidAuthorizationInformationAndVerifiesThatTheStatusCodeIsAndTheErrorMessageIsUnauthorized() {
+        assertTrue(ReusableMethods.tryCatchPatchBody(reqBody).contains("status code: 401, reason phrase: Unauthorized"));
+    }
+    //***************************************************************************************************
+
+    //******************************* api/withdraw/methods/delete/{{id}} ********************************
+    @Given("The API user records the response from the api withdraw methods delete endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_withdraw_methods_delete_endpoint_with_valid_authorization_information() {
+        ReusableMethods.deleteResponse("admin");
+    }
+
+    @Then("The API user records the response from the api withdraw methods delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error message is Unauthorized")
+    public void theAPIUserRecordsTheResponseFromTheApiWithdrawMethodsDeleteEndpointWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheErrorMessageIsUnauthorized() {
+        assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
+    }
+    //***************************************************************************************************
+
+    //*************************************** api/blogs/list ********************************************
+    @Given("The API user records the response from the api blogs list endpoint with valid authorization information.")
+    public void the_apı_user_records_the_response_from_the_api_blogs_list_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String data_keys, String has_image, String title, String description_nic, String image, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(data_keys,jsonPath.getString("data.data["+dataIndex+"].data_keys"));
+        assertEquals(has_image,jsonPath.getString("data.data["+dataIndex+"].data_values.has_image[0]"));
+        assertEquals(title,jsonPath.getString("data.data["+dataIndex+"].data_values.title"));
+        assertTrue(jsonPath.getString("data.data["+dataIndex+"].data_values.description_nic").contains(description_nic));
+        assertEquals(image,jsonPath.getString("data.data["+dataIndex+"].data_values.image"));
+        assertEquals(created_at,jsonPath.getString("data.data["+dataIndex+"].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.data["+dataIndex+"].updated_at"));
+    }
+    //***************************************************************************************************
+
+    //********************************** api/blogs/details/{{id}} ***************************************
+    @Given("The API user records the response from the api blogs details endpoint with valid authorization information")
+    public void the_apı_user_records_the_response_from_the_api_blogs_details_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String data_keys, String has_image, String title, String description_nic, String image, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(id,jsonPath.getInt("data.id"));
+        assertEquals(data_keys,jsonPath.getString("data.data_keys"));
+        assertEquals(has_image,jsonPath.getString("data.data_values.has_image[0]"));
+        assertEquals(title,jsonPath.getString("data.data_values.title"));
+        assertTrue(jsonPath.getString("data.data_values.description_nic").contains(description_nic));
+        assertEquals(image,jsonPath.getString("data.data_values.image"));
+        assertEquals(created_at,jsonPath.getString("data.created_at"));
+        assertEquals(updated_at,jsonPath.getString("data.updated_at"));
+    }
+    //***************************************************************************************************
+
+    //***************************************** api/blogs/add *******************************************
+    @Given("The API user prepares a POST request with the correct data to send to the api blogs add endpoint")
+    public void the_apı_user_prepares_a_post_request_with_the_correct_data_to_send_to_the_api_blogs_add_endpoint() {
+        requestBody=new JSONObject();
+        requestBody.put("title","Test Blog 3");
+        requestBody.put("description","Test açıklama 3");
+    }
+    @When("The API user sends a POST request and records the response from the api blogs add endpoint with valid authorization information")
+    public void the_apı_user_sends_a_post_request_and_records_the_response_from_the_api_blogs_add_endpoint_with_valid_authorization_information() {
+        ReusableMethods.postResponse("admin",requestBody.toString());
+    }
+
+    @And("The API user prepares a POST request with incomplete data to send to the api blogs add endpoint")
+    public void theAPIUserPreparesAPOSTRequestWithIncompleteDataToSendToTheApiBlogsAddEndpoint() {
+        requestBody=new JSONObject();
+        requestBody.put("title","Test Blog 3");
+    }
+
+    @And("The API user prepares a POST request with no data to send to the api blogs add endpoint")
+    public void theAPIUserPreparesAPOSTRequestWithNoDataToSendToTheApiBlogsAddEndpoint() {
+        requestBody=new JSONObject();
+    }
+
+    @When("The API user sends a POST request, records the response from the api blogs add endpoint and saves it with invalid authorization information")
+    public void theAPIUserSendsAPOSTRequestRecordsTheResponseFromTheApiBlogsAddEndpointAndSavesItWithInvalidAuthorizationInformation() {
+        ReusableMethods.postResponse("invalidToken",requestBody.toString());
+    }
+    //***************************************************************************************************
+
+    //************************************** api/blogs/update{{id}} *************************************
+    @Given("The API user prepares a PATCH request with the correct data to send to the api blogs update endpoint")
+    public void the_apı_user_prepares_a_patch_request_with_the_correct_data_to_send_to_the_api_blogs_update_endpoint() {
+        reqBody=new HashMap<>();
+        reqBody.put("title","Test Blog Updated");
+        reqBody.put("description","Test description updated");
+    }
+    @When("The API user sends a PATCH request and records the response from the api blogs update endpoint with valid authorization information")
+    public void the_apı_user_sends_a_patch_request_and_records_the_response_from_the_api_blogs_update_endpoint_with_valid_authorization_information() {
+        ReusableMethods.patchResponseBody("admin",reqBody);
+    }
+
+    @And("The API user prepares a PATCH request without data to send to the api blogs update endpoint")
+    public void theAPIUserPreparesAPATCHRequestWithoutDataToSendToTheApiBlogsUpdateEndpoint() {
+        reqBody=new HashMap<>();
+    }
+
+    @And("The API user prepares a PATCH request with missing data to send to the api blogs update endpoint")
+    public void theAPIUserPreparesAPATCHRequestWithMissingDataToSendToTheApiBlogsUpdateEndpoint() {
+        reqBody=new HashMap<>();
+        reqBody.put("title","Test Blog Updated");
+    }
+
+
+    @Then("The API user records the response from the api blogs update endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error message is Unauthorized")
+    public void theAPIUserRecordsTheResponseFromTheApiBlogsUpdateEndpointWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheErrorMessageIsUnauthorized() {
+        assertTrue(ReusableMethods.tryCatchPatchBody(reqBody).contains("status code: 401, reason phrase: Unauthorized"));
+    }
+
+    @Then("The API User verifies that the title information in the response body is {string}")
+    public void the_apı_user_verifies_that_the_title_information_in_the_response_body_is(String valueTitle) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(valueTitle,jsonPath.getString("data.data_values.title"));
+    }
+
+    //***************************************************************************************************
+
+    //************************************** api/blogs/remove{{id}} *************************************
+    @And("The API user saves the response returned from the api blogs remove endpoint with valid authorization information")
+    public void theAPIUserSavesTheResponseReturnedFromTheApiBlogsRemoveEndpointWithValidAuthorizationInformation() {
+        ReusableMethods.deleteResponse("admin");
+    }
+
+    @Then("The API user records the response returned from the api blogs remove endpoint with invalid authorization information and verifies that the status code is '401' and the error message is Unauthorized")
+    public void theAPIUserRecordsTheResponseReturnedFromTheApiBlogsRemoveEndpointWithInvalidAuthorizationInformationAndVerifiesThatTheStatusCodeIsAndTheErrorMessageIsUnauthorized() {
+        assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
+    }
+    //***************************************************************************************************
+
+    //************************************** api/users/with-balance *************************************
+    @Given("The API user saves the response from the api users with-balance endpoint with valid authorization information")
+    public void the_apı_user_saves_the_response_from_the_api_users_with_balance_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {string}, {string}, {string}, {string}, {string}, {int}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String firstname, String lastname, String username, String email, String country_code, String mobile, int ref_by, String balance) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(firstname,jsonPath.getString("data.data["+dataIndex+"].firstname"));
+        assertEquals(lastname,jsonPath.getString("data.data["+dataIndex+"].lastname"));
+        assertEquals(username,jsonPath.getString("data.data["+dataIndex+"].username"));
+        assertEquals(null,jsonPath.get("data.data["+dataIndex+"].image"));
+        assertEquals(email,jsonPath.getString("data.data["+dataIndex+"].email"));
+        assertEquals(country_code,jsonPath.getString("data.data["+dataIndex+"].country_code"));
+        assertEquals(mobile,jsonPath.getString("data.data["+dataIndex+"].mobile"));
+        assertEquals(ref_by,jsonPath.getInt("data.data["+dataIndex+"].ref_by"));
+        assertEquals(balance,jsonPath.getString("data.data["+dataIndex+"].balance"));
+    }
+    //***************************************************************************************************
+
+    //******************************* api/users/with-balance-user/{{id}} ********************************
+    @Given("The API user saves the response from the api users with-balance-user endpoint with valid authorization information")
+    public void the_apı_user_saves_the_response_from_the_api_users_with_balance_user_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("admin");
+    }
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String firstname, String lastname, String username, String email, String country_code, String mobile, int ref_by, String balance) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(id,jsonPath.getInt("data[0].id"));
+        assertEquals(firstname,jsonPath.getString("data[0].firstname"));
+        assertEquals(lastname,jsonPath.getString("data[0].lastname"));
+        assertEquals(username,jsonPath.getString("data[0].username"));
+        assertEquals(null,jsonPath.get("data[0].image"));
+        assertEquals(email,jsonPath.getString("data[0].email"));
+        assertEquals(country_code,jsonPath.getString("data[0].country_code"));
+        assertEquals(mobile,jsonPath.getString("data[0].mobile"));
+        assertEquals(ref_by,jsonPath.getInt("data[0].ref_by"));
+        assertEquals(balance,jsonPath.getString("data[0].balance"));
+    }
+    //***************************************************************************************************
 }

@@ -128,6 +128,22 @@ public class ReusableMethods {
         return exceptionMesaj;
     }
 
+    public static String tryCatchPatchBody(Object requestBody) {
+        String exceptionMesaj = null;
+        try {
+            response = given()
+                        .spec(spec)
+                        .header("Accept", "application/*")
+                        .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
+                     .when()
+                        .body(requestBody)
+                        .patch(fullPath);
+        } catch (Exception e) {
+            exceptionMesaj = e.getMessage();
+        }
+        return exceptionMesaj;
+    }
+
     public static String tryCatchDelete() {
         String exceptionMesaj = null;
         try {
