@@ -13,7 +13,7 @@ Feature: As an administrator, I want to update the existing category information
 
     Examples:
       | id |
-      | 25 |
+      | 93 |
 
 
   Scenario Outline: When a POST request with valid authorization information, correct 'id', and valid
@@ -28,7 +28,7 @@ Feature: As an administrator, I want to update the existing category information
 
     Examples:
       | id |
-      | 25 |
+      | 93 |
 
 
   Scenario Outline: When a POST request with valid authorization information, correct 'id', and no data
@@ -44,7 +44,7 @@ Feature: As an administrator, I want to update the existing category information
 
     Examples:
       | id |
-      | 25 |
+      | 93 |
 
 
   Scenario: When a POST request with valid authorization information and no 'id' is sent to the api/
@@ -87,11 +87,11 @@ Feature: As an administrator, I want to update the existing category information
 
     Examples:
       | id |
-      | 46 |
+      | 93 |
 
 
   Scenario Outline: The update of the desired category record through the API should be verified. This can be
-  confirmed by sending a GET request to the api/categories/details/{{id}} endpoint with the updated ID
+  confirmed by sending a GET request to the api/categories/details/{{id}} endpoint with the Updated Category Id
   returned in the response body to ensure that the record has been successfully updated
 
     Given The API user sets "api/categories/details/<id>" path parameters
@@ -102,4 +102,4 @@ Feature: As an administrator, I want to update the existing category information
 
     Examples:
       | id | valueName   |
-      | 25 | Car Loan 35 |
+      | 93 | Car Loan 35 |

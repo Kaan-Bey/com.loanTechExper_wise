@@ -11,7 +11,7 @@ Feature: As an administrator, I should be able to delete a category record in th
 
     Examples:
       | id |
-      | 24 |
+      | 92 |
 
   Scenario: When a DELETE request with valid authorization information and no 'id' is sent to the
   api/categories/delete/{{id}} endpoint, the returned status code should be 203, and the message in the
@@ -47,7 +47,7 @@ Feature: As an administrator, I should be able to delete a category record in th
 
     Examples:
       | id |
-      | 24 |
+      | 92 |
 
 
   Scenario Outline: The deletion of the desired category record through the API should be verified. This can
@@ -61,4 +61,4 @@ Feature: As an administrator, I should be able to delete a category record in th
 
     Examples:
       | id |
-      | 24 |
+      | 92 |

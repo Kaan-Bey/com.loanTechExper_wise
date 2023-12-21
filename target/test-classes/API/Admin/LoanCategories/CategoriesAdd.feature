@@ -61,4 +61,4 @@ Feature: As an administrator, I want to create a new category record via API con
 
     Examples:
       | id | index | valueId |
-      | 25 | 0     | 25      |
+      | 92 | 0     | 92      |

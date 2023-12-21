@@ -27,6 +27,6 @@ Feature: As an administrator, I want to access the list of categories via API co
     Then Verify the information of the one with the index <dataIndex> in the API user response body: "<name>", "<description>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | name       | description | status | created_at                  | updated_at                  |
-      | 3         | Basic Loan | Basic Loan  | 1      | 2023-10-16T09:29:44.000000Z | 2023-10-16T09:29:44.000000Z |
+      | dataIndex | name | description | status | created_at                  | updated_at                  |
+      | 3         | bb   | deneme      | 1      | 2023-12-21T10:26:29.000000Z | 2023-12-21T10:28:19.000000Z |
 

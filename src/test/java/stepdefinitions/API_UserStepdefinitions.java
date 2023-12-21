@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import junit.framework.TestCase;
 import org.json.JSONObject;
 import utilities.ConfigReader;
 import utilities.ReusableMethods;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 
 import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -66,8 +68,8 @@ public class API_UserStepdefinitions {
     }
 
     //********************************* user/ticket/list ***********************************************
-    @And("The API user saves the response returned from the user ticket list endpoint")
-    public void theAPIUserSavesTheResponseReturnedFromTheUserTicketListEndpoint() {
+    @Given("The API user saves the response from the user ticket list endpoint with valid authorization information")
+    public void the_apı_user_saves_the_response_from_the_user_ticket_list_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("user");
     }
 
@@ -112,8 +114,9 @@ public class API_UserStepdefinitions {
         requestBody.put("message", "Test Ticket Message-");
     }
 
-    @When("The API user sends a POST request and saves the response returned from the user ticket add endpoint")
-    public void theAPIUserSendsAPOSTRequestAndSavesTheResponseReturnedFromTheUserTicketAddEndpoint() {
+
+    @When("The API user sends a POST request and saves the response from the user ticket add endpoint with valid authorization information")
+    public void the_apı_user_sends_a_post_request_and_saves_the_response_from_the_user_ticket_add_endpoint_with_valid_authorization_information() {
         ReusableMethods.postResponse("user", requestBody.toString());
     }
 
@@ -134,20 +137,34 @@ public class API_UserStepdefinitions {
         requestBody = new JSONObject();
         requestBody.put("subject", "Test Ticket");
     }
+
+    @When("The API user sends a POST request and saves the response from the user ticket add endpoint with invalid authorization information")
+    public void the_apı_user_sends_a_post_request_and_saves_the_response_from_the_user_ticket_add_endpoint_with_invalid_authorization_information() {
+        ReusableMethods.postResponse("invalidToken", requestBody.toString());
+    }
     //***********************************************************************************************
 
     //********************************* user/ticket/close/{{id}} *******************************************
-    @And("The API user saves the response returned from the user ticket close endpoint")
-    public void theAPIUserSavesTheResponseReturnedFromTheUserTicketCloseEndpoint() {
+    @And("The API user saves the response from the user ticket close endpoint with valid authorization information")
+    public void theAPIUserSavesTheResponseFromTheUserTicketCloseEndpointWithValidAuthorizationInformation() {
         ReusableMethods.patchResponse("user");
     }
 
+    @Then("The API user saves the response from the user ticket close endpoint with invalid authorization information and verifies that the status code is '401' and the error message is Unauthorized")
+    public void the_apı_user_saves_the_response_from_the_user_ticket_close_endpoint_with_invalid_authorization_information_and_verifies_that_the_status_code_is_and_the_error_message_is_unauthorized() {
+        assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
+    }
     //************************************************************************************************
 
     //********************************* user/ticket/delete/{{id}} *******************************************
-    @Given("The API user saves the response returned from the user ticket delete endpoint")
-    public void the_apı_user_saves_the_response_returned_from_the_user_ticket_delete_endpoint() {
+    @Given("The API user saves the response from the user ticket delete endpoint with valid authorization information")
+    public void the_apı_user_saves_the_response_from_the_user_ticket_delete_endpoint_with_valid_authorization_information() {
         ReusableMethods.deleteResponse("user");
+    }
+
+    @Then("The API user saves the response from the user ticket delete endpoint with invalid authorization information and confirms that the status code is '401' and the error message is Unauthorized")
+    public void the_apı_user_saves_the_response_from_the_user_ticket_delete_endpoint_with_invalid_authorization_information_and_confirms_that_the_status_code_is_and_the_error_message_is_unauthorized() {
+        assertTrue(ReusableMethods.tryCatchDelete().contains("status code: 401, reason phrase: Unauthorized"));
     }
 
     @Then("The API User verifies that the message information in the response body is {string}")
@@ -171,8 +188,8 @@ public class API_UserStepdefinitions {
         requestBody.put("city", "New York City");
     }
 
-    @When("The API user sends a PATCH request and saves the response returned from the user profile endpoint")
-    public void theAPIUserSendsAPATCHRequestAndSavesTheResponseReturnedFromTheUserProfileEndpoint() {
+    @When("The API user sends a PATCH request and saves the response from the user profile endpoint with valid authorization information")
+    public void theAPIUserSendsAPATCHRequestAndSavesTheResponseFromTheUserProfileEndpointWithValidAuthorizationInformation() {
         ReusableMethods.patchResponseBody("user", requestBody.toString());
     }
 
@@ -190,39 +207,51 @@ public class API_UserStepdefinitions {
     public void theAPIUserPreparesAPATCHRequestWithoutDataToSendToTheUserProfileEndpoint() {
         requestBody = new JSONObject();
     }
+
+    @Then("The API user saves the response from the user profile endpoint with invalid authorization information and verifies that the status code is '401' and the error message is Unauthorized")
+    public void the_apı_user_saves_the_response_from_the_user_profile_endpoint_with_invalid_authorization_information_and_verifies_that_the_status_code_is_and_the_error_message_is_unauthorized() {
+        assertTrue(ReusableMethods.tryCatchPatchBody(requestBody.toString()).contains("status code: 401, reason phrase: Unauthorized"));
+    }
+
     //*********************************************************************************************
 
     //********************************* user/changepassword ****************************************
     @And("The API user prepares a PATCH request containing the correct data to send to the user change password endpoint")
     public void theAPIUserPreparesAPATCHRequestContainingTheCorrectDataToSendToTheUserChangePasswordEndpoint() {
         requestBody = new JSONObject();
-        requestBody.put("current_password","Loan.741");
-        requestBody.put("password","{ASd125}");
+        requestBody.put("current_password", "Loan.741");
+        requestBody.put("password", "{ASd125}");
     }
 
-    @When("The API user sends a PATCH request and saves the response returned from the user change password endpoint")
-    public void theAPIUserSendsAPATCHRequestAndSavesTheResponseReturnedFromTheUserChangePasswordEndpoint() {
+
+    @When("The API user sends a PATCH request and saves the response from the user change password endpoint with valid authorization information")
+    public void the_apı_user_sends_a_patch_request_and_saves_the_response_from_the_user_change_password_endpoint_with_valid_authorization_information() {
         ReusableMethods.patchResponseBody("user", requestBody.toString());
     }
 
     @And("The API user prepares a PATCH request to send to the user change password endpoint with a new password containing only numbers")
     public void theAPIUserPreparesAPATCHRequestToSendToTheUserChangePasswordEndpointWithANewPasswordContainingOnlyNumbers() {
         requestBody = new JSONObject();
-        requestBody.put("current_password","Loan.741");
+        requestBody.put("current_password", "Loan.741");
         requestBody.put("password", "12345");
     }
 
     @And("The API user prepares a PATCH request to send to the user change password endpoint with a new password containing at least one uppercase letter, one lowercase letter, and a number")
     public void theAPIUserPreparesAPATCHRequestToSendToTheUserChangePasswordEndpointWithANewPasswordContainingAtLeastOneUppercaseLetterOneLowercaseLetterAndANumber() {
         requestBody = new JSONObject();
-        requestBody.put("current_password","Loan.741");
+        requestBody.put("current_password", "Loan.741");
         requestBody.put("password", "12345Aa");
+    }
+
+    @Then("The API user saves the response from the user change password endpoint with invalid authorization information and confirms that the status code is '401' and the error message is Unauthorized")
+    public void the_apı_user_saves_the_response_from_the_user_change_password_endpoint_with_invalid_authorization_information_and_confirms_that_the_status_code_is_and_the_error_message_is_unauthorized() {
+        assertTrue(ReusableMethods.tryCatchPatchBody(requestBody.toString()).contains("status code: 401, reason phrase: Unauthorized"));
     }
     //**********************************************************************************************
 
     //********************************* user/plan **************************************************
-    @And("The API user records the response returned from the user plan endpoint")
-    public void theAPIUserRecordsTheResponseReturnedFromTheUserPlanEndpoint() {
+    @Given("The API user saves the response from the user plan endpoint with valid authorization information")
+    public void the_apı_user_saves_the_response_from_the_user_plan_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("user");
     }
 
@@ -240,8 +269,8 @@ public class API_UserStepdefinitions {
     //************************************************************************************************
 
     //********************************* user/list/transaction ****************************************
-    @And("The API user records the response returned from the user list transaction endpoint")
-    public void theAPIUserRecordsTheResponseReturnedFromTheUserListTransactionEndpoint() {
+    @And("The API user saves the response from the user list transaction endpoint with valid authorization information")
+    public void theAPIUserSavesTheResponseFromTheUserListTransactionEndpointWithValidAuthorizationInformation() {
         ReusableMethods.getResponse("user");
     }
 
@@ -265,10 +294,11 @@ public class API_UserStepdefinitions {
     //*************************************************************************************************
 
     //********************************* user/list/loan ************************************************
-    @And("The API user saves the response returned from the user list loan endpoint")
-    public void theAPIUserSavesTheResponseReturnedFromTheUserListLoanEndpoint() {
+    @And("The API user saves the response from the user list loan endpoint with valid authorization information")
+    public void theAPIUserSavesTheResponseFromTheUserListLoanEndpointWithValidAuthorizationInformation() {
         ReusableMethods.getResponse("user");
     }
+
     @Then("Verify the information of the one with the index {int} in the API user response body {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
     public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, int status, String approved_at, String created_at, String updated_at) {
         jsonPath = ReusableMethods.response.jsonPath();
@@ -291,23 +321,7 @@ public class API_UserStepdefinitions {
         assertEquals(created_at, jsonPath.getString("data[" + dataIndex + "].created_at"));
         assertEquals(updated_at, jsonPath.getString("data[" + dataIndex + "].updated_at"));
     }
+
     //*************************************************************************************************
 
-
-    @Then("The API user saves the response from the user ticket list endpoint")
-    public void theAPIUserSavesTheResponseFromTheUserTicketListEndpoint() {
-        response = given()
-                .spec(spec)
-                .header("Accept", "application/json")
-                .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
-                .when()
-                .get(fullPath);
-
-        response.prettyPrint();
-    }
-
-    @Then("The API user verifies that the status cod is {int}")
-    public void theAPIUserVerifiesThatTheStatusCodIs(int status) {
-        response.then().assertThat().statusCode(status);
-    }
 }

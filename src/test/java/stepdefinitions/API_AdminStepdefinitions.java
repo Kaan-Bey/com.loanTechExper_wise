@@ -50,6 +50,18 @@ public class API_AdminStepdefinitions {
     public void theAPIUserRecordsTheResponseFromTheApiCategoriesDetailsEndpointWithTheValidAuthorizationInformation() {
         ReusableMethods.getResponse("admin");
     }
+    @Then("The API user verifies that the content of the data field in the response body includes {int}, {string}, {string}, {int}, {string}, {string}")
+    public void the_apı_user_verifies_that_the_content_of_the_data_field_in_the_response_body_includes(int id, String name, String description, int status, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(id,jsonPath.getInt("data[0].id"));
+        assertEquals(name,jsonPath.getString("data[0].name"));
+        assertEquals(null,jsonPath.get("data[0].image"));
+        assertEquals(description,jsonPath.getString("data[0].description"));
+        assertEquals(status,jsonPath.getInt("data[0].status"));
+        assertEquals(created_at,jsonPath.getString("data[0].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data[0].updated_at"));
+    }
     //***************************************************************************************************
 
     //********************************* api/categories/add **********************************************

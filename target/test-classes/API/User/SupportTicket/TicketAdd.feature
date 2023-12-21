@@ -8,8 +8,8 @@ Feature: As a user, I want to be able to create a new user ticket record through
     Given The API user sets "user/ticket/add" path parameters
     And The API user prepares a POST request containing the correct data to send to the user ticket add endpoint
     #Api kullanicisi user ticket add endpointine gondermek icin dogru datalar iceren bir post request hazirlar
-    When The API user sends a POST request and saves the response returned from the user ticket add endpoint
-    #Api kullanicisi post request gonderir ve user ticket add endpointinden donen responsei kaydeder
+    When The API user sends a POST request and saves the response from the user ticket add endpoint with valid authorization information
+    #Api kullanicisi post request gonderir ve user ticket add endpointinden donen responsei gecerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the message information in the response body is "Ticket opened successfully!"
 
@@ -20,7 +20,7 @@ Feature: As a user, I want to be able to create a new user ticket record through
 
     Given The API user sets "user/ticket/add" path parameters
     And The API user prepares a POST request without data to send to the user ticket add endpoint
-    When The API user sends a POST request and saves the response returned from the user ticket add endpoint
+    When The API user sends a POST request and saves the response from the user ticket add endpoint with valid authorization information
     Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
 
@@ -30,6 +30,18 @@ Feature: As a user, I want to be able to create a new user ticket record through
 
     Given The API user sets "user/ticket/add" path parameters
     And The API user prepares a POST request with missing data to send to the user ticket add endpoint.
-    When The API user sends a POST request and saves the response returned from the user ticket add endpoint
+    When The API user sends a POST request and saves the response from the user ticket add endpoint with valid authorization information
     Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
+
+
+  Scenario: Verify that when a POST request with invalid authorization information and correct data
+  (subject, priority, message) is sent to the 'user/ticket/add' endpoint, the returned status code is
+  401, and the error message in the response body is "Unauthorized request"
+
+    Given The API user sets "user/ticket/add" path parameters
+    And The API user prepares a POST request containing the correct data to send to the user ticket add endpoint
+    When The API user sends a POST request and saves the response from the user ticket add endpoint with invalid authorization information
+    #Api kullanicisi post request gonderir ve user ticket add endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder
+    Then The API user verifies that the status code is 401
+    And The API user verifies that the error information in the response body is "Unauthorized request"
