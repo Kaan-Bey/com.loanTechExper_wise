@@ -5,12 +5,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import org.json.JSONObject;
+import utilities.ConfigReader;
 import utilities.ReusableMethods;
 
 import java.util.Arrays;
 
 import static hooks.HooksAPI.spec;
+import static io.restassured.RestAssured.given;
 import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -19,6 +22,7 @@ public class API_UserStepdefinitions {
     JsonPath jsonPath;
     JSONObject requestBody;
     public static String id;
+    Response response;
 
     @Given("The API user sets {string} path parameters")
     public void the_apı_user_sets_path_parameters(String rawPaths) {
@@ -71,15 +75,15 @@ public class API_UserStepdefinitions {
     public void theAPIUserVerifiesThatTheStatusCodeIs(int code) {
 
         ReusableMethods.response.then()
-                                   .assertThat()
-                                      .statusCode(code);
+                .assertThat()
+                .statusCode(code);
     }
 
     @And("The API user verifies that the remark information in the response body is {string}")
     public void theAPIUserVerifiesThatTheRemarkInformationInTheResponseBodyIs(String remark) {
         ReusableMethods.response.then()
-                                  .assertThat()
-                                      .body("remark", equalTo(remark));
+                .assertThat()
+                .body("remark", equalTo(remark));
     }
 
     @Then("Verify the information of the one with the id {int} in the API user response body: {int}, {string}, {string}, {string}, {string}, {int}, {int}, {string}, {string}, {string}")
@@ -149,8 +153,8 @@ public class API_UserStepdefinitions {
     @Then("The API User verifies that the message information in the response body is {string}")
     public void the_apı_user_verifies_that_the_message_information_in_the_response_body_is(String message) {
         ReusableMethods.response.then()
-                                   .assertThat()
-                                      .body("data.message", equalTo(message));
+                .assertThat()
+                .body("data.message", equalTo(message));
     }
 
     //*************************************************************************************************
@@ -159,8 +163,8 @@ public class API_UserStepdefinitions {
     @And("The API user prepares a PATCH request containing the correct data to send to the user profile endpoint")
     public void theAPIUserPreparesAPATCHRequestContainingTheCorrectDataToSendToTheUserProfileEndpoint() {
         requestBody = new JSONObject();
-        requestBody.put("firstname", "Ali");
-        requestBody.put("lastname", "Dost");
+        requestBody.put("firstname", "Mehmet");
+        requestBody.put("lastname", "Genç");
         requestBody.put("address", "New York");
         requestBody.put("state", "New York City");
         requestBody.put("zip", "125874");
@@ -192,8 +196,8 @@ public class API_UserStepdefinitions {
     @And("The API user prepares a PATCH request containing the correct data to send to the user change password endpoint")
     public void theAPIUserPreparesAPATCHRequestContainingTheCorrectDataToSendToTheUserChangePasswordEndpoint() {
         requestBody = new JSONObject();
-        requestBody.put("current_password", "Oz123123.");
-        requestBody.put("password", "{ASd125}");
+        requestBody.put("current_password","Loan.741");
+        requestBody.put("password","{ASd125}");
     }
 
     @When("The API user sends a PATCH request and saves the response returned from the user change password endpoint")
@@ -204,14 +208,14 @@ public class API_UserStepdefinitions {
     @And("The API user prepares a PATCH request to send to the user change password endpoint with a new password containing only numbers")
     public void theAPIUserPreparesAPATCHRequestToSendToTheUserChangePasswordEndpointWithANewPasswordContainingOnlyNumbers() {
         requestBody = new JSONObject();
-        requestBody.put("current_password", "Oz123123.");
+        requestBody.put("current_password","Loan.741");
         requestBody.put("password", "12345");
     }
 
     @And("The API user prepares a PATCH request to send to the user change password endpoint with a new password containing at least one uppercase letter, one lowercase letter, and a number")
     public void theAPIUserPreparesAPATCHRequestToSendToTheUserChangePasswordEndpointWithANewPasswordContainingAtLeastOneUppercaseLetterOneLowercaseLetterAndANumber() {
         requestBody = new JSONObject();
-        requestBody.put("current_password", "Oz123123.");
+        requestBody.put("current_password","Loan.741");
         requestBody.put("password", "12345Aa");
     }
     //**********************************************************************************************
@@ -227,11 +231,11 @@ public class API_UserStepdefinitions {
         jsonPath = ReusableMethods.response.jsonPath();
 
         assertEquals(name, jsonPath.getString("data[" + dataIndex + "].name"));
+        assertEquals(null, jsonPath.get("data[2].image"));
         assertEquals(description, jsonPath.getString("data[" + dataIndex + "].description"));
         assertEquals(status, jsonPath.getInt("data[" + dataIndex + "].status"));
         assertEquals(created_at, jsonPath.getString("data[" + dataIndex + "].created_at"));
         assertEquals(updated_at, jsonPath.getString("data[" + dataIndex + "].updated_at"));
-        assertEquals(null, jsonPath.get("data[2].image"));
     }
     //************************************************************************************************
 
@@ -265,5 +269,45 @@ public class API_UserStepdefinitions {
     public void theAPIUserSavesTheResponseReturnedFromTheUserListLoanEndpoint() {
         ReusableMethods.getResponse("user");
     }
+    @Then("Verify the information of the one with the index {int} in the API user response body {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, int status, String approved_at, String created_at, String updated_at) {
+        jsonPath = ReusableMethods.response.jsonPath();
+
+        assertEquals(loan_number, jsonPath.getString("data[" + dataIndex + "].loan_number"));
+        assertEquals(user_id, jsonPath.getInt("data[" + dataIndex + "].user_id"));
+        assertEquals(plan_id, jsonPath.getInt("data[" + dataIndex + "].plan_id"));
+        assertEquals(amount, jsonPath.getString("data[" + dataIndex + "].amount"));
+        assertEquals(per_installment, jsonPath.getString("data[" + dataIndex + "].per_installment"));
+        assertEquals(installment_interval, jsonPath.getInt("data[" + dataIndex + "].installment_interval"));
+        assertEquals(delay_value, jsonPath.getInt("data[" + dataIndex + "].delay_value"));
+        assertEquals(charge_per_installment, jsonPath.getString("data[" + dataIndex + "].charge_per_installment"));
+        assertEquals(delay_charge, jsonPath.getString("data[" + dataIndex + "].delay_charge"));
+        assertEquals(given_installment, jsonPath.getInt("data[" + dataIndex + "].given_installment"));
+        assertEquals(total_installment, jsonPath.getInt("data[" + dataIndex + "].total_installment"));
+        assertEquals(null, jsonPath.get("data[" + dataIndex + "].admin_feedback"));
+        assertEquals(status, jsonPath.getInt("data[" + dataIndex + "].status"));
+        assertEquals(null, jsonPath.get("data[" + dataIndex + "].due_notification_sent"));
+        assertEquals(approved_at, jsonPath.getString("data[" + dataIndex + "].approved_at"));
+        assertEquals(created_at, jsonPath.getString("data[" + dataIndex + "].created_at"));
+        assertEquals(updated_at, jsonPath.getString("data[" + dataIndex + "].updated_at"));
+    }
     //*************************************************************************************************
+
+
+    @Then("The API user saves the response from the user ticket list endpoint")
+    public void theAPIUserSavesTheResponseFromTheUserTicketListEndpoint() {
+        response = given()
+                .spec(spec)
+                .header("Accept", "application/json")
+                .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
+                .when()
+                .get(fullPath);
+
+        response.prettyPrint();
+    }
+
+    @Then("The API user verifies that the status cod is {int}")
+    public void theAPIUserVerifiesThatTheStatusCodIs(int status) {
+        response.then().assertThat().statusCode(status);
+    }
 }

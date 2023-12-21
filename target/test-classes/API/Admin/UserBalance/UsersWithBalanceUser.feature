@@ -50,7 +50,7 @@ Feature: As an administrator, I want to be able to access the with-balance-user 
       | id  |
       | 169 |
 
-@API
+
   Scenario Outline: The content of the data (id, firstname, lastname, username, image, email, country_code,
   mobile, ref_by, balance) within the response body should be verified
 

@@ -17,5 +17,5 @@ Feature: As a user, I want to access the user plan through API connection.
     Then Verify the information of the one with the index <dataIndex> in the API user response body: "<name>", "<description>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | name       | description | status | created_at                  | updated_at                  |
-      | 2         | Basic Loan | Basic Loan  | 1      | 2023-10-16T09:29:44.000000Z | 2023-10-16T09:29:44.000000Z |
+      | dataIndex | name          | description                  | status | created_at                  | updated_at                  |
+      | 2         | Standart Loan | Description Standart Loan... | 1      | 2023-11-14T08:30:39.000000Z | 2023-11-14T08:57:31.000000Z |

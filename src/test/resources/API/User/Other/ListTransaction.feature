@@ -17,5 +17,5 @@ Feature: As a user, I want to access the user list transactions through API conn
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, "<amount>", "<charge>", "<post_balance>", "<trx_type>", "<trx>", "<details>", "<remark>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | amount          | charge     | post_balance    | trx_type | trx          | details | remark      | created_at                  | updated_at                  |
-      | 0         | 4       | 500000.00000000 | 0.00000000 | 500000.00000000 | +        | E54U6G53O2TD | try     | balance_add | 2023-11-14T18:52:46.000000Z | 2023-11-14T18:52:46.000000Z |
+      | dataIndex | user_id | amount        | charge     | post_balance  | trx_type | trx          | details    | remark     | created_at                  | updated_at                  |
+      | 0         | 11      | 3000.00000000 | 0.00000000 | 7695.00000000 | +        | DDAMY4BDT6KQ | Loan taken | loan_taken | 2023-12-14T15:06:50.000000Z | 2023-12-14T15:06:50.000000Z |

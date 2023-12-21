@@ -13,6 +13,12 @@ Feature: As a user, I want to access the Ticket List through an API connection.
     #Api kullanicisi response bodydeki remark bilgisinin "success" oldugunu dogrular
 
 
+  Scenario:
+    Given The API user sets "user/ticket/list" path parameters
+    Then The API user saves the response from the user ticket list endpoint
+    Then The API user verifies that the status cod is 401
+
+
   Scenario Outline: Verify the information returned in the response for the entity with id(x)
   (user_id, name, email, ticket, subject, status, priority, last_reply, created_at, updated_at)
 
@@ -21,5 +27,7 @@ Feature: As a user, I want to access the Ticket List through an API connection.
     Then Verify the information of the one with the id <dataIndex> in the API user response body: <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | name       | email          | ticket | subject     | status | priority | last_reply          | created_at                  | updated_at                  |
-      | 2         | 4       | Ahmet Genç | ozge@gmail.com | 713281 | Test Ticket | 1      | 0        | 2023-12-09 05:41:07 | 2023-11-29T09:09:58.000000Z | 2023-12-09T10:41:07.000000Z |
+      | dataIndex | user_id | name           | email                   | ticket | subject     | status | priority | last_reply          | created_at                  | updated_at                  |
+      | 0         | 11      | aliulvi girgin | aliulvigirgin@gmail.com | 668243 | Test        | 0      | 0        | 2023-12-21 03:32:18 | 2023-12-21T08:32:18.000000Z | 2023-12-21T08:32:18.000000Z |
+      | 1         | 11      | aliulvi girgin | aliulvigirgin@gmail.com | 891419 | Test Ticket | 0      | 0        | 2023-12-21 03:28:27 | 2023-12-21T08:28:27.000000Z | 2023-12-21T08:28:27.000000Z |
+

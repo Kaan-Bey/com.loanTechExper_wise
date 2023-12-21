@@ -12,23 +12,29 @@ Feature: As a user, I want to be able to update the close information of a regis
 
     Examples:
       | id |
-      | 58 |
+      | 59 |
 
-  Scenario: When a PATCH request with valid authorization information and no 'id' is
-  sent to the user/ticket/close/{{id}} endpoint, the returned status code
-  should be 400, and the message in the response body should be verified as "No id"
+
+  Scenario: When a PATCH request with valid authorization information and no 'id' is sent to the
+  user/ticket/close/{{id}} endpoint, the returned status code should be 203, and the message in
+  the response body should be verified as "No id"
 
     Given The API user sets "user/ticket/close" path parameters
-    Then The API user saves the response returned from the user ticket list endpoint and verifies that the status code is '400'
-      #Api kullanicisi user ticket list endpointinden donen responsei kaydeder ve status codeun 400 oldugunu dogrular
+    And The API user saves the response returned from the user ticket close endpoint
+    Then The API user verifies that the status code is 203
+    And The API User verifies that the message information in the response body is "No id"
 
-  Scenario Outline: When a PATCH request with valid authorization information and a non-existent 'id'
-  is sent to the user/ticket/close/{{id}} endpoint, the returned status code should
-  be 400, and the message in the response body should be verified as "No ticket."
+
+  Scenario Outline: When a PATCH request with valid authorization information and a non-existent 'id' is sent
+  to the user/ticket/close/{{id}} endpoint, the returned status code should be 203, and the message in the
+  response body should be verified as "No ticket."
 
     Given The API user sets "user/ticket/close/<id>" path parameters
-    Then The API user saves the response returned from the user ticket list endpoint and verifies that the status code is '400'
+    And The API user saves the response returned from the user ticket close endpoint
+    Then The API user verifies that the status code is 203
+    And The API User verifies that the message information in the response body is "No ticket."
 
     Examples:
       | id  |
-      | 274 |
+      | 591 |
+
