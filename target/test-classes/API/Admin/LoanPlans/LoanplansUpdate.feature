@@ -14,8 +14,8 @@ Feature: As an administrator, I want to update the existing loan plan informatio
 
     Examples:
       | id |
-      | 21 |
-      | 22 |
+      | 64 |
+      | 66 |
 
 
   Scenario Outline: When a POST request with valid authorization information, correct 'id', and no data
@@ -31,7 +31,7 @@ Feature: As an administrator, I want to update the existing loan plan informatio
 
     Examples:
       | id |
-      | 21 |
+      | 64 |
 
 
   Scenario: When a POST request with valid authorization information and no 'id' is sent to the
@@ -42,7 +42,6 @@ Feature: As an administrator, I want to update the existing loan plan informatio
     And The API user prepares a POST request containing the correct data to send to the api loanplans update endpoint
     #Api kullanicisi api loanplans update endpointine gondermek icin dogru datalar iceren bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api loanplans update endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans update endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 203
     And The API User verifies that the message information in the response body is "No id."
 
@@ -56,7 +55,6 @@ Feature: As an administrator, I want to update the existing loan plan informatio
     And The API user prepares a POST request containing the correct data to send to the api loanplans update endpoint
     #Api kullanicisi api loanplans update endpointine gondermek icin dogru datalar iceren bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api loanplans update endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans update endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 203
     And The API User verifies that the message information in the response body is "There is no loanplans with this id to be updated"
 
@@ -79,12 +77,12 @@ Feature: As an administrator, I want to update the existing loan plan informatio
 
     Examples:
       | id |
-      | 21 |
+      | 64 |
 
 
   Scenario Outline: The update of the desired loanplans record through the API should be verified.
   This can be confirmed by sending a GET request to the api/loanplans/details/{{id}} endpoint with
-  the 'updated id' returned in the response body to ensure that the record has been successfully updated
+  the Updated loan plan id returned in the response body to ensure that the record has been successfully updated
 
     Given The API user sets "api/loanplans/details/<id>" path parameters
     And The API user records the response from the api loanplans details endpoint with valid authorization information
@@ -95,5 +93,5 @@ Feature: As an administrator, I want to update the existing loan plan informatio
 
     Examples:
       | id | valueTitle            |
-      | 21 | Personal Finance Loan |
-      | 22 | Personal Finance Loan |
+      | 64 | Personal Finance Loan |
+      | 66 | Personal Finance Loan |

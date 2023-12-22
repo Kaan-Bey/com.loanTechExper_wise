@@ -59,9 +59,8 @@ Feature: As an administrator, I want to create a new loan plan record via API co
 
 
   Scenario Outline: The creation of the desired loanplans record through the API should be verified.
-  This can be confirmed by sending a GET request to the api/loanplans/details/{{id}} endpoint
-  with the added loan plan returned in the response body to ensure that the record has been
-  successfully created
+  This can be confirmed by sending a GET request to the api/loanplans/details/{{id}} endpoint with
+  the Added plan id returned in the response body to ensure that the record has been successfully created
 
     Given The API user sets "api/loanplans/details/<id>" path parameters
     And The API user records the response from the api loanplans details endpoint with valid authorization information
@@ -72,4 +71,4 @@ Feature: As an administrator, I want to create a new loan plan record via API co
 
     Examples:
       | id | index | valueId |
-      | 21 | 0     | 21      |
+      | 64 | 0     | 64      |

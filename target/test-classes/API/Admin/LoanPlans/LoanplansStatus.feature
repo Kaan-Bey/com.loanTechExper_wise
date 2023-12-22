@@ -12,7 +12,7 @@ Feature: As an administrator, I want to update the status information of existin
 
     Examples:
       | id |
-      | 21 |
+      | 64 |
 
   Scenario: When a PATCH request with valid authorization information and no 'id' is sent to the
   api/loanplans/status/{{id}} endpoint, the returned status code should be 203, and the message
@@ -50,12 +50,12 @@ Feature: As an administrator, I want to update the status information of existin
 
     Examples:
       | id |
-      | 21 |
+      | 64 |
 
 
-  Scenario Outline: When the loanplans status record is updated via the API, it should be verified by sending
-  a GET request to the api/loanplans/details/{{id}} endpoint with the 'updated loan plan' information from
-  the response body. This ensures that the record has been successfully updated
+  Scenario Outline: The status of the loan plan record intended to be updated through the API should be verified.
+  This can be confirmed by sending a GET request to the 'api/loanplans/details/{{id}}' endpoint with the
+  Loan Plan id returned in the response body, thus validating that the record has been updated
 
     Given The API user sets "api/loanplans/details/<id>" path parameters
     And The API user records the response from the api loanplans details endpoint with valid authorization information
@@ -65,4 +65,4 @@ Feature: As an administrator, I want to update the status information of existin
 
     Examples:
       | id | valueStatus |
-      | 21 | 1           |
+      | 64 | 1           |

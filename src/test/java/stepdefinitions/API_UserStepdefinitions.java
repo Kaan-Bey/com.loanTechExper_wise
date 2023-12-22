@@ -101,6 +101,38 @@ public class API_UserStepdefinitions {
     }
     //*************************************************************************************************
 
+    //********************************* user/ticket/detail/{{id}} *************************************
+
+    //*************************************************************************************************
+    @Given("The API user saves the response from the user ticket detail endpoint with valid authorization information")
+    public void the_apı_user_saves_the_response_from_the_user_ticket_detail_endpoint_with_valid_authorization_information() {
+        ReusableMethods.getResponse("user");
+    }
+
+    @Then("The API user verifies that the success attribute in the response body is true")
+    public void the_apı_user_verifies_that_the_success_attribute_in_the_response_body_is_true() {
+        jsonPath = ReusableMethods.response.jsonPath();
+
+        assertEquals(true, jsonPath.getBoolean("success"));
+    }
+
+    @Then("The API user verifies that the content of the data field in the response body includes {int}, {int}, {string}, {string}, {string}, {string}, {int}, {int}, {string}, {string}, {string}")
+    public void the_apı_user_verifies_that_the_content_of_the_data_field_in_the_response_body_includes(int id, int user_id, String name, String email, String ticket, String subject, int status, int priority, String last_reply, String created_at, String updated_at) {
+        jsonPath = ReusableMethods.response.jsonPath();
+
+        assertEquals(id, jsonPath.getInt("data.id"));
+        assertEquals(user_id, jsonPath.getInt("data.user_id"));
+        assertEquals(name, jsonPath.getString("data.name"));
+        assertEquals(email, jsonPath.getString("data.email"));
+        assertEquals(ticket, jsonPath.getString("data.ticket"));
+        assertEquals(subject, jsonPath.getString("data.subject"));
+        assertEquals(status, jsonPath.getInt("data.status"));
+        assertEquals(priority, jsonPath.getInt("data.priority"));
+        assertEquals(last_reply, jsonPath.getString("data.last_reply"));
+        assertEquals(created_at, jsonPath.getString("data.created_at"));
+        assertEquals(updated_at, jsonPath.getString("data.updated_at"));
+    }
+
     //********************************* user/ticket/add ***********************************************
     @And("The API user prepares a POST request containing the correct data to send to the user ticket add endpoint")
     public void theAPIUserPreparesAPOSTRequestContainingTheCorrectDataToSendToTheUserTicketAddEndpoint() {
@@ -109,7 +141,6 @@ public class API_UserStepdefinitions {
         requestBody.put("priority", "Medium");
         requestBody.put("message", "Test Ticket Message-");
     }
-
 
     @When("The API user sends a POST request and saves the response from the user ticket add endpoint with valid authorization information")
     public void the_apı_user_sends_a_post_request_and_saves_the_response_from_the_user_ticket_add_endpoint_with_valid_authorization_information() {
@@ -149,6 +180,12 @@ public class API_UserStepdefinitions {
     @Then("The API user saves the response from the user ticket close endpoint with invalid authorization information and verifies that the status code is '401' and the error message is Unauthorized")
     public void the_apı_user_saves_the_response_from_the_user_ticket_close_endpoint_with_invalid_authorization_information_and_verifies_that_the_status_code_is_and_the_error_message_is_unauthorized() {
         assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
+    }
+    @Then("The API user Verifies that the status information in the response body is {int}")
+    public void the_apı_user_verifies_that_the_status_information_in_the_response_body_is(int status) {
+        jsonPath=ReusableMethods.response.jsonPath();
+
+        assertEquals(status,jsonPath.getInt("data.status"));
     }
     //************************************************************************************************
 
@@ -317,7 +354,6 @@ public class API_UserStepdefinitions {
         assertEquals(created_at, jsonPath.getString("data[" + dataIndex + "].created_at"));
         assertEquals(updated_at, jsonPath.getString("data[" + dataIndex + "].updated_at"));
     }
-
     //*************************************************************************************************
 
 }

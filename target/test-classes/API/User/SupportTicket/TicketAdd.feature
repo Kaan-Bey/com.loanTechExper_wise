@@ -45,3 +45,18 @@ Feature: As a user, I want to be able to create a new user ticket record through
     #Api kullanicisi post request gonderir ve user ticket add endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 401
     And The API user verifies that the error information in the response body is "Unauthorized request"
+
+
+  Scenario Outline: The creation of a new ticket record intended to be generated through the API should be verified.
+  This can be confirmed by sending a GET request to the 'user/ticket/detail/{{id}}' endpoint with the Opened
+  ticked id returned in the response body, thus validating that the record has been created
+
+    Given The API user sets "user/ticket/detail/<id>" path parameters
+    And The API user saves the response from the user ticket detail endpoint with valid authorization information
+    Then The API user verifies that the status code is 200
+    And The API user verifies that the success attribute in the response body is true
+    Then The API user verifies that the id information in the response body is <valueId>
+
+    Examples:
+      | id  | valueId |
+      | 100 | 100     |

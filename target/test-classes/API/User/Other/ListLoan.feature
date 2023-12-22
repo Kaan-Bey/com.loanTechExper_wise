@@ -1,5 +1,5 @@
 Feature: As a user, I want to access the list of loans via API connection.
-@API
+
   Scenario: When a valid GET request is sent to the 'user/list/loan' endpoint with the appropriate
   authorization credentials, it should return a status code of 200, and the response remark should be "success"
 

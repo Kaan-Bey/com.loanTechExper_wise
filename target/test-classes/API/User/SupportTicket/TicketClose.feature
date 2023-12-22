@@ -51,3 +51,17 @@ Feature: As a user, I want to be able to update the close information of a regis
     Examples:
       | id |
       | 59 |
+
+@API
+  Scenario Outline: The update of the ticket record through the API should be verified. This can be confirmed
+  by sending a GET request to the 'user/ticket/detail/{{id}}' endpoint with the Closed ticket id returned in
+  the response body, thus validating that the record has been updated
+
+    Given The API user sets "user/ticket/detail/<id>" path parameters
+    And The API user saves the response from the user ticket detail endpoint with valid authorization information
+    Then The API user verifies that the status code is 200
+    And The API user Verifies that the status information in the response body is <status>
+
+    Examples:
+      | id  | status |
+      | 100 | 3      |

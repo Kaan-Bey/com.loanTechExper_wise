@@ -54,9 +54,9 @@ Feature: As an administrator, I should be able to delete a subscriber record in 
       | 28 |
 
 
-  Scenario Outline: The deletion of the desired subscriber record via API should be confirmed by sending
-  a GET request to the 'api/subscriber/details/{{id}}' endpoint with the 'Deleted Subscriber id' obtained
-  from the response body. This verification process ensures that the record has been successfully deleted
+  Scenario Outline: The deletion of the desired subscriber record via API should be confirmed by sending a
+  GET request to the 'api/subscriber/details/{{id}}' endpoint with the Deleted Subscriber id obtained from
+  the response body. This verification process ensures that the record has been successfully deleted
 
     Given The API user sets "api/subscriber/details/<id>" path parameters
     And The API user records the response from the api subscriber details endpoint with valid authorization information

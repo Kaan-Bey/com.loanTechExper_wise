@@ -12,7 +12,7 @@ Feature: "As an administrator, I want to access the subscriber details of a user
 
     Examples:
       | id |
-      | 8  |
+      | 19 |
 
 
   Scenario: When a GET request without the required data (id) and with valid authorization credentials is sent
@@ -48,7 +48,7 @@ Feature: "As an administrator, I want to access the subscriber details of a user
 
     Examples:
       | id |
-      | 8  |
+      | 19 |
 
 
   Scenario Outline: The contents of data (id, email, created_at, updated_at) in the response body should be verified
@@ -59,5 +59,5 @@ Feature: "As an administrator, I want to access the subscriber details of a user
     #API kullanicisi response bodydeki data <id>, "<email>", "<created_at>", "<updated_at>"t>" içeriklerini doğrular
 
     Examples:
-      | id | id | email             | created_at                  | updated_at                  |
-      | 8  | 8  | ayilmaz@gmail.com | 2023-11-20T10:07:12.000000Z | 2023-11-22T07:59:20.000000Z |
+      | id | id | email                          | created_at                  | updated_at                  |
+      | 19 | 19 | adm00in1hfh6@smartcardlink.com | 2023-12-18T18:30:35.000000Z | 2023-12-18T18:30:35.000000Z |

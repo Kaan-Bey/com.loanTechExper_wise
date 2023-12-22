@@ -49,9 +49,9 @@ Feature: As an administrator, I want to create a new subscriber record via API c
     And The API user verifies that the error information in the response body is "Unauthorized request"
 
 
-  Scenario Outline: The creation of the new subscriber record via API should be verified by sending a GET
-  request to the 'api/subscriber/details/{{id}}' endpoint with the 'added subscriber id' obtained from the
-  response body. This verification process confirms that the record has been successfully created
+  Scenario Outline: The creation of a new subscriber record intended to be generated through the API should be
+  verified. This can be confirmed by sending a GET request to the 'api/subscriber/details/{{id}}' endpoint with
+  the Added Subscriber Id returned in the response body, thus validating that the record has been created
 
     Given The API user sets "api/subscriber/details/<id>" path parameters
     And The API user records the response from the api subscriber details endpoint with valid authorization information
