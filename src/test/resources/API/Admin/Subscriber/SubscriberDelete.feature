@@ -12,7 +12,7 @@ Feature: As an administrator, I should be able to delete a subscriber record in 
 
     Examples:
       | id |
-      | 12 |
+      | 28 |
 
 
   Scenario: When a DELETE request with valid authorization credentials and without the required (id) is sent
@@ -51,7 +51,7 @@ Feature: As an administrator, I should be able to delete a subscriber record in 
 
     Examples:
       | id |
-      | 12 |
+      | 28 |
 
 
   Scenario Outline: The deletion of the desired subscriber record via API should be confirmed by sending
@@ -65,4 +65,4 @@ Feature: As an administrator, I should be able to delete a subscriber record in 
 
     Examples:
       | id |
-      | 12 |
+      | 28 |

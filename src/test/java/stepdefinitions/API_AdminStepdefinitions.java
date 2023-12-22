@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import org.json.JSONObject;
 import pojos.LoanplansUpdatePOJO;
 import pojos.LoansRejectPOJO;
@@ -14,12 +13,10 @@ import utilities.ReusableMethods;
 
 import java.util.HashMap;
 
-import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 
 public class API_AdminStepdefinitions {
-    Response response;
     HashMap reqBody;
     JsonPath jsonPath;
     JSONObject requestBody;
@@ -56,7 +53,7 @@ public class API_AdminStepdefinitions {
 
         assertEquals(id,jsonPath.getInt("data[0].id"));
         assertEquals(name,jsonPath.getString("data[0].name"));
-        assertEquals(null,jsonPath.get("data[0].image"));
+        assertNull(jsonPath.get("data[0].image"));
         assertEquals(description,jsonPath.getString("data[0].description"));
         assertEquals(status,jsonPath.getInt("data[0].status"));
         assertEquals(created_at,jsonPath.getString("data[0].created_at"));
@@ -104,7 +101,7 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_verifies_that_the_id_information_at_index_in_the_response_body_is(int index, int valueId) {
         jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(valueId, jsonPath.getInt("data[" + index + "].id"));
+        assertEquals(valueId, jsonPath.getInt("data["+index+"].id"));
     }
     //***************************************************************************************************
 
@@ -213,7 +210,31 @@ public class API_AdminStepdefinitions {
     public void theAPIUserRecordsTheResponseFromTheApiLoanplansDetailsEndpointWithValidAuthorizationInformation() {
         ReusableMethods.getResponse("admin");
     }
+    @Then("The API user verifies that the content of the data field in the response body includes {int}, {int}, {int}, {string}, {string}, {string}, {string}, {string}, {int}, {int}, {string}, {string}, {string}, {int}, {string}, {string}, {int}, {int}, {string}, {string}")
+    public void the_apı_user_verifies_that_the_content_of_the_data_field_in_the_response_body_includes(int id, int category_id, int form_id, String name, String title, String minimum_amount, String maximum_amount, String per_installment, int installment_interval, int total_installment, String application_fixed_charge, String application_percent_charge, String instruction, int delay_value, String fixed_charge, String percent_charge, int is_featured, int status, String created_at, String updated_at) {
+        jsonPath=ReusableMethods.response.jsonPath();
 
+        assertEquals(id,jsonPath.getInt("data[0].id"));
+        assertEquals(category_id,jsonPath.getInt("data[0].category_id"));
+        assertEquals(form_id,jsonPath.getInt("data[0].form_id"));
+        assertEquals(name,jsonPath.getString("data[0].name"));
+        assertEquals(title,jsonPath.getString("data[0].title"));
+        assertEquals(minimum_amount,jsonPath.getString("data[0].minimum_amount"));
+        assertEquals(maximum_amount,jsonPath.getString("data[0].maximum_amount"));
+        assertEquals(per_installment,jsonPath.getString("data[0].per_installment"));
+        assertEquals(installment_interval,jsonPath.getInt("data[0].installment_interval"));
+        assertEquals(total_installment,jsonPath.getInt("data[0].total_installment"));
+        assertEquals(application_fixed_charge,jsonPath.getString("data[0].application_fixed_charge"));
+        assertEquals(application_percent_charge,jsonPath.getString("data[0].application_percent_charge"));
+        assertEquals(instruction,jsonPath.getString("data[0].instruction"));
+        assertEquals(delay_value,jsonPath.getInt("data[0].delay_value"));
+        assertEquals(fixed_charge,jsonPath.getString("data[0].fixed_charge"));
+        assertEquals(percent_charge,jsonPath.getString("data[0].percent_charge"));
+        assertEquals(is_featured,jsonPath.getInt("data[0].is_featured"));
+        assertEquals(status,jsonPath.getInt("data[0].status"));
+        assertEquals(created_at,jsonPath.getString("data[0].created_at"));
+        assertEquals(updated_at,jsonPath.getString("data[0].updated_at"));
+    }
     //***************************************************************************************************
 
     //***************************************** api/loanplans/add ***************************************
@@ -331,9 +352,9 @@ public class API_AdminStepdefinitions {
     public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String email, String created_at, String updated_at) {
         jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(email, jsonPath.getString("data[" + dataIndex + "].email"));
-        assertEquals(created_at, jsonPath.getString("data[" + dataIndex + "].created_at"));
-        assertEquals(updated_at, jsonPath.getString("data[" + dataIndex + "].updated_at"));
+        assertEquals(email, jsonPath.getString("data["+dataIndex+"].email"));
+        assertEquals(created_at, jsonPath.getString("data["+dataIndex+"].created_at"));
+        assertEquals(updated_at, jsonPath.getString("data["+dataIndex+"].updated_at"));
     }
     //***************************************************************************************************
 
@@ -545,8 +566,8 @@ public class API_AdminStepdefinitions {
         assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
         assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
 
-        assertEquals(null, jsonPath.get("data.data[" + dataIndex + "].admin_feedback"));
-        assertEquals(null, jsonPath.get("data.data[" + dataIndex + "].due_notification_sent"));
+        assertNull(jsonPath.get("data.data[" + dataIndex + "].admin_feedback"));
+        assertNull(jsonPath.get("data.data[" + dataIndex + "].due_notification_sent"));
     }
     //***************************************************************************************************
 
@@ -577,8 +598,8 @@ public class API_AdminStepdefinitions {
         assertEquals(created_at, jsonPath.getString("data[0].created_at"));
         assertEquals(updated_at, jsonPath.getString("data[0].updated_at"));
 
-        assertEquals(null, jsonPath.get("data[0].admin_feedback"));
-        assertEquals(null, jsonPath.get("data[0].due_notification_sent"));
+        assertNull( jsonPath.get("data[0].admin_feedback"));
+        assertNull(jsonPath.get("data[0].due_notification_sent"));
     }
     //***************************************************************************************************
 
@@ -607,28 +628,8 @@ public class API_AdminStepdefinitions {
         assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
         assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
 
-        assertEquals(null, jsonPath.get("data.data[" + dataIndex + "].admin_feedback"));
-        assertEquals(null, jsonPath.get("data.data[" + dataIndex + "].due_notification_sent"));
-        jsonPath = ReusableMethods.response.jsonPath();
-
-        assertEquals(loan_number, jsonPath.getString("data.data[" + dataIndex + "].loan_number"));
-        assertEquals(user_id, jsonPath.getInt("data.data[" + dataIndex + "].user_id"));
-        assertEquals(plan_id, jsonPath.getInt("data.data[" + dataIndex + "].plan_id"));
-        assertEquals(amount, jsonPath.getString("data.data[" + dataIndex + "].amount"));
-        assertEquals(per_installment, jsonPath.getString("data.data[" + dataIndex + "].per_installment"));
-        assertEquals(installment_interval, jsonPath.getInt("data.data[" + dataIndex + "].installment_interval"));
-        assertEquals(delay_value, jsonPath.getInt("data.data[" + dataIndex + "].delay_value"));
-        assertEquals(charge_per_installment, jsonPath.getString("data.data[" + dataIndex + "].charge_per_installment"));
-        assertEquals(delay_charge, jsonPath.getString("data.data[" + dataIndex + "].delay_charge"));
-        assertEquals(given_installment, jsonPath.getInt("data.data[" + dataIndex + "].given_installment"));
-        assertEquals(total_installment, jsonPath.getInt("data.data[" + dataIndex + "].total_installment"));
-        assertEquals(status, jsonPath.getInt("data.data[" + dataIndex + "].status"));
-        assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
-        assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
-
-        assertEquals(null, jsonPath.get("data.data[" + dataIndex + "].admin_feedback"));
-        assertEquals(null, jsonPath.get("data.data[" + dataIndex + "].due_notification_sent"));
-        assertEquals(null, jsonPath.get("data.data[" + dataIndex + "].approved_at"));
+        assertNull(jsonPath.get("data.data[" + dataIndex + "].admin_feedback"));
+        assertNull(jsonPath.get("data.data[" + dataIndex + "].due_notification_sent"));
     }
     //***************************************************************************************************
 
@@ -667,7 +668,7 @@ public class API_AdminStepdefinitions {
         assertEquals(delay_charge, jsonPath.getString("data.data[" + dataIndex + "].delay_charge"));
         assertEquals(installment_date, jsonPath.getString("data.data[" + dataIndex + "].installment_date"));
 
-        assertEquals(null, jsonPath.get("data.data[" + dataIndex + "].given_at"));
+        assertNull(jsonPath.get("data.data[" + dataIndex + "].given_at"));
     }
     //***************************************************************************************************
 
@@ -757,7 +758,7 @@ public class API_AdminStepdefinitions {
         assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
 
         assertEquals("", jsonPath.getString("data.data[" + dataIndex + "].btc_wallet"));
-        assertEquals(null, jsonPath.getString("data.data[" + dataIndex + "].admin_feedback"));
+        assertNull(jsonPath.getString("data.data[" + dataIndex + "].admin_feedback"));
     }
     //***************************************************************************************************
 
@@ -953,7 +954,7 @@ public class API_AdminStepdefinitions {
         assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
         assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
 
-        assertEquals(null, jsonPath.getString("data.data[" + dataIndex + "].admin_feedback"));
+        assertNull(jsonPath.getString("data.data[" + dataIndex + "].admin_feedback"));
     }
     //***************************************************************************************************
 
@@ -1313,7 +1314,7 @@ public class API_AdminStepdefinitions {
         assertEquals(firstname,jsonPath.getString("data.data["+dataIndex+"].firstname"));
         assertEquals(lastname,jsonPath.getString("data.data["+dataIndex+"].lastname"));
         assertEquals(username,jsonPath.getString("data.data["+dataIndex+"].username"));
-        assertEquals(null,jsonPath.get("data.data["+dataIndex+"].image"));
+        assertNull(jsonPath.get("data.data["+dataIndex+"].image"));
         assertEquals(email,jsonPath.getString("data.data["+dataIndex+"].email"));
         assertEquals(country_code,jsonPath.getString("data.data["+dataIndex+"].country_code"));
         assertEquals(mobile,jsonPath.getString("data.data["+dataIndex+"].mobile"));
@@ -1335,7 +1336,7 @@ public class API_AdminStepdefinitions {
         assertEquals(firstname,jsonPath.getString("data[0].firstname"));
         assertEquals(lastname,jsonPath.getString("data[0].lastname"));
         assertEquals(username,jsonPath.getString("data[0].username"));
-        assertEquals(null,jsonPath.get("data[0].image"));
+        assertNull(jsonPath.get("data[0].image"));
         assertEquals(email,jsonPath.getString("data[0].email"));
         assertEquals(country_code,jsonPath.getString("data[0].country_code"));
         assertEquals(mobile,jsonPath.getString("data[0].mobile"));

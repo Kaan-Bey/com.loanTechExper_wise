@@ -6,18 +6,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import junit.framework.TestCase;
 import org.json.JSONObject;
-import utilities.ConfigReader;
 import utilities.ReusableMethods;
 
 import java.util.Arrays;
 
 import static hooks.HooksAPI.spec;
-import static io.restassured.RestAssured.given;
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.*;
 
 public class API_UserStepdefinitions {
     public static String fullPath;
@@ -260,7 +256,7 @@ public class API_UserStepdefinitions {
         jsonPath = ReusableMethods.response.jsonPath();
 
         assertEquals(name, jsonPath.getString("data[" + dataIndex + "].name"));
-        assertEquals(null, jsonPath.get("data[2].image"));
+        assertNull(jsonPath.get("data[2].image"));
         assertEquals(description, jsonPath.getString("data[" + dataIndex + "].description"));
         assertEquals(status, jsonPath.getInt("data[" + dataIndex + "].status"));
         assertEquals(created_at, jsonPath.getString("data[" + dataIndex + "].created_at"));
@@ -314,9 +310,9 @@ public class API_UserStepdefinitions {
         assertEquals(delay_charge, jsonPath.getString("data[" + dataIndex + "].delay_charge"));
         assertEquals(given_installment, jsonPath.getInt("data[" + dataIndex + "].given_installment"));
         assertEquals(total_installment, jsonPath.getInt("data[" + dataIndex + "].total_installment"));
-        assertEquals(null, jsonPath.get("data[" + dataIndex + "].admin_feedback"));
+        assertNull(jsonPath.get("data[" + dataIndex + "].admin_feedback"));
         assertEquals(status, jsonPath.getInt("data[" + dataIndex + "].status"));
-        assertEquals(null, jsonPath.get("data[" + dataIndex + "].due_notification_sent"));
+        assertNull(jsonPath.get("data[" + dataIndex + "].due_notification_sent"));
         assertEquals(approved_at, jsonPath.getString("data[" + dataIndex + "].approved_at"));
         assertEquals(created_at, jsonPath.getString("data[" + dataIndex + "].created_at"));
         assertEquals(updated_at, jsonPath.getString("data[" + dataIndex + "].updated_at"));
