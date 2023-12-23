@@ -102,8 +102,6 @@ public class API_UserStepdefinitions {
     //*************************************************************************************************
 
     //********************************* user/ticket/detail/{{id}} *************************************
-
-    //*************************************************************************************************
     @Given("The API user saves the response from the user ticket detail endpoint with valid authorization information")
     public void the_apı_user_saves_the_response_from_the_user_ticket_detail_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("user");
@@ -132,6 +130,7 @@ public class API_UserStepdefinitions {
         assertEquals(created_at, jsonPath.getString("data.created_at"));
         assertEquals(updated_at, jsonPath.getString("data.updated_at"));
     }
+    //*************************************************************************************************
 
     //********************************* user/ticket/add ***********************************************
     @And("The API user prepares a POST request containing the correct data to send to the user ticket add endpoint")
