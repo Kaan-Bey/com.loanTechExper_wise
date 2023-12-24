@@ -61,4 +61,4 @@ Feature: As an administrator, I want to be able to create a new blog record thro
 
     Examples:
       | id  | valueId |
-      | 107 | 107     |
+      | 110 | 110     |

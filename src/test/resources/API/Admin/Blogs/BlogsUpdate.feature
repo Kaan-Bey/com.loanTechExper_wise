@@ -14,7 +14,7 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Examples:
       | id  |
-      | 107 |
+      | 110 |
 
 
   Scenario Outline: Verify that when a PATCH request with valid authorization information, the correct 'id,'
@@ -30,7 +30,7 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Examples:
       | id  |
-      | 107 |
+      | 110 |
 
 
   Scenario Outline: Verify that when a PATCH request with valid authorization information, the correct 'id,'
@@ -46,7 +46,7 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Examples:
       | id  |
-      | 107 |
+      | 110 |
 
 
   Scenario: Verify that when a PATCH request with valid authorization information and a body lacking the
@@ -88,7 +88,7 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Examples:
       | id  |
-      | 107 |
+      | 110 |
 
 
   Scenario Outline: The update of the blog record through the API should be verified. This can be confirmed
@@ -103,5 +103,5 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Examples:
       | id  | valueTitle        |
-      | 107 | Test Blog Updated |
+      | 110 | Test Blog Updated |
 

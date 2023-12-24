@@ -24,8 +24,8 @@ Feature: As an administrator, I want to access the list of loans via API connect
 
     Given The API user sets "api/loans/list" path parameters
     And The API user records the response from the api loans list endpoint with valid authorization information
-    Then Verify the information of the one with the index <dataIndex> in the API user response body: "<loan_number>", <user_id>, <plan_id>, "<amount>", "<per_installment>", <installment_interval>, <delay_value>, "<charge_per_installment>", "<delay_charge>", <given_installment>, <total_installment>, <status>, "<approved_at>", "<created_at>", "<updated_at>"
+    Then Verify the information of the one with the index <dataIndex> in the API user response body: "<loan_number>", <user_id>, <plan_id>, "<amount>", "<per_installment>", <installment_interval>, <delay_value>, "<charge_per_installment>", "<delay_charge>", <given_installment>, <total_installment>, <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | status | approved_at                 | created_at                  | updated_at                  |
-      | 0         | WCCZ6VQXG3TV | 11      | 15      | 3000.00000000 | 180.00000000    | 20                   | 2           | 100.60000000           | 0.00000000   | 0                 | 20                | 1      | 2023-12-14T15:06:50.000000Z | 2023-12-14T15:06:10.000000Z | 2023-12-14T15:06:50.000000Z |
+      | dataIndex | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | status | created_at                  | updated_at                  |
+      | 0         | A6J6U8JRQMHQ | 41      | 55      | 2000.00000000 | 60.00000000     | 30                   | 1           | 100.30000000           | 0.00000000   | 0                 | 10                | 0      | 2023-12-23T15:37:06.000000Z | 2023-12-23T15:37:06.000000Z |

@@ -28,5 +28,5 @@ Feature: An administrator (admin) should be able to access the deposit list via 
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, <method_code>, "<amount>", "<method_currency>", "<charge>", "<rate>", "<final_amo>", "<btc_amo>", "<trx>", <payment_try>, <status>, <from_api>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | method_code | amount        | method_currency | charge       | rate       | final_amo     | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
-      | 1         | 22      | 1000        | 4500.00000000 | USD             | 190.00000000 | 1.00000000 | 4690.00000000 | 0       | V4R7WR3UG7VP | 0           | 2      | 0        | 2023-12-17T13:35:08.000000Z | 2023-12-17T13:35:14.000000Z |
+      | dataIndex | user_id | method_code | amount       | method_currency | charge       | rate       | final_amo    | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
+      | 1         | 55      | 1000        | 500.00000000 | USD             | 110.00000000 | 1.00000000 | 610.00000000 | 0       | 9OCPH2FGD84Y | 0           | 0      | 0        | 2023-12-23T18:52:09.000000Z | 2023-12-23T18:52:09.000000Z |

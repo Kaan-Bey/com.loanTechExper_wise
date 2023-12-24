@@ -27,5 +27,6 @@ Feature: As an administrator, I want to access the list of tickets via API conne
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | name  | email         | ticket | subject | status | priority | last_reply          | created_at                  | updated_at                  |
-      | 1         | 4       | Elf F | elf@gmail.com | 187898 | Test    | 3      | 3        | 2023-12-13 17:13:39 | 2023-10-16T10:08:01.000000Z | 2023-12-13T22:13:59.000000Z |
+      | dataIndex | user_id | name            | email                    | ticket | subject    | status | priority | last_reply          | created_at                  | updated_at                  |
+      | 1         | 4       | Elf F           | elf@gmail.com            | 187898 | Test       | 1      | 3        | 2023-12-15 05:01:30 | 2023-10-16T10:08:01.000000Z | 2023-12-15T10:01:30.000000Z |
+      | 4         | 31      | ertugrul kececi | ertugrulkececi@gmail.com | 355496 | Supporting | 1      | 3        | 2023-12-13 19:16:14 | 2023-12-13T23:10:29.000000Z | 2023-12-14T00:16:14.000000Z |

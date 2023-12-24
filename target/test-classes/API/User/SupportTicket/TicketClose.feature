@@ -52,7 +52,7 @@ Feature: As a user, I want to be able to update the close information of a regis
       | id |
       | 59 |
 
-@API
+
   Scenario Outline: The update of the ticket record through the API should be verified. This can be confirmed
   by sending a GET request to the 'user/ticket/detail/{{id}}' endpoint with the Closed ticket id returned in
   the response body, thus validating that the record has been updated

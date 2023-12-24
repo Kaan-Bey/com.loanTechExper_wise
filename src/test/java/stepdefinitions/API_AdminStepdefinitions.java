@@ -47,17 +47,18 @@ public class API_AdminStepdefinitions {
     public void theAPIUserRecordsTheResponseFromTheApiCategoriesDetailsEndpointWithTheValidAuthorizationInformation() {
         ReusableMethods.getResponse("admin");
     }
+
     @Then("The API user verifies that the content of the data field in the response body includes {int}, {string}, {string}, {int}, {string}, {string}")
     public void the_apı_user_verifies_that_the_content_of_the_data_field_in_the_response_body_includes(int id, String name, String description, int status, String created_at, String updated_at) {
-        jsonPath=ReusableMethods.response.jsonPath();
+        jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(id,jsonPath.getInt("data[0].id"));
-        assertEquals(name,jsonPath.getString("data[0].name"));
+        assertEquals(id, jsonPath.getInt("data[0].id"));
+        assertEquals(name, jsonPath.getString("data[0].name"));
         assertNull(jsonPath.get("data[0].image"));
-        assertEquals(description,jsonPath.getString("data[0].description"));
-        assertEquals(status,jsonPath.getInt("data[0].status"));
-        assertEquals(created_at,jsonPath.getString("data[0].created_at"));
-        assertEquals(updated_at,jsonPath.getString("data[0].updated_at"));
+        assertEquals(description, jsonPath.getString("data[0].description"));
+        assertEquals(status, jsonPath.getInt("data[0].status"));
+        assertEquals(created_at, jsonPath.getString("data[0].created_at"));
+        assertEquals(updated_at, jsonPath.getString("data[0].updated_at"));
     }
     //***************************************************************************************************
 
@@ -101,7 +102,7 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_verifies_that_the_id_information_at_index_in_the_response_body_is(int index, int valueId) {
         jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(valueId, jsonPath.getInt("data["+index+"].id"));
+        assertEquals(valueId, jsonPath.getInt("data[" + index + "].id"));
     }
     //***************************************************************************************************
 
@@ -210,30 +211,31 @@ public class API_AdminStepdefinitions {
     public void theAPIUserRecordsTheResponseFromTheApiLoanplansDetailsEndpointWithValidAuthorizationInformation() {
         ReusableMethods.getResponse("admin");
     }
+
     @Then("The API user verifies that the content of the data field in the response body includes {int}, {int}, {int}, {string}, {string}, {string}, {string}, {string}, {int}, {int}, {string}, {string}, {string}, {int}, {string}, {string}, {int}, {int}, {string}, {string}")
     public void the_apı_user_verifies_that_the_content_of_the_data_field_in_the_response_body_includes(int id, int category_id, int form_id, String name, String title, String minimum_amount, String maximum_amount, String per_installment, int installment_interval, int total_installment, String application_fixed_charge, String application_percent_charge, String instruction, int delay_value, String fixed_charge, String percent_charge, int is_featured, int status, String created_at, String updated_at) {
-        jsonPath=ReusableMethods.response.jsonPath();
+        jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(id,jsonPath.getInt("data[0].id"));
-        assertEquals(category_id,jsonPath.getInt("data[0].category_id"));
-        assertEquals(form_id,jsonPath.getInt("data[0].form_id"));
-        assertEquals(name,jsonPath.getString("data[0].name"));
-        assertEquals(title,jsonPath.getString("data[0].title"));
-        assertEquals(minimum_amount,jsonPath.getString("data[0].minimum_amount"));
-        assertEquals(maximum_amount,jsonPath.getString("data[0].maximum_amount"));
-        assertEquals(per_installment,jsonPath.getString("data[0].per_installment"));
-        assertEquals(installment_interval,jsonPath.getInt("data[0].installment_interval"));
-        assertEquals(total_installment,jsonPath.getInt("data[0].total_installment"));
-        assertEquals(application_fixed_charge,jsonPath.getString("data[0].application_fixed_charge"));
-        assertEquals(application_percent_charge,jsonPath.getString("data[0].application_percent_charge"));
-        assertEquals(instruction,jsonPath.getString("data[0].instruction"));
-        assertEquals(delay_value,jsonPath.getInt("data[0].delay_value"));
-        assertEquals(fixed_charge,jsonPath.getString("data[0].fixed_charge"));
-        assertEquals(percent_charge,jsonPath.getString("data[0].percent_charge"));
-        assertEquals(is_featured,jsonPath.getInt("data[0].is_featured"));
-        assertEquals(status,jsonPath.getInt("data[0].status"));
-        assertEquals(created_at,jsonPath.getString("data[0].created_at"));
-        assertEquals(updated_at,jsonPath.getString("data[0].updated_at"));
+        assertEquals(id, jsonPath.getInt("data[0].id"));
+        assertEquals(category_id, jsonPath.getInt("data[0].category_id"));
+        assertEquals(form_id, jsonPath.getInt("data[0].form_id"));
+        assertEquals(name, jsonPath.getString("data[0].name"));
+        assertEquals(title, jsonPath.getString("data[0].title"));
+        assertEquals(minimum_amount, jsonPath.getString("data[0].minimum_amount"));
+        assertEquals(maximum_amount, jsonPath.getString("data[0].maximum_amount"));
+        assertEquals(per_installment, jsonPath.getString("data[0].per_installment"));
+        assertEquals(installment_interval, jsonPath.getInt("data[0].installment_interval"));
+        assertEquals(total_installment, jsonPath.getInt("data[0].total_installment"));
+        assertEquals(application_fixed_charge, jsonPath.getString("data[0].application_fixed_charge"));
+        assertEquals(application_percent_charge, jsonPath.getString("data[0].application_percent_charge"));
+        assertEquals(instruction, jsonPath.getString("data[0].instruction"));
+        assertEquals(delay_value, jsonPath.getInt("data[0].delay_value"));
+        assertEquals(fixed_charge, jsonPath.getString("data[0].fixed_charge"));
+        assertEquals(percent_charge, jsonPath.getString("data[0].percent_charge"));
+        assertEquals(is_featured, jsonPath.getInt("data[0].is_featured"));
+        assertEquals(status, jsonPath.getInt("data[0].status"));
+        assertEquals(created_at, jsonPath.getString("data[0].created_at"));
+        assertEquals(updated_at, jsonPath.getString("data[0].updated_at"));
     }
     //***************************************************************************************************
 
@@ -352,9 +354,9 @@ public class API_AdminStepdefinitions {
     public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String email, String created_at, String updated_at) {
         jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(email, jsonPath.getString("data["+dataIndex+"].email"));
-        assertEquals(created_at, jsonPath.getString("data["+dataIndex+"].created_at"));
-        assertEquals(updated_at, jsonPath.getString("data["+dataIndex+"].updated_at"));
+        assertEquals(email, jsonPath.getString("data[" + dataIndex + "].email"));
+        assertEquals(created_at, jsonPath.getString("data[" + dataIndex + "].created_at"));
+        assertEquals(updated_at, jsonPath.getString("data[" + dataIndex + "].updated_at"));
     }
     //***************************************************************************************************
 
@@ -493,17 +495,17 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, int user_id, String name, String email, String ticket, String subject, int status, int priority, String last_reply, String created_at, String updated_at) {
         jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(id, jsonPath.getInt("data[0].id"));
-        assertEquals(user_id, jsonPath.getInt("data[0].user_id"));
-        assertEquals(name, jsonPath.getString("data[0].name"));
-        assertEquals(email, jsonPath.getString("data[0].email"));
-        assertEquals(ticket, jsonPath.getString("data[0].ticket"));
-        assertEquals(subject, jsonPath.getString("data[0].subject"));
-        assertEquals(status, jsonPath.getInt("data[0].status"));
-        assertEquals(priority, jsonPath.getInt("data[0].priority"));
-        assertEquals(last_reply, jsonPath.getString("data[0].last_reply"));
-        assertEquals(created_at, jsonPath.getString("data[0].created_at"));
-        assertEquals(updated_at, jsonPath.getString("data[0].updated_at"));
+        assertEquals(id, jsonPath.getInt("data.id"));
+        assertEquals(user_id, jsonPath.getInt("data.user_id"));
+        assertEquals(name, jsonPath.getString("data.name"));
+        assertEquals(email, jsonPath.getString("data.email"));
+        assertEquals(ticket, jsonPath.getString("data.ticket"));
+        assertEquals(subject, jsonPath.getString("data.subject"));
+        assertEquals(status, jsonPath.getInt("data.status"));
+        assertEquals(priority, jsonPath.getInt("data.priority"));
+        assertEquals(last_reply, jsonPath.getString("data.last_reply"));
+        assertEquals(created_at, jsonPath.getString("data.created_at"));
+        assertEquals(updated_at, jsonPath.getString("data.updated_at"));
     }
     //***************************************************************************************************
 
@@ -545,30 +547,6 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_records_the_response_from_the_api_loans_list_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
     }
-
-    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
-    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, int status, String approved_at, String created_at, String updated_at) {
-        jsonPath = ReusableMethods.response.jsonPath();
-
-        assertEquals(loan_number, jsonPath.getString("data.data[" + dataIndex + "].loan_number"));
-        assertEquals(user_id, jsonPath.getInt("data.data[" + dataIndex + "].user_id"));
-        assertEquals(plan_id, jsonPath.getInt("data.data[" + dataIndex + "].plan_id"));
-        assertEquals(amount, jsonPath.getString("data.data[" + dataIndex + "].amount"));
-        assertEquals(per_installment, jsonPath.getString("data.data[" + dataIndex + "].per_installment"));
-        assertEquals(installment_interval, jsonPath.getInt("data.data[" + dataIndex + "].installment_interval"));
-        assertEquals(delay_value, jsonPath.getInt("data.data[" + dataIndex + "].delay_value"));
-        assertEquals(charge_per_installment, jsonPath.getString("data.data[" + dataIndex + "].charge_per_installment"));
-        assertEquals(delay_charge, jsonPath.getString("data.data[" + dataIndex + "].delay_charge"));
-        assertEquals(given_installment, jsonPath.getInt("data.data[" + dataIndex + "].given_installment"));
-        assertEquals(total_installment, jsonPath.getInt("data.data[" + dataIndex + "].total_installment"));
-        assertEquals(status, jsonPath.getInt("data.data[" + dataIndex + "].status"));
-        assertEquals(approved_at, jsonPath.getString("data.data[" + dataIndex + "].approved_at"));
-        assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
-        assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
-
-        assertNull(jsonPath.get("data.data[" + dataIndex + "].admin_feedback"));
-        assertNull(jsonPath.get("data.data[" + dataIndex + "].due_notification_sent"));
-    }
     //***************************************************************************************************
 
     //********************************* api/loans/details/{{id}} ****************************************
@@ -577,29 +555,29 @@ public class API_AdminStepdefinitions {
         ReusableMethods.getResponse("admin");
     }
 
-    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
-    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, int status, String approved_at, String created_at, String updated_at) {
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {int}, {string}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, int status, String created_at, String updated_at) {
         jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(id, jsonPath.getString("data[0].id"));
-        assertEquals(loan_number, jsonPath.getString("data[0].loan_number"));
-        assertEquals(user_id, jsonPath.getInt("data[0].user_id"));
-        assertEquals(plan_id, jsonPath.getInt("data[0].plan_id"));
-        assertEquals(amount, jsonPath.getString("data[0].amount"));
-        assertEquals(per_installment, jsonPath.getString("data[0].per_installment"));
-        assertEquals(installment_interval, jsonPath.getInt("data[0].installment_interval"));
-        assertEquals(delay_value, jsonPath.getInt("data[0].delay_value"));
-        assertEquals(charge_per_installment, jsonPath.getString("data[0].charge_per_installment"));
-        assertEquals(delay_charge, jsonPath.getString("data[0].delay_charge"));
-        assertEquals(given_installment, jsonPath.getInt("data[0].given_installment"));
-        assertEquals(total_installment, jsonPath.getInt("data[0].total_installment"));
-        assertEquals(status, jsonPath.getInt("data[0].status"));
-        assertEquals(approved_at, jsonPath.getString("data[0].approved_at"));
-        assertEquals(created_at, jsonPath.getString("data[0].created_at"));
-        assertEquals(updated_at, jsonPath.getString("data[0].updated_at"));
+        assertEquals(id, jsonPath.getInt("data.id"));
+        assertEquals(loan_number, jsonPath.getString("data.loan_number"));
+        assertEquals(user_id, jsonPath.getInt("data.user_id"));
+        assertEquals(plan_id, jsonPath.getInt("data.plan_id"));
+        assertEquals(amount, jsonPath.getString("data.amount"));
+        assertEquals(per_installment, jsonPath.getString("data.per_installment"));
+        assertEquals(installment_interval, jsonPath.getInt("data.installment_interval"));
+        assertEquals(delay_value, jsonPath.getInt("data.delay_value"));
+        assertEquals(charge_per_installment, jsonPath.getString("data.charge_per_installment"));
+        assertEquals(delay_charge, jsonPath.getString("data.delay_charge"));
+        assertEquals(given_installment, jsonPath.getInt("data.given_installment"));
+        assertEquals(total_installment, jsonPath.getInt("data.total_installment"));
+        assertEquals(status, jsonPath.getInt("data.status"));
+        assertEquals(created_at, jsonPath.getString("data.created_at"));
+        assertEquals(updated_at, jsonPath.getString("data.updated_at"));
 
-        assertNull( jsonPath.get("data[0].admin_feedback"));
-        assertNull(jsonPath.get("data[0].due_notification_sent"));
+        assertNull(jsonPath.get("data.admin_feedback"));
+        assertNull(jsonPath.get("data.due_notification_sent"));
+        assertNull(jsonPath.get("data.approved_at"));
     }
     //***************************************************************************************************
 
@@ -630,6 +608,7 @@ public class API_AdminStepdefinitions {
 
         assertNull(jsonPath.get("data.data[" + dataIndex + "].admin_feedback"));
         assertNull(jsonPath.get("data.data[" + dataIndex + "].due_notification_sent"));
+        assertNull(jsonPath.get("data.data[" + dataIndex + "].approved_at"));
     }
     //***************************************************************************************************
 
@@ -637,6 +616,30 @@ public class API_AdminStepdefinitions {
     @Given("The API user records the response from the api loans running endpoint with valid authorization information")
     public void the_apı_user_records_the_response_from_the_api_loans_running_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
+    }
+
+    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, int status, String approved_at, String created_at, String updated_at) {
+        jsonPath = ReusableMethods.response.jsonPath();
+
+        assertEquals(loan_number, jsonPath.getString("data.data[" + dataIndex + "].loan_number"));
+        assertEquals(user_id, jsonPath.getInt("data.data[" + dataIndex + "].user_id"));
+        assertEquals(plan_id, jsonPath.getInt("data.data[" + dataIndex + "].plan_id"));
+        assertEquals(amount, jsonPath.getString("data.data[" + dataIndex + "].amount"));
+        assertEquals(per_installment, jsonPath.getString("data.data[" + dataIndex + "].per_installment"));
+        assertEquals(installment_interval, jsonPath.getInt("data.data[" + dataIndex + "].installment_interval"));
+        assertEquals(delay_value, jsonPath.getInt("data.data[" + dataIndex + "].delay_value"));
+        assertEquals(charge_per_installment, jsonPath.getString("data.data[" + dataIndex + "].charge_per_installment"));
+        assertEquals(delay_charge, jsonPath.getString("data.data[" + dataIndex + "].delay_charge"));
+        assertEquals(given_installment, jsonPath.getInt("data.data[" + dataIndex + "].given_installment"));
+        assertEquals(total_installment, jsonPath.getInt("data.data[" + dataIndex + "].total_installment"));
+        assertEquals(status, jsonPath.getInt("data.data[" + dataIndex + "].status"));
+        assertEquals(approved_at, jsonPath.getString("data.data[" + dataIndex + "].approved_at"));
+        assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
+        assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
+
+        assertNull(jsonPath.get("data.data[" + dataIndex + "].admin_feedback"));
+        assertNull(jsonPath.get("data.data[" + dataIndex + "].due_notification_sent"));
     }
     //***************************************************************************************************
 
@@ -651,6 +654,30 @@ public class API_AdminStepdefinitions {
     @Given("The API user records the response from the api loans rejected endpoint with valid authorization information")
     public void the_apı_user_records_the_response_from_the_api_loans_rejected_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
+    }
+
+    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {string}, {int}, {int}, {string}, {int}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String loan_number, int user_id, int plan_id, String amount, String per_installment, int installment_interval, int delay_value, String charge_per_installment, String delay_charge, int given_installment, int total_installment, String admin_feedback, int status, String created_at, String updated_at) {
+        jsonPath = ReusableMethods.response.jsonPath();
+
+        assertEquals(loan_number, jsonPath.getString("data.data[" + dataIndex + "].loan_number"));
+        assertEquals(user_id, jsonPath.getInt("data.data[" + dataIndex + "].user_id"));
+        assertEquals(plan_id, jsonPath.getInt("data.data[" + dataIndex + "].plan_id"));
+        assertEquals(amount, jsonPath.getString("data.data[" + dataIndex + "].amount"));
+        assertEquals(per_installment, jsonPath.getString("data.data[" + dataIndex + "].per_installment"));
+        assertEquals(installment_interval, jsonPath.getInt("data.data[" + dataIndex + "].installment_interval"));
+        assertEquals(delay_value, jsonPath.getInt("data.data[" + dataIndex + "].delay_value"));
+        assertEquals(charge_per_installment, jsonPath.getString("data.data[" + dataIndex + "].charge_per_installment"));
+        assertEquals(delay_charge, jsonPath.getString("data.data[" + dataIndex + "].delay_charge"));
+        assertEquals(given_installment, jsonPath.getInt("data.data[" + dataIndex + "].given_installment"));
+        assertEquals(total_installment, jsonPath.getInt("data.data[" + dataIndex + "].total_installment"));
+        assertEquals(admin_feedback, jsonPath.getString("data.data[" + dataIndex + "].admin_feedback"));
+        assertEquals(status, jsonPath.getInt("data.data[" + dataIndex + "].status"));
+        assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
+        assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
+
+        assertNull(jsonPath.get("data.data[" + dataIndex + "].due_notification_sent"));
+        assertNull(jsonPath.get("data.data[" + dataIndex + "].approved_at"));
     }
     //***************************************************************************************************
 
@@ -819,8 +846,8 @@ public class API_AdminStepdefinitions {
         ReusableMethods.getResponse("admin");
     }
 
-    @Then("The API user verifies the content of the data in the response body which includes {int}, {int}, {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
-    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, int user_id, int method_code, String amount, String method_currency, String charge, String rate, String final_amo, String btc_amo, String trx, int payment_try, int status, int from_api, String admin_feedback, String created_at, String updated_at) {
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {int}, {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {int}, {int}, {string}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, int user_id, int method_code, String amount, String method_currency, String charge, String rate, String final_amo, String btc_amo, String trx, int payment_try, int status, int from_api, String created_at, String updated_at) {
         jsonPath = ReusableMethods.response.jsonPath();
 
         assertEquals(id, jsonPath.getInt("data.id"));
@@ -836,7 +863,7 @@ public class API_AdminStepdefinitions {
         assertEquals(payment_try, jsonPath.getInt("data.payment_try"));
         assertEquals(status, jsonPath.getInt("data.status"));
         assertEquals(from_api, jsonPath.getInt("data.from_api"));
-        assertEquals(admin_feedback, jsonPath.getString("data.admin_feedback"));
+        assertNull(jsonPath.getString("data.admin_feedback"));
         assertEquals(created_at, jsonPath.getString("data.created_at"));
         assertEquals(updated_at, jsonPath.getString("data.updated_at"));
 
@@ -1020,22 +1047,22 @@ public class API_AdminStepdefinitions {
     //******************************** api/withdrawal/reject/{{id}} *************************************
     @Given("The API user prepares a POST request containing the correct data to send to the api withdrawal reject endpoint")
     public void the_apı_user_prepares_a_post_request_containing_the_correct_data_to_send_to_the_api_withdrawal_reject_endpoint() {
-        requestPojo=new WithdrawalRejectPOJO("Something went wrong.");
+        requestPojo = new WithdrawalRejectPOJO("Something went wrong.");
     }
 
     @When("The API user sends a POST request and records the response returned from the api withdrawal reject endpoint with valid authorization information")
     public void the_apı_user_sends_a_post_request_and_records_the_response_returned_from_the_api_withdrawal_reject_endpoint_with_valid_authorization_information() {
-        ReusableMethods.postResponse("admin",requestPojo);
+        ReusableMethods.postResponse("admin", requestPojo);
     }
 
     @And("The API user prepares a POST request without any data to send to the api withdrawal reject endpoint")
     public void theAPIUserPreparesAPOSTRequestWithoutAnyDataToSendToTheApiWithdrawalRejectEndpoint() {
-        requestPojo=new WithdrawalRejectPOJO();
+        requestPojo = new WithdrawalRejectPOJO();
     }
 
     @When("The API user sends a POST request and records the response returned from the api withdrawal reject endpoint with invalid authorization information")
     public void theAPIUserSendsAPOSTRequestAndRecordsTheResponseReturnedFromTheApiWithdrawalRejectEndpointWithInvalidAuthorizationInformation() {
-        ReusableMethods.postResponse("invalidToken",requestPojo);
+        ReusableMethods.postResponse("invalidToken", requestPojo);
     }
     //***************************************************************************************************
 
@@ -1056,22 +1083,23 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_saves_the_response_from_the_api_withdraw_methods_list_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
     }
+
     @Then("Verify the information of the one with the index {int} in the API user response body: {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {string}, {string}")
     public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, int form_id, String name, String min_limit, String max_limit, String fixed_charge, String rate, String percent_charge, String currency, String description, int status, String created_at, String updated_at) {
-        jsonPath=ReusableMethods.response.jsonPath();
+        jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(form_id,jsonPath.getInt("data["+dataIndex+"].form_id"));
-        assertEquals(name,jsonPath.getString("data["+dataIndex+"].name"));
-        assertEquals(min_limit,jsonPath.getString("data["+dataIndex+"].min_limit"));
-        assertEquals(max_limit,jsonPath.getString("data["+dataIndex+"].max_limit"));
-        assertEquals(fixed_charge,jsonPath.getString("data["+dataIndex+"].fixed_charge"));
-        assertEquals(rate,jsonPath.getString("data["+dataIndex+"].rate"));
-        assertEquals(percent_charge,jsonPath.getString("data["+dataIndex+"].percent_charge"));
-        assertEquals(currency,jsonPath.getString("data["+dataIndex+"].currency"));
-        assertEquals(description,jsonPath.getString("data["+dataIndex+"].description"));
-        assertEquals(status,jsonPath.getInt("data["+dataIndex+"].status"));
-        assertEquals(created_at,jsonPath.getString("data["+dataIndex+"].created_at"));
-        assertEquals(updated_at,jsonPath.getString("data["+dataIndex+"].updated_at"));
+        assertEquals(form_id, jsonPath.getInt("data[" + dataIndex + "].form_id"));
+        assertEquals(name, jsonPath.getString("data[" + dataIndex + "].name"));
+        assertEquals(min_limit, jsonPath.getString("data[" + dataIndex + "].min_limit"));
+        assertEquals(max_limit, jsonPath.getString("data[" + dataIndex + "].max_limit"));
+        assertEquals(fixed_charge, jsonPath.getString("data[" + dataIndex + "].fixed_charge"));
+        assertEquals(rate, jsonPath.getString("data[" + dataIndex + "].rate"));
+        assertEquals(percent_charge, jsonPath.getString("data[" + dataIndex + "].percent_charge"));
+        assertEquals(currency, jsonPath.getString("data[" + dataIndex + "].currency"));
+        assertEquals(description, jsonPath.getString("data[" + dataIndex + "].description"));
+        assertEquals(status, jsonPath.getInt("data[" + dataIndex + "].status"));
+        assertEquals(created_at, jsonPath.getString("data[" + dataIndex + "].created_at"));
+        assertEquals(updated_at, jsonPath.getString("data[" + dataIndex + "].updated_at"));
     }
     //***************************************************************************************************
 
@@ -1080,59 +1108,62 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_saves_the_response_from_the_api_withdraw_methods_details_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
     }
+
     @Then("The API user verifies that the content of the data field in the response body includes {int}, {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {string}, {string}")
     public void the_apı_user_verifies_that_the_content_of_the_data_field_in_the_response_body_includes(int id, int form_id, String name, String min_limit, String max_limit, String fixed_charge, String rate, String percent_charge, String currency, String description, int status, String created_at, String updated_at) {
-        jsonPath=ReusableMethods.response.jsonPath();
+        jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(id,jsonPath.getInt("data[0].id"));
-        assertEquals(form_id,jsonPath.getInt("data[0].form_id"));
-        assertEquals(name,jsonPath.getString("data[0].name"));
-        assertEquals(min_limit,jsonPath.getString("data[0].min_limit"));
-        assertEquals(max_limit,jsonPath.getString("data[0].max_limit"));
-        assertEquals(fixed_charge,jsonPath.getString("data[0].fixed_charge"));
-        assertEquals(rate,jsonPath.getString("data[0].rate"));
-        assertEquals(percent_charge,jsonPath.getString("data[0].percent_charge"));
-        assertEquals(currency,jsonPath.getString("data[0].currency"));
-        assertEquals(description,jsonPath.getString("data[0].description"));
-        assertEquals(status,jsonPath.getInt("data[0].status"));
-        assertEquals(created_at,jsonPath.getString("data[0].created_at"));
-        assertEquals(updated_at,jsonPath.getString("data[0].updated_at"));
+        assertEquals(id, jsonPath.getInt("data[0].id"));
+        assertEquals(form_id, jsonPath.getInt("data[0].form_id"));
+        assertEquals(name, jsonPath.getString("data[0].name"));
+        assertEquals(min_limit, jsonPath.getString("data[0].min_limit"));
+        assertEquals(max_limit, jsonPath.getString("data[0].max_limit"));
+        assertEquals(fixed_charge, jsonPath.getString("data[0].fixed_charge"));
+        assertEquals(rate, jsonPath.getString("data[0].rate"));
+        assertEquals(percent_charge, jsonPath.getString("data[0].percent_charge"));
+        assertEquals(currency, jsonPath.getString("data[0].currency"));
+        assertEquals(description, jsonPath.getString("data[0].description"));
+        assertEquals(status, jsonPath.getInt("data[0].status"));
+        assertEquals(created_at, jsonPath.getString("data[0].created_at"));
+        assertEquals(updated_at, jsonPath.getString("data[0].updated_at"));
     }
     //***************************************************************************************************
 
     //************************************** api/withdraw/methods/add ***********************************
     @Given("The API user prepares a POST request with the correct data to send to the api withdraw methods add endpoint")
     public void the_apı_user_prepares_a_post_request_with_the_correct_data_to_send_to_the_api_withdraw_methods_add_endpoint() {
-        requestBody=new JSONObject();
-        requestBody.put("name","Method 5");
-        requestBody.put("min_limit","200.00000000");
-        requestBody.put("max_limit","7000.00000000");
-        requestBody.put("fixed_charge","150.00000000");
-        requestBody.put("rate","2.00000000");
-        requestBody.put("percent_charge","3.00");
-        requestBody.put("currency","USD");
-        requestBody.put("description","Test Method 5");
+        requestBody = new JSONObject();
+        requestBody.put("name", "Method 5");
+        requestBody.put("min_limit", "200.00000000");
+        requestBody.put("max_limit", "7000.00000000");
+        requestBody.put("fixed_charge", "150.00000000");
+        requestBody.put("rate", "2.00000000");
+        requestBody.put("percent_charge", "3.00");
+        requestBody.put("currency", "USD");
+        requestBody.put("description", "Test Method 5");
     }
+
     @When("The API user sends a POST request and records the response from the api withdraw methods add endpoint with valid authorization information")
     public void the_apı_user_sends_a_post_request_and_records_the_response_from_the_api_withdraw_methods_add_endpoint_with_valid_authorization_information() {
-        ReusableMethods.postResponse("admin",requestBody.toString());
+        ReusableMethods.postResponse("admin", requestBody.toString());
     }
+
     @Given("The API user prepares a POST request with missing data to send to the api withdraw methods add endpoint")
     public void the_apı_user_prepares_a_post_request_with_missing_data_to_send_to_the_api_withdraw_methods_add_endpoint() {
-        requestBody=new JSONObject();
-        requestBody.put("name","Method 5");
-        requestBody.put("min_limit","200.00000000");
-        requestBody.put("max_limit","7000.00000000");
+        requestBody = new JSONObject();
+        requestBody.put("name", "Method 5");
+        requestBody.put("min_limit", "200.00000000");
+        requestBody.put("max_limit", "7000.00000000");
     }
 
     @And("The API user prepares a POST request with no data to send to the api withdraw methods add endpoint")
     public void theAPIUserPreparesAPOSTRequestWithNoDataToSendToTheApiWithdrawMethodsAddEndpoint() {
-        requestBody=new JSONObject();
+        requestBody = new JSONObject();
     }
 
     @When("The API user sends a POST request and records the response from the api withdraw methods add endpoint with invalid authorization information")
     public void theAPIUserSendsAPOSTRequestAndRecordsTheResponseFromTheApiWithdrawMethodsAddEndpointWithInvalidAuthorizationInformation() {
-        ReusableMethods.postResponse("invalidToken",requestBody.toString());
+        ReusableMethods.postResponse("invalidToken", requestBody.toString());
     }
     //***************************************************************************************************
 
@@ -1151,19 +1182,20 @@ public class API_AdminStepdefinitions {
     //******************************** api/withdraw/methods/update/{{id}} *******************************
     @Given("The API user prepares a PATCH request with the correct data to send to the api withdraw methods update endpoint")
     public void the_apı_user_prepares_a_patch_request_with_the_correct_data_to_send_to_the_api_withdraw_methods_update_endpoint() {
-        reqBody=new HashMap();
-        reqBody.put("name","Method 5 Updated");
-        reqBody.put("min_limit","300.00000000");
-        reqBody.put("max_limit","8000.00000000");
+        reqBody = new HashMap();
+        reqBody.put("name", "Method 5 Updated");
+        reqBody.put("min_limit", "300.00000000");
+        reqBody.put("max_limit", "8000.00000000");
     }
+
     @When("The API user sends a PATCH request and records the response from the api withdraw methods update endpoint with valid authorization information")
     public void the_apı_user_sends_a_patch_request_and_records_the_response_from_the_api_withdraw_methods_update_endpoint_with_valid_authorization_information() {
-        ReusableMethods.patchResponseBody("admin",reqBody);
+        ReusableMethods.patchResponseBody("admin", reqBody);
     }
 
     @And("The API user prepares a PATCH request without including data to send to the api withdraw methods update endpoint")
     public void theAPIUserPreparesAPATCHRequestWithoutIncludingDataToSendToTheApiWithdrawMethodsUpdateEndpoint() {
-        reqBody=new HashMap();
+        reqBody = new HashMap();
     }
 
     @Then("The API user records the response from the api withdraw methods update endpoint with invalid authorization information and verifies that the status code is '401' and the error message is Unauthorized")
@@ -1189,17 +1221,18 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_records_the_response_from_the_api_blogs_list_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
     }
+
     @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {string}, {string}, {string}, {string}, {string}, {string}")
     public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String data_keys, String has_image, String title, String description_nic, String image, String created_at, String updated_at) {
-        jsonPath=ReusableMethods.response.jsonPath();
+        jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(data_keys,jsonPath.getString("data.data["+dataIndex+"].data_keys"));
-        assertEquals(has_image,jsonPath.getString("data.data["+dataIndex+"].data_values.has_image[0]"));
-        assertEquals(title,jsonPath.getString("data.data["+dataIndex+"].data_values.title"));
-        assertTrue(jsonPath.getString("data.data["+dataIndex+"].data_values.description_nic").contains(description_nic));
-        assertEquals(image,jsonPath.getString("data.data["+dataIndex+"].data_values.image"));
-        assertEquals(created_at,jsonPath.getString("data.data["+dataIndex+"].created_at"));
-        assertEquals(updated_at,jsonPath.getString("data.data["+dataIndex+"].updated_at"));
+        assertEquals(data_keys, jsonPath.getString("data.data[" + dataIndex + "].data_keys"));
+        assertEquals(has_image, jsonPath.getString("data.data[" + dataIndex + "].data_values.has_image[0]"));
+        assertEquals(title, jsonPath.getString("data.data[" + dataIndex + "].data_values.title"));
+        assertTrue(jsonPath.getString("data.data[" + dataIndex + "].data_values.description_nic").contains(description_nic));
+        assertEquals(image, jsonPath.getString("data.data[" + dataIndex + "].data_values.image"));
+        assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
+        assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
     }
     //***************************************************************************************************
 
@@ -1208,71 +1241,74 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_records_the_response_from_the_api_blogs_details_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
     }
+
     @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
     public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String data_keys, String has_image, String title, String description_nic, String image, String created_at, String updated_at) {
-        jsonPath=ReusableMethods.response.jsonPath();
+        jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(id,jsonPath.getInt("data.id"));
-        assertEquals(data_keys,jsonPath.getString("data.data_keys"));
-        assertEquals(has_image,jsonPath.getString("data.data_values.has_image[0]"));
-        assertEquals(title,jsonPath.getString("data.data_values.title"));
+        assertEquals(id, jsonPath.getInt("data.id"));
+        assertEquals(data_keys, jsonPath.getString("data.data_keys"));
+        assertEquals(has_image, jsonPath.getString("data.data_values.has_image[0]"));
+        assertEquals(title, jsonPath.getString("data.data_values.title"));
         assertTrue(jsonPath.getString("data.data_values.description_nic").contains(description_nic));
-        assertEquals(image,jsonPath.getString("data.data_values.image"));
-        assertEquals(created_at,jsonPath.getString("data.created_at"));
-        assertEquals(updated_at,jsonPath.getString("data.updated_at"));
+        assertEquals(image, jsonPath.getString("data.data_values.image"));
+        assertEquals(created_at, jsonPath.getString("data.created_at"));
+        assertEquals(updated_at, jsonPath.getString("data.updated_at"));
     }
     //***************************************************************************************************
 
     //***************************************** api/blogs/add *******************************************
     @Given("The API user prepares a POST request with the correct data to send to the api blogs add endpoint")
     public void the_apı_user_prepares_a_post_request_with_the_correct_data_to_send_to_the_api_blogs_add_endpoint() {
-        requestBody=new JSONObject();
-        requestBody.put("title","Test Blog 3");
-        requestBody.put("description","Test açıklama 3");
+        requestBody = new JSONObject();
+        requestBody.put("title", "Test Blog 3");
+        requestBody.put("description", "Test açıklama 3");
     }
+
     @When("The API user sends a POST request and records the response from the api blogs add endpoint with valid authorization information")
     public void the_apı_user_sends_a_post_request_and_records_the_response_from_the_api_blogs_add_endpoint_with_valid_authorization_information() {
-        ReusableMethods.postResponse("admin",requestBody.toString());
+        ReusableMethods.postResponse("admin", requestBody.toString());
     }
 
     @And("The API user prepares a POST request with incomplete data to send to the api blogs add endpoint")
     public void theAPIUserPreparesAPOSTRequestWithIncompleteDataToSendToTheApiBlogsAddEndpoint() {
-        requestBody=new JSONObject();
-        requestBody.put("title","Test Blog 3");
+        requestBody = new JSONObject();
+        requestBody.put("title", "Test Blog 3");
     }
 
     @And("The API user prepares a POST request with no data to send to the api blogs add endpoint")
     public void theAPIUserPreparesAPOSTRequestWithNoDataToSendToTheApiBlogsAddEndpoint() {
-        requestBody=new JSONObject();
+        requestBody = new JSONObject();
     }
 
     @When("The API user sends a POST request, records the response from the api blogs add endpoint and saves it with invalid authorization information")
     public void theAPIUserSendsAPOSTRequestRecordsTheResponseFromTheApiBlogsAddEndpointAndSavesItWithInvalidAuthorizationInformation() {
-        ReusableMethods.postResponse("invalidToken",requestBody.toString());
+        ReusableMethods.postResponse("invalidToken", requestBody.toString());
     }
     //***************************************************************************************************
 
     //************************************** api/blogs/update{{id}} *************************************
     @Given("The API user prepares a PATCH request with the correct data to send to the api blogs update endpoint")
     public void the_apı_user_prepares_a_patch_request_with_the_correct_data_to_send_to_the_api_blogs_update_endpoint() {
-        reqBody=new HashMap<>();
-        reqBody.put("title","Test Blog Updated");
-        reqBody.put("description","Test description updated");
+        reqBody = new HashMap<>();
+        reqBody.put("title", "Test Blog Updated");
+        reqBody.put("description", "Test description updated");
     }
+
     @When("The API user sends a PATCH request and records the response from the api blogs update endpoint with valid authorization information")
     public void the_apı_user_sends_a_patch_request_and_records_the_response_from_the_api_blogs_update_endpoint_with_valid_authorization_information() {
-        ReusableMethods.patchResponseBody("admin",reqBody);
+        ReusableMethods.patchResponseBody("admin", reqBody);
     }
 
     @And("The API user prepares a PATCH request without data to send to the api blogs update endpoint")
     public void theAPIUserPreparesAPATCHRequestWithoutDataToSendToTheApiBlogsUpdateEndpoint() {
-        reqBody=new HashMap<>();
+        reqBody = new HashMap<>();
     }
 
     @And("The API user prepares a PATCH request with missing data to send to the api blogs update endpoint")
     public void theAPIUserPreparesAPATCHRequestWithMissingDataToSendToTheApiBlogsUpdateEndpoint() {
-        reqBody=new HashMap<>();
-        reqBody.put("title","Test Blog Updated");
+        reqBody = new HashMap<>();
+        reqBody.put("title", "Test Blog Updated");
     }
 
 
@@ -1283,9 +1319,9 @@ public class API_AdminStepdefinitions {
 
     @Then("The API User verifies that the title information in the response body is {string}")
     public void the_apı_user_verifies_that_the_title_information_in_the_response_body_is(String valueTitle) {
-        jsonPath=ReusableMethods.response.jsonPath();
+        jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(valueTitle,jsonPath.getString("data.data_values.title"));
+        assertEquals(valueTitle, jsonPath.getString("data.data_values.title"));
     }
 
     //***************************************************************************************************
@@ -1307,19 +1343,20 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_saves_the_response_from_the_api_users_with_balance_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
     }
-    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {string}, {string}, {string}, {string}, {string}, {int}, {string}")
-    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String firstname, String lastname, String username, String email, String country_code, String mobile, int ref_by, String balance) {
-        jsonPath=ReusableMethods.response.jsonPath();
 
-        assertEquals(firstname,jsonPath.getString("data.data["+dataIndex+"].firstname"));
-        assertEquals(lastname,jsonPath.getString("data.data["+dataIndex+"].lastname"));
-        assertEquals(username,jsonPath.getString("data.data["+dataIndex+"].username"));
-        assertNull(jsonPath.get("data.data["+dataIndex+"].image"));
-        assertEquals(email,jsonPath.getString("data.data["+dataIndex+"].email"));
-        assertEquals(country_code,jsonPath.getString("data.data["+dataIndex+"].country_code"));
-        assertEquals(mobile,jsonPath.getString("data.data["+dataIndex+"].mobile"));
-        assertEquals(ref_by,jsonPath.getInt("data.data["+dataIndex+"].ref_by"));
-        assertEquals(balance,jsonPath.getString("data.data["+dataIndex+"].balance"));
+    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String firstname, String lastname, String username, String image, String email, String country_code, String mobile, int ref_by, String balance) {
+        jsonPath = ReusableMethods.response.jsonPath();
+
+        assertEquals(firstname, jsonPath.getString("data.data[" + dataIndex + "].firstname"));
+        assertEquals(lastname, jsonPath.getString("data.data[" + dataIndex + "].lastname"));
+        assertEquals(username, jsonPath.getString("data.data[" + dataIndex + "].username"));
+        assertEquals(image, jsonPath.get("data.data[" + dataIndex + "].image"));
+        assertEquals(email, jsonPath.getString("data.data[" + dataIndex + "].email"));
+        assertEquals(country_code, jsonPath.getString("data.data[" + dataIndex + "].country_code"));
+        assertEquals(mobile, jsonPath.getString("data.data[" + dataIndex + "].mobile"));
+        assertEquals(ref_by, jsonPath.getInt("data.data[" + dataIndex + "].ref_by"));
+        assertEquals(balance, jsonPath.getString("data.data[" + dataIndex + "].balance"));
     }
     //***************************************************************************************************
 
@@ -1328,20 +1365,21 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_saves_the_response_from_the_api_users_with_balance_user_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
     }
-    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {string}")
-    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String firstname, String lastname, String username, String email, String country_code, String mobile, int ref_by, String balance) {
-        jsonPath=ReusableMethods.response.jsonPath();
 
-        assertEquals(id,jsonPath.getInt("data[0].id"));
-        assertEquals(firstname,jsonPath.getString("data[0].firstname"));
-        assertEquals(lastname,jsonPath.getString("data[0].lastname"));
-        assertEquals(username,jsonPath.getString("data[0].username"));
-        assertNull(jsonPath.get("data[0].image"));
-        assertEquals(email,jsonPath.getString("data[0].email"));
-        assertEquals(country_code,jsonPath.getString("data[0].country_code"));
-        assertEquals(mobile,jsonPath.getString("data[0].mobile"));
-        assertEquals(ref_by,jsonPath.getInt("data[0].ref_by"));
-        assertEquals(balance,jsonPath.getString("data[0].balance"));
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String firstname, String lastname, String username, String image, String email, String country_code, String mobile, int ref_by, String balance) {
+        jsonPath = ReusableMethods.response.jsonPath();
+
+        assertEquals(id, jsonPath.getInt("data[0].id"));
+        assertEquals(firstname, jsonPath.getString("data[0].firstname"));
+        assertEquals(lastname, jsonPath.getString("data[0].lastname"));
+        assertEquals(username, jsonPath.getString("data[0].username"));
+        assertEquals(image, jsonPath.get("data[0].image"));
+        assertEquals(email, jsonPath.getString("data[0].email"));
+        assertEquals(country_code, jsonPath.getString("data[0].country_code"));
+        assertEquals(mobile, jsonPath.getString("data[0].mobile"));
+        assertEquals(ref_by, jsonPath.getInt("data[0].ref_by"));
+        assertEquals(balance, jsonPath.getString("data[0].balance"));
     }
     //***************************************************************************************************
 }

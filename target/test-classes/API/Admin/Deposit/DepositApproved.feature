@@ -28,5 +28,5 @@ Feature: As an administrator, I want to be able to access approved deposits thro
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, <method_code>, "<amount>", "<method_currency>", "<charge>", "<rate>", "<final_amo>", "<btc_amo>", "<trx>", <payment_try>, <status>, <from_api>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | method_code | amount       | method_currency | charge       | rate       | final_amo    | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
-      | 2         | 65      | 1000        | 300.00000000 | USD             | 106.00000000 | 1.00000000 | 406.00000000 | 0       | SHQRDYTQE7H9 | 0           | 1      | 0        | 2023-12-17T20:36:17.000000Z | 2023-12-17T21:32:16.000000Z |
+      | dataIndex | user_id | method_code | amount        | method_currency | charge       | rate          | final_amo        | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
+      | 2         | 31      | 1001        | 1000.00000000 | EUR             | 240.00000000 | 1000.00000000 | 1240000.00000000 | 0       | FYDZN83C49GX | 0           | 1      | 0        | 2023-12-23T18:06:13.000000Z | 2023-12-23T18:06:25.000000Z |

@@ -27,5 +27,5 @@ Feature: As an administrator, I want to access the tickets that are in the 'answ
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | name        | email            | ticket | subject | status | priority | last_reply          | created_at                  | updated_at                  |
-      | 2         | 5       | Mehmet Cenk | mcenkk@gmail.com | 429058 | Test    | 1      | 3        | 2023-12-14 10:07:07 | 2023-12-13T23:14:27.000000Z | 2023-12-14T15:07:07.000000Z |
+      | dataIndex | user_id | name        | email                | ticket | subject   | status | priority | last_reply          | created_at                  | updated_at                  |
+      | 2         | 60      | osman guler | osmanguler@gmail.com | 264583 | hgfhgfhgk | 1      | 3        | 2023-12-22 09:58:01 | 2023-12-22T14:52:09.000000Z | 2023-12-22T14:58:01.000000Z |

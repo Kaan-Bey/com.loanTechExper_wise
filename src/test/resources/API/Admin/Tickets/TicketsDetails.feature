@@ -38,6 +38,7 @@ Feature: As an administrator, I want to access the ticket information of a user 
       | id  |
       | 289 |
 
+
   Scenario Outline: When an invalid GET request with unauthorized credentials is sent to the
   'api/tickets/details/{{id}}' endpoint, it should return a status code of 401, and the error
   message in the response body should be "Unauthorized request"
@@ -58,4 +59,4 @@ Feature: As an administrator, I want to access the ticket information of a user 
 
     Examples:
       | id | id | user_id | name  | email           | ticket | subject | status | priority | last_reply          | created_at                  | updated_at                  |
-      | 2  | 2  | 1       | Elf F | agenc@gmail.com | 187898 | Test    | 3      | 3        | 2023-11-02 11:16:58 | 2023-10-16T10:08:01.000000Z | 2023-11-22T08:16:28.000000Z |
+      | 2  | 2  | 1       | Elf F | agenc@gmail.com | 187898 | Test    | 0      | 3        | 2023-11-02 11:16:58 | 2023-10-16T10:08:01.000000Z | 2023-11-22T08:16:28.000000Z |

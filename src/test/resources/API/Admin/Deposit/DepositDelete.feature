@@ -11,8 +11,8 @@ Feature: As an administrator, I should be able to delete a deposit record in the
     And The API User verifies that the message information in the response body is "Deposit deleted"
 
     Examples:
-      | id |
-      | 24 |
+      | id  |
+      | 593 |
 
 
   Scenario: When a valid DELETE request is sent to the 'api/deposit/delete/{{id}}' endpoint with proper
@@ -38,7 +38,7 @@ Feature: As an administrator, I should be able to delete a deposit record in the
 
     Examples:
       | id  |
-      | 459 |
+      | 895 |
 
 
   Scenario Outline: When an invalid DELETE request with unauthorized authorization information is sent to
@@ -50,8 +50,8 @@ Feature: As an administrator, I should be able to delete a deposit record in the
     #Api kullanicisi api deposit delete endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id |
-      | 24 |
+      | id  |
+      | 593 |
 
 
   Scenario Outline: The deletion of the desired deposit record through the API should be verified by
@@ -64,5 +64,5 @@ Feature: As an administrator, I should be able to delete a deposit record in the
     And The API User verifies that the message information in the response body is "No deposit."
 
     Examples:
-      | id |
-      | 24 |
+      | id  |
+      | 593 |

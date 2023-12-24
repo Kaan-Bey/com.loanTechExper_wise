@@ -12,7 +12,7 @@ Feature: As an administrator, I should be able to delete the blog record in the 
 
     Examples:
       | id  |
-      | 106 |
+      | 111 |
 
 
   Scenario: When a DELETE request with valid authorization information and without the 'id' is sent to the
@@ -49,7 +49,7 @@ Feature: As an administrator, I should be able to delete the blog record in the 
 
     Examples:
       | id  |
-      | 106 |
+      | 111 |
 
 
   Scenario Outline: The deletion of the blogs record through the API should be verified. This can be
@@ -63,4 +63,4 @@ Feature: As an administrator, I should be able to delete the blog record in the 
 
     Examples:
       | id  |
-      | 106 |
+      | 111 |

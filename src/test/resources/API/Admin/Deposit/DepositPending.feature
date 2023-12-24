@@ -28,5 +28,5 @@ Feature: As an administrator, I want to be able to access pending deposits throu
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, <method_code>, "<amount>", "<method_currency>", "<charge>", "<rate>", "<final_amo>", "<btc_amo>", "<trx>", <payment_try>, <status>, <from_api>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | method_code | amount       | method_currency | charge       | rate       | final_amo    | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
-      | 0         | 8       | 1000        | 500.00000000 | USD             | 110.00000000 | 1.00000000 | 610.00000000 | 0       | HERGUJ9ZUGQ8 | 0           | 2      | 0        | 2023-12-17T21:58:12.000000Z | 2023-12-17T21:58:14.000000Z |
+      | dataIndex | user_id | method_code | amount        | method_currency | charge       | rate          | final_amo        | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
+      | 0         | 31      | 1001        | 1000.00000000 | EUR             | 240.00000000 | 1000.00000000 | 1240000.00000000 | 0       | D4PM94Y24865 | 0           | 2      | 0        | 2023-12-22T16:30:46.000000Z | 2023-12-22T16:30:49.000000Z |

@@ -24,8 +24,8 @@ Feature: As an administrator, I want to be able to access users with balances th
 
     Given The API user sets "api/users/with-balance" path parameters
     And The API user saves the response from the api users with-balance endpoint with valid authorization information
-    Then Verify the information of the one with the index <dataIndex> in the API user response body: "<firstname>", "<lastname>", "<username>", "<email>", "<country_code>", "<mobile>", <ref_by>, "<balance>"
+    Then Verify the information of the one with the index <dataIndex> in the API user response body: "<firstname>", "<lastname>", "<username>", "<image>", "<email>", "<country_code>", "<mobile>", <ref_by>, "<balance>"
 
     Examples:
-      | dataIndex | firstname | lastname | username  | email              | country_code | mobile       | ref_by | balance         |
-      | 0         | kaan      | user1    | kaanuser1 | kaanuser1@abcd.com | TR           | 903456789123 | 0      | 100000.00000000 |
+      | dataIndex | firstname                | lastname       | username | image                       | email                     | country_code | mobile           | ref_by | balance      |
+      | 0         | LESSIE FEESTAUDRY SENGER | TREUTELKOVACEK | aj641m   | 65863efbbf4cf1703296763.png | renaldo.witting@yahoo.com | FR           | 3335899312974581 | 0      | 100.00000000 |

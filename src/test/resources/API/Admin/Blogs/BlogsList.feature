@@ -28,4 +28,4 @@ Feature: As an administrator, I want to be able to access the list of blogs thro
 
     Examples:
       | dataIndex | data_keys    | has_image | title                                                   | description_nic | image                       | created_at                  | updated_at                  |
-      | 0         | blog.element | 1         | Navigating the Loan Application Process: Dos and Don'ts | style           | 6527fdcfaefac1697119695.jpg | 2023-08-03T10:24:00.000000Z | 2023-10-12T14:08:15.000000Z |
+      | 1         | blog.element | 1         | Navigating the Loan Application Process: Dos and Don'ts | style           | 6527fdcfaefac1697119695.jpg | 2023-08-03T10:24:00.000000Z | 2023-10-12T14:08:15.000000Z |

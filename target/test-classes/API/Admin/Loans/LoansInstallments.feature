@@ -12,7 +12,7 @@ Feature: As an administrator, I want to access information about loans installme
 
     Examples:
       | id |
-      | 17 |
+      | 1  |
 
 
   Scenario: When a valid GET request is sent to the "api/loans/installments/{{id}}" endpoint with proper
@@ -48,7 +48,7 @@ Feature: As an administrator, I want to access information about loans installme
 
     Examples:
       | id |
-      | 17 |
+      | 1  |
 
 
   Scenario Outline: Verify the information returned in the response body for the loan installment with ID (x):
@@ -60,4 +60,4 @@ Feature: As an administrator, I want to access information about loans installme
 
     Examples:
       | id | dataIndex | loan_id | delay_charge | installment_date            |
-      | 17 | 1         | 17      | 0.00000000   | 2024-01-23T05:00:00.000000Z |
+      | 1  | 1         | 1       | 0.00000000   | 2023-12-15T05:00:00.000000Z |

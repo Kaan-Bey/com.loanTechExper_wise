@@ -15,8 +15,8 @@ Feature: As an administrator, I want to be able to reject the loan information o
     * The API user verifies that the Reason information in the response body is "Bank info is wrong."
 
     Examples:
-      | id |
-      | 17 |
+      | id  |
+      | 351 |
 
 
   Scenario Outline: When valid authorization information is provided along with a correct (id) to the
@@ -34,9 +34,23 @@ Feature: As an administrator, I want to be able to reject the loan information o
     #Api kullanicisi response bodydeki Reason bilgisinin null oldugunu dogrular
 
     Examples:
-      | id |
-      | 17 |
+      | id  |
+      | 352 |
 
+
+  Scenario Outline:api/loans/reject/{{id}} endpoint'ine gecerli authorization bilgileri ve daha önce reject
+  edilen (id) iceren bir POST body (reason) gönderildiginde dönen status code'in 203 oldugu ve response
+  body'deki message bilgisinin "No loan or loan status is not pending." oldugu dogrulanmali
+
+    Given The API user sets "api/loans/reject/<id>" path parameters
+    And The API user prepares a POST request containing the correct data to send to the api loans reject endpoint
+    When The API user sends a POST request and records the response returned from the api loans reject endpoint with valid authorization information
+    Then The API user verifies that the status code is 203
+    And The API User verifies that the message information in the response body is "No loan or loan status is not pending."
+
+    Examples:
+      | id  |
+      | 351 |
 
   Scenario: When valid authorization information is provided along with a POST body that lacks the required
   (id) parameter (reason) to the 'api/loans/reject/{{id}}' endpoint, the expected status code is 203.
@@ -62,7 +76,7 @@ Feature: As an administrator, I want to be able to reject the loan information o
 
     Examples:
       | id  |
-      | 457 |
+      | 551 |
 
 
   Scenario Outline: When invalid authorization information is provided along with a correct (id) and a
@@ -77,5 +91,5 @@ Feature: As an administrator, I want to be able to reject the loan information o
     And The API user verifies that the error information in the response body is "Unauthorized request"
 
     Examples:
-      | id |
-      | 17 |
+      | id  |
+      | 351 |

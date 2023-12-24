@@ -30,4 +30,4 @@ Feature: As an administrator, I want to access the list of running loans via API
 
     Examples:
       | dataIndex | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | status | approved_at                 | created_at                  | updated_at                  |
-      | 1         | 2JEZSFBRP8ZE | 62      | 11      | 6000.00000000 | 240.00000000    | 20                   | 25          | 100.04000000           | 0.00000000   | 0                 | 20                | 1      | 2023-12-14T16:22:01.000000Z | 2023-12-14T14:43:05.000000Z | 2023-12-14T16:22:01.000000Z |
+      | 1         | E78MDDT4N7OV | 22      | 55      | 1000.00000000 | 30.00000000     | 30                   | 1           | 100.30000000           | 0.00000000   | 0                 | 10                | 1      | 2023-12-22T09:48:20.000000Z | 2023-12-22T09:32:19.000000Z | 2023-12-22T09:48:20.000000Z |

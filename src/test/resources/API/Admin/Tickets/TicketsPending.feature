@@ -27,3 +27,5 @@ Feature: As an administrator, I want to access the tickets that are in the 'pend
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>"
 
     Examples:
+      | dataIndex | user_id | name     | email                   | ticket | subject     | status | priority | last_reply          | created_at                  | updated_at                  |
+      | 0         | 11      | Ali Dost | aliulvigirgin@gmail.com | 135737 | Test Ticket | 0      | 0        | 2023-12-23 01:18:52 | 2023-12-23T06:18:52.000000Z | 2023-12-23T06:18:52.000000Z |

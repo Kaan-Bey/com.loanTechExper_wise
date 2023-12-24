@@ -59,7 +59,7 @@ Feature: As an administrator, I should be able to delete a loan record in the sy
     Given The API user sets "api/loans/details/<id>" path parameters
     And The API user records the response from the api loans details endpoint with valid authorization information
     Then The API user verifies that the status code is 203
-    And The API User verifies that the message information in the response body is "No loan."
+    And The API User verifies that the message information in the response body is "No Loan"
 
     Examples:
       | id |

@@ -2,17 +2,17 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
   Scenario Outline:When a valid DELETE request with appropriate authorization credentials and correct data
   (id) is sent to the 'api/loanplans/delete/{{id}}' endpoint, it should return a status code of 200, and
-  the message in the response body should be "Loanplans deleted"
+  the message in the response body should be "Loan plan deleted"
 
     Given The API user sets "api/loanplans/delete/<id>" path parameters
     And The API user records the response from the api loanplans delete endpoint with valid authorization information
     #Apı kulanıcısı api loanplans delete endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
-    And The API User verifies that the message information in the response body is "Loanplans deleted"
+    And The API User verifies that the message information in the response body is "Loan plan deleted"
 
     Examples:
       | id |
-      | 67 |
+      | 78 |
 
   Scenario: When a DELETE request without the required data (id) and with valid authorization credentials is
   sent to the 'api/loanplans/delete/{{id}}' endpoint, it should return a status code of 203, and the message
@@ -27,13 +27,13 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
   Scenario Outline: When a DELETE request with valid authorization credentials and an (id) that does not
   correspond to an existing record is sent to the 'api/loanplans/delete/{{id}}' endpoint, it should return
-  a status code of 203, and the message in the response body should be "No loanplans."
+  a status code of 203, and the message in the response body should be "No loanplan."
 
     Given The API user sets "api/loanplans/delete/<id>" path parameters
     And The API user records the response from the api loanplans delete endpoint with valid authorization information
     #Apı kulanıcısı api loanplans delete endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 203
-    And The API User verifies that the message information in the response body is "No loanplans."
+    And The API User verifies that the message information in the response body is "No loanplan."
 
     Examples:
       | id  |
@@ -50,7 +50,7 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
     Examples:
       | id |
-      | 67 |
+      | 78 |
 
 
   Scenario Outline: The deletion of the loan plan record intended to be removed through the API should be
@@ -64,4 +64,4 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
     Examples:
       | id |
-      | 67 |
+      | 78 |

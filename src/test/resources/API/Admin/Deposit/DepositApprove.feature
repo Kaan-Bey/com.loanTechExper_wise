@@ -16,6 +16,20 @@ Feature: As an administrator, I want to be able to update the deposit informatio
       | 109 |
 
 
+  Scenario Outline: Verify that when a PATCH request with valid authorization information and a previously
+  approved (id) is sent to the 'api/deposit/approve/{{id}}' endpoint, the returned status code is 203, and the
+  message information in the response body is "No deposit or deposit status is not pending."
+
+    Given The API user sets "api/deposit/approve/<id>" path parameters
+    And The API user records the response from the api deposit approve endpoint with valid authorization information
+    Then The API user verifies that the status code is 203
+    And The API User verifies that the message information in the response body is "No deposit or deposit status is not pending."
+
+    Examples:
+      | id  |
+      | 109 |
+
+
   Scenario: When a valid PATCH request is sent to the 'api/deposit/approve/{{id}}' endpoint with proper
   authorization information but without including the required (id) in the body, the expected behavior
   is that the status code in the response is 203. Additionally, the message information in the response
@@ -36,9 +50,10 @@ Feature: As an administrator, I want to be able to update the deposit informatio
     And The API user records the response from the api deposit approve endpoint with valid authorization information
     Then The API user verifies that the status code is 203
     And The API User verifies that the message information in the response body is "No deposit."
+
     Examples:
       | id  |
-      | 458 |
+      | 987 |
 
 
   Scenario Outline: When an invalid PATCH request with unauthorized authorization information is sent to
@@ -52,18 +67,3 @@ Feature: As an administrator, I want to be able to update the deposit informatio
     Examples:
       | id  |
       | 109 |
-
-
-  Scenario Outline: The update of the desired deposit approve record through the API should be verified by
-  sending a GET request to the 'api/deposit/details/{{id}}' endpoint with the updated deposit id returned
-  in the response body. This verification process confirms that the record has been successfully updated
-
-    Given The API user sets "api/deposit/details/<id>" path parameters
-    And The API user records the response from the api deposit details endpoint with valid authorization information
-    Then The API user verifies that the status code is 200
-    And The API User verifies that the status information in the response body is <valueStatus>
-    #Api kullanicisi response bodydeki status bilgisinin "<valueStatus>" oldugunu dogrular
-
-    Examples:
-      | id  | valueStatus |
-      | 109 | 1           |

@@ -11,8 +11,8 @@ Feature: As an administrator, I should be able to delete a ticket record in the 
     And The API User verifies that the message information in the response body is "Ticket deleted"
 
     Examples:
-      | id |
-      | 20 |
+      | id  |
+      | 117 |
 
 
   Scenario: When a DELETE request with valid authorization credentials and without the required (id)
@@ -48,8 +48,8 @@ Feature: As an administrator, I should be able to delete a ticket record in the 
     #Api kullanicisi api tickets delete endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id |
-      | 20 |
+      | id  |
+      | 117 |
 
 
   Scenario Outline: The deletion of the desired ticket record via API should be confirmed by sending
@@ -62,5 +62,5 @@ Feature: As an administrator, I should be able to delete a ticket record in the 
     And The API User verifies that the message information in the response body is "No ticket."
 
     Examples:
-      | id |
-      | 20 |
+      | id  |
+      | 117 |

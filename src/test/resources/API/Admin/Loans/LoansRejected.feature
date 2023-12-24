@@ -25,8 +25,8 @@ Feature: As an administrator, I want to access the 'api/loans/rejected' endpoint
 
     Given The API user sets "api/loans/rejected" path parameters
     And The API user records the response from the api loans rejected endpoint with valid authorization information
-    Then Verify the information of the one with the index <dataIndex> in the API user response body: "<loan_number>", <user_id>, <plan_id>, "<amount>", "<per_installment>", <installment_interval>, <delay_value>, "<charge_per_installment>", "<delay_charge>", <given_installment>, <total_installment>, <status>, "<approved_at>", "<created_at>", "<updated_at>"
+    Then Verify the information of the one with the index <dataIndex> in the API user response body: "<loan_number>", <user_id>, <plan_id>, "<amount>", "<per_installment>", <installment_interval>, <delay_value>, "<charge_per_installment>", "<delay_charge>", <given_installment>, <total_installment>, "<admin_feedback>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | status | approved_at                 | created_at                  | updated_at                  |
-      | 2         | H5E646H6D65G | 49      | 11      | 2000.00000000 | 80.00000000     | 20                   | 25          | 100.04000000           | 0.00000000   | 0                 | 20                | 3      | 2023-12-14T11:14:51.000000Z | 2023-12-14T10:08:15.000000Z | 2023-12-14T11:15:24.000000Z |
+      | dataIndex | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | admin_feedback | status | created_at                  | updated_at                  |
+      | 2         | EUKAGN6DJY5N | 35      | 1       | 1420.00000000 | 42.60000000     | 30                   | 15          | 100.06000000           | 0.00000000   | 0                 | 10                | oke            | 3      | 2023-12-17T15:05:57.000000Z | 2023-12-17T18:23:58.000000Z |

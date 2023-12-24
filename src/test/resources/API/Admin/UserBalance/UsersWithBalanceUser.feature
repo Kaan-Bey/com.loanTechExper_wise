@@ -12,7 +12,7 @@ Feature: As an administrator, I want to be able to access the with-balance-user 
 
     Examples:
       | id  |
-      | 169 |
+      | 296 |
 
 
   Scenario: When a GET request with valid authorization information and without the 'id' is sent to the
@@ -48,7 +48,7 @@ Feature: As an administrator, I want to be able to access the with-balance-user 
 
     Examples:
       | id  |
-      | 169 |
+      | 296 |
 
 
   Scenario Outline: The content of the data (id, firstname, lastname, username, image, email, country_code,
@@ -56,8 +56,8 @@ Feature: As an administrator, I want to be able to access the with-balance-user 
 
     Given The API user sets "api/users/with-balance-user/<id>" path parameters
     And The API user saves the response from the api users with-balance-user endpoint with valid authorization information
-    Then The API user verifies the content of the data in the response body which includes <id>, "<firstname>", "<lastname>", "<username>", "<email>", "<country_code>", "<mobile>", <ref_by>, "<balance>"
+    Then The API user verifies the content of the data in the response body which includes <id>, "<firstname>", "<lastname>", "<username>", "<image>", "<email>", "<country_code>", "<mobile>", <ref_by>, "<balance>"
 
     Examples:
-      | id  | id  | firstname | lastname | username  | email              | country_code | mobile       | ref_by | balance         |
-      | 169 | 169 | kaan      | user1    | kaanuser1 | kaanuser1@abcd.com | TR           | 903456789123 | 0      | 100000.00000000 |
+      | id  | id  | firstname                | lastname       | username | image                       | email                     | country_code | mobile           | ref_by | balance      |
+      | 296 | 296 | LESSIE FEESTAUDRY SENGER | TREUTELKOVACEK | aj641m   | 65863efbbf4cf1703296763.png | renaldo.witting@yahoo.com | FR           | 3335899312974581 | 0      | 100.00000000 |

@@ -12,8 +12,8 @@ Feature: As an administrator, I want to access information about the installment
 
     Examples:
       | id  |
-      | 101 |
-      | 102 |
+      | 611 |
+      | 612 |
 
 
   Scenario: When a valid GET request is sent to the 'api/deposit/details/{{id}}' endpoint with proper
@@ -50,7 +50,7 @@ Feature: As an administrator, I want to access information about the installment
 
     Examples:
       | id  |
-      | 101 |
+      | 611 |
 
 
   Scenario Outline: The content of the data fields (id, user_id, method_code, amount, method_currency, charge,
@@ -59,9 +59,9 @@ Feature: As an administrator, I want to access information about the installment
 
     Given The API user sets "api/deposit/details/<id>" path parameters
     And The API user records the response from the api deposit details endpoint with valid authorization information
-    Then The API user verifies the content of the data in the response body which includes <id>, <user_id>, <method_code>, "<amount>", "<method_currency>", "<charge>", "<rate>", "<final_amo>", "<btc_amo>", "<trx>", <payment_try>, <status>, <from_api>, "<admin_feedback>", "<created_at>", "<updated_at>"
+    Then The API user verifies the content of the data in the response body which includes <id>, <user_id>, <method_code>, "<amount>", "<method_currency>", "<charge>", "<rate>", "<final_amo>", "<btc_amo>", "<trx>", <payment_try>, <status>, <from_api>, "<created_at>", "<updated_at>"
 
     Examples:
-      | id  | id  | user_id | method_code | amount       | method_currency | charge       | rate       | final_amo    | btc_amo | trx          | payment_try | status | from_api | admin_feedback | created_at                  | updated_at                  |
-      | 101 | 101 | 8       | 1000        | 400.00000000 | USD             | 108.00000000 | 1.00000000 | 508.00000000 | 0       | FJFXCJ7TW6BQ | 0           | 3      | 0        | \"rejected\"   | 2023-12-17T20:28:50.000000Z | 2023-12-17T21:46:22.000000Z |
-      | 102 | 102 | 8       | 1000        | 500.00000000 | USD             | 110.00000000 | 1.00000000 | 610.00000000 | 0       | 5PAC4DHU1J4V | 0           | 3      | 0        | \"rejected\"   | 2023-12-17T20:29:05.000000Z | 2023-12-17T21:43:14.000000Z |
+      | id  | id  | user_id | method_code | amount        | method_currency | charge       | rate       | final_amo     | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
+      | 611 | 611 | 55      | 1000        | 500.00000000  | USD             | 110.00000000 | 1.00000000 | 610.00000000  | 0       | 9OCPH2FGD84Y | 0           | 0      | 0        | 2023-12-23T18:52:09.000000Z | 2023-12-23T18:52:09.000000Z |
+      | 612 | 612 | 44      | 1000        | 3000.00000000 | USD             | 160.00000000 | 1.00000000 | 3160.00000000 | 0       | F48US31B1A26 | 0           | 1      | 0        | 2023-12-23T19:58:13.000000Z | 2023-12-23T19:58:39.000000Z |

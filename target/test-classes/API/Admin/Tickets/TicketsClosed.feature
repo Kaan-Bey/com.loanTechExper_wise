@@ -27,5 +27,5 @@ Feature: As an administrator, I want to access the tickets that are in the 'clos
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | name        | email                | ticket | subject      | status | priority | last_reply          | created_at                  | updated_at                  |
-      | 0         | 60      | osman guler | osmanguler@gmail.com | 828962 | team3-osman3 | 3      | 3        | 2023-12-14 02:43:55 | 2023-12-14T07:43:55.000000Z | 2023-12-14T07:45:04.000000Z |
+      | dataIndex | user_id | name          | email                  | ticket | subject | status | priority | last_reply          | created_at                  | updated_at                  |
+      | 0         | 26      | cengiz ozturk | cengizozturk@gmail.com | 631704 | Kredi   | 3      | 3        | 2023-12-22 15:00:29 | 2023-12-22T19:37:07.000000Z | 2023-12-22T20:00:31.000000Z |

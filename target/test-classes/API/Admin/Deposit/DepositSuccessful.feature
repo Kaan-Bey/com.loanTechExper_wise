@@ -28,5 +28,5 @@ Feature: As an administrator, I want to be able to access successful deposits th
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, <method_code>, "<amount>", "<method_currency>", "<charge>", "<rate>", "<final_amo>", "<btc_amo>", "<trx>", <payment_try>, <status>, <from_api>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | method_code | amount       | method_currency | charge       | rate       | final_amo    | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
-      | 3         | 65      | 1000        | 100.00000000 | USD             | 102.00000000 | 1.00000000 | 202.00000000 | 0       | EPA344UTUTMB | 0           | 1      | 0        | 2023-12-17T20:02:12.000000Z | 2023-12-17T21:32:22.000000Z |
+      | dataIndex | user_id | method_code | amount        | method_currency | charge       | rate          | final_amo        | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
+      | 3         | 31      | 1001        | 1000.00000000 | EUR             | 240.00000000 | 1000.00000000 | 1240000.00000000 | 0       | 7SZ77TR1DQZ5 | 0           | 1      | 0        | 2023-12-23T17:15:50.000000Z | 2023-12-23T17:16:04.000000Z |

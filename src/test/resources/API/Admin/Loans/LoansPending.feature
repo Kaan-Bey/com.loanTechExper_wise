@@ -30,4 +30,4 @@ Feature: As an administrator, I want to access the list of pending loans via API
 
     Examples:
       | dataIndex | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | status | created_at                  | updated_at                  |
-      | 0         | FSUF8FXVYKKT | 40      | 1       | 1100.00000000 | 33.00000000     | 30                   | 15          | 100.06000000           | 0.00000000   | 0                 | 10                | 0      | 2023-12-14T20:34:44.000000Z | 2023-12-14T20:34:44.000000Z |
+      | 0         | A6J6U8JRQMHQ | 41      | 55      | 2000.00000000 | 60.00000000     | 30                   | 1           | 100.30000000           | 0.00000000   | 0                 | 10                | 0      | 2023-12-23T15:37:06.000000Z | 2023-12-23T15:37:06.000000Z |

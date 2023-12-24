@@ -32,6 +32,22 @@ Feature: As an administrator, I want to be able to reject the deposit informatio
 
     Examples:
       | id  |
+      | 107 |
+
+
+  Scenario Outline: Verify that when a POST request with valid authorization information and a previously
+  rejected (id) along with a body containing data fields (message) is sent to the 'api/deposit/reject/{{id}}'
+  endpoint, the returned status code is 203, and the message information in the response body is "No deposit
+  or deposit status is not pending."
+
+    Given The API user sets "api/deposit/reject/<id>" path parameters
+    And The API user prepares a POST request containing the correct data to send to the api deposit reject endpoint
+    When The API user sends a POST request and records the response returned from the api deposit reject endpoint with valid authorization information
+    Then The API user verifies that the status code is 203
+    And The API User verifies that the message information in the response body is "No deposit or deposit status is not pending."
+
+    Examples:
+      | id  |
       | 106 |
 
 
@@ -78,18 +94,3 @@ Feature: As an administrator, I want to be able to reject the deposit informatio
     Examples:
       | id  |
       | 106 |
-
-
-  Scenario Outline: The update of the deposit reject record through the API should be verified.
-  This can be confirmed by sending a GET request to the 'api/deposit/details/{{id}}' endpoint with
-  the returned ID from the response body, validating that the record has been updated
-
-    Given The API user sets "api/deposit/details/<id>" path parameters
-    And The API user records the response from the api deposit details endpoint with valid authorization information
-    Then The API user verifies that the status code is 200
-    And The API user verifies that the adminfeedback information in the response body is "<valueAdminFeedback>"
-    #Api kullanicisi response bodydeki admin_feedback bilgisinin "<valueAdminFeedback>" oldugunu dogrular
-
-    Examples:
-      | id  | valueAdminFeedback |
-      | 106 | Bank info is wrong |
