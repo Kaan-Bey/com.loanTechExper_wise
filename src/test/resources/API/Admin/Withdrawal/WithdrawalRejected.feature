@@ -28,6 +28,6 @@ Feature: As an administrator, I want to be able to access rejected withdrawals t
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <method_id>, <user_id>, "<amount>", "<currency>", "<rate>", "<charge>", "<trx>", "<final_amount>", "<after_charge>", <status>, "<admin_feedback>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | method_id | user_id | amount       | currency | rate       | charge       | trx          | final_amount | after_charge | status | admin_feedback | created_at                  | updated_at                  |
-      | 0         | 9         | 64      | 300.00000000 | USD      | 1.00000000 | 215.00000000 | TAAB1R3Q6824 | 85.00000000  | 85.00000000  | 3      | don't approved | 2023-12-18T18:48:54.000000Z | 2023-12-18T19:50:19.000000Z |
+      | dataIndex | method_id | user_id | amount       | currency | rate        | charge       | trx          | final_amount  | after_charge | status | admin_feedback | created_at                  | updated_at                  |
+      | 0         | 29        | 15      | 150.00000000 | USD      | 10.00000000 | 200.00000000 | U1QOAGAS4QZ8 | -500.00000000 | -50.00000000 | 3      | Reject         | 2023-12-23T17:41:53.000000Z | 2023-12-23T17:46:48.000000Z |
 

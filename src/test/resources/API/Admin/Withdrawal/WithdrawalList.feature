@@ -28,5 +28,5 @@ Feature: As an administrator, I want to be able to access the withdrawal list th
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <method_id>, <user_id>, "<amount>", "<currency>", "<rate>", "<charge>", "<trx>", "<final_amount>", "<after_charge>", <status>, "<admin_feedback>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | method_id | user_id | amount       | currency | rate         | charge      | trx          | final_amount   | after_charge | status | admin_feedback | created_at                  | updated_at                  |
-      | 6         | 15        | 34      | 500.00000000 | UGDOL    | 150.00000000 | 90.00000000 | QJOMJ9JGCRR6 | 61500.00000000 | 410.00000000 | 1      | OK GUT         | 2023-12-18T11:37:40.000000Z | 2023-12-18T11:40:58.000000Z |
+      | dataIndex | method_id | user_id | amount       | currency | rate        | charge       | trx          | final_amount  | after_charge | status | admin_feedback | created_at                  | updated_at                  |
+      | 0         | 29        | 15      | 100.00000000 | USD      | 10.00000000 | 150.00000000 | XVMEFZF2776J | -500.00000000 | -50.00000000 | 1      | OK             | 2023-12-23T18:54:53.000000Z | 2023-12-23T18:55:03.000000Z |
