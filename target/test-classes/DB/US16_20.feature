@@ -1,3 +1,4 @@
+@DB
 Feature: US17_Users tablosunda sondan bir önceki harfi e olan usernamelerin mobile numarasını update ediniz
 
   Background:Database connection
@@ -24,6 +25,6 @@ Feature: US17_Users tablosunda sondan bir önceki harfi e olan usernamelerin mob
       * Database connection is closed
       @DB20
       Scenario: "Transactions" tablosunda "remark" türüne göre "amount" değerleri toplamını bulup 1000 $dan yüksek olanları doğrulayınız.
-        * In the "Transactions" table, find the sum of the "amount" values according to the "remark" type and verify the ones higher than $1000
+        * In the "transactions" table, find the sum of the "amount" values according to the "remark" type and verify the ones higher than $1000
         * "total_amount" values list is verified
         * Database connection is closed

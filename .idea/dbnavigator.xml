@@ -13,9 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a35748d7-d09b-4e8b-954b-e3ffb2a8e5d5">
-      <console name="Connection" type="STANDARD" schema="mysql" session="Main"><![CDATA[SELECT COUNT(*) 
-FROM chat_users 
-WHERE create_staff_id = 1;]]></console>
+      <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

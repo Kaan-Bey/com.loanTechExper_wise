@@ -11,8 +11,8 @@ Feature: As an administrator, I should be able to delete the withdrawal methods 
     And The API User verifies that the message information in the response body is "Withdraw Method deleted"
 
     Examples:
-      | id |
-      | 61 |
+      | id  |
+      | 154 |
 
 
   Scenario: When valid authorization information and a DELETE request without the 'id' are sent to the
@@ -48,8 +48,8 @@ Feature: As an administrator, I should be able to delete the withdrawal methods 
     #Api kullanicisi api withdraw methods delete endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id |
-      | 61 |
+      | id  |
+      | 154 |
 
 
   Scenario Outline: The deletion of the withdrawal methods record through the API should be verified.
@@ -62,5 +62,5 @@ Feature: As an administrator, I should be able to delete the withdrawal methods 
     And The API User verifies that the message information in the response body is "No Withdraw Method"
 
     Examples:
-      | id |
-      | 61 |
+      | id  |
+      | 154 |

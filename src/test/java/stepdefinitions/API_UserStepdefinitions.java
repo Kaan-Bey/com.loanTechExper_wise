@@ -265,7 +265,7 @@ public class API_UserStepdefinitions {
     public void theAPIUserPreparesAPATCHRequestToSendToTheUserChangePasswordEndpointWithANewPasswordContainingOnlyNumbers() {
         requestBody = new JSONObject();
         requestBody.put("current_password", "Loan.741");
-        requestBody.put("password", "12345");
+        requestBody.put("password", "123123123");
     }
 
     @And("The API user prepares a PATCH request to send to the user change password endpoint with a new password containing at least one uppercase letter, one lowercase letter, and a number")
