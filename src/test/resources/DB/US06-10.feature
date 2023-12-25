@@ -6,7 +6,7 @@ Feature: US06-11
 
   @DB06
   Scenario: In the "Support_messages" table in the database,
-  verify the "support_ticket_id" of the data whose "message" information is "trial_message".
+  verify the "support_ticket_id" of the data whose "message" information is "Tickett".
     * Query06 is prepared and executed.
     * Verify the support_ticket_id information Results are obtained.
     * Database connection is closed
