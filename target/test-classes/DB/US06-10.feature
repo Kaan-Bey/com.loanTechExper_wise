@@ -1,4 +1,4 @@
-@F2
+@DB
 Feature: US06-11
 
   Background: Database connection
@@ -19,7 +19,7 @@ Feature: US06-11
 
   @DB08
   Scenario: Verify the "firstname" and "lastname" information of the data
-  without "country_code=TR" in the "Users" table.
+  without "country_code=TR"and "id=2" in the "Users" table.
     * Query08 is prepared and executed.
     * Verify the firstname,lastname information Results are obtained.
 
