@@ -12,8 +12,8 @@ Feature: As an administrator, I want to access the withdrawal methods informatio
     And The API user verifies that the remark information in the response body is "success"
 
     Examples:
-      | id |
-      | 22 |
+      | id  |
+      | 145 |
 
 
   Scenario: When a valid GET request is sent to the 'api/withdraw/methods/details/{{id}}' endpoint with
@@ -51,8 +51,8 @@ Feature: As an administrator, I want to access the withdrawal methods informatio
     Then The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized
 
     Examples:
-      | id |
-      | 22 |
+      | id  |
+      | 145 |
 
 
   Scenario Outline: The contents of the data (id, form_id, name, min_limit, max_limit, fixed_charge, rate,
@@ -65,6 +65,6 @@ Feature: As an administrator, I want to access the withdrawal methods informatio
     #API kullanicisi response bodydeki data <id>, "<email>", "<created_at>", "<updated_at>"t>" içeriklerini doğrular
 
     Examples:
-      | id | id | form_id | name | min_limit     | max_limit      | fixed_charge | rate       | percent_charge | currency | description | status | created_at                  | updated_at                  |
-      | 22 | 22 | 67      | m101 | 1000.00000000 | 50000.00000000 | 10.00000000  | 1.00000000 | 1.00           | 5000     | <br>        | 1      | 2023-12-18T22:40:33.000000Z | 2023-12-19T07:57:59.000000Z |
+      | id  | id  | form_id | name | min_limit    | max_limit     | fixed_charge | rate        | percent_charge | currency | description | status | created_at                  | updated_at                  |
+      | 145 | 145 | 246     | 21   | 200.00000000 | 1000.00000000 | 21.00000000  | 12.00000000 | 12.00          | 21       | 21          | 1      | 2023-12-23T10:42:42.000000Z | 2023-12-23T15:39:19.000000Z |
 

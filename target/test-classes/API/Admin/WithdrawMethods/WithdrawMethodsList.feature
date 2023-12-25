@@ -28,5 +28,5 @@ Feature: As an administrator, I want to access the withdrawal methods list throu
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <form_id>, "<name>", "<min_limit>", "<max_limit>", "<fixed_charge>", "<rate>", "<percent_charge>", "<currency>", "<description>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | form_id | name | min_limit    | max_limit     | fixed_charge | rate         | percent_charge | currency | description | status | created_at                  | updated_at                  |
-      | 2         | 34      | İT   | 100.00000000 | 1000.00000000 | 20.00000000  | 100.00000000 | 5.00           | dolar    | hello       | 1      | 2023-12-14T09:02:13.000000Z | 2023-12-14T09:03:43.000000Z |
+      | dataIndex | form_id | name | min_limit    | max_limit     | fixed_charge | rate        | percent_charge | currency | description | status | created_at                  | updated_at                  |
+      | 2         | 246     | 21   | 200.00000000 | 1000.00000000 | 21.00000000  | 12.00000000 | 12.00          | 21       | 21          | 1      | 2023-12-23T10:42:42.000000Z | 2023-12-23T15:39:19.000000Z |

@@ -32,6 +32,22 @@ Feature: As an administrator, I want to be able to reject the withdrawal informa
 
     Examples:
       | id |
+      | 70 |
+
+
+  Scenario Outline: Verify that when a POST request with valid authorization information and a
+  previously rejected (id) along with a body containing data fields (details) is sent to the
+  'api/withdrawal/reject/{{id}}' endpoint, the returned status code is 203, and the message
+  information in the response body is "No withdraw or withdraw status is not pending."
+
+    Given The API user sets "api/withdrawal/reject/<id>" path parameters
+    And The API user prepares a POST request containing the correct data to send to the api withdrawal reject endpoint
+    When The API user sends a POST request and records the response returned from the api withdrawal reject endpoint with valid authorization information
+    Then The API user verifies that the status code is 203
+    And The API User verifies that the message information in the response body is "No withdraw or withdraw status is not pending."
+
+    Examples:
+      | id |
       | 68 |
 
 
@@ -61,7 +77,7 @@ Feature: As an administrator, I want to be able to reject the withdrawal informa
 
     Examples:
       | id  |
-      | 687 |
+      | 895 |
 
 
   Scenario Outline: When an invalid POST request with unauthorized authorization information is sent to the

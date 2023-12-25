@@ -55,13 +55,14 @@ Feature: As an administrator, I want to be able to create a new withdrawal metho
 
   Scenario Outline: The creation of a new withdraw methods record through the API should be verified.
   This can be confirmed by sending a GET request to the 'api/withdraw/methods/details/{{id}}' endpoint
-  with the added method id returned in the response body
+  with the id returned in the response body
 
     Given The API user sets "api/withdraw/methods/details/<id>" path parameters
     And The API user saves the response from the api withdraw methods details endpoint with valid authorization information
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
+    Then The API user verifies that the id information in the response body is <valueId>
 
     Examples:
-      | id |
-      | 24 |
+      | id  | valueId |
+      | 152 | 152     |

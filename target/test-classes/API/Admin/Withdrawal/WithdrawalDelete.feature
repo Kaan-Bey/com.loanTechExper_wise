@@ -13,7 +13,7 @@ Feature: As an administrator, I should be able to delete a withdrawal record in 
 
     Examples:
       | id |
-      | 20 |
+      | 2  |
 
 
   Scenario: When a valid DELETE request is sent to the 'api/withdrawal/delete/{{id}}' endpoint with
@@ -52,7 +52,7 @@ Feature: As an administrator, I should be able to delete a withdrawal record in 
 
     Examples:
       | id |
-      | 20 |
+      | 2  |
 
 
   Scenario Outline: The deletion of the withdrawal record through the API should be confirmed by sending
@@ -66,4 +66,4 @@ Feature: As an administrator, I should be able to delete a withdrawal record in 
 
     Examples:
       | id |
-      | 20 |
+      | 2  |

@@ -1040,7 +1040,7 @@ public class API_AdminStepdefinitions {
 
     @Then("The API user records the response from the api withdrawal approve endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized")
     public void the_apı_user_records_the_response_from_the_api_withdrawal_approve_endpoint_with_invalid_authorization_information_verifies_that_the_status_code_is_and_confirms_that_the_error_information_is_unauthorized() {
-        assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
+        assertTrue(ReusableMethods.tryCatchPatchBody(reqBody).contains("status code: 401, reason phrase: Unauthorized"));
     }
     //***************************************************************************************************
 
@@ -1113,19 +1113,19 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_verifies_that_the_content_of_the_data_field_in_the_response_body_includes(int id, int form_id, String name, String min_limit, String max_limit, String fixed_charge, String rate, String percent_charge, String currency, String description, int status, String created_at, String updated_at) {
         jsonPath = ReusableMethods.response.jsonPath();
 
-        assertEquals(id, jsonPath.getInt("data[0].id"));
-        assertEquals(form_id, jsonPath.getInt("data[0].form_id"));
-        assertEquals(name, jsonPath.getString("data[0].name"));
-        assertEquals(min_limit, jsonPath.getString("data[0].min_limit"));
-        assertEquals(max_limit, jsonPath.getString("data[0].max_limit"));
-        assertEquals(fixed_charge, jsonPath.getString("data[0].fixed_charge"));
-        assertEquals(rate, jsonPath.getString("data[0].rate"));
-        assertEquals(percent_charge, jsonPath.getString("data[0].percent_charge"));
-        assertEquals(currency, jsonPath.getString("data[0].currency"));
-        assertEquals(description, jsonPath.getString("data[0].description"));
-        assertEquals(status, jsonPath.getInt("data[0].status"));
-        assertEquals(created_at, jsonPath.getString("data[0].created_at"));
-        assertEquals(updated_at, jsonPath.getString("data[0].updated_at"));
+        assertEquals(id, jsonPath.getInt("data.id"));
+        assertEquals(form_id, jsonPath.getInt("data.form_id"));
+        assertEquals(name, jsonPath.getString("data.name"));
+        assertEquals(min_limit, jsonPath.getString("data.min_limit"));
+        assertEquals(max_limit, jsonPath.getString("data.max_limit"));
+        assertEquals(fixed_charge, jsonPath.getString("data.fixed_charge"));
+        assertEquals(rate, jsonPath.getString("data.rate"));
+        assertEquals(percent_charge, jsonPath.getString("data.percent_charge"));
+        assertEquals(currency, jsonPath.getString("data.currency"));
+        assertEquals(description, jsonPath.getString("data.description"));
+        assertEquals(status, jsonPath.getInt("data.status"));
+        assertEquals(created_at, jsonPath.getString("data.created_at"));
+        assertEquals(updated_at, jsonPath.getString("data.updated_at"));
     }
     //***************************************************************************************************
 
@@ -1177,6 +1177,13 @@ public class API_AdminStepdefinitions {
     public void theAPIUserRecordsTheResponseFromTheApiWithdrawMethodsStatusEndpointWithInvalidAuthorizationInformationVerifiesThatTheStatusCodeIsAndConfirmsThatTheErrorMessageIsUnauthorized() {
         assertTrue(ReusableMethods.tryCatchPatch().contains("status code: 401, reason phrase: Unauthorized"));
     }
+
+    @And("The API user verifies that the Status information in the response body is {int}")
+    public void theAPIUserVerifiesThatTheStatusInformationInTheResponseBodyIsValueStatus(int valueStatus) {
+        jsonPath = ReusableMethods.response.jsonPath();
+
+        assertEquals(valueStatus, jsonPath.getInt("data.status"));
+    }
     //***************************************************************************************************
 
     //******************************** api/withdraw/methods/update/{{id}} *******************************
@@ -1201,6 +1208,13 @@ public class API_AdminStepdefinitions {
     @Then("The API user records the response from the api withdraw methods update endpoint with invalid authorization information and verifies that the status code is '401' and the error message is Unauthorized")
     public void theAPIUserRecordsTheResponseFromTheApiWithdrawMethodsUpdateEndpointWithInvalidAuthorizationInformationAndVerifiesThatTheStatusCodeIsAndTheErrorMessageIsUnauthorized() {
         assertTrue(ReusableMethods.tryCatchPatchBody(reqBody).contains("status code: 401, reason phrase: Unauthorized"));
+    }
+
+    @Then("The API user verifies that the Name information in the response body is {string}")
+    public void the_apı_user_verifies_that_the_name_information_in_the_response_body_is(String valueName) {
+        jsonPath = ReusableMethods.response.jsonPath();
+
+        assertEquals(valueName, jsonPath.getString("data.name"));
     }
     //***************************************************************************************************
 

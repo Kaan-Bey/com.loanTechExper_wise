@@ -28,5 +28,5 @@ Feature: As an administrator, I want to be able to access pending withdrawals th
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <method_id>, <user_id>, "<amount>", "<currency>", "<rate>", "<charge>", "<trx>", "<final_amount>", "<after_charge>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | method_id | user_id | amount       | currency | rate       | charge       | trx          | final_amount | after_charge | status |created_at                  | updated_at                  |
-      | 0         | 9         | 64      | 300.00000000 | USD      | 1.00000000 | 215.00000000 | X6TFZD1QZ335 | 85.00000000  | 85.00000000  | 2      |2023-12-16T18:17:42.000000Z | 2023-12-16T18:17:46.000000Z |
+      | dataIndex | method_id | user_id | amount       | currency | rate       | charge       | trx          | final_amount | after_charge | status | created_at                  | updated_at                  |
+      | 0         | 9         | 55      | 500.00000000 | USD      | 1.00000000 | 225.00000000 | Z5CQ7E6MKSM7 | 275.00000000 | 275.00000000 | 2      | 2023-12-23T18:52:29.000000Z | 2023-12-23T18:52:31.000000Z |

@@ -11,8 +11,8 @@ Feature: As an administrator, I want to be able to update the status information
     And The API User verifies that the message information in the response body is "Status changed"
 
     Examples:
-      | id |
-      | 23 |
+      | id  |
+      | 152 |
 
 
   Scenario: When valid authorization information and a PATCH body without the 'id' are sent to the
@@ -48,8 +48,8 @@ Feature: As an administrator, I want to be able to update the status information
     #Api kullanicisi api withdraw methods status endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id |
-      | 23 |
+      | id  |
+      | 152 |
 
 
   Scenario Outline: The update of the withdrawal methods status record through the API should be verified.
@@ -59,8 +59,8 @@ Feature: As an administrator, I want to be able to update the status information
     Given The API user sets "api/withdraw/methods/details/<id>" path parameters
     And The API user saves the response from the api withdraw methods details endpoint with valid authorization information
     Then The API user verifies that the status code is 200
-    And The API user verifies that the status information in the response body is <valueStatus>
+    And The API user verifies that the Status information in the response body is <valueStatus>
 
     Examples:
-      | id | valueStatus |
-      | 23 | 1           |
+      | id  | valueStatus |
+      | 152 | 1           |

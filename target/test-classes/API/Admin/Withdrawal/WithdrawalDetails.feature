@@ -11,8 +11,8 @@ Feature: As an administrator, I want to be able to access withdrawal details wit
     And The API user verifies that the remark information in the response body is "success"
 
     Examples:
-      | id |
-      | 68 |
+      | id  |
+      | 374 |
 
 
   Scenario: When a valid GET request is sent to the 'api/withdrawal/details/{{id}}' endpoint with proper
@@ -49,8 +49,8 @@ Feature: As an administrator, I want to be able to access withdrawal details wit
     Then The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized
 
     Examples:
-      | id |
-      | 68 |
+      | id  |
+      | 374 |
 
 
   Scenario Outline: The content of the data (id, method_id, user_id, amount, currency, rate, charge, trx,
@@ -62,5 +62,5 @@ Feature: As an administrator, I want to be able to access withdrawal details wit
     Then The API user verifies the content of the data in the response body which includes <id>, <method_id>, <user_id>, "<amount>", "<currency>", "<rate>", "<charge>", "<trx>", "<final_amount>", "<after_charge>", <status>, "<admin_feedback>", "<created_at>", "<updated_at>"
 
     Examples:
-      | id | id | method_id | user_id | amount       | currency | rate       | charge       | trx          | final_amount | after_charge | status | admin_feedback | created_at                  | updated_at                  |
-      | 68 | 68 | 9         | 64      | 300.00000000 | USD      | 1.00000000 | 215.00000000 | TAAB1R3Q6824 | 85.00000000  | 85.00000000  | 3      | don't approved | 2023-12-18T18:48:54.000000Z | 2023-12-18T19:50:19.000000Z |
+      | id  | id  | method_id | user_id | amount       | currency | rate        | charge       | trx          | final_amount  | after_charge | status | admin_feedback | created_at                  | updated_at                  |
+      | 374 | 374 | 29        | 15      | 150.00000000 | USD      | 10.00000000 | 200.00000000 | U1QOAGAS4QZ8 | -500.00000000 | -50.00000000 | 3      | Reject         | 2023-12-23T17:41:53.000000Z | 2023-12-23T17:46:48.000000Z |
