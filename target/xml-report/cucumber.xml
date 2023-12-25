@@ -1,38 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="5" time="7.151">
-    <testcase classname="US01/US02/US03/US04/US05" name="US01 Verify user_ids with &quot;amount&quot; value between $100 and $500 in the &quot;deposits&quot; table in the database" time="2.672">
-        <system-out><![CDATA[* Database connection is established........................................passed
-* Query is prepared and executed............................................passed
-* Results are obtained......................................................passed
-* Database connection is closed.............................................passed
-]]></system-out>
-    </testcase>
-    <testcase classname="US01/US02/US03/US04/US05" name="US02 Verify the &quot;remember_token&quot; information" time="0.894">
-        <system-out><![CDATA[* Database connection is established........................................passed
-* "AdminsTableQuery" is prepared and executed...............................passed
-* Verify the "remember_token" information Results are obtained..............passed
-* Database connection is closed.............................................passed
-]]></system-out>
-    </testcase>
-    <testcase classname="US01/US02/US03/US04/US05" name="US03 Verify the &quot;name&quot; information of the last 3 records in the &quot;cron_schedules&quot; table in the database" time="0.698">
-        <system-out><![CDATA[* Database connection is established........................................passed
-* cron_schedules_Query is prepared and executed.............................passed
-* name Results are obtained.................................................passed
-* Database connection is closed.............................................passed
-]]></system-out>
-    </testcase>
-    <testcase classname="US01/US02/US03/US04/US05" name="US04 In the &quot;Deposits&quot; table in the database," time="1.033">
-        <system-out><![CDATA[* Database connection is established........................................passed
-* deposits_Query is prepared and executed...................................passed
-* "charge" value of the data Results are obtained...........................passed
-* Database connection is closed.............................................passed
-]]></system-out>
-    </testcase>
-    <testcase classname="US01/US02/US03/US04/US05" name="US05 Add multiple data to the &quot;admin_password_resets&quot; table in the database at the same time." time="1.647">
-        <system-out><![CDATA[* Database connection is established........................................passed
-* admin_password_resets_Query is prepared and executed......................passed
-* Data Results are obtained.................................................passed
-* Database connection is closed.............................................passed
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="7.487">
+    <testcase classname="As an administrator, I want to be able to access users with balances through the API connection." name="The information returned in the response with ID(x) should be verified, including" time="6.572">
+        <system-out><![CDATA[Given The API user sets "api/users/with-balance" path parameters............passed
+And The API user saves the response from the api users with-balance endpoint with valid authorization information.passed
+Then Verify the information of the one with the index 0 in the API user response body: "kaan", "user1", "kaanuser1", "kaanuser1@abcd.com", "TR", "903456789123", 0, "100000.00000000".passed
 ]]></system-out>
     </testcase>
 </testsuite>
