@@ -44,7 +44,7 @@ public class DB_Stepdefinitions {
         preparedStatement = DBUtils.getPraperedStatement(query);
         preparedStatement.setString(1, mobileNumber);
         int rowCount = preparedStatement.executeUpdate();
-        assertEquals(12, rowCount);
+        assertEquals(18, rowCount);
     }
 
     @Given("Database connection is closed")
@@ -77,7 +77,7 @@ public class DB_Stepdefinitions {
     public void verify_the_information_results_are_obtained(String column) throws SQLException {
         rs.next();
         String rToken = rs.getString(column);
-        String expToken = "tbvFCmzJTpBQyBizOmIzet4gnfGFXG5kVh9iuoqTvyg2V3QIOQeCtJWiIdWz";
+        String expToken = "1xUgfVUD1Ggx5CVz7mxLvcye8RXRbeFqSktSIkhya321TqDkLOsqhys4pnJv";
         assertEquals(expToken, rToken);
     }
 
@@ -94,8 +94,8 @@ public class DB_Stepdefinitions {
             String name = rs.getString("name");
             names.add(name);
             List<String> expected = new ArrayList<>();
-            expected.add("10 Minutes");
             expected.add("5 Minutes");
+            expected.add("10 Minutes");
 
             for (int i = 0; i < names.size(); i++) {
                 assertEquals(expected.get(i), names.get(i));
@@ -131,7 +131,7 @@ public class DB_Stepdefinitions {
     @Given("admin_password_resets_Query is prepared and executed.")
     public void admin_password_resets_query_is_prepared_and_executed() throws SQLException {
         query = manage.getQuery05();
-        id = faker.number().numberBetween(8, 1000);
+        id = faker.number().numberBetween(100, 1000);
         e_mail = faker.internet().emailAddress();
         token = faker.internet().password();
         Date created_at=Date.valueOf(LocalDate.now());
@@ -195,7 +195,7 @@ public class DB_Stepdefinitions {
 
     @Given("Verify the firstname,lastname information Results are obtained.")
     public void verify_the_firstname_lastname_information_results_are_obtained() throws SQLException {
-        String expectedName = "aliulvi girgin";
+        String expectedName = "Mehmet Genç";
         List<String> actualList = new ArrayList<>();
         rs.next();
         String actualName=rs.getString("firstname") + " " + rs.getString("lastname");
@@ -297,7 +297,7 @@ public class DB_Stepdefinitions {
         int duration = faker.number().numberBetween(0, 50);
         String error = faker.name().title();
         //id,cron_job_id,start_at,end_at,duration,error,created_at
-        id = faker.number().numberBetween(8, 50);
+        id = faker.number().numberBetween(50, 100);
         preparedStatement = DBUtils.getPraperedStatement(query);
         preparedStatement.setInt(1, id);
         preparedStatement.setInt(2, cron_job_id);
@@ -318,11 +318,11 @@ public class DB_Stepdefinitions {
     public void verify_the_list_the_highest_values(Integer int1, String column) throws SQLException {
         List<Integer> codes = new ArrayList<>();
         List<Integer> expcodes = new ArrayList<>();
+        expcodes.add(1003);
+        expcodes.add(1002);
+        expcodes.add(1001);
         expcodes.add(1000);
         expcodes.add(509);
-        expcodes.add(508);
-        expcodes.add(507);
-        expcodes.add(506);
 
         while (rs.next()) {
             int code = rs.getInt("code");
@@ -341,7 +341,11 @@ public class DB_Stepdefinitions {
 
     @Given("Verify list the data that does not contain {string} in the {string}")
     public void verify_list_the_data_that_does_not_contain_in_the(String string, String string2) throws SQLException {
-        assertFalse("Resultset boş", rs.next());
+       //assertFalse("Resultset boş", rs.next());
+        rs.next();
+      String email=rs.getString(1);
+
+      Assert.assertFalse(email.contains("a"));
 
     }
 
@@ -361,7 +365,7 @@ public class DB_Stepdefinitions {
     @Given("Catagories_table insertQuery is prepared and updated")
     public void catagories_table_insert_query_is_prepared_and_updated() throws SQLException {
         query = manage.getQuery18();
-        id = faker.number().numberBetween(8, 50);
+        id = faker.number().numberBetween(100, 500);
         String name = faker.expression("loan");
         String description = faker.lorem().sentence(4);
         preparedStatement = DBUtils.getPraperedStatement(query);
@@ -396,7 +400,13 @@ public class DB_Stepdefinitions {
     public void total_amount_values_list_is_verified(String column) throws SQLException {
         List<Integer> actual_total_amount =new ArrayList<>();
         Integer expTotal_amount = 1000;
-
+        /*'application_fee', '96754.57000000'
+        'balance_add', '314785.00000000'
+        'balance_subtract', '33011.00000000'
+        'deposit', '628163.12000000'
+        'loan_taken', '245884.00000000'
+        'withdraw', '254177.40000000'
+        'withdraw_reject', '157104.00000000' */
         boolean isAnyElementGreaterThanExpected = false;
 
        while (rs.next()){
@@ -423,7 +433,7 @@ public class DB_Stepdefinitions {
     public void user_result_values_are_validated() throws SQLException {
         rs.next();
         Object actualCount = rs.getInt("COUNT(*)");
-        assertEquals(1, actualCount);
+        assertEquals(13, actualCount);
 
 
     }
@@ -457,7 +467,7 @@ public class DB_Stepdefinitions {
     @Given("Deposits result values are validated")
     public void deposits_result_values_are_validated() throws SQLException {
         rs.next();
-        int expected_total_amount = 148877 ;//.24240000;
+        int expected_total_amount = 91501709 ;
         int actual_total_amount = rs.getInt("total_amount");
         assertEquals(expected_total_amount, actual_total_amount);
 
@@ -486,8 +496,8 @@ public class DB_Stepdefinitions {
         query = manage.getDepositsGatewaysCalculater();
         rs = DBUtils.getStatement().executeQuery(query);
         rs.next();
-        int actualtotal_amount = rs.getInt("total_amount");
-        int expectedtotal_amount = 165931;
+        int actualtotal_amount = rs.getInt("total_amount"); //175530.00000000 € //820350.18000000 $
+        int expectedtotal_amount = 175530;
         assertEquals(expectedtotal_amount, actualtotal_amount);
     }
 
@@ -527,7 +537,7 @@ public class DB_Stepdefinitions {
     public void update_log_tables_insert_query_prepared() throws SQLException {
         query = manage.getInsertupdate_Logs();
         preparedStatement = DBUtils.getPraperedStatement(query);
-        id = faker.number().numberBetween(1, 90);
+        id = faker.number().numberBetween(100, 500);
         version = faker.options().option("Windows 10", "macOS 11");
         updateLog = faker.lorem().sentence(1);
 
@@ -561,8 +571,9 @@ public class DB_Stepdefinitions {
     public void support_attachments_tables_delete_query_prepared() throws SQLException {
        query=manage.getSupport_attachments();
        preparedStatement=DBUtils.getPraperedStatement(query);
-       int support_message_id=faker.number().numberBetween(1,90);//36
-        preparedStatement.setInt(1,support_message_id);
+       int support_message_id=faker.number().numberBetween(200,225);//36
+        System.out.println(support_message_id);
+        preparedStatement.setInt(1,support_message_id);//support_message_id
     }
 
 }

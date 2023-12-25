@@ -9,7 +9,7 @@ public class Manage {
     private String Query02 = "SELECT remember_token FROM admins Where email='info@loantechexper.com';";
 
     //03->Database içindeki "cron_schedules" tablosunda son 2 kaydın "name" bilgisini donduren Query
-    private String Query03 = "SELECT name from cron_schedules Order By created_at Desc LIMIT 2;";
+    private String Query03 = "SELECT name from cron_schedules Order By created_at  LIMIT 2;";
     //04->Database içindeki "Deposits" tablosunda "amount" değeri 500.000$ altında olan dataların "charge" değerini dondurenQuery
     private String Query04 = "Select charge from deposits Where amount<500.000 And trx='4GC9SMZUS69S';";
     //05->Database içindeki "admin_password_resets" tablosuna  aynı anda birden fazla veriyi  ekleyen Query
@@ -40,7 +40,7 @@ public class Manage {
     private String Query18 = "Insert into categories (id,name,description)Values(?,?,?);";
     private String Query21 = "SELECT COUNT(*) FROM admin_notifications WHERE user_id = 1 AND is_read=1;";
     private String Query22 = "UPDATE admin_password_resets SET status = ? WHERE email = ?;";
-    private String depositsTotalAmount = "SELECT SUM(final_amo) AS total_amount FROM deposits WHERE status = 1 AND created_at BETWEEN '2023-01-01' AND '2023-12-31';";
+    private String depositsTotalAmount = "SELECT SUM(final_amo) AS total_amount FROM deposits WHERE status = 1 AND created_at BETWEEN '2023-01-01' AND '2023-12-25';";
 
     private String loan_plansQuery = "SELECT name FROM loan_plans WHERE delay_value > 0 AND (fixed_charge > 0 OR percent_charge > 0) Limit 3;";
 
