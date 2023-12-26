@@ -42,7 +42,7 @@ public class ReusableMethods {
             response = given()
                         .spec(spec)
                         .contentType(ContentType.JSON)
-                        .header("Accept", "application/*")
+                        .header("Accept", "application/json")
                         .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
                      .when()
                         .body(requestBody)
