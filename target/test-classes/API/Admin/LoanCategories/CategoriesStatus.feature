@@ -10,8 +10,8 @@ Feature: As an administrator, I want to update the status information of existin
     And The API User verifies that the message information in the response body is "Status changed"
 
     Examples:
-      | id |
-      | 93 |
+      | id  |
+      | 486 |
 
   Scenario: When a PATCH request with valid authorization information and no 'id' is sent to the
   api/categories/status/{{id}} endpoint, the returned status code should be 203, and the message
@@ -34,7 +34,7 @@ Feature: As an administrator, I want to update the status information of existin
 
     Examples:
       | id  |
-      | 468 |
+      | 894 |
 
 
   Scenario Outline: When a PATCH request with invalid authorization information and correct 'id' is sent
@@ -46,8 +46,8 @@ Feature: As an administrator, I want to update the status information of existin
     #Api kullanicisi api categories status endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id |
-      | 93 |
+      | id  |
+      | 486 |
 
 
   Scenario Outline: The update of the desired category status record through the API should be verified.
