@@ -40,6 +40,7 @@ public class ReusableMethods {
         } else if (user.equals("invalidToken")) {
             response = given()
                          .spec(spec)
+                         .contentType(ContentType.JSON)
                          .header("Accept", "application/*")
                          .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
                      .when()
@@ -56,7 +57,6 @@ public class ReusableMethods {
 
         response = given()
                      .spec(spec)
-                     .contentType(ContentType.JSON)
                      .header("Accept", "application/*")
                      .headers("Authorization", "Bearer " + Authentication.generateToken(user))
                   .when()
@@ -87,7 +87,6 @@ public class ReusableMethods {
 
         response = given()
                      .spec(spec)
-                     .contentType(ContentType.JSON)
                      .header("Accept", "application/json")
                      .headers("Authorization", "Bearer " + Authentication.generateToken(user))
                   .when()
@@ -133,6 +132,7 @@ public class ReusableMethods {
         try {
             response = given()
                         .spec(spec)
+                        .contentType(ContentType.JSON)
                         .header("Accept", "application/*")
                         .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
                      .when()
