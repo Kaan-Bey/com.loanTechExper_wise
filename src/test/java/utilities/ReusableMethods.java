@@ -103,13 +103,15 @@ public class ReusableMethods {
         try {
             response = given()
                         .spec(spec)
-                        .header("Accept", "application/*")
+                        .header("Accept", "application/json")
                         .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
                      .when()
                         .get(fullPath);
         } catch (Exception e) {
             exceptionMesaj = e.getMessage();
         }
+        System.out.println("Exception Mesaj : " + exceptionMesaj);
+
         return exceptionMesaj;
     }
 
@@ -118,13 +120,15 @@ public class ReusableMethods {
         try {
             response = given()
                         .spec(spec)
-                        .header("Accept", "application/*")
+                        .header("Accept", "application/json")
                         .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
                      .when()
                         .patch(fullPath);
         } catch (Exception e) {
             exceptionMesaj = e.getMessage();
         }
+        System.out.println("Exception Mesaj : " + exceptionMesaj);
+
         return exceptionMesaj;
     }
 
@@ -134,7 +138,7 @@ public class ReusableMethods {
             response = given()
                         .spec(spec)
                         .contentType(ContentType.JSON)
-                        .header("Accept", "application/*")
+                        .header("Accept", "application/json")
                         .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
                      .when()
                         .body(requestBody)
@@ -142,6 +146,8 @@ public class ReusableMethods {
         } catch (Exception e) {
             exceptionMesaj = e.getMessage();
         }
+        System.out.println("Exception Mesaj : " + exceptionMesaj);
+
         return exceptionMesaj;
     }
 
@@ -150,13 +156,15 @@ public class ReusableMethods {
         try {
             response = given()
                         .spec(spec)
-                        .header("Accept", "application/*")
+                        .header("Accept", "application/json")
                         .headers("Authorization", "Bearer " + ConfigReader.getProperty("invalidToken"))
                     .when()
                         .delete(fullPath);
         } catch (Exception e) {
             exceptionMesaj = e.getMessage();
         }
+        System.out.println("Exception Mesaj : " + exceptionMesaj);
+
         return exceptionMesaj;
     }
 }

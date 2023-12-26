@@ -10,8 +10,8 @@ Feature: As an administrator, I should be able to delete a category record in th
     And The API User verifies that the message information in the response body is "category deleted"
 
     Examples:
-      | id |
-      | 92 |
+      | id  |
+      | 485 |
 
   Scenario: When a DELETE request with valid authorization information and no 'id' is sent to the
   api/categories/delete/{{id}} endpoint, the returned status code should be 203, and the message in the
@@ -33,8 +33,8 @@ Feature: As an administrator, I should be able to delete a category record in th
     And The API User verifies that the message information in the response body is "No category"
 
     Examples:
-      | id  |
-      | 577 |
+      | id   |
+      | ´894 |
 
 
   Scenario Outline: When a DELETE request with invalid authorization information and correct 'id' is sent
@@ -46,8 +46,8 @@ Feature: As an administrator, I should be able to delete a category record in th
     #Api kullanicisi api categories delete endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id |
-      | 92 |
+      | id  |
+      | 485 |
 
 
   Scenario Outline: The deletion of the desired category record through the API should be verified. This can
@@ -60,5 +60,5 @@ Feature: As an administrator, I should be able to delete a category record in th
     And The API User verifies that the message information in the response body is "No category"
 
     Examples:
-      | id |
-      | 92 |
+      | id  |
+      | 485 |
