@@ -45,22 +45,6 @@ public class API_UserStepdefinitions {
 
         fullPath = tempPath.toString();
         System.out.println("fullPath = " + fullPath);
-
-        for (int i = 0; i < paths.length; i++) {
-            if (containsNumber(paths[i])) {
-                id = paths[i];
-                // Diğer işlemleri burada gerçekleştirin
-            }
-        }
-    }
-
-    private boolean containsNumber(String str) {
-        for (char c : str.toCharArray()) {
-            if (Character.isDigit(c)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     //********************************* user/ticket/list ***********************************************
