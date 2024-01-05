@@ -562,12 +562,12 @@ public class DB_Stepdefinitions {
     @Given("support_attachments tables ınsert Query prepared")
     public void support_attachments_tables_insert_query_prepared() throws SQLException {
         query=manage.getSupport_attachmentsInsertQuery();
-        id= faker.number().numberBetween(300,400);
+        id= faker.number().numberBetween(2000,3000);
         support_message_id=faker.number().numberBetween(200,400);
         preparedStatement=DBUtils.getPraperedStatement(query);
         preparedStatement.setInt(1,id);
         preparedStatement.setInt(2,support_message_id);
-         support_message_id=faker.number().numberBetween(200,225);
+
     }
     @Given("support_attachments tables delete Query prepared")
     public void support_attachments_tables_delete_query_prepared() throws SQLException {
