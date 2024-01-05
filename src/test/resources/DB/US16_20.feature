@@ -8,6 +8,7 @@ Feature: US17_Users tablosunda sondan bir önceki harfi e olan usernamelerin mob
   Scenario: In the "user_logins" table, separate "user id and user ip" by cities.
     * User_logins_Query prapered and executed
     * Verify separate "user_id , user_ip and city" by cities
+    * Database connection is closed
 
   @DB17
   Scenario: User tablosunda Update data testi

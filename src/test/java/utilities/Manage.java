@@ -52,8 +52,13 @@ public class Manage {
     private String depositsGatewaysCalculater = "  SELECT g.currency,SUM(amount) AS total_amount FROM deposits d JOIN gateway_currencies g ON d.method_code = g.method_code GROUP BY g.currency;";
 
     private String support_attachments = "DELETE FROM support_attachments WHERE support_message_id = ?;";
+    private String support_attachmentsInsertQuery="insert into support_attachments(id,support_message_id,attachment)Values(?,?,'658401a61409c1703149990.png');";
 
     private String admin_notificationsTableQuery = "UPDATE admin_notifications SET is_read = ? WHERE id = ? ;";
+
+    public String getSupport_attachmentsInsertQuery() {
+        return support_attachmentsInsertQuery;
+    }
 
     private String loansCalculate = "SELECT loan_id, SUM(delay_charge) AS total_delay_charge FROM installments WHERE loan_id = 1 GROUP BY loan_id;";
     private String Query19 = "SELECT * FROM users ORDER BY lastname, firstname DESC;";

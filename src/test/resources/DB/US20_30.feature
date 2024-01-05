@@ -65,6 +65,8 @@ Feature: US21_30
 
   @DB30
   Scenario: Delete a file according to the "support_message_id=?" value in the "support_attachments" table and verify that it has been deleted.
+    * support_attachments tables ınsert Query prepared
+    * Data Results are validate.
     * support_attachments tables delete Query prepared
     * Data Results are obtained.
     * Database connection is closed
