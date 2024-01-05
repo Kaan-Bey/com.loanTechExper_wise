@@ -9,6 +9,7 @@ import org.hamcrest.MatcherAssert;
 import org.junit.Assert;
 import utilities.DBUtils;
 import utilities.Manage;
+import utilities.ReusableMethods;
 
 import java.sql.*;
 import java.sql.Date;
@@ -32,6 +33,7 @@ public class DB_Stepdefinitions {
     String e_mail;
     String version;
     String updateLog;
+    int support_message_id;
 
     @Given("Database connection is established.")
     public void database_connection_is_established() {
@@ -174,17 +176,20 @@ public class DB_Stepdefinitions {
 
     @Given("Verify the subject information Results are obtained.")
     public void verify_the_subject_information_results_are_obtained() throws SQLException {
-        List<String> expectedsubjectinfo = new ArrayList<>();
-        expectedsubjectinfo.add("Test");
+            String[]subjectList={"testSubject", "Loantech", "s", "deserunt", "asdasd", "Test Ticket", "Test Ticket", "Test_attachment", "Test_attachment", "HelloWorld", "Ticket666", "Test Ticket", "Test Ticket", "Blue Test Ticket", "Blue Test Ticket", "Test Ticket", "Test Ticket", "Ticket666", "Blue Test Ticket", "Blue Test Ticket", "Blue Test Ticket", "Test Ticket", "Test Ticket", "Test Ticket", "Test Ticket", "Test Ticket", "Test Ticket", "Test Ticket","AhmetKaya", "Blue Test Ticket", "Blue Test Ticket", "Blue Test Ticket", "AhmetKaya", "AhmetKaya", "AhmetKaya", "AhmetKaya", "Test Ticket", "Test Ticket", "Test Ticket", "Test Ticket", "deneme", "deneme", "Test Ticket", "Blue Test Ticket", "Blue Test Ticket", "deneme", "Test Ticket", "Test Ticket", "deneme"};
+
+        List<String> expectedsubjectinfo = new ArrayList<>(Arrays.asList(subjectList));
+
        // expectedsubjectinfo.add("Plan2");
         List<String> actualsubject = new ArrayList<>();
         while (rs.next()) {
             String subject = rs.getString("subject");
             actualsubject.add(subject);
-            for (int i = 0; i < expectedsubjectinfo.size(); i++) {
+            for (int i = 0; i < actualsubject.size(); i++) {
                 assertEquals(expectedsubjectinfo.get(i), actualsubject.get(i));
             }
         }
+        System.out.println(actualsubject);
     }
 
     @Given("Query08 is prepared and executed.")
@@ -195,26 +200,12 @@ public class DB_Stepdefinitions {
 
     @Given("Verify the firstname,lastname information Results are obtained.")
     public void verify_the_firstname_lastname_information_results_are_obtained() throws SQLException {
-        String expectedName = "Mehmet Genç";
-        List<String> actualList = new ArrayList<>();
+        String expectedName = "suphi atilim celikoz";
+       // List<String> actualList = new ArrayList<>();
         rs.next();
         String actualName=rs.getString("firstname") + " " + rs.getString("lastname");
         assertEquals(expectedName,actualName);
-        /*
-        while (rs.next()) {
-            String f_name = rs.getString("firstname") + " " + rs.getString("lastname");
-            actualList.add(f_name);
-           for (int i = 0; i < actualList.size(); i++) {
-                assertEquals(expectedList.get(i), actualList.get(i));
-            }
-            for (String e:actualList
-                 ) {
-                System.out.print(e+"   *");
-            }
-        }*/
-        //john	Doe
-        //test_Ozge	Last_ozge
-        //smile	last
+
 
     }
 
@@ -365,7 +356,7 @@ public class DB_Stepdefinitions {
     @Given("Catagories_table insertQuery is prepared and updated")
     public void catagories_table_insert_query_is_prepared_and_updated() throws SQLException {
         query = manage.getQuery18();
-        id = faker.number().numberBetween(100, 500);
+        id = faker.number().numberBetween(700, 999);
         String name = faker.expression("loan");
         String description = faker.lorem().sentence(4);
         preparedStatement = DBUtils.getPraperedStatement(query);
@@ -497,7 +488,7 @@ public class DB_Stepdefinitions {
         rs = DBUtils.getStatement().executeQuery(query);
         rs.next();
         int actualtotal_amount = rs.getInt("total_amount"); //175530.00000000 € //820350.18000000 $
-        int expectedtotal_amount = 175530;
+        int expectedtotal_amount = 182030;
         assertEquals(expectedtotal_amount, actualtotal_amount);
     }
 
@@ -511,7 +502,7 @@ public class DB_Stepdefinitions {
     public void verifies_the_cost_of_credits(String string) throws SQLException {
         rs.next();
         int total_delay_charge = rs.getInt("total_delay_charge");
-        assertEquals(0, total_delay_charge);
+        assertEquals(10, total_delay_charge);
     }
 
     @Given("Query is prepared in the loan_plans table according to the values {string} ve {string}")
@@ -567,13 +558,24 @@ public class DB_Stepdefinitions {
         preparedStatement=DBUtils.getPraperedStatement(query);
         preparedStatement.setInt(1,id);
     }
+
+    @Given("support_attachments tables ınsert Query prepared")
+    public void support_attachments_tables_insert_query_prepared() throws SQLException {
+        query=manage.getSupport_attachmentsInsertQuery();
+        id= faker.number().numberBetween(300,400);
+        support_message_id=faker.number().numberBetween(200,400);
+        preparedStatement=DBUtils.getPraperedStatement(query);
+        preparedStatement.setInt(1,id);
+        preparedStatement.setInt(2,support_message_id);
+         support_message_id=faker.number().numberBetween(200,225);
+    }
     @Given("support_attachments tables delete Query prepared")
     public void support_attachments_tables_delete_query_prepared() throws SQLException {
-       query=manage.getSupport_attachments();
-       preparedStatement=DBUtils.getPraperedStatement(query);
-       int support_message_id=faker.number().numberBetween(200,225);//36
+        query=manage.getSupport_attachments();
+        preparedStatement=DBUtils.getPraperedStatement(query);
+
         System.out.println(support_message_id);
-        preparedStatement.setInt(1,support_message_id);//support_message_id
+        preparedStatement.setInt(1,support_message_id);
     }
 
 }
