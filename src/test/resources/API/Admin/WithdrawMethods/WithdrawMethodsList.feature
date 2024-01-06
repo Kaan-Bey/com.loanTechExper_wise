@@ -6,7 +6,6 @@ Feature: As an administrator, I want to access the withdrawal methods list throu
 
     Given The API user sets "api/withdraw/methods/list" path parameters
     And The API user saves the response from the api withdraw methods list endpoint with valid authorization information
-    #Apı kulanıcısı api withdraw methods list endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -28,5 +27,5 @@ Feature: As an administrator, I want to access the withdrawal methods list throu
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <form_id>, "<name>", "<min_limit>", "<max_limit>", "<fixed_charge>", "<rate>", "<percent_charge>", "<currency>", "<description>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | form_id | name | min_limit    | max_limit     | fixed_charge | rate        | percent_charge | currency | description | status | created_at                  | updated_at                  |
-      | 2         | 246     | 21   | 200.00000000 | 1000.00000000 | 21.00000000  | 12.00000000 | 12.00          | 21       | 21          | 1      | 2023-12-23T10:42:42.000000Z | 2023-12-23T15:39:19.000000Z |
+      | dataIndex | form_id | name   | min_limit            | max_limit             | fixed_charge | rate        | percent_charge | currency | description | status | created_at                  | updated_at                  |
+      | 0         | 97      | 00wx00 | 40000000032.00000000 | 800000000000.00000000 | 5.00000000   | 20.00000000 | 7.00           | Kulce    | Moin Moin   | 1      | 2023-12-20T08:18:50.000000Z | 2024-01-06T18:54:03.000000Z |

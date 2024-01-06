@@ -6,7 +6,6 @@ Feature: As an administrator, I want to be able to access successful deposits th
 
     Given The API user sets "api/deposit/successful" path parameters
     And The API user records the response from the api deposit successful endpoint with valid authorization information
-    #Apı kulanıcısı api deposit successful endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -28,5 +27,5 @@ Feature: As an administrator, I want to be able to access successful deposits th
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, <method_code>, "<amount>", "<method_currency>", "<charge>", "<rate>", "<final_amo>", "<btc_amo>", "<trx>", <payment_try>, <status>, <from_api>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | method_code | amount        | method_currency | charge       | rate          | final_amo        | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
-      | 3         | 31      | 1001        | 1000.00000000 | EUR             | 240.00000000 | 1000.00000000 | 1240000.00000000 | 0       | 7SZ77TR1DQZ5 | 0           | 1      | 0        | 2023-12-23T17:15:50.000000Z | 2023-12-23T17:16:04.000000Z |
+      | dataIndex | user_id | method_code | amount        | method_currency | charge       | rate       | final_amo     | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
+      | 0         | 80      | 1000        | 5000.00000000 | USD             | 200.00000000 | 1.00000000 | 5200.00000000 | 0       | DUZU2VGUZKOT | 0           | 1      | 0        | 2024-01-02T17:46:58.000000Z | 2024-01-02T17:48:14.000000Z |

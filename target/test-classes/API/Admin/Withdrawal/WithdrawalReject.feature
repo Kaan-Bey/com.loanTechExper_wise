@@ -7,9 +7,7 @@ Feature: As an administrator, I want to be able to reject the withdrawal informa
 
     Given The API user sets "api/withdrawal/reject/<id>" path parameters
     And The API user prepares a POST request containing the correct data to send to the api withdrawal reject endpoint
-    #Api kullanicisi api withdrawal reject endpointine gondermek icin dogru data iceren bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api withdrawal reject endpoint with valid authorization information
-    #Api kullanicisi post request gonderir ve api withdrawal reject endpointinden donen responsei geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -25,7 +23,6 @@ Feature: As an administrator, I want to be able to reject the withdrawal informa
 
     Given The API user sets "api/withdrawal/reject/<id>" path parameters
     And The API user prepares a POST request without any data to send to the api withdrawal reject endpoint
-    #Api kullanicisi api withdrawal reject endpointine gondermek icin data içermeyen bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api withdrawal reject endpoint with valid authorization information
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
@@ -88,7 +85,6 @@ Feature: As an administrator, I want to be able to reject the withdrawal informa
     Given The API user sets "api/withdrawal/reject/<id>" path parameters
     And The API user prepares a POST request containing the correct data to send to the api withdrawal reject endpoint
     When The API user sends a POST request and records the response returned from the api withdrawal reject endpoint with invalid authorization information
-    #Api kullanicisi post request gonderir ve api withdrawal reject endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 401
     And The API user verifies that the error information in the response body is "Unauthorized request"
 

@@ -5,11 +5,8 @@ Feature: As a user, I want to access the Ticket List through an API connection.
 
     Given The API user sets "user/ticket/list" path parameters
     And The API user saves the response from the user ticket list endpoint with valid authorization information
-    #Api kullanicisi user ticket list endpointinden donen responsei gecerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
-    #Api kullanicisi status codeun 200 oldugunu dogrular
     And The API user verifies that the remark information in the response body is "success"
-    #Api kullanicisi response bodydeki remark bilgisinin "success" oldugunu dogrular
 
 
   Scenario: Verify that when a GET request is sent to the 'user/ticket/list' endpoint with invalid
@@ -28,7 +25,7 @@ Feature: As a user, I want to access the Ticket List through an API connection.
     Then Verify the information of the one with the id <dataIndex> in the API user response body: <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | name           | email                   | ticket | subject     | status | priority | last_reply          | created_at                  | updated_at                  |
-      | 0         | 11      | aliulvi girgin | aliulvigirgin@gmail.com | 668243 | Test        | 0      | 0        | 2023-12-21 03:32:18 | 2023-12-21T08:32:18.000000Z | 2023-12-21T08:32:18.000000Z |
-      | 1         | 11      | aliulvi girgin | aliulvigirgin@gmail.com | 891419 | Test Ticket | 0      | 0        | 2023-12-21 03:28:27 | 2023-12-21T08:28:27.000000Z | 2023-12-21T08:28:27.000000Z |
+      | dataIndex | user_id | name                 | email                   | ticket | subject     | status | priority | last_reply          | created_at                  | updated_at                  |
+      | 0         | 11      | suphi atilim celikoz | aliulvigirgin@gmail.com | 482302 | Test Ticket | 0      | 0        | 2024-01-06 04:47:15 | 2024-01-06T09:47:15.000000Z | 2024-01-06T09:47:15.000000Z |
+      | 1         | 11      | suphi atilim celikoz | aliulvigirgin@gmail.com | 281767 | Test Ticket | 0      | 0        | 2024-01-06 04:47:11 | 2024-01-06T09:47:11.000000Z | 2024-01-06T09:47:11.000000Z |
 

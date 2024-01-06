@@ -5,7 +5,6 @@ Feature: As a user, I want to access the user list transactions through API conn
 
     Given The API user sets "user/list/transaction" path parameters
     And The API user saves the response from the user list transaction endpoint with valid authorization information
-    #Api kullanicisi user list transaction endpointinden donen responsei gecerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -26,5 +25,5 @@ Feature: As a user, I want to access the user list transactions through API conn
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, "<amount>", "<charge>", "<post_balance>", "<trx_type>", "<trx>", "<details>", "<remark>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | amount        | charge     | post_balance  | trx_type | trx          | details    | remark     | created_at                  | updated_at                  |
-      | 0         | 11      | 3000.00000000 | 0.00000000 | 7695.00000000 | +        | DDAMY4BDT6KQ | Loan taken | loan_taken | 2023-12-14T15:06:50.000000Z | 2023-12-14T15:06:50.000000Z |
+      | dataIndex | user_id | amount        | charge       | post_balance  | trx_type | trx          | details                            | remark   | created_at                  | updated_at                  |
+      | 0         | 11      | 2500.00000000 | 225.00000000 | 5195.00000000 | -        | ZPPCKC28PXJT | 4,550.00 USD Withdraw Via Method 5 | withdraw | 2023-12-22T20:31:27.000000Z | 2023-12-22T20:31:27.000000Z |

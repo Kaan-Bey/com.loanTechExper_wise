@@ -6,7 +6,6 @@ Feature: As an administrator, I want to access the list of pending loans via API
 
     Given The API user sets "api/loans/pending" path parameters
     And The API user records the response from the api loans pending endpoint with valid authorization information
-    #Apı kulanıcısı api loans pending endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -30,4 +29,4 @@ Feature: As an administrator, I want to access the list of pending loans via API
 
     Examples:
       | dataIndex | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | status | created_at                  | updated_at                  |
-      | 0         | A6J6U8JRQMHQ | 41      | 55      | 2000.00000000 | 60.00000000     | 30                   | 1           | 100.30000000           | 0.00000000   | 0                 | 10                | 0      | 2023-12-23T15:37:06.000000Z | 2023-12-23T15:37:06.000000Z |
+      | 0         | VWKPMCMJWKZK | 74      | 83      | 1000.00000000 | 100.00000000    | 28                   | 1           | 1005.30000000          | 0.00000000   | 0                 | 36                | 0      | 2024-01-06T11:02:45.000000Z | 2024-01-06T11:02:45.000000Z |

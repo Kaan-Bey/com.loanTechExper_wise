@@ -5,7 +5,6 @@ Feature: As an administrator, I want to access the list of loan plans via API co
 
     Given The API user sets "api/loanplans/list" path parameters
     And The API user records the response from the api loanplans list endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans list endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -28,5 +27,5 @@ Feature: As an administrator, I want to access the list of loan plans via API co
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <category_id>, <form_id>, "<name>", "<title>", "<minimum_amount>", "<maximum_amount>", "<per_installment>", <installment_interval>, <total_installment>, "<application_fixed_charge>", "<application_percent_charge>", "<instruction>", <delay_value>, "<fixed_charge>", "<percent_charge>", <is_featured>, <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | category_id | form_id | name      | title     | minimum_amount | maximum_amount | per_installment | installment_interval | total_installment | application_fixed_charge | application_percent_charge | instruction | delay_value | fixed_charge | percent_charge | is_featured | status | created_at                  | updated_at                  |
-      | 2         | 1           | 183     | Test Loan | Test Loan | 3000.00000000  | 30000.00000000 | 4.00            | 24                   | 30                | 100.00000000             | 100.00000000               | <br>        | 3           | 100.00000000 | 10.00000000    | 1           | 1      | 2023-12-21T15:14:02.000000Z | 2023-12-21T17:23:40.000000Z |
+      | dataIndex | category_id | form_id | name        | title            | minimum_amount  | maximum_amount  | per_installment | installment_interval | total_installment | application_fixed_charge | application_percent_charge | instruction | delay_value | fixed_charge | percent_charge | is_featured | status | created_at                  | updated_at                  |
+      | 0         | 0           | 637     | Ahmet Burak | Test Add Message | 500000.00000000 | 600000.00000000 | 999.99          | 30000                | 200000            | 89.00000000              | 34.00000000                | 12          | 90          | 100.00000000 | 45.00000000    | 5           | 1      | 2024-01-06T16:11:55.000000Z | 2024-01-06T16:11:55.000000Z |

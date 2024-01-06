@@ -6,14 +6,13 @@ Feature: As an administrator, I want to access information about the installment
 
     Given The API user sets "api/deposit/details/<id>" path parameters
     And The API user records the response from the api deposit details endpoint with valid authorization information
-    #Apı kulanıcısı api deposit details endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
     Examples:
       | id  |
-      | 611 |
-      | 612 |
+      | 673 |
+      | 672 |
 
 
   Scenario: When a valid GET request is sent to the 'api/deposit/details/{{id}}' endpoint with proper
@@ -50,7 +49,7 @@ Feature: As an administrator, I want to access information about the installment
 
     Examples:
       | id  |
-      | 611 |
+      | 673 |
 
 
   Scenario Outline: The content of the data fields (id, user_id, method_code, amount, method_currency, charge,
@@ -62,6 +61,6 @@ Feature: As an administrator, I want to access information about the installment
     Then The API user verifies the content of the data in the response body which includes <id>, <user_id>, <method_code>, "<amount>", "<method_currency>", "<charge>", "<rate>", "<final_amo>", "<btc_amo>", "<trx>", <payment_try>, <status>, <from_api>, "<created_at>", "<updated_at>"
 
     Examples:
-      | id  | id  | user_id | method_code | amount        | method_currency | charge       | rate       | final_amo     | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
-      | 611 | 611 | 55      | 1000        | 500.00000000  | USD             | 110.00000000 | 1.00000000 | 610.00000000  | 0       | 9OCPH2FGD84Y | 0           | 0      | 0        | 2023-12-23T18:52:09.000000Z | 2023-12-23T18:52:09.000000Z |
-      | 612 | 612 | 44      | 1000        | 3000.00000000 | USD             | 160.00000000 | 1.00000000 | 3160.00000000 | 0       | F48US31B1A26 | 0           | 1      | 0        | 2023-12-23T19:58:13.000000Z | 2023-12-23T19:58:39.000000Z |
+      | id  | id  | user_id | method_code | amount        | method_currency | charge       | rate          | final_amo        | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
+      | 673 | 673 | 81      | 1000        | 4999.00000000 | USD             | 199.98000000 | 1.00000000    | 5198.98000000    | 0       | 58X8PP26GZWB | 0           | 3      | 0        | 2024-01-04T09:27:40.000000Z | 2024-01-04T09:28:39.000000Z |
+      | 672 | 672 | 81      | 1001        | 1500.00000000 | EUR             | 335.00000000 | 1000.00000000 | 1835000.00000000 | 0       | 2WC3K58QCEP8 | 0           | 3      | 0        | 2024-01-04T09:24:24.000000Z | 2024-01-04T09:29:04.000000Z |

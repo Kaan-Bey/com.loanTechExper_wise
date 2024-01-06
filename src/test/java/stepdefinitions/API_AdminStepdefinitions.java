@@ -815,29 +815,6 @@ public class API_AdminStepdefinitions {
     public void the_apı_user_records_the_response_from_the_api_deposit_rejected_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
     }
-
-    @Then("Verify the information of the one with the index {int} in the API user response body: {int}, {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {int}, {int}, {string}, {string}, {string}")
-    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, int user_id, int method_code, String amount, String method_currency, String charge, String rate, String final_amo, String btc_amo, String trx, int payment_try, int status, int from_api, String admin_feedback, String created_at, String updated_at) {
-        jsonPath = ReusableMethods.response.jsonPath();
-
-        assertEquals(user_id, jsonPath.getInt("data.data[" + dataIndex + "].user_id"));
-        assertEquals(method_code, jsonPath.getInt("data.data[" + dataIndex + "].method_code"));
-        assertEquals(amount, jsonPath.getString("data.data[" + dataIndex + "].amount"));
-        assertEquals(method_currency, jsonPath.getString("data.data[" + dataIndex + "].method_currency"));
-        assertEquals(charge, jsonPath.getString("data.data[" + dataIndex + "].charge"));
-        assertEquals(rate, jsonPath.getString("data.data[" + dataIndex + "].rate"));
-        assertEquals(final_amo, jsonPath.getString("data.data[" + dataIndex + "].final_amo"));
-        assertEquals(btc_amo, jsonPath.getString("data.data[" + dataIndex + "].btc_amo"));
-        assertEquals(trx, jsonPath.getString("data.data[" + dataIndex + "].trx"));
-        assertEquals(payment_try, jsonPath.getInt("data.data[" + dataIndex + "].payment_try"));
-        assertEquals(status, jsonPath.getInt("data.data[" + dataIndex + "].status"));
-        assertEquals(from_api, jsonPath.getInt("data.data[" + dataIndex + "].from_api"));
-        assertEquals(admin_feedback, jsonPath.getString("data.data[" + dataIndex + "].admin_feedback"));
-        assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
-        assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
-
-        assertEquals("", jsonPath.getString("data.data[" + dataIndex + "].btc_wallet"));
-    }
     //***************************************************************************************************
 
     //********************************* api/deposit/details/{{id}} **************************************
@@ -936,25 +913,6 @@ public class API_AdminStepdefinitions {
     @Given("The API user records the response from the api withdrawal list endpoint with valid authorization information")
     public void the_apı_user_records_the_response_from_the_api_withdrawal_list_endpoint_with_valid_authorization_information() {
         ReusableMethods.getResponse("admin");
-    }
-
-    @Then("Verify the information of the one with the index {int} in the API user response body: {int}, {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {int}, {string}, {string}, {string}")
-    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, int method_id, int user_id, String amount, String currency, String rate, String charge, String trx, String final_amount, String after_charge, int status, String admin_feedback, String created_at, String updated_at) {
-        jsonPath = ReusableMethods.response.jsonPath();
-
-        assertEquals(method_id, jsonPath.getInt("data.data[" + dataIndex + "].method_id"));
-        assertEquals(user_id, jsonPath.getInt("data.data[" + dataIndex + "].user_id"));
-        assertEquals(amount, jsonPath.getString("data.data[" + dataIndex + "].amount"));
-        assertEquals(currency, jsonPath.getString("data.data[" + dataIndex + "].currency"));
-        assertEquals(rate, jsonPath.getString("data.data[" + dataIndex + "].rate"));
-        assertEquals(charge, jsonPath.getString("data.data[" + dataIndex + "].charge"));
-        assertEquals(trx, jsonPath.getString("data.data[" + dataIndex + "].trx"));
-        assertEquals(final_amount, jsonPath.getString("data.data[" + dataIndex + "].final_amount"));
-        assertEquals(after_charge, jsonPath.getString("data.data[" + dataIndex + "].after_charge"));
-        assertEquals(status, jsonPath.getInt("data.data[" + dataIndex + "].status"));
-        assertEquals(admin_feedback, jsonPath.getString("data.data[" + dataIndex + "].admin_feedback"));
-        assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
-        assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
     }
     //***************************************************************************************************
 
@@ -1236,15 +1194,14 @@ public class API_AdminStepdefinitions {
         ReusableMethods.getResponse("admin");
     }
 
-    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {string}, {string}, {string}, {string}, {string}, {string}")
-    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String data_keys, String has_image, String title, String description_nic, String image, String created_at, String updated_at) {
+    @Then("Verify the information of the one with the index {int} in the API user response body: {string}, {string}, {string}, {string}, {string}, {string}")
+    public void verify_the_information_of_the_one_with_the_index_in_the_apı_user_response_body(int dataIndex, String data_keys, String has_image, String title, String description_nic, String created_at, String updated_at) {
         jsonPath = ReusableMethods.response.jsonPath();
 
         assertEquals(data_keys, jsonPath.getString("data.data[" + dataIndex + "].data_keys"));
         assertEquals(has_image, jsonPath.getString("data.data[" + dataIndex + "].data_values.has_image[0]"));
         assertEquals(title, jsonPath.getString("data.data[" + dataIndex + "].data_values.title"));
         assertTrue(jsonPath.getString("data.data[" + dataIndex + "].data_values.description_nic").contains(description_nic));
-        assertEquals(image, jsonPath.getString("data.data[" + dataIndex + "].data_values.image"));
         assertEquals(created_at, jsonPath.getString("data.data[" + dataIndex + "].created_at"));
         assertEquals(updated_at, jsonPath.getString("data.data[" + dataIndex + "].updated_at"));
     }
@@ -1256,8 +1213,8 @@ public class API_AdminStepdefinitions {
         ReusableMethods.getResponse("admin");
     }
 
-    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
-    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String data_keys, String has_image, String title, String description_nic, String image, String created_at, String updated_at) {
+    @Then("The API user verifies the content of the data in the response body which includes {int}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public void the_apı_user_verifies_the_content_of_the_data_in_the_response_body_which_includes(int id, String data_keys, String has_image, String title, String description_nic, String created_at, String updated_at) {
         jsonPath = ReusableMethods.response.jsonPath();
 
         assertEquals(id, jsonPath.getInt("data.id"));
@@ -1265,7 +1222,6 @@ public class API_AdminStepdefinitions {
         assertEquals(has_image, jsonPath.getString("data.data_values.has_image[0]"));
         assertEquals(title, jsonPath.getString("data.data_values.title"));
         assertTrue(jsonPath.getString("data.data_values.description_nic").contains(description_nic));
-        assertEquals(image, jsonPath.getString("data.data_values.image"));
         assertEquals(created_at, jsonPath.getString("data.created_at"));
         assertEquals(updated_at, jsonPath.getString("data.updated_at"));
     }

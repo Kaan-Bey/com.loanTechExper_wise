@@ -6,7 +6,6 @@ Feature: As an administrator, I want to access the list of paid loans via API co
 
     Given The API user sets "api/loans/paid" path parameters
     And The API user records the response from the api loans paid endpoint with valid authorization information
-    #Apı kulanıcısı api loans paid endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 

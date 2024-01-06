@@ -6,13 +6,12 @@ Feature: As an administrator, I want to be able to access withdrawal details wit
 
     Given The API user sets "api/withdrawal/details/<id>" path parameters
     And The API user records the response from the api withdrawal details endpoint with valid authorization information
-    #Apı kulanıcısı api withdrawal details endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
     Examples:
       | id  |
-      | 374 |
+      | 432 |
 
 
   Scenario: When a valid GET request is sent to the 'api/withdrawal/details/{{id}}' endpoint with proper
@@ -50,7 +49,7 @@ Feature: As an administrator, I want to be able to access withdrawal details wit
 
     Examples:
       | id  |
-      | 374 |
+      | 432 |
 
 
   Scenario Outline: The content of the data (id, method_id, user_id, amount, currency, rate, charge, trx,
@@ -62,5 +61,5 @@ Feature: As an administrator, I want to be able to access withdrawal details wit
     Then The API user verifies the content of the data in the response body which includes <id>, <method_id>, <user_id>, "<amount>", "<currency>", "<rate>", "<charge>", "<trx>", "<final_amount>", "<after_charge>", <status>, "<admin_feedback>", "<created_at>", "<updated_at>"
 
     Examples:
-      | id  | id  | method_id | user_id | amount       | currency | rate        | charge       | trx          | final_amount  | after_charge | status | admin_feedback | created_at                  | updated_at                  |
-      | 374 | 374 | 29        | 15      | 150.00000000 | USD      | 10.00000000 | 200.00000000 | U1QOAGAS4QZ8 | -500.00000000 | -50.00000000 | 3      | Reject         | 2023-12-23T17:41:53.000000Z | 2023-12-23T17:46:48.000000Z |
+      | id  | id  | method_id | user_id | amount        | currency | rate         | charge      | trx          | final_amount   | after_charge | status | admin_feedback | created_at                  | updated_at                  |
+      | 432 | 432 | 8         | 71      | 1000.00000000 | dolar    | 100.00000000 | 70.00000000 | H19PC44UK2XS | 93000.00000000 | 930.00000000 | 1      | deneme         | 2024-01-02T18:36:00.000000Z | 2024-01-03T15:36:57.000000Z |

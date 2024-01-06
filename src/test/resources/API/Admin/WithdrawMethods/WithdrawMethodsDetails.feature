@@ -7,13 +7,12 @@ Feature: As an administrator, I want to access the withdrawal methods informatio
 
     Given The API user sets "api/withdraw/methods/details/<id>" path parameters
     And The API user saves the response from the api withdraw methods details endpoint with valid authorization information
-    #Apı kulanıcısı api withdraw methods details endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
     Examples:
       | id  |
-      | 145 |
+      | 359 |
 
 
   Scenario: When a valid GET request is sent to the 'api/withdraw/methods/details/{{id}}' endpoint with
@@ -52,7 +51,7 @@ Feature: As an administrator, I want to access the withdrawal methods informatio
 
     Examples:
       | id  |
-      | 145 |
+      | 359 |
 
 
   Scenario Outline: The contents of the data (id, form_id, name, min_limit, max_limit, fixed_charge, rate,
@@ -62,9 +61,8 @@ Feature: As an administrator, I want to access the withdrawal methods informatio
     Given The API user sets "api/withdraw/methods/details/<id>" path parameters
     And The API user saves the response from the api withdraw methods details endpoint with valid authorization information
     Then The API user verifies that the content of the data field in the response body includes <id>, <form_id>, "<name>", "<min_limit>", "<max_limit>", "<fixed_charge>", "<rate>", "<percent_charge>", "<currency>", "<description>", <status>, "<created_at>", "<updated_at>"
-    #API kullanicisi response bodydeki data <id>, "<email>", "<created_at>", "<updated_at>"t>" içeriklerini doğrular
 
     Examples:
-      | id  | id  | form_id | name | min_limit    | max_limit     | fixed_charge | rate        | percent_charge | currency | description | status | created_at                  | updated_at                  |
-      | 145 | 145 | 246     | 21   | 200.00000000 | 1000.00000000 | 21.00000000  | 12.00000000 | 12.00          | 21       | 21          | 1      | 2023-12-23T10:42:42.000000Z | 2023-12-23T15:39:19.000000Z |
+      | id  | id  | form_id | name     | min_limit    | max_limit     | fixed_charge | rate       | percent_charge | currency | description   | status | created_at                  | updated_at                  |
+      | 359 | 359 | 644     | Method 5 | 200.00000000 | 7000.00000000 | 150.00000000 | 2.00000000 | 3.00           | USD      | Test Method 5 | 1      | 2024-01-06T19:00:34.000000Z | 2024-01-06T19:00:34.000000Z |
 

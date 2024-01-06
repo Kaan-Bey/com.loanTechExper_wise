@@ -6,13 +6,12 @@ Feature: As an administrator, I want to access the category details of a user wi
 
     Given The API user sets "api/categories/details/<id>" path parameters
     And The API user records the response from the api categories details endpoint with the valid authorization information
-    #Apı kulanıcısı api categories details endpointinden gelen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
     Examples:
-      | id |
-      | 23 |
+      | id    |
+      | 10043 |
 
 
   Scenario:When a GET request with valid authorization information and no 'id' is sent to the
@@ -35,8 +34,8 @@ Feature: As an administrator, I want to access the category details of a user wi
     And The API User verifies that the message information in the response body is "No category"
 
     Examples:
-      | id  |
-      | 488 |
+      | id      |
+      | 4255487 |
 
 
   Scenario Outline: When a GET request with invalid authorization information is sent to the
@@ -47,8 +46,8 @@ Feature: As an administrator, I want to access the category details of a user wi
     Then The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized
 
     Examples:
-      | id |
-      | 23 |
+      | id    |
+      | 10043 |
 
 
   Scenario Outline:The contents of data (id, name, image, description, status, created_at, updated_at) in the
@@ -59,5 +58,5 @@ Feature: As an administrator, I want to access the category details of a user wi
     Then The API user verifies that the content of the data field in the response body includes <id>, "<name>", "<description>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | id | id | name           | description | status | created_at                  | updated_at                  |
-      | 23 | 23 | My first house | Sweet home  | 1      | 2023-12-14T11:47:24.000000Z | 2023-12-14T11:48:11.000000Z |
+      | id    | id    | name     | description                                     | status | created_at                  | updated_at                  |
+      | 10043 | 10043 | Car Loan | If you want to buy a car, this loan is for you. | 1      | 2024-01-06T17:16:30.000000Z | 2024-01-06T17:16:30.000000Z |

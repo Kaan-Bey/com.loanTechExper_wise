@@ -6,13 +6,12 @@ Feature: As a user, I should be able to delete a user ticket record in the syste
 
     Given The API user sets "user/ticket/delete/<id>" path parameters
     And The API user saves the response from the user ticket delete endpoint with valid authorization information
-    #Api kullanicisi user ticket delete endpointinden donen responsei gecerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Ticket deleted"
 
     Examples:
       | id  |
-      | 101 |
+      | 552 |
 
 
   Scenario: When a DELETE request with valid authorization information and no 'id' is sent to the
@@ -45,11 +44,10 @@ Feature: As a user, I should be able to delete a user ticket record in the syste
 
     Given The API user sets "user/ticket/delete/<id>" path parameters
     Then The API user saves the response from the user ticket delete endpoint with invalid authorization information and confirms that the status code is '401' and the error message is Unauthorized
-    #Api kullanicisi user ticket delete endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
       | id  |
-      | 101 |
+      | 552 |
 
 
   Scenario Outline: The deletion of the ticket record intended to be removed through the API should be verified.
@@ -63,4 +61,4 @@ Feature: As a user, I should be able to delete a user ticket record in the syste
 
     Examples:
       | id  |
-      | 101 |
+      | 552 |

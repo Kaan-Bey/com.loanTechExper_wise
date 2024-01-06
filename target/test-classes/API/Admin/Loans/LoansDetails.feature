@@ -6,13 +6,12 @@ Feature: As an administrator, I want to access the loan details information of a
 
     Given The API user sets "api/loans/details/<id>" path parameters
     And The API user records the response from the api loans details endpoint with valid authorization information
-    #Apı kulanıcısı api loans details endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
     Examples:
-      | id  |
-      | 364 |
+      | id    |
+      | 10006 |
 
 
   Scenario: When a GET request with valid authorization credentials and without the required data (id)
@@ -35,8 +34,8 @@ Feature: As an administrator, I want to access the loan details information of a
     And The API User verifies that the message information in the response body is "No Loan"
 
     Examples:
-      | id  |
-      | 589 |
+      | id    |
+      | 45789 |
 
 
   Scenario Outline: When an invalid GET request with unauthorized credentials is sent to the
@@ -47,8 +46,8 @@ Feature: As an administrator, I want to access the loan details information of a
     Then The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized
 
     Examples:
-      | id  |
-      | 364 |
+      | id    |
+      | 10006 |
 
 
   Scenario Outline: The contents of the 'data' field (id, loan_number, user_id, plan_id, amount,
@@ -61,5 +60,5 @@ Feature: As an administrator, I want to access the loan details information of a
     Then The API user verifies the content of the data in the response body which includes <id>, "<loan_number>", <user_id>, <plan_id>, "<amount>", "<per_installment>", <installment_interval>, <delay_value>, "<charge_per_installment>", "<delay_charge>", <given_installment>, <total_installment>, <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | id  | id  | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | status | created_at                  | updated_at                  |
-      | 364 | 364 | A6J6U8JRQMHQ | 41      | 55      | 2000.00000000 | 60.00000000     | 30                   | 1           | 100.30000000           | 0.00000000   | 0                 | 10                | 0      | 2023-12-23T15:37:06.000000Z | 2023-12-23T15:37:06.000000Z |
+      | id    | id    | loan_number  | user_id | plan_id | amount        | per_installment | installment_interval | delay_value | charge_per_installment | delay_charge | given_installment | total_installment | status | created_at                  | updated_at                  |
+      | 10006 | 10006 | VWKPMCMJWKZK | 74      | 83      | 1000.00000000 | 100.00000000    | 28                   | 1           | 1005.30000000          | 0.00000000   | 0                 | 36                | 0      | 2024-01-06T11:02:45.000000Z | 2024-01-06T11:02:45.000000Z |

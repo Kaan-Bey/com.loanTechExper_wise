@@ -5,7 +5,6 @@ Feature: As a user, I want to access the list of loans via API connection.
 
     Given The API user sets "user/list/loan" path parameters
     And The API user saves the response from the user list loan endpoint with valid authorization information
-    #Api kullanicisi user list loan endpointinden donen responsei gecerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 

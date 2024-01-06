@@ -6,7 +6,6 @@ Feature: As an administrator, I should be able to delete a loan record in the sy
 
     Given The API user sets "api/loans/delete/<id>" path parameters
     And The API user records the response from the api loans delete endpoint with valid authorization information
-    #Apı kulanıcısı api loans delete endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Loan deleted"
 
@@ -45,7 +44,6 @@ Feature: As an administrator, I should be able to delete a loan record in the sy
 
     Given The API user sets "api/loans/delete/<id>" path parameters
     Then The API user records the response from the api loans delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized
-    #Api kullanicisi api loans delete endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
       | id |

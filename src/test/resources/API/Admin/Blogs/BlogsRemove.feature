@@ -6,13 +6,12 @@ Feature: As an administrator, I should be able to delete the blog record in the 
 
     Given The API user sets "api/blogs/remove/<id>" path parameters
     And The API user saves the response returned from the api blogs remove endpoint with valid authorization information
-    #Apı kulanıcısı api blogs remove endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Blog removed successfully"
 
     Examples:
       | id  |
-      | 111 |
+      | 230 |
 
 
   Scenario: When a DELETE request with valid authorization information and without the 'id' is sent to the
@@ -45,11 +44,10 @@ Feature: As an administrator, I should be able to delete the blog record in the 
 
     Given The API user sets "api/blogs/remove/<id>" path parameters
     Then The API user records the response returned from the api blogs remove endpoint with invalid authorization information and verifies that the status code is '401' and the error message is Unauthorized
-    #Api kullanicisi api blogs remove endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
       | id  |
-      | 111 |
+      | 230 |
 
 
   Scenario Outline: The deletion of the blogs record through the API should be verified. This can be
@@ -63,4 +61,4 @@ Feature: As an administrator, I should be able to delete the blog record in the 
 
     Examples:
       | id  |
-      | 111 |
+      | 230 |

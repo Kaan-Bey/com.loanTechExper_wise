@@ -7,9 +7,7 @@ Feature: As an administrator, I want to be able to approve the withdrawal inform
 
     Given The API user sets "api/withdrawal/approve/<id>" path parameters
     And The API user prepares a PATCH request containing the correct data to send to the api withdrawal approve endpoint
-    #Api kullanicisi api withdrawal approve endpointine gondermek icin dogru datalar iceren bir patch request hazirlar
     When The API user sends a PATCH request and records the response returned from the api withdrawal approve endpoint with valid authorization information
-    #Api kullanicisi patch request gonderir ve api withdrawal approve endpointinden donen responsei geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -58,8 +56,8 @@ Feature: As an administrator, I want to be able to approve the withdrawal inform
     And The API User verifies that the message information in the response body is "No withdraw."
 
     Examples:
-      | id  |
-      | 987 |
+      | id    |
+      | 25468 |
 
 
   Scenario Outline: When an invalid PATCH request with unauthorized authorization information is sent to the
@@ -70,7 +68,6 @@ Feature: As an administrator, I want to be able to approve the withdrawal inform
     Given The API user sets "api/withdrawal/approve/<id>" path parameters
     And The API user prepares a PATCH request containing the correct data to send to the api withdrawal approve endpoint
     Then The API user records the response from the api withdrawal approve endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized
-    #Api kullanicisi api withdrawal approve endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
       | id  |

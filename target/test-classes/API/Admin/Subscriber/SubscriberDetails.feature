@@ -6,13 +6,12 @@ Feature: "As an administrator, I want to access the subscriber details of a user
 
     Given The API user sets "api/subscriber/details/<id>" path parameters
     And The API user records the response from the api subscriber details endpoint with valid authorization information
-    #Apı kulanıcısı api subscriber details endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
     Examples:
-      | id |
-      | 19 |
+      | id  |
+      | 390 |
 
 
   Scenario: When a GET request without the required data (id) and with valid authorization credentials is sent
@@ -47,8 +46,8 @@ Feature: "As an administrator, I want to access the subscriber details of a user
     Then The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized
 
     Examples:
-      | id |
-      | 19 |
+      | id  |
+      | 390 |
 
 
   Scenario Outline: The contents of data (id, email, created_at, updated_at) in the response body should be verified
@@ -56,8 +55,7 @@ Feature: "As an administrator, I want to access the subscriber details of a user
     Given The API user sets "api/subscriber/details/<id>" path parameters
     And The API user records the response from the api subscriber details endpoint with valid authorization information
     Then The API user verifies the content of the data in the response body which includes <id>, "<email>", "<created_at>","<updated_at>"
-    #API kullanicisi response bodydeki data <id>, "<email>", "<created_at>", "<updated_at>"t>" içeriklerini doğrular
 
     Examples:
-      | id | id | email                          | created_at                  | updated_at                  |
-      | 19 | 19 | adm00in1hfh6@smartcardlink.com | 2023-12-18T18:30:35.000000Z | 2023-12-18T18:30:35.000000Z |
+      | id  | id  | email            | created_at                  | updated_at                  |
+      | 390 | 390 | megenc@gmail.com | 2024-01-06T18:10:01.000000Z | 2024-01-06T18:10:01.000000Z |

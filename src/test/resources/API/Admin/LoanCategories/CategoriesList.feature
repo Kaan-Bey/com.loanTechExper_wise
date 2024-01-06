@@ -16,7 +16,6 @@ Feature: As an administrator, I want to access the list of categories via API co
 
     Given The API user sets "api/categories/list" path parameters
     Then The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized
-    #Api kullanicisi donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
 
   Scenario Outline: Verify the information returned in the response for the entity with id(x) (name, image,
@@ -27,6 +26,6 @@ Feature: As an administrator, I want to access the list of categories via API co
     Then Verify the information of the one with the index <dataIndex> in the API user response body: "<name>", "<description>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | name | description | status | created_at                  | updated_at                  |
-      | 3         | bb   | deneme      | 1      | 2023-12-21T10:26:29.000000Z | 2023-12-21T10:28:19.000000Z |
+      | dataIndex | name           | description                    | status | created_at                  | updated_at                  |
+      | 2         | Test Category1 | New category for test purposes | 1      | 2024-01-06T16:37:10.000000Z | 2024-01-06T16:37:10.000000Z |
 
