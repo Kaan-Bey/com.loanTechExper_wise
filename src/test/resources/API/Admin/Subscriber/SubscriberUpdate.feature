@@ -6,15 +6,13 @@ Feature: As an administrator, I want to update the existing subscriber informati
 
     Given The API user sets "api/subscriber/update/<id>" path parameters
     And The API user prepares a POST request containing the correct data to send to the api subscriber update endpoint
-    #Api kullanicisi api subscriber update endpointine gondermek icin dogru datalar iceren bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api subscriber update endpoint with valid authorization information
-    #Api kullanicisi post request gonderir ve api subscriber update endpointinden donen responsei geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Subscriber updated successfully"
 
     Examples:
-      | id |
-      | 27 |
+      | id  |
+      | 391 |
 
 
   Scenario Outline: "When a valid POST request with appropriate authorization credentials, correct (id),
@@ -23,14 +21,13 @@ Feature: As an administrator, I want to update the existing subscriber informati
 
     Given The API user sets "api/subscriber/update/<id>" path parameters
     And The API user prepares a POST request without data to send to the api subscriber update endpoint
-    #Api kullanicisi api subscriber update endpointine gondermek icin data içermeyen bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api subscriber update endpoint with valid authorization information
     Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
 
     Examples:
-      | id |
-      | 27 |
+      | id  |
+      | 391 |
 
 
   Scenario Outline: "When a valid POST request with appropriate authorization credentials, correct (id),
@@ -39,14 +36,13 @@ Feature: As an administrator, I want to update the existing subscriber informati
 
     Given The API user sets "api/subscriber/update/<id>" path parameters
     And The API user prepares a POST request with incorrect data to send to the api subscriber update endpoint
-    #Api kullanicisi api subscriber update endpointine gondermek icin yanlış data içeren bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api subscriber update endpoint with valid authorization information
     Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
 
     Examples:
-      | id |
-      | 27 |
+      | id  |
+      | 391 |
 
 
   Scenario: When a POST request with valid authorization credentials and an empty (id) in the body (email)
@@ -82,13 +78,12 @@ Feature: As an administrator, I want to update the existing subscriber informati
     Given The API user sets "api/subscriber/update/<id>" path parameters
     And The API user prepares a POST request containing the correct data to send to the api subscriber update endpoint
     When The API user sends a POST request and records the response returned from the api subscriber update endpoint with invalid authorization information
-    #Api kullanicisi post request gonderir ve api subscriber update endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 401
     And The API user verifies that the error information in the response body is "Unauthorized request"
 
     Examples:
-      | id |
-      | 27 |
+      | id  |
+      | 391 |
 
 
   Scenario Outline: The update of the desired subscriber record via API should be confirmed by sending a
@@ -99,8 +94,7 @@ Feature: As an administrator, I want to update the existing subscriber informati
     And The API user records the response from the api subscriber details endpoint with valid authorization information
     Then The API user verifies that the status code is 200
     And The API user verifies that the email information in the response body is "<valueEmail>"
-    #Api kullanicisi response bodydeki email bilgisinin "<valueEmail>" oldugunu dogrular
 
     Examples:
-      | id | valueEmail        |
-      | 27 | ayilmaz@gmail.com |
+      | id  | valueEmail        |
+      | 391 | ayilmaz@gmail.com |

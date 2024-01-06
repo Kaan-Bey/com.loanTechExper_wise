@@ -6,15 +6,13 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Given The API user sets "api/blogs/update/<id>" path parameters
     And The API user prepares a PATCH request with the correct data to send to the api blogs update endpoint
-    #Api kullanicisi api blogs update endpointine gondermek icin dogru datalar iceren bir patch request hazirlar
     When The API user sends a PATCH request and records the response from the api blogs update endpoint with valid authorization information
-    #Api kullanicisi patch request gonderir ve api blogs update endpointinden donen responsei geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Blog updated successfully"
 
     Examples:
       | id  |
-      | 110 |
+      | 227 |
 
 
   Scenario Outline: Verify that when a PATCH request with valid authorization information, the correct 'id,'
@@ -23,14 +21,13 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Given The API user sets "api/blogs/update/<id>" path parameters
     And The API user prepares a PATCH request without data to send to the api blogs update endpoint
-    #Api kullanicisi api blogs update endpointine gondermek icin data içermeyen bir patch request hazirlar
     When The API user sends a PATCH request and records the response from the api blogs update endpoint with valid authorization information
     Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
 
     Examples:
       | id  |
-      | 110 |
+      | 227 |
 
 
   Scenario Outline: Verify that when a PATCH request with valid authorization information, the correct 'id,'
@@ -39,14 +36,13 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Given The API user sets "api/blogs/update/<id>" path parameters
     And The API user prepares a PATCH request with missing data to send to the api blogs update endpoint
-    #Api kullanicisi api blogs update endpointine gondermek icin eksik data içeren bir patch request hazirlar
     When The API user sends a PATCH request and records the response from the api blogs update endpoint with valid authorization information
     Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
 
     Examples:
       | id  |
-      | 110 |
+      | 227 |
 
 
   Scenario: Verify that when a PATCH request with valid authorization information and a body lacking the
@@ -84,11 +80,10 @@ Feature: As an administrator, I want to be able to update the information of reg
     Given The API user sets "api/blogs/update/<id>" path parameters
     And The API user prepares a PATCH request with the correct data to send to the api blogs update endpoint
     Then The API user records the response from the api blogs update endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error message is Unauthorized
-    #Api kullanicisi api blogs update endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
       | id  |
-      | 110 |
+      | 227 |
 
 
   Scenario Outline: The update of the blog record through the API should be verified. This can be confirmed
@@ -99,9 +94,8 @@ Feature: As an administrator, I want to be able to update the information of reg
     And The API user records the response from the api blogs details endpoint with valid authorization information
     Then The API user verifies that the status code is 200
     And The API User verifies that the title information in the response body is "<valueTitle>"
-    #Api kullanicisi response bodydeki title bilgisinin "<valueTitle>" oldugunu dogrular
 
     Examples:
       | id  | valueTitle        |
-      | 110 | Test Blog Updated |
+      | 227 | Test Blog Updated |
 

@@ -6,7 +6,6 @@ Feature: As an administrator, I want to access the ticket information of a user 
 
     Given The API user sets "api/tickets/details/<id>" path parameters
     And The API user records the response from the api tickets details endpoint with valid authorization information
-    #Apı kulanıcısı api tickets details endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -35,8 +34,8 @@ Feature: As an administrator, I want to access the ticket information of a user 
     And The API User verifies that the message information in the response body is "No ticket."
 
     Examples:
-      | id  |
-      | 289 |
+      | id    |
+      | 25469 |
 
 
   Scenario Outline: When an invalid GET request with unauthorized credentials is sent to the
@@ -59,4 +58,4 @@ Feature: As an administrator, I want to access the ticket information of a user 
 
     Examples:
       | id | id | user_id | name  | email           | ticket | subject | status | priority | last_reply          | created_at                  | updated_at                  |
-      | 2  | 2  | 1       | Elf F | agenc@gmail.com | 187898 | Test    | 0      | 3        | 2023-11-02 11:16:58 | 2023-10-16T10:08:01.000000Z | 2023-11-22T08:16:28.000000Z |
+      | 2  | 2  | 1       | Elf F | agenc@gmail.com | 187898 | Test    | 3      | 3        | 2023-11-02 11:16:58 | 2023-10-16T10:08:01.000000Z | 2023-12-29T13:50:10.000000Z |

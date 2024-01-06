@@ -6,7 +6,6 @@ Feature: As an administrator, I want to access the tickets that are in the 'answ
 
     Given The API user sets "api/tickets/answered" path parameters
     And The API user records the response from the api tickets answered endpoint with valid authorization information
-    #Apı kulanıcısı api tickets answered endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -27,5 +26,5 @@ Feature: As an administrator, I want to access the tickets that are in the 'answ
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | name        | email                | ticket | subject   | status | priority | last_reply          | created_at                  | updated_at                  |
-      | 2         | 60      | osman guler | osmanguler@gmail.com | 264583 | hgfhgfhgk | 1      | 3        | 2023-12-22 09:58:01 | 2023-12-22T14:52:09.000000Z | 2023-12-22T14:58:01.000000Z |
+      | dataIndex | user_id | name        | email                | ticket | subject     | status | priority | last_reply          | created_at                  | updated_at                  |
+      | 0         | 60      | osman guler | osmanguler@gmail.com | 722910 | By By Proje | 1      | 3        | 2023-12-22 11:38:37 | 2023-12-22T16:38:24.000000Z | 2023-12-22T16:38:37.000000Z |

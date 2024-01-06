@@ -6,7 +6,6 @@ Feature: As an administrator, I want to be able to access rejected withdrawals t
 
     Given The API user sets "api/withdrawal/rejected" path parameters
     And The API user records the response from the api withdrawal rejected endpoint with valid authorization information
-    #Apı kulanıcısı api withdrawal rejected endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -25,9 +24,9 @@ Feature: As an administrator, I want to be able to access rejected withdrawals t
 
     Given The API user sets "api/withdrawal/rejected" path parameters
     And The API user records the response from the api withdrawal rejected endpoint with valid authorization information
-    Then Verify the information of the one with the index <dataIndex> in the API user response body: <method_id>, <user_id>, "<amount>", "<currency>", "<rate>", "<charge>", "<trx>", "<final_amount>", "<after_charge>", <status>, "<admin_feedback>", "<created_at>", "<updated_at>"
+    Then Verify the information of the one with the index <dataIndex> in the API user response body: <method_id>, <user_id>, "<amount>", "<currency>", "<rate>", "<charge>", "<trx>", "<final_amount>", "<after_charge>", <status>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | method_id | user_id | amount       | currency | rate        | charge       | trx          | final_amount  | after_charge | status | admin_feedback | created_at                  | updated_at                  |
-      | 0         | 29        | 15      | 150.00000000 | USD      | 10.00000000 | 200.00000000 | U1QOAGAS4QZ8 | -500.00000000 | -50.00000000 | 3      | Reject         | 2023-12-23T17:41:53.000000Z | 2023-12-23T17:46:48.000000Z |
+      | dataIndex | method_id | user_id | amount        | currency | rate         | charge      | trx          | final_amount   | after_charge | status | created_at                  | updated_at                  |
+      | 0         | 8         | 71      | 1000.00000000 | dolar    | 100.00000000 | 70.00000000 | 9AHRVS3XDKC9 | 93000.00000000 | 930.00000000 | 3      | 2024-01-02T18:35:37.000000Z | 2024-01-03T11:57:28.000000Z |
 

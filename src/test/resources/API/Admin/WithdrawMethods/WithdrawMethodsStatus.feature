@@ -6,13 +6,12 @@ Feature: As an administrator, I want to be able to update the status information
 
     Given The API user sets "api/withdraw/methods/status/<id>" path parameters
     And The API user records the response from the api withdraw methods status endpoint with valid authorization information
-    #Apı kulanıcısı api withdraw methods status endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Status changed"
 
     Examples:
       | id  |
-      | 152 |
+      | 360 |
 
 
   Scenario: When valid authorization information and a PATCH body without the 'id' are sent to the
@@ -35,8 +34,8 @@ Feature: As an administrator, I want to be able to update the status information
     And The API User verifies that the message information in the response body is "No withdraw method."
 
     Examples:
-      | id  |
-      | 458 |
+      | id   |
+      | 6987 |
 
 
   Scenario Outline: When invalid authorization information and a PATCH body containing the 'id' are sent
@@ -45,11 +44,10 @@ Feature: As an administrator, I want to be able to update the status information
 
     Given The API user sets "api/withdraw/methods/status/<id>" path parameters
     Then The API user records the response from the api withdraw methods status endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error message is Unauthorized
-    #Api kullanicisi api withdraw methods status endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
       | id  |
-      | 152 |
+      | 360 |
 
 
   Scenario Outline: The update of the withdrawal methods status record through the API should be verified.
@@ -63,4 +61,4 @@ Feature: As an administrator, I want to be able to update the status information
 
     Examples:
       | id  | valueStatus |
-      | 152 | 1           |
+      | 360 | 1           |

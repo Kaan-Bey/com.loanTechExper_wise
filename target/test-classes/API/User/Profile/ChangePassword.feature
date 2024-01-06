@@ -7,7 +7,6 @@ Feature: As a user, I want to be able to update the change password information 
     Given The API user sets "user/changepassword" path parameters
     And The API user prepares a PATCH request containing the correct data to send to the user change password endpoint
     When The API user sends a PATCH request and saves the response from the user change password endpoint with valid authorization information
-    #Api kullanicisi patch request gonderir ve user change password endpointinden donen responsei gecerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the message information in the response body is "Password changes successfully"
 
@@ -19,7 +18,6 @@ Feature: As a user, I want to be able to update the change password information 
 
     Given The API user sets "user/changepassword" path parameters
     And The API user prepares a PATCH request to send to the user change password endpoint with a new password containing only numbers
-    #Api kullanicisi user changepassword endpointine gondermek icin sadece rakam iceren yeni sifre ile bir patch request hazirlar
     When The API user sends a PATCH request and saves the response from the user change password endpoint with valid authorization information
     Then The API user verifies that the status code is 203
     And The API user verifies that the message information in the response body is "The password must contain at least one uppercase and one lowercase letter. (and 1 more error)"
@@ -44,4 +42,3 @@ Feature: As a user, I want to be able to update the change password information 
     Given The API user sets "user/changepassword" path parameters
     And The API user prepares a PATCH request containing the correct data to send to the user change password endpoint
     Then The API user saves the response from the user change password endpoint with invalid authorization information and confirms that the status code is '401' and the error message is Unauthorized
-    #Api kullanicisi user change password endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular

@@ -7,13 +7,12 @@ Feature: As a user, I want to be able to update the close information of a regis
 
     Given The API user sets "user/ticket/close/<id>" path parameters
     And The API user saves the response from the user ticket close endpoint with valid authorization information
-    #Api kullanicisi user ticket close endpointinden donen responsei gecerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the message information in the response body is "Support ticket closed successfully!"
 
     Examples:
-      | id |
-      | 59 |
+      | id  |
+      | 553 |
 
 
   Scenario: When a PATCH request with valid authorization information and no 'id' is sent to the
@@ -46,11 +45,10 @@ Feature: As a user, I want to be able to update the close information of a regis
 
     Given The API user sets "user/ticket/close/<id>" path parameters
     Then The API user saves the response from the user ticket close endpoint with invalid authorization information and verifies that the status code is '401' and the error message is Unauthorized
-    #Api kullanicisi user ticket close endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id |
-      | 59 |
+      | id  |
+      | 553 |
 
 
   Scenario Outline: The update of the ticket record through the API should be verified. This can be confirmed
@@ -64,4 +62,4 @@ Feature: As a user, I want to be able to update the close information of a regis
 
     Examples:
       | id  | status |
-      | 100 | 3      |
+      | 553 | 3      |

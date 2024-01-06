@@ -10,8 +10,8 @@ Feature: As an administrator, I want to update the status information of existin
     And The API User verifies that the message information in the response body is "Status changed"
 
     Examples:
-      | id  |
-      | 486 |
+      | id    |
+      | 10044 |
 
   Scenario: When a PATCH request with valid authorization information and no 'id' is sent to the
   api/categories/status/{{id}} endpoint, the returned status code should be 203, and the message
@@ -33,8 +33,8 @@ Feature: As an administrator, I want to update the status information of existin
     And The API User verifies that the message information in the response body is "No category"
 
     Examples:
-      | id  |
-      | 894 |
+      | id     |
+      | 445789 |
 
 
   Scenario Outline: When a PATCH request with invalid authorization information and correct 'id' is sent
@@ -43,11 +43,10 @@ Feature: As an administrator, I want to update the status information of existin
 
     Given The API user sets "api/categories/status/<id>" path parameters
     Then The API user records the response from the api categories status endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized
-    #Api kullanicisi api categories status endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id  |
-      | 486 |
+      | id    |
+      | 10044 |
 
 
   Scenario Outline: The update of the desired category status record through the API should be verified.
@@ -58,8 +57,7 @@ Feature: As an administrator, I want to update the status information of existin
     And The API user records the response from the api categories details endpoint with the valid authorization information
     Then The API user verifies that the status code is 200
     And The API user verifies that the status information in the response body is <valueStatus>
-    #Api kullanicisi response bodydeki status bilgisinin "<valueStatus>" oldugunu dogrular
 
     Examples:
-      | id | valueStatus |
-      | 93 | 0           |
+      | id    | valueStatus |
+      | 10044 | 1           |

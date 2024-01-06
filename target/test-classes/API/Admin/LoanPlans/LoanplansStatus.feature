@@ -6,13 +6,12 @@ Feature: As an administrator, I want to update the status information of existin
 
     Given The API user sets "api/loanplans/status/<id>" path parameters
     And The API user records the response from the api loanplans status endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans status endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Status changed"
 
     Examples:
-      | id |
-      | 64 |
+      | id  |
+      | 261 |
 
   Scenario: When a PATCH request with valid authorization information and no 'id' is sent to the
   api/loanplans/status/{{id}} endpoint, the returned status code should be 203, and the message
@@ -20,7 +19,6 @@ Feature: As an administrator, I want to update the status information of existin
 
     Given The API user sets "api/loanplans/status" path parameters
     And The API user records the response from the api loanplans status endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans status endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 203
     And The API User verifies that the message information in the response body is "No id"
 
@@ -31,7 +29,6 @@ Feature: As an administrator, I want to update the status information of existin
 
     Given The API user sets "api/loanplans/status/<id>" path parameters
     And The API user records the response from the api loanplans status endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans status endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 203
     And The API User verifies that the message information in the response body is "No plan"
 
@@ -46,11 +43,10 @@ Feature: As an administrator, I want to update the status information of existin
 
     Given The API user sets "api/loanplans/status/<id>" path parameters
     Then The API user records the response from the api loanplans status endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized
-    #Api kullanicisi api loanplans status endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id |
-      | 64 |
+      | id  |
+      | 261 |
 
 
   Scenario Outline: The status of the loan plan record intended to be updated through the API should be verified.
@@ -61,8 +57,7 @@ Feature: As an administrator, I want to update the status information of existin
     And The API user records the response from the api loanplans details endpoint with valid authorization information
     Then The API user verifies that the status code is 200
     And The API user verifies that the status information in the response body is <valueStatus>
-    #Api kullanicisi response bodydeki status bilgisinin "<valueStatus>" oldugunu dogrular
 
     Examples:
-      | id | valueStatus |
-      | 64 | 1           |
+      | id  | valueStatus |
+      | 261 | 1           |

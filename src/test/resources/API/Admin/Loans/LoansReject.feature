@@ -7,9 +7,7 @@ Feature: As an administrator, I want to be able to reject the loan information o
 
     Given The API user sets "api/loans/reject/<id>" path parameters
     And The API user prepares a POST request containing the correct data to send to the api loans reject endpoint
-    #Api kullanicisi api loans reject endpointine gondermek icin dogru datalar iceren bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api loans reject endpoint with valid authorization information
-    #Api kullanicisi post request gonderir ve api loans reject endpointinden donen responsei geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Loan rejected successfully"
     * The API user verifies that the Reason information in the response body is "Bank info is wrong."
@@ -26,12 +24,10 @@ Feature: As an administrator, I want to be able to reject the loan information o
 
     Given The API user sets "api/loans/reject/<id>" path parameters
     And The API user prepares a POST request without data to send to the api loans reject endpoint
-    #Api kullanicisi api loans reject endpointine gondermek icin data içermeyen bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api loans reject endpoint with valid authorization information
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Loan rejected successfully"
     * The API user verifies that the Reason information in the response body is null
-    #Api kullanicisi response bodydeki Reason bilgisinin null oldugunu dogrular
 
     Examples:
       | id  |
@@ -51,6 +47,7 @@ Feature: As an administrator, I want to be able to reject the loan information o
     Examples:
       | id  |
       | 351 |
+
 
   Scenario: When valid authorization information is provided along with a POST body that lacks the required
   (id) parameter (reason) to the 'api/loans/reject/{{id}}' endpoint, the expected status code is 203.
@@ -86,7 +83,6 @@ Feature: As an administrator, I want to be able to reject the loan information o
     Given The API user sets "api/loans/reject/<id>" path parameters
     And The API user prepares a POST request containing the correct data to send to the api loans reject endpoint
     When The API user sends a POST request and records the response returned from the api loans reject endpoint with invalid authorization information
-    #Api kullanicisi post request gonderir ve api loans reject endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 401
     And The API user verifies that the error information in the response body is "Unauthorized request"
 

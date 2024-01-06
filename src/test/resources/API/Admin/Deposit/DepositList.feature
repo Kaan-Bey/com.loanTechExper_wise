@@ -6,7 +6,6 @@ Feature: An administrator (admin) should be able to access the deposit list via 
 
     Given The API user sets "api/deposit/list" path parameters
     And The API user records the response from the api deposit list endpoint with valid authorization information
-    #Apı kulanıcısı api deposit list endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -28,5 +27,5 @@ Feature: An administrator (admin) should be able to access the deposit list via 
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, <method_code>, "<amount>", "<method_currency>", "<charge>", "<rate>", "<final_amo>", "<btc_amo>", "<trx>", <payment_try>, <status>, <from_api>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | method_code | amount       | method_currency | charge       | rate       | final_amo    | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
-      | 1         | 55      | 1000        | 500.00000000 | USD             | 110.00000000 | 1.00000000 | 610.00000000 | 0       | 9OCPH2FGD84Y | 0           | 0      | 0        | 2023-12-23T18:52:09.000000Z | 2023-12-23T18:52:09.000000Z |
+      | dataIndex | user_id | method_code | amount        | method_currency | charge       | rate          | final_amo        | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
+      | 1         | 81      | 1001        | 1500.00000000 | EUR             | 335.00000000 | 1000.00000000 | 1835000.00000000 | 0       | 2WC3K58QCEP8 | 0           | 3      | 0        | 2024-01-04T09:24:24.000000Z | 2024-01-04T09:29:04.000000Z |

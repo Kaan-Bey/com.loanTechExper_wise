@@ -6,13 +6,12 @@ Feature: As an administrator, I should be able to delete a ticket record in the 
 
     Given The API user sets "api/tickets/delete/<id>" path parameters
     And The API user records the response from the api tickets delete endpoint with valid authorization information
-    #Apı kulanıcısı api tickets delete endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Ticket deleted"
 
     Examples:
       | id  |
-      | 117 |
+      | 563 |
 
 
   Scenario: When a DELETE request with valid authorization credentials and without the required (id)
@@ -36,7 +35,7 @@ Feature: As an administrator, I should be able to delete a ticket record in the 
 
     Examples:
       | id  |
-      | 452 |
+      | 987 |
 
 
   Scenario Outline: When an invalid DELETE request body is sent with unauthorized credentials to the
@@ -45,11 +44,10 @@ Feature: As an administrator, I should be able to delete a ticket record in the 
 
     Given The API user sets "api/tickets/delete/<id>" path parameters
     Then The API user records the response from the api tickets delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized
-    #Api kullanicisi api tickets delete endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
       | id  |
-      | 117 |
+      | 563 |
 
 
   Scenario Outline: The deletion of the desired ticket record via API should be confirmed by sending
@@ -63,4 +61,4 @@ Feature: As an administrator, I should be able to delete a ticket record in the 
 
     Examples:
       | id  |
-      | 117 |
+      | 563 |

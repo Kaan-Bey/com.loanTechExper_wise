@@ -6,14 +6,12 @@ Feature: As a user, I want to access the ticket details of a specified user thro
 
     Given The API user sets "user/ticket/detail/<id>" path parameters
     And The API user saves the response from the user ticket detail endpoint with valid authorization information
-    #Apı kulanıcısı user ticket detail endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the success attribute in the response body is true
-    #Api kullanicisi response bodydeki success bilgisinin "true" oldugunu dogrular
 
     Examples:
-      | id |
-      | 95 |
+      | id  |
+      | 545 |
 
 
   Scenario: Verify that when a GET request with valid authorization information and lacking the 'id' is sent
@@ -48,8 +46,8 @@ Feature: As a user, I want to access the ticket details of a specified user thro
     Then The API user records the response with invalid authorization information, verifies that the status code is '401' and confirms that the error information is Unauthorized
 
     Examples:
-      | id |
-      | 95 |
+      | id  |
+      | 545 |
 
 
   Scenario Outline: The contents of the data (id, user_id, name, email, ticket, subject, status, priority,
@@ -60,5 +58,6 @@ Feature: As a user, I want to access the ticket details of a specified user thro
     Then The API user verifies that the content of the data field in the response body includes <id>, <user_id>, "<name>", "<email>", "<ticket>", "<subject>", <status>, <priority>, "<last_reply>", "<created_at>", "<updated_at>"
 
     Examples:
-      | id | id | user_id | name     | email                   | ticket | subject     | status | priority | last_reply          | created_at                  | updated_at                  |
-      | 95 | 95 | 11      | Ali Dost | aliulvigirgin@gmail.com | 297809 | Test Ticket | 0      | 0        | 2023-12-22 07:02:54 | 2023-12-22T12:02:54.000000Z | 2023-12-22T12:02:54.000000Z |
+      | id  | id  | user_id | name                 | email                   | ticket | subject     | status | priority | last_reply          | created_at                  | updated_at                  |
+      | 545 | 545 | 11      | suphi atilim celikoz | aliulvigirgin@gmail.com | 482302 | Test Ticket | 0      | 0        | 2024-01-06 04:47:15 | 2024-01-06T09:47:15.000000Z | 2024-01-06T09:47:15.000000Z |
+

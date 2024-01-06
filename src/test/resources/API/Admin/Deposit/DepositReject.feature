@@ -7,9 +7,7 @@ Feature: As an administrator, I want to be able to reject the deposit informatio
 
     Given The API user sets "api/deposit/reject/<id>" path parameters
     And The API user prepares a POST request containing the correct data to send to the api deposit reject endpoint
-    #Api kullanicisi api deposit reject endpointine gondermek icin dogru datalar iceren bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api deposit reject endpoint with valid authorization information
-    #Api kullanicisi post request gonderir ve api deposit reject endpointinden donen responsei geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Deposit request rejected successfully"
 
@@ -25,7 +23,6 @@ Feature: As an administrator, I want to be able to reject the deposit informatio
 
     Given The API user sets "api/deposit/reject/<id>" path parameters
     And The API user prepares a POST request without data to send to the api deposit reject endpoint
-    #Api kullanicisi api deposit reject endpointine gondermek icin data içermeyen bir post request hazirlar
     When The API user sends a POST request and records the response returned from the api deposit reject endpoint with valid authorization information
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Deposit request rejected successfully"
@@ -75,8 +72,8 @@ Feature: As an administrator, I want to be able to reject the deposit informatio
     And The API User verifies that the message information in the response body is "No deposit."
 
     Examples:
-      | id  |
-      | 458 |
+      | id    |
+      | 14578 |
 
 
   Scenario Outline: When an invalid POST request with unauthorized authorization information is sent to
@@ -87,7 +84,6 @@ Feature: As an administrator, I want to be able to reject the deposit informatio
     Given The API user sets "api/deposit/reject/<id>" path parameters
     And The API user prepares a POST request containing the correct data to send to the api deposit reject endpoint
     When The API user sends a POST request and records the response returned from the api deposit reject endpoint with invalid authorization information
-    #Api kullanicisi post request gonderir ve api deposit reject endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 401
     And The API user verifies that the error information in the response body is "Unauthorized request"
 

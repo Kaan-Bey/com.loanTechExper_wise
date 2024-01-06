@@ -6,7 +6,6 @@ Feature: As an administrator, I want to access information about loans installme
 
     Given The API user sets "api/loans/installments/<id>" path parameters
     And The API user records the response from the api loans installments endpoint with valid authorization information
-    #Apı kulanıcısı api loans installments endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 

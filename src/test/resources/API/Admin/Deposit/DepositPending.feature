@@ -6,7 +6,6 @@ Feature: As an administrator, I want to be able to access pending deposits throu
 
     Given The API user sets "api/deposit/pending" path parameters
     And The API user records the response from the api deposit pending endpoint with valid authorization information
-    #Apı kulanıcısı api deposit pending endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -28,5 +27,5 @@ Feature: As an administrator, I want to be able to access pending deposits throu
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <user_id>, <method_code>, "<amount>", "<method_currency>", "<charge>", "<rate>", "<final_amo>", "<btc_amo>", "<trx>", <payment_try>, <status>, <from_api>, "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | user_id | method_code | amount        | method_currency | charge       | rate          | final_amo        | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
-      | 0         | 31      | 1001        | 1000.00000000 | EUR             | 240.00000000 | 1000.00000000 | 1240000.00000000 | 0       | D4PM94Y24865 | 0           | 2      | 0        | 2023-12-22T16:30:46.000000Z | 2023-12-22T16:30:49.000000Z |
+      | dataIndex | user_id | method_code | amount        | method_currency | charge       | rate       | final_amo     | btc_amo | trx          | payment_try | status | from_api | created_at                  | updated_at                  |
+      | 0         | 19      | 1000        | 1111.00000000 | USD             | 122.22000000 | 1.00000000 | 1233.22000000 | 0       | MJU9WW3RO4CN | 0           | 2      | 0        | 2024-01-01T09:44:32.000000Z | 2024-01-01T09:44:45.000000Z |

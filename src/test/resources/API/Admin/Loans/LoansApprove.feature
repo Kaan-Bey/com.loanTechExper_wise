@@ -6,7 +6,6 @@ Feature: As an administrator, I want to be able to approve the loan information 
 
     Given The API user sets "api/loans/approve/<id>" path parameters
     And The API user records the response from the api loans approve endpoint with valid authorization information
-    #Apı kulanıcısı api loans approve endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Loan approved successfully"
 
@@ -49,8 +48,8 @@ Feature: As an administrator, I want to be able to approve the loan information 
     And The API User verifies that the message information in the response body is "No loan."
 
     Examples:
-      | id  |
-      | 587 |
+      | id   |
+      | 1258 |
 
 
   Scenario Outline: When an invalid authorization is provided along with a PATCH body to the
@@ -59,7 +58,6 @@ Feature: As an administrator, I want to be able to approve the loan information 
 
     Given The API user sets "api/loans/approve/<id>" path parameters
     Then The API user records the response from the api loans approve endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized
-    #Api kullanicisi api loans approve endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
       | id  |

@@ -7,15 +7,13 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Given The API user sets "api/withdraw/methods/update/<id>" path parameters
     And The API user prepares a PATCH request with the correct data to send to the api withdraw methods update endpoint
-    #Api kullanicisi api withdraw methods update endpointine gondermek icin dogru datalar iceren bir patch request hazirlar
     When The API user sends a PATCH request and records the response from the api withdraw methods update endpoint with valid authorization information
-    #Api kullanicisi patch request gonderir ve api withdraw methods update endpointinden donen responsei geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Withdraw method updated successfully"
 
     Examples:
       | id  |
-      | 153 |
+      | 360 |
 
 
   Scenario Outline: Verify that when a PATCH request is sent to the 'api/withdraw/methods/update/{{id}}'
@@ -25,14 +23,13 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Given The API user sets "api/withdraw/methods/update/<id>" path parameters
     And The API user prepares a PATCH request without including data to send to the api withdraw methods update endpoint
-    #Api kullanicisi api withdraw methods update endpointine gondermek icin data içermeyen bir patch request hazirlar
     When The API user sends a PATCH request and records the response from the api withdraw methods update endpoint with valid authorization information
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Withdraw method updated successfully"
 
     Examples:
       | id  |
-      | 153 |
+      | 360 |
 
 
   Scenario: Verify that when a PATCH request is sent to the 'api/withdraw/methods/update/{{id}}' endpoint
@@ -59,7 +56,7 @@ Feature: As an administrator, I want to be able to update the information of reg
 
     Examples:
       | id  |
-      | 568 |
+      | 963 |
 
 
   Scenario Outline: Verify that when a PATCH request is sent to the 'api/withdraw/methods/update/{{id}}'
@@ -70,11 +67,10 @@ Feature: As an administrator, I want to be able to update the information of reg
     Given The API user sets "api/withdraw/methods/update/<id>" path parameters
     And The API user prepares a PATCH request with the correct data to send to the api withdraw methods update endpoint
     Then The API user records the response from the api withdraw methods update endpoint with invalid authorization information and verifies that the status code is '401' and the error message is Unauthorized
-    #Api kullanicisi api withdraw methods update endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
       | id  |
-      | 153 |
+      | 360 |
 
 
   Scenario Outline: The update of the withdrawal methods record through the API should be verified.
@@ -85,8 +81,7 @@ Feature: As an administrator, I want to be able to update the information of reg
     And The API user saves the response from the api withdraw methods details endpoint with valid authorization information
     Then The API user verifies that the status code is 200
     And The API user verifies that the Name information in the response body is "<valueName>"
-    #Api kullanicisi response bodydeki name bilgisinin "<valueName>" oldugunu dogrular
 
     Examples:
       | id  | valueName        |
-      | 153 | Method 5 Updated |
+      | 360 | Method 5 Updated |

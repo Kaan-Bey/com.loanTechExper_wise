@@ -6,7 +6,6 @@ Feature: As an administrator, I want to be able to access approved withdrawals t
 
     Given The API user sets "api/withdrawal/approved" path parameters
     And The API user records the response from the api withdrawal approved endpoint with valid authorization information
-    #Apı kulanıcısı api withdrawal approved endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -28,5 +27,5 @@ Feature: As an administrator, I want to be able to access approved withdrawals t
     Then Verify the information of the one with the index <dataIndex> in the API user response body: <method_id>, <user_id>, "<amount>", "<currency>", "<rate>", "<charge>", "<trx>", "<final_amount>", "<after_charge>", <status>, "<admin_feedback>", "<created_at>", "<updated_at>"
 
     Examples:
-      | dataIndex | method_id | user_id | amount       | currency | rate        | charge       | trx          | final_amount  | after_charge | status | admin_feedback | created_at                  | updated_at                  |
-      | 0         | 29        | 15      | 100.00000000 | USD      | 10.00000000 | 150.00000000 | XVMEFZF2776J | -500.00000000 | -50.00000000 | 1      | OK             | 2023-12-23T18:54:53.000000Z | 2023-12-23T18:55:03.000000Z |
+      | dataIndex | method_id | user_id | amount        | currency | rate         | charge      | trx          | final_amount   | after_charge | status | admin_feedback | created_at                  | updated_at                  |
+      | 0         | 8         | 71      | 1000.00000000 | dolar    | 100.00000000 | 70.00000000 | H19PC44UK2XS | 93000.00000000 | 930.00000000 | 1      | deneme         | 2024-01-02T18:36:00.000000Z | 2024-01-03T15:36:57.000000Z |

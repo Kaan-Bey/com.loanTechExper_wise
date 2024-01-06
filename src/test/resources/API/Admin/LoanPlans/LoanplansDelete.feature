@@ -6,13 +6,12 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
     Given The API user sets "api/loanplans/delete/<id>" path parameters
     And The API user records the response from the api loanplans delete endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans delete endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API User verifies that the message information in the response body is "Loan plan deleted"
 
     Examples:
-      | id |
-      | 78 |
+      | id  |
+      | 263 |
 
   Scenario: When a DELETE request without the required data (id) and with valid authorization credentials is
   sent to the 'api/loanplans/delete/{{id}}' endpoint, it should return a status code of 203, and the message
@@ -20,7 +19,6 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
     Given The API user sets "api/loanplans/delete" path parameters
     And The API user records the response from the api loanplans delete endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans delete endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 203
     And The API User verifies that the message information in the response body is "No id"
 
@@ -31,7 +29,6 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
     Given The API user sets "api/loanplans/delete/<id>" path parameters
     And The API user records the response from the api loanplans delete endpoint with valid authorization information
-    #Apı kulanıcısı api loanplans delete endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 203
     And The API User verifies that the message information in the response body is "No loanplan."
 
@@ -46,11 +43,10 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
 
     Given The API user sets "api/loanplans/delete/<id>" path parameters
     Then The API user records the response from the api loanplans delete endpoint with invalid authorization information verifies that the status code is '401' and confirms that the error information is Unauthorized'
-    #Api kullanicisi api loanplans delete endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder, status codeun 401 ve error bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id |
-      | 78 |
+      | id  |
+      | 263 |
 
 
   Scenario Outline: The deletion of the loan plan record intended to be removed through the API should be
@@ -63,5 +59,5 @@ Feature: As an administrator, I should be able to delete a loan plan record in t
     And The API User verifies that the message information in the response body is "No loanplans."
 
     Examples:
-      | id |
-      | 78 |
+      | id  |
+      | 263 |

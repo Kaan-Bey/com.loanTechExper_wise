@@ -6,7 +6,6 @@ Feature: As an administrator, I want to be able to access users with balances th
 
     Given The API user sets "api/users/with-balance" path parameters
     And The API user saves the response from the api users with-balance endpoint with valid authorization information
-    #Apı kulanıcısı api users with-balance endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -27,5 +26,5 @@ Feature: As an administrator, I want to be able to access users with balances th
     Then Verify the information of the one with the index <dataIndex> in the API user response body: "<firstname>", "<lastname>", "<username>", "<image>", "<email>", "<country_code>", "<mobile>", <ref_by>, "<balance>"
 
     Examples:
-      | dataIndex | firstname                | lastname       | username | image                       | email                     | country_code | mobile           | ref_by | balance      |
-      | 0         | LESSIE FEESTAUDRY SENGER | TREUTELKOVACEK | aj641m   | 65863efbbf4cf1703296763.png | renaldo.witting@yahoo.com | FR           | 3335899312974581 | 0      | 100.00000000 |
+      | dataIndex | firstname                | lastname       | username | image                       | email                     | country_code | mobile          | ref_by | balance      |
+      | 0         | LESSIE FEESTAUDRY SENGER | TREUTELKOVACEK | aj641m   | 65863efbbf4cf1703296763.png | renaldo.witting@yahoo.com | FR           | 053222222222222 | 0      | 100.00000000 |

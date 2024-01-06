@@ -6,9 +6,7 @@ Feature: As an administrator, I want to be able to create a new blog record thro
 
     Given The API user sets "api/blogs/add" path parameters
     And The API user prepares a POST request with the correct data to send to the api blogs add endpoint
-    #Api kullanicisi api blogs add endpointine gondermek icin dogru datalar iceren bir post request hazirlar
     When The API user sends a POST request and records the response from the api blogs add endpoint with valid authorization information
-    #Api kullanicisi post request gonderir ve api blogs add endpointinden donen responsei geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -19,7 +17,6 @@ Feature: As an administrator, I want to be able to create a new blog record thro
 
     Given The API user sets "api/blogs/add" path parameters
     And The API user prepares a POST request with incomplete data to send to the api blogs add endpoint
-    #Api kullanicisi api blogs add endpointine gondermek icin eksik data iceren bir post request hazirlar
     When The API user sends a POST request and records the response from the api blogs add endpoint with valid authorization information
     Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
@@ -31,7 +28,6 @@ Feature: As an administrator, I want to be able to create a new blog record thro
 
     Given The API user sets "api/blogs/add" path parameters
     And The API user prepares a POST request with no data to send to the api blogs add endpoint
-    #Api kullanicisi api blogs add endpointine gondermek icin data içermeyen bir post request hazirlar
     When The API user sends a POST request and records the response from the api blogs add endpoint with valid authorization information
     Then The API user verifies that the status code is 203
     And The API user verifies that the remark information in the response body is "failed"
@@ -44,7 +40,6 @@ Feature: As an administrator, I want to be able to create a new blog record thro
     Given The API user sets "api/blogs/add" path parameters
     And The API user prepares a POST request with the correct data to send to the api blogs add endpoint
     When The API user sends a POST request, records the response from the api blogs add endpoint and saves it with invalid authorization information
-    #Api kullanicisi post request gonderir ve api blogs add endpointinden donen responsei geçersiz authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 401
     And The API user verifies that the error information in the response body is "Unauthorized request"
 
@@ -61,4 +56,4 @@ Feature: As an administrator, I want to be able to create a new blog record thro
 
     Examples:
       | id  | valueId |
-      | 110 | 110     |
+      | 228 | 228     |

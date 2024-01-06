@@ -6,7 +6,6 @@ Feature: As an administrator, I want to be able to access pending withdrawals th
 
     Given The API user sets "api/withdrawal/pending" path parameters
     And The API user records the response from the api withdrawal pending endpoint with valid authorization information
-    #Apı kulanıcısı api withdrawal pending endpointinden donen responseı geçerli authorization bilgisi ile kaydeder
     Then The API user verifies that the status code is 200
     And The API user verifies that the remark information in the response body is "success"
 
@@ -29,4 +28,4 @@ Feature: As an administrator, I want to be able to access pending withdrawals th
 
     Examples:
       | dataIndex | method_id | user_id | amount       | currency | rate       | charge       | trx          | final_amount | after_charge | status | created_at                  | updated_at                  |
-      | 0         | 9         | 55      | 500.00000000 | USD      | 1.00000000 | 225.00000000 | Z5CQ7E6MKSM7 | 275.00000000 | 275.00000000 | 2      | 2023-12-23T18:52:29.000000Z | 2023-12-23T18:52:31.000000Z |
+      | 0         | 9         | 55      | 500.00000000 | USD      | 1.00000000 | 225.00000000 | SYXXASR9AV8C | 275.00000000 | 275.00000000 | 2      | 2023-12-23T12:29:09.000000Z | 2023-12-23T12:29:11.000000Z |
